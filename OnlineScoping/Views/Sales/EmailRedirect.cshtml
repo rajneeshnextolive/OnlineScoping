@@ -1,0 +1,100 @@
+﻿@model OnlineScoping.Models.AccountModel
+@{
+    ViewData["Title"] = "EmailRedirect";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - Online Scoping</title>
+    <link rel="icon" type="image/x-icon" href="~/lib/layout/assets/img/favicon.ico" />
+    <link href="~/lib/layout/assets/css/loader.css" rel="stylesheet" type="text/css" />
+    <script src="~/lib/layout/assets/js/loader.js"></script>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/layout/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/form-2.css" rel="stylesheet" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    @*<link rel="stylesheet" type="text/css" href="assets/css/forms/theme-checkbox-radio.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/forms/switches.css">*@
+</head>
+<body class="form">
+
+
+    <div class="form-container outer">
+        <div class="form-form">
+            <div class="form-form-wrap">
+                <div class="form-container">
+                    <div class="form-content">
+                 
+                        <p class="signup-link register">Already have an account? <a href='/Identity/Account/Login'>Log in</a></p>
+                        <form asp-action="EmailRedirect">
+                            <h4>Create a new account.</h4>
+                            <hr />
+                            @if (TempData["ErrorMessage"] != null)
+                            {
+                                <div class="alert alert-danger margin-bottom-10">
+                                    @TempData["ErrorMessage"]
+                                </div>
+                            }
+
+
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <input asp-for="Id" class="form-control" hidden />
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" class="form-control" disabled />
+                                <input asp-for="Email" class="form-control" hidden />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UserName"></label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword"></label>
+                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RoleName"></label>
+                                <input asp-for="RoleName" class="form-control" disabled />
+                                <input asp-for="RoleName" class="form-control" hidden />
+                                <span asp-validation-for="RoleName" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+
+
+</html>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

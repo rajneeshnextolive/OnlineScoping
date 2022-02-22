@@ -1,0 +1,331 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+@{
+    ViewData["Title"] = "ResponseDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/custom/childquestion.css" rel="stylesheet" />
+<style>
+    .qus-align b {
+        display: table-cell
+    }
+
+    .qus-align span {
+        display: table-cell
+    }
+</style>
+
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="pt-3">
+                @Model.QuestionnaireData.Name.Substring(0, 15) ...
+            </h3>
+        </div>
+        <div class="col-md-9">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    @if (@Model.Pages == "EditQuestionnaires")
+                    {
+
+                        <li class="breadcrumb-item"><a asp-action="EditQuestionnaires">Questionnaires</a></li>
+                    }
+                    else if (@Model.Pages == "CustomerQuestionnaires")
+                    {
+                        <li class="breadcrumb-item"><a href="/Customers/Index">Customers</a></li>
+                        <li class="breadcrumb-item"><a asp-action="CustomerQuestionnair" asp-route-id="@Model.CustomerId">Questionnaires</a></li>
+                    }
+                    else if (@Model.Pages == "HomeIndex")
+                    {
+
+
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item"><a href="/Customers/Index">Customers</a></li>
+                        <li class="breadcrumb-item"><a asp-action="CustomerQuestionnair" asp-route-id="@Model.CustomerId">Questionnaires</a></li>
+                    }
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#"> @Model.QuestionnaireData.Name.Substring(0, 15) ...</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<hr />
+
+
+<div class="card component-card_1 security-scoping-card">
+    @if (User.IsInRole("Sales") || User.IsInRole("Admin"))
+    {
+        <div class="form-group" id="finish">
+            <input type="submit" value="Export to Word" class="btn btn-primary" onclick="exportToWord()" style="margin-left: 20px; margin-top: 15px;" />
+        </div>
+    }
+    <div class="card-body" id="RepordToWord">
+
+        @*<h5 class="card-title mb-5 mt-3">Security Scoping Questionnaire Response</h5>*@
+        <h5 class="card-title mb-5 mt-3" style="font-size: 35px;color: #0460af; text-align: center; font-weight: 700; font-family: Calibri;"> @Model.QuestionnaireData.Name</h5>
+        <h5 class="mb-4 ml-5" style=" font-size: 20px; font-weight: 400;">
+            <span>1</span>
+            <span>Reason for security services</span>
+        </h5>
+        <input type="hidden" id="SectionId" asp-for="@Model.SectionId" />
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="1" name="Questionnaire" class="custom-control-input" value="1" disabled>
+            <label class="custom-control-label" for="1">Verification test (to verify issues found in previous pentest have been fixed)</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="2" name="Questionnaire" class="custom-control-input" value="2" disabled>
+            <label class="custom-control-label" for="2">Retest</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="3" name="Questionnaire" class="custom-control-input" value="3" disabled>
+            <label class="custom-control-label" for="3">We suspect we’ve been hacked</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="4" name="Questionnaire" class="custom-control-input" value="4" disabled>
+            <label class="custom-control-label" for="4"> ITHC</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="5" name="Questionnaire" class="custom-control-input" value="5" disabled>
+            <label class="custom-control-label" for="5">Need a specific component tested only</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="6" name="Questionnaire" class="custom-control-input" value="6" disabled>
+            <label class="custom-control-label" for="6">To better understand security posture of our environment</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="7" name="Questionnaire" class="custom-control-input" value="7" disabled>
+            <label class="custom-control-label" for="7">Required by third party</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="8" name="Questionnaire" class="custom-control-input" value="8" disabled>
+            <label class="custom-control-label" for="8">PCI</label>
+        </div>
+        <div class="custom-control custom-radio mb-3 ml-10">
+            <input type="radio" id="9" name="Questionnaire" class="custom-control-input" value="9" disabled>
+            <label class="custom-control-label" for="9" readonly>Compliance/accreditation</label>
+        </div>
+
+
+        <div class="w-100 carousel-inner" role="listbox">
+            @if (Model.Questions.Count == 0)
+            {
+                <input type="hidden" asp-for="@Model.SectionId" />
+                <h5 class="mb-4 ml-5 text-left mr-5">Thank You</h5>
+            }
+            else
+            {
+
+                @for (int i = 0; i < Model.Questions.Count; i++)
+                {
+                    <div class="row">
+                        <div class="form-group">
+                            <h5 style=" font-size: 20px; font-weight: 400;" class="mb-4 ml-5 text-left mr-5">@Model.Questions[i].QuestionData.QuestionNumber . @Model.Questions[i].QuestionData.QuestionText</h5>
+                            @if (Model.Questions[i].OptionType == 0)
+                            {
+                                @for (var k = 0; k < Model.Questions[i].OptionsList.Count; k++)
+                                {
+                                    @if (Model.Questions[i].ResponseOptionId == Model.Questions[i].OptionsList[k].OptionId)
+                                    {
+                                        <div class="custom-control custom-radio mb-3 ml-10">
+                                            <input type="radio" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" checked disabled>
+                                            <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="custom-control custom-radio mb-3 ml-10">
+                                            <input type="radio" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" disabled>
+                                            <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                        </div>
+                                    }
+
+                                }
+
+                            }
+                            else if (Model.Questions[i].OptionType == 1)
+                            {
+                                <div class="custom-control col-md-6 ml-3 ">
+                                    <input value="@Model.Questions[i].ResponseDateTime.ToString("yyyy-MM-dd")" class="form-control flatpickr flatpickr-input active calendar" width="100" type="text" disabled>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="custom-control picker-1 col-md-6">
+                                    <input value="@Model.Questions[i].Responsetext" class="form-control" type="text" width="100" disabled>
+
+                                </div>
+
+                            }
+
+                            @if (Model.Questions[i].ChildQuestionsList.Count > 0)
+                            {
+                                @for (int j = 0; j < Model.Questions[i].ChildQuestionsList.Count; j++)
+                                {
+                                    <div id="@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber">
+                                        <div class="col-md-12 qus-align">
+                                            <div class="form-row">
+                                                <div class="col-md-6"> <h6 style=" font-size: 18px; font-weight: 400;" class="mb-4 ml-5 mr-5 text-left"><b>@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber</b> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionText</span></h6></div>
+                                                @if (Model.Questions[i].ChildQuestionsList[j].OptionType == 0)
+                                                {
+
+                                                    @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                    {
+                                                        @if (Model.Questions[i].ChildQuestionsList[j].ResponseOptionId == Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId)
+                                                        {
+                                                            <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                <input type="radio" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                <input type="radio" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" disabled>
+                                                                <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                            </div>
+                                                        }
+                                                    }
+                                                }
+                                                else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 1)
+                                                {
+                                                    <div class="custom-control picker-1 col-md-6">
+                                                        <input value="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime.ToString("yyyy-MM-dd")" class="form-control flatpickr flatpickr-input active calendar" width="100" type="text" disabled>
+
+                                                    </div>
+
+                                                }
+
+
+                                            </div>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+
+                        </div>
+
+                    </div>
+
+
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            var SectionId = $("#SectionId").val();
+            jQuery("#" + SectionId).attr('checked', true);
+
+
+            const calendars = flatpickr(".calendar", {
+                //  defaultDate: 'today'
+            });
+
+            $("#3b1").show();
+
+            var rVal2 = $("#38107f92-f2c9-4e22-8ab6-87cd0f5a1fdc:checked ").val();
+            if (rVal2 == "38107f92-f2c9-4e22-8ab6-87cd0f5a1fdc") {
+                $("#3b1").hide();
+            }
+
+
+
+
+
+        });
+    </script>
+    <script>
+        function exportToWord(contentHtml, filename) {
+            html = this.contentHtmlfunction(document.getElementById("RepordToWord").innerHTML);
+
+            html = html.replace("&#39;", "'");
+            html = html.replace("&#44;", "'");
+            html = html.replace("&#94;", "'");
+            html = html.replace("‘", "'");
+            html = html.replace("’", "'");
+            html = html.replace("â€¢", ".");
+            html = html.replace("&quot;", '"');
+            html = html.replace("&apos;", "'");
+            html = html.replace("&amp;lt;", "<");
+            html = html.replace("&amp;gt;", ">");
+            html = html.replace("&amp;apos;", "'");
+
+            var blob = new Blob(['\ufeff', html], {
+                type: 'application/msword'
+            });
+
+            var url = window.URL.createObjectURL(blob);
+
+            // Specify file name
+            filename = filename ? filename + '.doc' : 'ProCheckUpReport.doc';
+
+            // Create download link element
+            var downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = url;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+
+            document.body.removeChild(downloadLink);
+
+        }
+        function contentHtmlfunction(contentHtml) {
+            var rootUrl = "https://localhost:44368";
+            var preHtml = "<!DOCTYPE html>\n<html xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"  xmlns:w=\"urn:schemas-microsoft-com:office:word\"  xmlns:m=\"http://schemas.microsoft.com/office/2004/12/omml\" xmlns=\"http://www.w3.org/TR/REC-html40\">" +
+                "<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:Orientation>Landscape</w:Orientation></w:WordDocument></xml><![endif]--><title>Export HTML To Doc</title>" +
+                "<style>pre {word-break: break-all; white-space: normal;} footerImg{height: 20px; width: 90px} headerImg{height: 85px; width: 515px} p.MsoFooter, li.MsoFooter, div.MsoFooter{margin:0in; margin-bottom:.0001pt; mso-pagination:widow-orphan;  tab-stops:center 3.0in right 6.5in; font-size:12.0pt;}@@page Section1{ size:8.5in 11.0in; margin:1.0in 1.0in 1.0in 1.0in;  mso-header-margin:.5in;  mso-footer-margin:.5in;  mso-title-page:yes;  mso-header: h1;   mso-footer: f1;   mso-first-header: fh1;   mso-first-footer: ff1;  mso-paper-source:0;} div.Section1{ page:Section1; } table#hrdftrtbl{ margin:0in 0in 0in 900in; width:1px; height:1px; overflow:hidden;}.group-vul-des p{margin: 0px !important;} .reposrt-text{background-color:#373b3e; color: #fff; padding-top:2px; padding-bottom:24px; font-family:'Calibri (Body)'; }</style>" +
+                "</head><body>";
+
+            var html = "" + contentHtml + "<div  class='Section1'><div id='Sectiondata'>" +
+                //"<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'><tbody><tr><td><div style='mso-element: header;' id='h1'>" +
+                //"<table style='width: 100%; font-family:Calibri;font-size:8pt; '><tbody><tr><td><div style='float: left '>" +
+                //"<img alt='' src='" + rootUrl + "/Report/img/ri_4.png' style='position: absolute; top: 10px; left: 0.6in; width: 0.21in; height: 0.24in;' ><span style=''> http://www.procheckup.com/labs </span></div></td><td style='text-align: right'>" +
+                //"<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_9.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' > <span>+44 (0) 20 7612 7777</span>" +
+                //"</div></td><td style='text-align: right'>" +
+                //"<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_10.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >  Info@procheckup.com" +
+                //"</div></td><td style='text-align: right'>" +
+                //"<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_4.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >    http://www.procheckup.com/" +
+                //"</div></td></tr></tbody></table><hr></div></td><td>" +
+
+                //"<div style='mso-element: footer' id='f1'><hr><table style='width: 100%; font-family:Calibri;font-size:10pt;'><tbody><tr><td><div style='float: left'>" +
+                //"Cranfield University </div></td><td style='text-align: right'>" +
+                //"<div style='float: right'>    <span style='float: right; font-family:Calibri;font-size:10pt;'><span style='mso-tab-count: 2;'></span> <span style='mso-field-code: PAGE'><span style='mso-no-proof: yes'></span></span></span>      " +
+                //"</div></td><td style='text-align: right'>" +
+                //"<div style='float: right'>CU220720DL – Cranfield Secure Environment’ (CSE)" +
+                //"</div></td></tr></tbody></table></div></td></tr></tbody></table></div>" +
+                "</div>";
+
+            var postHtml = "</body></html>";
+            var finalhtml = preHtml + html + postHtml;
+
+            return finalhtml;
+        }
+
+    </script>
+
+}

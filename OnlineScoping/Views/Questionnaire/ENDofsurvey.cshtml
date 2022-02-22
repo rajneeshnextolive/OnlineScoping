@@ -1,0 +1,95 @@
+﻿
+@model OnlineScoping.ViewModels.QuestionResponseViewModel
+    @{
+        ViewData["Title"] = "ENDofsurvey";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+
+<div class="card component-card_1 security-scoping-card">
+    <div class="card-body">
+
+        <h5 class="card-title mb-5 mt-3">Thank You</h5>
+        @if (Model.SectionId == 1)
+        {
+            <div>
+                <h5>END of survey.</h5>
+                <p>
+                    The details you’ve provided will be sent to you and the sales dude and we’ll be in contact to scope fully.
+                    If they answered no to 2c the sales guy can ask which issues haven’t been fixed,
+                    and hence don’t need to be checked. Adding the question of when (2d) can let us prioritise customers.
+                </p>
+            </div>
+        }
+        else if (Model.SectionId == 2)
+        {
+            <div>
+                <h5>END of survey.</h5>
+            </div>
+        }
+        else if (Model.SectionId == 3)
+        {
+            <div>
+                <h5>END of survey.</h5>
+            </div>
+        }
+        else if (Model.SectionId == 4)
+        {
+            <div>
+                <h5>END of survey.</h5>
+                <p>Sales and a CTL will be in touch to scope number of days.</p>
+            </div>
+        }
+        else if (Model.SectionId == 5)
+        {
+            <div>
+                <h5>END of survey.</h5>
+            </div>
+        }
+        else if (Model.SectionId == 6)
+        {
+            <div>
+                <h5>END of survey.</h5>
+                <p>
+                    Your answers to the survey have been emailed to the team who will be in touch shortly to ask further questions in order to prepare a scope of how many days testing is estimated to take.
+
+                    We see that you are likely to require a remote inf test.  As part of this we’ll look at your TLS configurations.  Tip:  make sure you follow best practise and do the following: blah
+
+                    We see that you are likely to require a web application test.  Look out for the main mistakes made by web app developers:
+                    <a href="https://www.owasp.org/index.php/Mobile_Top_10_2016-Top_10">https://www.owasp.org/index.php/Mobile_Top_10_2016-Top_10 </a>
+                </p>
+
+            </div>
+        }
+        else if (Model.SectionId == 7)
+        {
+            <div>
+                <h5>END of survey.</h5>
+                <p>
+                    Sales will be in contact to find out what’s to be tested.
+                </p>
+
+            </div>
+        }
+        else
+        {
+            <div>
+                <h5>END of survey.</h5>             
+            </div>
+        }
+
+        <a asp-controller="Home" asp-action="Index" type="button" class="btn btn-primary  mb-3  mt-3 ">Go To Home</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+
+
+        <script src="~/js/custom/Questionnaire/Questionnaire.js" asp-append-version="true"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

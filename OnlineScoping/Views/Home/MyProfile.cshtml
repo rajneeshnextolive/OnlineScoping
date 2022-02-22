@@ -1,0 +1,544 @@
+﻿@model OnlineScoping.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "MyProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/lib/layout/plugins/file-upload/file-upload-with-preview.min.css" rel="stylesheet" />
+<link href="~/lib/layout/assets/css/users/user-profile.css" rel="stylesheet" />
+<div class="page-top">
+    <div class="row">
+        <div class="col-md-1">
+            <h3 class="pt-3">
+                Profile
+            </h3>
+        </div>
+        <div class="col-md-6 text-right">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Profile</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-5">
+            @if (TempData["ProfileUpdateMessage"] != null)
+            {
+                <div style="margin: 0% 0% 0% 0%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Profile Update succesfully !  </div>
+            }
+            @if (TempData["notice"] != null)
+            {
+        <div style="margin: 0% 0% 0% 0%;" class="alert alert-danger mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> Please select Image only. !  </div>
+            }
+        </div>
+    </div>
+</div>
+<hr />
+<div class="layout-px-spacing">
+    <div class="row layout-spacing">
+
+
+
+        @if (Model.RoleName == "Admin")
+        {
+
+            <!-- Content -->
+            <div class="col-xl-2 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
+
+                <div class="user-profile layout-spacing">
+                    <div class="widget-content widget-content-area">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="">Info</h3>
+                            <a data-toggle="modal" style="cursor:pointer" data-target="#ModalAdmin" data-placement="top"  title="Edit Profile" class="mt-2 edit-profile"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
+                        </div>
+                        <div class="text-center user-info">
+                            @if (Model.FileUpload != null)
+                            {
+                                <img src="~/img/@(Model.FileUpload)" alt="avatar" height="100" width="100">
+
+                            }
+                            else
+                            {
+                                <img src="~/lib/layout/assets/img/download.png" alt="avatar" height="100" width="100">
+
+                            }
+                            <p class="form-control"> @Model.UserName</p>
+                        </div>
+                        <div class="user-info-list">
+
+                            <div class="">
+                                <ul class="contacts-block list-unstyled">
+
+                                    <li class="contacts-block__item" asp-for="Email">
+                                        <a href="mailto:example@mail.com"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> @Model.Email</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-2 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
+            </div>
+       
+
+        }
+        else if (Model.RoleName == "Customer")
+        {
+            <!-- Content -->
+            <div class="col-xl-4 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
+
+                <div class="user-profile layout-spacing">
+                    <div class="widget-content widget-content-area">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="">Info</h3>
+                            <a data-toggle="modal" style="cursor:pointer" data-placement="top"  title="Edit Profile"  data-target="#ModalCustomer" class="mt-2 edit-profile"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
+                        </div>
+                        <div class="text-center user-info">
+                            @if (Model.FileUpload != null)
+                            {
+                                <img src="~/img/@(Model.FileUpload)" alt="avatar" height="100" width="100" />
+
+                            }
+                            else
+                            {
+                                <img src="~/lib/layout/assets/img/download.png" alt="avatar" height="100" width="100">
+
+                            }
+                            <p class="form-control"> @Model.CustomerViewData.FirstName @Model.CustomerViewData.LastName</p>
+                        </div>
+                        <div class="user-info-list">
+
+                            <div class="">
+                                <ul class="contacts-block list-unstyled">
+
+                                    <li class="contacts-block__item" asp-for="Email">
+                                        <a href="mailto:@(Model.CustomerViewData.Email)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> @Model.CustomerViewData.Email</a>
+                                    </li>
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>@Model.CustomerViewData.CreatedDate
+                                    </li>
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>@Model.CustomerViewData.City  @Model.CustomerViewData.Country
+                                    </li>
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> @Model.CustomerViewData.MobileNumber
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-xl-8 col-lg-6 col-md-7 col-sm-12 layout-top-spacing">
+
+                <div class="skills layout-spacing ">
+                    <div class="widget-content widget-content-area">
+                        <h3 class="">Correspondence</h3>
+                        <div class="timeline-alter">
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">@Model.CustomerViewData.Address1</p>
+                                </div>
+
+                                <div class="t-text">
+                                    <p>@Model.CustomerViewData.Address2</p>
+
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">@Model.CustomerViewData.Zip</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+                                <div class="t-text">
+                                    <p>@Model.CustomerViewData.City</p>
+                                </div>
+                            </div>
+                            <div class="item-timeline">
+                                <div class="t-meta-date">
+                                    <p class="">@Model.CustomerViewData.State  @Model.CustomerViewData.Country</p>
+                                </div>
+                                <div class="t-dot">
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        }
+        else if (Model.RoleName == "Sales")
+        {
+            <!-- Content -->
+            <div class="col-xl-2 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
+
+                <div class="user-profile layout-spacing">
+                    <div class="widget-content widget-content-area">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="">Info</h3>
+                            <a data-toggle="modal" style="cursor:pointer" data-target="#ModalSales" data-placement="top"  title="Edit Profile" class="mt-2 edit-profile"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
+                        </div>
+                        <div class="text-center user-info">
+                            @if (Model.FileUpload != null)
+                            {
+                                <img src="~/img/@(Model.FileUpload)" alt="avatar" height="100" width="100">
+
+                            }
+                            else
+                            {
+                                <img src="~/lib/layout/assets/img/download.png" alt="avatar" height="100" width="100">
+
+                            }
+                            <p class="form-control"> @Model.SalesViewData.FirstName @Model.SalesViewData.LastName</p>
+                        </div>
+                        <div class="user-info-list">
+
+                            <div class="">
+                                <ul class="contacts-block list-unstyled">
+
+                                    <li class="contacts-block__item" asp-for="Email">
+                                        <a href="mailto:@(Model.SalesViewData.Email)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> @Model.SalesViewData.Email</a>
+                                    </li>
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>@Model.SalesViewData.CreatedDate
+                                    </li>
+                                    <li class="contacts-block__item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> @Model.SalesViewData.MobileNumber
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-2 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
+            </div>
+      
+
+        }
+
+
+
+
+    </div>
+        </div>
+
+
+<div class="modal fade bd-example-modal-lg" id="ModalCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="UpdateMyProfile" asp-controller="Home" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.CustomerViewData.CustomerId" value="@Model.CustomerViewData.CustomerId" />
+                <input type="hidden" asp-for="@Model.UserName" value="@Model.UserName" />
+                <input type="hidden" asp-for="@Model.UserId" value="@Model.UserId" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit @Model.CustomerViewData.FirstName @Model.CustomerViewData.FirstName</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="custom-file-container" data-upload-id="myFirstImage">
+                                <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                <label class="custom-file-container__custom-file">
+ 
+                                    <input asp-for="@Model.CustomerViewData.MyImage" class="custom-file-container__custom-file__custom-file-input" accept="image/gif, image/jpeg, image/png" onchange="ShowImgc()">
+  
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                </label>
+                                <div class="custom-file-container__image-preview" style="background-image: url(~/img/@(Model.FileUpload))">
+                                    @if (Model.FileUpload != null)
+                                    {
+                                        <img src="~/img/@(Model.FileUpload)" alt="avatar" height="100" width="100" id="oldimgc">
+
+                                    }
+                                    else
+                                    {
+                                        <img src="~/lib/layout/assets/img/download.png" alt="avatar" height="100" width="100" id="noimgc">
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.FirstName" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.FirstName" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.FirstName" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.LastName" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.LastName" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.LastName" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.MobileNumber" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.MobileNumber" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.MobileNumber" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.Address1" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.Address1" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.Address1" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.Address2" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.Address2" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.Address2" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.City" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.City" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.City" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.Country" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.Country" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.Country" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.State" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.State" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.State" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.CustomerViewData.Zip" class="control-label"></label>
+                                <input asp-for="@Model.CustomerViewData.Zip" class="form-control" />
+                                <span asp-validation-for="@Model.CustomerViewData.Zip" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><em  class="flaticon-cancel-12"></em> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade bd-example-modal-lg" id="ModalAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="UpdateMyProfileAdmin" asp-controller="Home" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.CustomerViewData.CustomerId" value="@Model.CustomerViewData.CustomerId" />
+                <input type="hidden" asp-for="@Model.UserName" value="@Model.UserName" />
+                <input type="hidden" asp-for="@Model.UserId" value="@Model.UserId" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit @Model.UserName</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="custom-file-container" data-upload-id="myFirstImage2">
+                                <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                <label class="custom-file-container__custom-file">
+                                    <input asp-for="@Model.MyImage" class="custom-file-container__custom-file__custom-file-input" accept="image/*" onchange="ShowImg()">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                    <span  class="custom-file-container__custom-file__custom-file-control" ></span>
+                                </label>
+                           
+                                <div class="custom-file-container__image-preview" style="background-image: url(~/img/@(Model.FileUpload))">
+                                    <div  class="text-center">
+                                        @if (Model.FileUpload != null)
+                                        {
+                                            <img   src="~/img/@(Model.FileUpload)" height="100" width="100" id="oldimg" alt="avatar">
+
+                                        }
+                                        else
+                                        {
+                                            <img src="~/lib/layout/assets/img/download.png" alt="avatar" height="100" width="100" id="noimg" >
+
+                                        }
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        @*<div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.CustomerViewData.FirstName" class="control-label"></label>
+                                    <input asp-for="@Model.CustomerViewData.FirstName" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="@Model.CustomerViewData.LastName" class="control-label"></label>
+                                    <input asp-for="@Model.CustomerViewData.LastName" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="@Model.CustomerViewData.MobileNumber" class="control-label"></label>
+                                    <input asp-for="@Model.CustomerViewData.MobileNumber" class="form-control" />
+                                </div>
+                            </div>*@
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><em  class="flaticon-cancel-12"></em> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="ModalSales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="UpdateMyProfileSales" asp-controller="Home" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.SalesViewData.CustomerId" value="@Model.SalesViewData.CustomerId" />
+                <input type="hidden" asp-for="@Model.UserName" value="@Model.UserName" />
+                <input type="hidden" asp-for="@Model.UserId" value="@Model.UserId" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit @Model.SalesViewData.FirstName @Model.SalesViewData.FirstName</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="custom-file-container" data-upload-id="myFirstImage3">
+                                <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                <label class="custom-file-container__custom-file">
+                                    <input asp-for="@Model.SalesViewData.MyImage" class="custom-file-container__custom-file__custom-file-input" accept="image/*" onchange="ShowImgs()">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                </label>
+                                <div class="custom-file-container__image-preview" style="background-image: url(~/img/@(Model.FileUpload))">
+                                    <div  class="text-center">
+                                        @if (Model.FileUpload != null)
+                                        {
+                                            <img src="~/img/@(Model.FileUpload)" alt="avatar" height="100" width="100" id="oldimgs">
+
+                                        }
+                                        else
+                                        {
+                                            <img src="~/lib/layout/assets/img/download.png" alt="avatar" height="100" width="100" id="noimgs">
+
+                                        }
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.SalesViewData.FirstName" class="control-label"></label>
+                                <input asp-for="@Model.SalesViewData.FirstName" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.SalesViewData.LastName" class="control-label"></label>
+                                <input asp-for="@Model.SalesViewData.LastName" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.SalesViewData.MobileNumber" class="control-label"></label>
+                                <input asp-for="@Model.SalesViewData.MobileNumber" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                              
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><em  class="flaticon-cancel-12"></em> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/lib/layout/plugins/file-upload/file-upload-with-preview.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            var firstUpload = new FileUploadWithPreview('myFirstImage');
+            var firstUpload = new FileUploadWithPreview('myFirstImage2');
+            var firstUpload = new FileUploadWithPreview('myFirstImage3');
+            $(".custom-file-container__image-preview").removeAttr("style");
+            $('.custom-file-container__image-preview').attr('style','background-image:url(/img/ @Model.FileUpload )');
+           
+            //custom - file - container__image - preview custom - file - container__image - preview--active
+
+        });
+        function ShowImg() {
+            $("#oldimg").hide();
+            $("#noimg").hide();
+        }
+        function ShowImgs() {
+            $("#oldimgs").hide();
+            $("#noimgs").hide();
+        }
+        function ShowImgc() {
+            $("#oldimgc").hide();
+            $("#noimgc").hide();
+        }
+    </script>
+}

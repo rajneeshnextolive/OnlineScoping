@@ -1,0 +1,270 @@
+﻿@model OnlineScoping.ViewModels.MethodologyeViewModel
+@{
+    ViewData["Title"] = "MethodologiesSampleReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .ActionMode a {
+        color: #0366d6 !important;
+    }
+</style>
+
+<div class="page-top">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="pt-3">
+                Methodologies
+            </h3>
+        </div>
+        <div class="col-md-3">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Methodologies</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-5">
+            @if (TempData["MethodologiesSampleReportMsg"] != null)
+            {
+                <div style="margin: 0% 0% 0% 30%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> @TempData["MethodologiesSampleReportMsg"]   </div>
+            }
+            @if (TempData["MethodologiesSampleReportErrorMsg"] != null)
+            {
+                <div style="margin: 0% 0% 0% 30%;" class="alert alert-danger mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> @TempData["MethodologiesSampleReportErrorMsg"]  </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="layout-px-spacing">
+
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-heading row">
+
+                    <div class="col-md-12 text-right">
+                        <a asp-action="Create" style="cursor:pointer;" data-toggle="modal" data-target="#MethodologiesModal" data-placement="top" title="EditAuth" class="btn btn-primary ml-3 mt-3">Create New</a>
+                    </div>
+
+                </div>
+
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Methodologies List">
+                            <thead>
+                                <tr>
+                                    <th>FileName</th>
+                                    <th>Type</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.MethodologiesList.Count == 0)
+                                {
+                                    <tr>
+                                        <td colspan="3" class="text-left pl-2">No data available</td>
+                                    </tr>                                   
+                                }
+                                else
+                                {
+                                    foreach (var item in Model.MethodologiesList)
+                                    {
+                            <tr>
+                                <td>
+                                    <a href="@item.FileContents" download id="download">@item.FileName</a>
+                                </td>
+                                <td>@item.Type</td>
+                                <td class=".widget-content">
+                                    <a style="cursor:pointer;" data-toggle="modal" class="ActionMode" data-target="#EditMethodologiesModal" data-placement="top" title="EditAuth" onclick="BindData('@item.Id','@item.FileName','@item.Type')"><em class="fas fa-pencil-alt"></em></a> |
+                                    @*<a asp-action="DeleteMethodologies" class="" asp-route-id="@item.Id" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return abc();"><em class="far fa-trash-alt"></em></a>*@
+                                    <a style="cursor:pointer;" data-toggle="tooltip" class="" data-placement="top" title="Delete" onclick="return abc('@item.Id');" ><em class="far fa-trash-alt"></em></a>
+
+                                </td>
+                            </tr>
+                                    }
+
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="modal fade" id="MethodologiesModal" tabindex="-1" role="dialog" aria-labelledby="MethodologiesModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create New Methodologies</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                        <form asp-action="MethodologiesSampleReport" asp-controller="Home" enctype="multipart/form-data">
+
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="custom-file-container" data-upload-id="myFirstImage2">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="file" asp-for="@Model.FileData" class="custom-file-container__custom-file__custom-file-input">
+                                                        <span asp-validation-for="@Model.FileData" class="text-danger"></span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <select class="form-control" asp-for="@Model.Type" >
+                                                            <option value="">-- Please Select --</option>
+                                                            <option value="Methodologies">Methodologies</option>
+                                                            <option value="SampleReport">Sample Report</option>
+                                                        </select>
+                                                        <span asp-validation-for="@Model.Type" class="text-danger"></span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn" data-dismiss="modal"><em class="flaticon-cancel-12"></em> Discard</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="EditMethodologiesModal" tabindex="-1" role="dialog" aria-labelledby="MethodologiesModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Methodologies</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                        <form asp-action="UpdateMethodologiesSampleReport" asp-controller="Home" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="@Model.Id" id="MethodologyId" />
+                            <input type="hidden" asp-for="@Model.Type" id="TypeId" />
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="custom-file-container" data-upload-id="myFirstImage2">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="file" asp-for="@Model.FileData" class="custom-file-container__custom-file__custom-file-input">
+                                                        <span asp-validation-for="@Model.FileData" class="text-danger"></span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <select class="form-control" disabled id="MetType">
+                                                            <option value="">-- Please Select --</option>
+                                                            <option value="Methodologies">Methodologies</option>
+                                                            <option value="SampleReport">Sample Report</option>
+                                                        </select>                                                   
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn" data-dismiss="modal"><em class="flaticon-cancel-12"></em> Discard</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $(document).ready(function () {
+        //$('.confirm').on('click', function () {
+        //    swal({
+        //        title: 'Are you sure?',
+        //        text: "You won't be able to revert this!",
+        //        type: 'warning',
+        //        showCancelButton: true,
+        //        confirmButtonText: 'Delete',
+        //        padding: '2em'
+        //    }).then(function (result) {
+        //        if (result.value) {
+        //            swal(
+        //                'Deleted!',
+        //                'Your file has been deleted.',
+        //                'success'
+        //            )
+        //        }
+        //    })
+        //})
+    });
+
+      function abc(id) {
+            swal({
+                title: 'Are you sure?',
+                text: "Deleting a methodology will unlink all references to it within the scopes are you sure you want to do this?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                padding: '2em'
+            }).then(function (result) {
+                if (result.value) {            
+                      $.ajax({
+                            url: '@Url.Action("DeleteMethodologiesAjx", "Home")',
+                            type: "post",
+                            contentType: 'application/x-www-form-urlencoded',
+                          data: { "id": id.toString()},
+      success: function (result) {
+         if (result == "Success") {          
+             window.location.reload();
+
+         }
+     }
+ });
+                }
+            })
+        }
+
+
+        function BindData(Id, FileName, type) {
+            document.getElementById('MethodologyId').value = Id;
+            document.getElementById('TypeId').value = type;
+            $('#MetType [value=' + type+']').attr('selected', 'true');
+            return true;
+        }
+
+
+
+</script>
+}

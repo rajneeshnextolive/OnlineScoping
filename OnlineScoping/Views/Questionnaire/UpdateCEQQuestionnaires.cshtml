@@ -1,0 +1,1972 @@
+﻿@model OnlineScoping.ViewModels.CyberEssentialsQuestionnaireModel
+@{
+    ViewData["Title"] = "UpdateCEQQuestionnaires";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/lib/layout/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" />
+<link href="~/lib/layout/plugins/sweetalerts/sweetalert.css" rel="stylesheet" />
+<style>
+    ul {
+        list-style: lower-alpha;
+    }
+    .skills .widget-content-area h3:after {
+        display: none;
+    }
+
+    .nav-pills .nav-link {
+        border-radius: .25rem;
+        margin-bottom: 15px;
+        background: #edf4fb;
+    }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            color: #fff;
+            background-color: #2d5277;
+            border-color: #2d5277;
+        }
+
+    .cypermain {
+        margin-top: 20px;
+        padding: 0px 20px;
+        padding-bottom: 20px;
+    }
+
+        .cypermain .panel-default {
+            border-color: #056fbf;
+        }
+
+            .cypermain .panel-default > .panel-heading {
+                background-color: #056fbf;
+                border-color: #327ea8;
+                color: #fff !important;
+            }
+
+                .cypermain .panel-default > .panel-heading a:hover {
+                    color: #f5f5f5 !important;
+                }
+
+    .error {
+        border: 1px solid red !important;
+    }
+
+    [contentEditable=true]:empty:not(:focus):before {
+        content: attr(data-text);
+    }
+
+    input[type="text"]::-webkit-input-placeholder {
+        color: red !important;
+    }
+
+    input[type="text"]:-moz-placeholder { /* Firefox 18- */
+        color: red !important;
+    }
+
+    input[type="text"]::-moz-placeholder { /* Firefox 19+ */
+        color: red !important;
+    }
+
+    input[type="text"]:-ms-input-placeholder {
+        color: red !important;
+    }
+
+    /*.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        background-color: white;
+        cursor: not-allowed;
+        opacity: 1;
+    }
+
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        background-color: white;
+        cursor: not-allowed;
+    }*/
+</style>
+
+<style>
+    .table {
+        display: table;
+        width: 100%;
+    }
+
+    .tableRow {
+        display: table-row;
+    }
+
+    .tableHead {
+        display: table-row;
+        font-weight: bold;
+    }
+
+    .tableCell {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+    }
+
+    .sigTableCell {
+        display: table-cell;
+        padding: 25px 10px;
+        border: 1px solid #999999;
+        background-color: #DBE5F1;
+        width: auto;
+        height: 70px;
+    }
+
+    #IndustrySectorList {
+        border: none;
+    }
+
+    #startdate {
+        border: none;
+    }
+
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+
+    .tools a {
+        text-decoration: none;
+    }
+
+    #colors_sketch {
+        border: 1px solid #ccc;
+    }
+
+    #sigImage {
+        border: 1px solid #ccc;
+    }
+</style>
+
+<style>
+    .cypermain {
+        margin-top: 20px;
+        padding: 0px 20px;
+    }
+
+    .hdng-style {
+        font-size: 16px;
+        font-weight: 600;
+        color: #323d4e;
+    }
+
+    .cypermain .panel-default {
+        border-color: #6f7988;
+    }
+
+        .cypermain .panel-default > .panel-heading {
+            background-color: #323d4e;
+            border-color: #323d4e;
+            color: #fff !important;
+        }
+
+            .cypermain .panel-default > .panel-heading a:hover {
+                color: #f5f5f5 !important;
+            }
+
+    .checker {
+        display: inline-block;
+    }
+
+    .ThisLink {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .error {
+        border: 1px solid red !important;
+    }
+</style>
+
+<style>
+    .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+        position: relative;
+    }
+
+    .table {
+        display: table;
+        width: 100%;
+    }
+
+    .tableRow {
+        display: table-row;
+    }
+
+    .tableHead {
+        display: table-row;
+        font-weight: bold;
+    }
+
+    .tableCell {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell1 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell2 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+        text-align: center;
+    }
+
+    .tableRow .tableCell:first-child {
+        cursor: auto;
+    }
+
+    .del-Check {
+        height: 20px !important;
+        width: 20px !important;
+    }
+</style>
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>
+<script src="~/lib/layout/plugins/sweetalerts/custom-sweetalert.js"></script>
+<script src="~/lib/layout/plugins/sweetalerts/sweetalert2.min.js"></script>
+
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-5">
+            <h3 class="pt-3">
+                Cyber-Essentials-Questionaire
+            </h3>
+        </div>
+        <div class="col-md-4" style="margin-left: -95px;">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Cyber-Essentials-Questionaire</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-3">
+            @if (TempData["Error"] != null)
+            {
+                <div style="margin: 0% -30% 0% 0%;" class="alert alert-danger mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> Save All Sections !  </div>
+            }
+            @*@if (TempData["UpdateMessage"] != null)
+            {
+                <div style="margin: 0% 0% 0% 70%;" class="alert alert-success mb-4" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Customer Update succesfully !  </div>
+            }*@
+        </div>
+
+    </div>
+</div>
+<hr />
+
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+
+        <div class=" component-card_1 " style="width:100%">
+            <div class="skills layout-spacing">
+                <div class="widget-content widget-content-area">
+
+                    <form asp-action="CyberEssentialsQuestionnaireUpdate" asp-controller="Questionnaire">
+                        <input type="hidden" asp-for="@Model.Organisation" value="@Model.Organisation" />
+                        <input type="hidden" asp-for="@Model.Remote" value="@Model.Remote" />
+                        <input type="hidden" asp-for="@Model.Workstation" value="@Model.Workstation" />
+                        <input type="hidden" asp-for="@Model.Cloud" value="@Model.Cloud" />
+                        <input type="hidden" asp-for="@Model.Security" value="@Model.Security" />
+                        <input type="hidden" asp-for="@Model.Signature" value="@Model.Signature" />
+                        <input type="hidden" asp-for="@Model.QuestionnaireId" value="@Model.QuestionnaireId" />
+                        <input type="hidden" asp-for="@Model.CustomerId" value="@Model.CustomerId" />
+                        <input type="hidden" asp-for="@Model.ProjectId" value="@Model.ProjectId" />
+                        <div class="row claerfix">
+                            <div class="col-md-12 text-right">
+                                <input type="submit" id="btnsubmit" value="Final Submit" class="btn btn-primary" style="margin-right: 20px;" />
+                            </div>
+                        </div>
+                        <div class="row mb-4 mt-3">
+
+                            <input type="hidden" id="QuestStatus" name="QuestStatus" value="0" />
+
+
+                            <div class="col-sm-3 col-12">
+                                <div class="nav flex-column nav-pills mb-sm-0 mb-3  mx-auto" id="v-line-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active mb-3" id="v-line-pills-Organisation-tab" data-toggle="pill" href="#v-line-pills-Organisation" role="tab" aria-controls="v-line-pills-Organisation" aria-selected="true">
+                                        1) Organisation details
+                                        <span id="sp11"><i class=""></i></span>
+                                    </a>
+                                    <a class="nav-link mb-3  " id="v-line-pills-Remote-tab" data-toggle="pill" href="#v-line-pills-Remote" role="tab" aria-controls="v-line-pills-Remote" aria-selected="false">
+                                        2) Remote Vulnerability Scan (Stage 1 – Cyber Essentials)
+                                        <span id="sp12"><i class=""></i></span>
+                                    </a>
+                                    <a class="nav-link mb-3  " id="v-line-pills-Workstation-tab" data-toggle="pill" href="#v-line-pills-Workstation" role="tab" aria-controls="v-line-pills-Workstation" aria-selected="false">
+                                        3) Workstation Assessment (Stage 2 - Cyber Essentials PLUS only)
+                                        <span id="sp13"><i class=""></i></span>
+                                    </a>
+                                    <a class="nav-link  " id="v-line-pills-Cloud-tab" data-toggle="pill" href="#v-line-pills-Cloud" role="tab" aria-controls="v-line-pills-Cloud" aria-selected="false">
+                                        4) Cloud / Shared Services Assessment
+                                        <span id="sp14"><i class=""></i></span>
+                                    </a>
+                                    <a class="nav-link  " id="v-line-pills-Security-tab" data-toggle="pill" href="#v-line-pills-Security" role="tab" aria-controls="v-line-pills-Security" aria-selected="false">
+                                        5) Security Controls Questionnaire
+                                        <span id="sp15"><em class=""></em></span>
+                                    </a>
+                                    <a class="nav-link  " id="v-line-pills-Signature-tab" data-toggle="pill" href="#v-line-pills-Signature" role="tab" aria-controls="v-line-pills-Signature" aria-selected="false">
+                                        6) Signature
+                                        <span id="sp16"><em class=""></em></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-12">
+                                <div class="tab-content" id="v-line-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-line-pills-Organisation" role="tabpanel" aria-labelledby="v-line-pills-Organisation-tab">
+                                        <div id="organisationDetails">
+
+                                            <h2 style="color: #3A6084;"><strong>Scope of the Assessment</strong></h2>
+                                            <div>
+                                                <h3 style="color: #79A5CC;margin:0px; margin-bottom:15px;"><strong>Organisation details</strong></h3>
+                                            </div>
+                                            <div id="scopeOfAss" class="table">
+                                                <div class="tableHead">
+                                                    <div class="tableCell" style="width: 25%">
+                                                        Topic
+                                                    </div>
+                                                    <div class="tableCell" style="width: 50%">
+                                                        Response
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Guidance
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Name of organisation
+                                                    </div>
+                                                    <div id="OrganisationName" class="tableCell checkvalid" contenteditable="true" name="OrganisationName"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Registered Address
+                                                    </div>
+                                                    <div id="RegisteredAddress" class="tableCell checkvalid" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Company / Charity Number
+                                                    </div>
+                                                    <div id="Company_CharityNumber" class="tableCell checkvalid" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Sector
+                                                    </div>
+                                                    <div id="SectorListDiv" class="tableCell">
+                                                        @Html.DropDownListFor(c => c.IndustrySectorList, new SelectList(Model.IndustrySectorList, "Id", "ItemName"), new { @class = "form-control validationclass" })
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        <span>
+                                                            *use the list provided by CREST in the downloads
+                                                            section of the Cyber Essentials Portal.
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <input type="hidden" id="orgcustId" />
+                                                    <div class="tableCell">
+                                                        Turnover
+                                                    </div>
+                                                    <div id="Turnover12" class="tableCell checkvalid" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Number of Employees
+                                                    </div>
+                                                    <div id="NOEDiv" class="tableCell">
+                                                        <input type="number" name="NumberOfEmployees" id="NumberOfEmployees" min="0" max="100" value="0" style="border: none" class="form-control validationclass">
+                                                    </div>
+                                                    <div class="tableCell"></div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Name of main contact
+                                                    </div>
+                                                    <div class="tableCell checkvalid" id="MainContactName" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Contact Job title
+                                                    </div>
+                                                    <div class="tableCell checkvalid" id="ContactJobTitle" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Date of response
+                                                    </div>
+                                                    <div id="DataDiv" class="tableCell">
+                                                        @*@Html.TextBoxFor(c => c.QuestionnaireData.DateOfResponse, Convert.ToDateTime(Model.QuestionnaireData.DateOfResponse).ToString("MM/dd/yyyy"), new { @class = "form-control calendar", @id = "startdate" })*@
+                                                        <input id="startdate" class="form-control flatpickr flatpickr-input active calendar" type="text">
+
+
+
+                                                    </div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Contact Email
+                                                    </div>
+                                                    <div class="tableCell checkvalid" id="ContactEmail" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Contact Telephone
+                                                    </div>
+                                                    <div class="tableCell checkvalid" id="ContactTelephone" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        CE Level Desired
+                                                    </div>
+                                                    <div class="tableCell checkvalid" id="CELevelDesiredDiv" contenteditable="true"></div>
+                                                    <div class="tableCell">
+                                                        *Cyber Essentials or Cyber Essentials Plus
+                                                    </div>
+                                                </div>
+
+                                                <div class="tableRow">
+                                                    <div class="tableCell">
+                                                        Can CREST Publicise your successful certification?
+                                                    </div>
+                                                    <div class="tableCell " id="CRESTcertification">
+                                                        <select id="certificationSelect" style="border: none; width: 100%;" class="form-control">
+                                                            <option value="Yes">Yes</option>
+                                                            <option value="No">No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        *Cyber Essentials or Cyber Essentials Plus
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @*<div class="pull-right">
+                                                    <input type="button" id="orgdetbtn" value="Save" style="float: right" class="btn-primary" />
+                                                </div>*@
+                                            <div class="form-group float-right">
+                                                <input type="button" value="Update" id="orgdetbtn" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="v-line-pills-Remote" role="tabpanel" aria-labelledby="v-line-pills-Remote-tab">
+                                        <div id="RemoteVulnerabilityScan">
+
+                                            <h3 style="color: #79A5CC;margin:0px"><strong>Remote Vulnerability Scan (Stage 1 – Cyber Essentials)</strong></h3>
+                                            <div class="text-right" style="padding: 10px;">
+                                                <input type="button" id="remVulScanAddbtn" value="Add" class="btn btn-warning" />
+                                                <input type="button" id="remVulScanDeletebtn" value="Delete" class="btn btn-danger" />
+                                                <input type="button" id="remVulScanEditbtn" value="Edit" class="btn btn-primary" style="display:none;" />
+
+                                            </div>
+                                            <div id="RVSTable" class="table">
+                                                <div class="tableHead">
+                                                    <div class="tableCell">
+                                                        Select
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        IP Address (or range) v4 and v6 addresses
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Fully Qualified Domain Name (FQDN) *where appropriate
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Nature & Description of System (eg, firewall, website, cms,)
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        System Ownership and Hosting (eg internal system, dedicated external hosted, dedicated cloud system, shared platform)
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        If out of scope, please cite a reason why
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group float-right">
+                                                <input type="button" value="Update" id="orgdetbtn2" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="v-line-pills-Workstation" role="tabpanel" aria-labelledby="v-line-pills-Workstation-tab">
+                                        <div id="WorkstationAssessment ">
+
+                                            <h3 style="color: #79A5CC;margin:0px"><strong>Workstation Assessment (Stage 2 - Cyber Essentials PLUS only)</strong></h3>
+                                            <div class="text-right" style="padding: 10px;">
+                                                <input type="button" id="WorkstationAssessmentAddbtn" value="Add" class="btn btn-warning" />
+                                                <input type="button" id="WorkstationAssessmentDeletebtn" value="Delete" class="btn btn-danger" />
+                                                <input type="button" id="WorkstationAssessmentScanEditbtn" value="Edit" class="btn btn-primary" style="display:none;" />
+                                            </div>
+                                            <div id="WATable" class="table">
+                                                <div class="tableHead">
+                                                    <div class="tableCell">
+                                                        Select
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Description of the device
+                                                        (with unique ID such as serial number)
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Operating System
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Username and password of a test user account representing the device’s typical user.
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Confirmation that the device and test account supplied have access to Email and Internet (web) access as would a typical user of the device.
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Confirmation that admin access is available to device (for patch checks)
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Test Location
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group float-right">
+                                                <input type="button" value="Update" id="orgdetbtn3" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="v-line-pills-Cloud" role="tabpanel" aria-labelledby="v-line-pills-Cloud-tab">
+                                        <div id="Cloud">
+
+                                            <h3 style="color: #79A5CC;margin:0px"><strong>Cloud / Shared Services Assessment</strong></h3>
+                                            <div class="text-right" style="padding: 10px;">
+                                                <input type="button" id="CloudAddbtn" value="Add" class="btn btn-warning" />
+                                                <input type="button" id="CloudDeletebtn" value="Delete" class="btn btn-danger" />
+                                                <input type="button" id="CloudScanEditbtn" value="Edit" class="btn btn-primary" style="display:none;" />
+                                            </div>
+                                            <div id="CloudTable" class="table">
+                                                <div class="tableHead">
+                                                    <div class="tableCell">
+                                                        Select
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Description of the service
+                                                        (with unique customer ID where relevant)
+
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Supplier
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Independent audit standards to which the suppliers has been previously assessed.
+                                                    </div>
+                                                    <div class="tableCell">
+                                                        Evidence of certification provided to CB
+                                                        (website URLs, certificate numbers, name of independent audit bodies etc.)
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group float-right">
+                                                <input type="button" value="Update" id="orgdetbtn4" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-line-pills-Security" role="tabpanel" aria-labelledby="v-line-pills-Security-tab">
+                                        <div id="securityControlsQuestionnaire">
+
+
+                                            <div>
+
+                                                <h2 style="color: #3A6084;margin:0px; margin-bottom:15px;"><strong>Security Controls Questionnaire</strong></h2>
+                                            </div>
+
+                                            @for (int j = 0; j < Model.SectionList.Count; j++)
+                                            {
+
+                                                @*<input type="hidden" id="answer36" name="answer36" />
+                                                    <input type="hidden" id="sectionSelected@(j + 1)" name="sectionSelected@(j + 1)" />
+                                                    <input type="hidden" id="section@(j + 1)" name="section@(j + 1)" />
+                                                    <input type="hidden" id="sectionWeight@(j + 1)" name="sectionWeight@(j + 1)" />*@
+                                                <div>
+                                                    <h3 style="color: #79A5CC; margin-bottom:15px;"><strong>@Model.SectionList[j].Name.ToString()</strong></h3>
+                                                </div>
+                                                <div class="table section">
+                                                    <div class="tableHead">
+                                                        <div class="tableCell" style="width: 50%; background-color: #DBE5F1;">
+                                                            Question
+                                                        </div>
+                                                        <div class="tableCell" style="width: 20%;background-color: #DBE5F1;">
+                                                            Response Options
+                                                        </div>
+                                                        <div class="tableCell recommendations" style="background-color: #DBE5F1;">
+                                                            Available Standard Recommendations
+                                                        </div>
+                                                    </div>
+                                                    @{var QuestionList = Model.CEQQuestionsViewModelList.Where(m => m.Section == j + 1).ToList();
+                                                        @for (int i = 0; i < QuestionList.Count; i++)
+                                                        {
+
+                                                            <div class="tableRow">
+                                                                @if (QuestionList[i].CEQOResponceData.QuestionId==new Guid( "6D3C1CEF-9CAE-4F9D-AD74-BCD9F1E37833") || QuestionList[i].CEQOResponceData.QuestionId == new Guid("C94F7A3E-34B7-483A-864A-D9183FD6F7AA"))
+                                                                {
+                                                                <div class="tableCell">
+                                                                    @QuestionList[i].QuestionNumber .  @Html.Raw(QuestionList[i].QuestionText)
+                                                                </div>
+                                                                }
+                                                                else
+                                                                {
+                                                            <div class="tableCell">
+                                                                @QuestionList[i].QuestionNumber .  @QuestionList[i].QuestionText
+                                                            </div>
+                                                                }
+
+                                                                <div id="QddDiv" class="tableCell" style="padding: 0px;">
+                                                                    <input type="hidden" class="textboxclass" value="@QuestionList[i].CEQQuestionId" />
+                                                                    @if (QuestionList[i].CEQOResponceData != null)
+                                                                    {
+                                                                        @if (QuestionList[i].CEQOResponceData.OptionId != Guid.Empty)
+                                                                        {
+                                                                            var a = QuestionList[i].CEQOResponceData.OptionId.ToString();
+                                                                            <select name="@Model.CEQQuestionsViewModelList[i].QuestionnaireId" class="form-control" style="border: 0 !important;">
+                                                                                @foreach (var option in QuestionList[i].CEQOptionsData)
+                                                                                {
+
+                                                                                    if (a == option.CEQOptionId.ToString())
+                                                                                    {
+                                                                                        <option value="@option.CEQOptionId" selected>@option.OptionText</option>
+
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <option value="@option.CEQOptionId">@option.OptionText</option>
+
+                                                                                    }
+
+                                                                                }
+                                                                            </select>
+                                                                            @*@Html.DropDownListFor(m => QuestionList[i].CEQOptionsData, new SelectList(QuestionList[i].CEQOptionsData, "CEQOptionId", "OptionText", a), "Selected", new { @class = "form-control", @style = "border: 0 !important;" })*@
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DropDownListFor(m => Model.CEQQuestionsViewModelList[i].QuestionnaireId, new SelectList(QuestionList[i].CEQOptionsData, "CEQOptionId", "OptionText"), "Select", new { @class = "form-control", @style = "border: 0 !important;" })
+
+                                                                        }
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Html.DropDownListFor(m => Model.CEQQuestionsViewModelList[i].QuestionnaireId, new SelectList(QuestionList[i].CEQOptionsData, "CEQOptionId", "OptionText"), "Select", new { @class = "form-control", @style = "border: 0 !important;" })
+
+                                                                    }
+
+                                                                </div>
+                                                                <div class="tableCell recommendations">
+                                                                    @QuestionList[i].StandardRecommendation
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div>
+                                            }
+                                            <div class="form-group float-right">
+                                                <input type="button" value="Update" id="questionnairebtn" class="btn btn-primary" />
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="tab-pane fade" id="v-line-pills-Signature" role="tabpanel" aria-labelledby="v-line-pills-Signature-tab">
+                                        <div id="signature">
+                                            @*<div class="pull-right">
+                                                    <input type="button" id="signaturebtn" value="Save" style="float: right;" class="btn-primary" />
+                                                </div>*@
+                                            <h3 style="color: #79A5CC; margin-bottom:15px;"><strong>Signature</strong></h3>
+                                            <div id="sig" class="table">
+                                                <div class="tableRow">
+
+                                                    <div class="sigTableCell">
+                                                        Sign:
+                                                    </div>
+
+
+
+                                                    <div class="tableCell" style="padding: 25px;">
+                                                        <div class="newSignatureDiv" style="display:none;"><button type="button" class="btn-primary" id="newSigA" onclick="newSignature();" style="text-decoration:none;">New Signature</button></div>
+                                                        <div class="tools">
+                                                            <input type="hidden" id="newsign" value="false" /> <a href="javascript:;" data-tool="marker" id="marker" onclick="selectMarker(this);">Marker</a><button class="btn-primary" type="button" id="eraser" onclick="selectEraser(this);">Eraser</button>
+                                                        </div>
+                                                        <div id="canvasDiv">
+                                                            <canvas id="colors_sketch" width="500" height="200"></canvas>
+                                                            <canvas id='blank' style='display:none'></canvas>
+                                                        </div>
+                                                        @if (Model.Signature == "true")
+                                                        {
+                                                            <img id="sigImage" src="data:image/jpg;base64,@Model.CEQSignatureData.FileName" style="border: 1px solid #ccc" alt="sign">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img id="sigImage" style="border: 1px solid #ccc" alt="sign">
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="sigTableCell">
+                                                        Date:
+                                                    </div>
+                                                    <div id="DOSDiv" class="tableCell">
+                                                        <input type="text" id="sigDate" style="border: none; width: 100%; height: 100%;" class="form-control calendar" />
+                                                    </div>
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="sigTableCell">
+                                                        Print name:
+                                                    </div>
+                                                    <div class="tableCell checkvalid1" id="printName" contenteditable="true"></div>
+
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="sigTableCell">
+                                                        Job Title:
+                                                    </div>
+                                                    <div class="tableCell checkvalid1" id="jobTitle" contenteditable="true"></div>
+
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="sigTableCell">
+                                                        Name of organisation:
+                                                    </div>
+                                                    <div class="tableCell checkvalid1" id="organisation" contenteditable="true"></div>
+
+                                                </div>
+                                                <div class="tableRow">
+                                                    <div class="sigTableCell">
+                                                        Name of business unit (if applicable):
+                                                    </div>
+                                                    <div class="tableCell" id="businessUnit" contenteditable="true">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group float-right">
+                                                <input type="button" value="Update" id="signaturebtn" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@if (Model.Organisation == "true")
+{
+    <script>
+    function OrganisationFn() {
+        document.getElementById("OrganisationName").innerHTML = '@Model.OrganisationData.Nameoforganisation';
+        document.getElementById("RegisteredAddress").innerHTML = '@Model.OrganisationData.RegisteredAddress';
+        document.getElementById("Company_CharityNumber").innerHTML = '@Model.OrganisationData.CompanyCharityNumber';
+        document.getElementById("Turnover12").innerHTML = '@Model.OrganisationData.Turnover';
+        document.getElementById("MainContactName").innerHTML = '@Model.OrganisationData.Nameofmaincontact';
+        document.getElementById("ContactJobTitle").innerHTML = '@Model.OrganisationData.ContactJobtitle';
+        document.getElementById("ContactEmail").innerHTML = '@Model.OrganisationData.ContactEmail';
+        document.getElementById("ContactTelephone").innerHTML = '@Model.OrganisationData.ContactTelephone';
+        //  document.getElementById("NumberOfEmployees").innerHTML=@Model.OrganisationData.NumberofEmployees;
+        document.getElementById("OrganisationName").innerHTML = '@Model.OrganisationData.Nameoforganisation';
+        document.getElementById("CELevelDesiredDiv").innerHTML = '@Model.OrganisationData.CELevelDesired';
+        $('#startdate').val('@Model.OrganisationData.Dateofresponse');
+      //  $("#CELevelSelect").val('@Model.OrganisationData.CELevelDesired');
+        $("#certificationSelect").val('@Model.OrganisationData.CanCRESTpubliciseyoursuccessfulcertification');
+        $("#IndustrySectorList").val('@Model.OrganisationData.Sector');
+        $("#NumberOfEmployees").val('@Model.OrganisationData.NumberofEmployees');
+        $("#orgcustId").val('@Model.OrganisationData.CustomerId');
+    }
+    </script>
+}
+else
+{
+    <script>
+        function OrganisationFn() {
+        }
+    </script>
+}
+
+@if (Model.Signature == "true")
+{
+    <script>
+        function CEQSignatureFn() {
+            $('#sigImage').show();
+            document.getElementById("printName").innerHTML = '@Model.CEQSignatureData.Name';
+            document.getElementById("jobTitle").innerHTML = '@Model.CEQSignatureData.JobTitle';
+            document.getElementById("organisation").innerHTML = '@Model.CEQSignatureData.Nameoforganisation';
+            document.getElementById("businessUnit").innerHTML = '@Model.CEQSignatureData.Nameofbusiness';
+            $('#sigDate').val('@Model.CEQSignatureData.SignatureDate');
+           // $('#sigImage').prop('src', '@Model.CEQSignatureData.FileName')
+           // $('#sigImage').attr('src', '@Model.CEQSignatureData.FileName')
+          //  $("#sigImage").attr("src", 'data:image/jpg;base64,@Model.CEQSignatureData.FileName');
+            $("#newsign").val('true');
+
+            $("#newSigA").show();
+            $('#colors_sketch').hide();
+
+            $('#colors_sketch').sketch();
+            $('.newSignatureDiv').css('display', 'block');
+
+
+
+    }
+    </script>
+}
+else
+{
+    <script>
+        function CEQSignatureFn() {
+
+        }
+    </script>
+
+}
+
+@if (Model.Remote == "true")
+{
+    for (var i = 0; i < Model.RvsData.Count; i++)
+    {
+        <script type="text/javascript">
+
+            $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true">@Model.RvsData[i].IPAddressv4andv6addresses</div><div class="tableCell" contenteditable="true">@Model.RvsData[i].FullyQualifiedDomainName</div><div class="tableCell" contenteditable="true">@Model.RvsData[i].NatureandDescriptionofSystem</div> <div class="tableCell1"><select id="@Model.RvsData[i].SystemOwnershipandHosting" class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></div><div class="tableCell" contenteditable="true">@Model.RvsData[i].Ifoutofscopepleaseciteareasonwhy</div></div>');
+        $("#@Model.RvsData[i].SystemOwnershipandHosting").val('@Model.RvsData[i].SystemOwnershipandHosting');
+
+        </script>
+
+    }
+}
+
+@if (Model.Workstation == "true")
+{
+
+    for (var i = 0; i < Model.WaAssesData.Count; i++)
+    {
+
+        <script type="text/javascript">
+
+            $('#WATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true">@Model.WaAssesData[i].Descriptionofthedevice</div><div class="tableCell" contenteditable="true">@Model.WaAssesData[i].OperatingSystem</div><div class="tableCell" contenteditable="true">@Model.WaAssesData[i].Usernameandpassword</div> <div class="tableCell" contenteditable="true">@Model.WaAssesData[i].Confirmationthatthedevice</div><div class="tableCell" contenteditable="true">@Model.WaAssesData[i].Confirmationthatadminaccess</div><div class="tableCell" contenteditable="true">@Model.WaAssesData[i].TestLocation</div></div>');
+
+        </script>
+    }
+
+}
+
+@if (Model.Cloud == "true")
+{
+    for (var i = 0; i < Model.CEQCloudSharedServicesAssesList.Count; i++)
+    {
+        <script type="text/javascript">
+            $('#CloudTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true">@Model.CEQCloudSharedServicesAssesList[i].DescriptionOfService</div><div class="tableCell" contenteditable="true">@Model.CEQCloudSharedServicesAssesList[i].Supplier</div><div class="tableCell" contenteditable="true">@Model.CEQCloudSharedServicesAssesList[i].IndependentAuditStandards</div> <div class="tableCell" contenteditable="true">@Model.CEQCloudSharedServicesAssesList[i].EvidenceOfcertification</div></div>');
+        </script>
+    }
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/sketch.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#eraser').hide();
+            $('#sigImage').hide();
+            $('#marker').hide();
+            OrganisationFn();
+            CEQSignatureFn();
+            const calendars = flatpickr(".calendar", {
+                defaultDate: 'today'
+            });
+         if ('@Model.Organisation' == "true") {
+        $("#sp11 i").addClass("fas fa-check");
+        $("#sp11 i").css("color", "green");
+
+    } else {
+        $("#sp11 i").addClass("fas fa-times");
+        $("#sp11 i").css("color", "red");
+            }
+
+
+              if ('@Model.Remote' == "true") {
+        $("#sp12 i").addClass("fas fa-check");
+        $("#sp12 i").css("color", "green");
+              } else {
+                  $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell1"><select class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></div><div class="tableCell" contenteditable="true"></div></div>');
+        $("#sp12 i").addClass("fas fa-times");
+        $("#sp12 i").css("color", "red");
+            }
+
+
+          if ('@Model.Workstation' == "true") {
+        $("#sp13 i").addClass("fas fa-check");
+        $("#sp13 i").css("color", "green");
+          } else {
+              $('#WATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div></div>');
+
+        $("#sp13 i").addClass("fas fa-times");
+        $("#sp13 i").css("color", "red");
+            }
+
+
+          if ('@Model.Cloud' == "true") {
+        $("#sp14 i").addClass("fas fa-check");
+        $("#sp14 i").css("color", "green");
+          } else {
+              $('#CloudTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div></div>');
+        $("#sp14 i").addClass("fas fa-times");
+        $("#sp14 i").css("color", "red");
+            }
+
+
+              if ('@Model.Security' == "true") {
+        $("#sp15 i").addClass("fas fa-check");
+        $("#sp15 i").css("color", "green");
+    } else {
+        $("#sp15 i").addClass("fas fa-times");
+        $("#sp15 i").css("color", "red");
+            }
+
+              if ('@Model.Signature' == "true") {
+        $("#sp16 i").addClass("fas fa-check");
+        $("#sp16 i").css("color", "green");
+    } else {
+        $("#sp16 i").addClass("fas fa-times");
+                  $("#sp16 i").css("color", "red");
+                  $('#colors_sketch').sketch();
+                  $("#newSigA").show();
+                  $('#eraser').show();
+            }
+
+            $(window).on("load", function () {
+                window.setTimeout(function () {
+                  //  $('#CloudTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div></div>');
+                   // $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell1"><select class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></div><div class="tableCell" contenteditable="true"></div></div>');
+                   // $('#WATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div></div>');
+                }, 250)
+            });
+
+
+
+
+        });
+
+        $('#orgdetbtn').click(function () {
+            validateOrgnisationDetails();
+        });
+
+        $('#remVulScanAddbtn').click(function () {
+            remVulScanAdd();
+        });
+        $('#remVulScanDeletebtn').click(function () {
+            remVulScanDelete();
+        });
+
+        $('#WorkstationAssessmentAddbtn').click(function () {
+            WorkstationAssessmentAdd();
+        });
+        $('#WorkstationAssessmentDeletebtn').click(function () {
+            WorkstationAssessmentDelete();
+        });
+
+        $('#CloudAddbtn').click(function () {
+            CloudAdd();
+        });
+        $('#CloudDeletebtn').click(function () {
+            CloudDelete();
+        });
+        $('#questionnairebtn').click(function () {
+            saveQuestionnaire();
+        });
+
+    </script>
+
+    <script>
+        function validateOrgnisationDetails() {
+            //  alert();
+            var OrganisationName = document.getElementById("OrganisationName").innerText;
+            var RegisteredAddress = document.getElementById("RegisteredAddress").innerText;
+            var Company_CharityNumber = document.getElementById("Company_CharityNumber").innerText;
+            var Turnover = document.getElementById("Turnover12").innerText;
+            var MainContactName = document.getElementById("MainContactName").innerText;
+            var ContactJobTitle = document.getElementById("ContactJobTitle").innerText;
+            var ContactEmail = document.getElementById("ContactEmail").innerText;
+            var ContactTelephone = document.getElementById("ContactTelephone").innerText;
+            var CELevelDesiredDiv = document.getElementById("CELevelDesiredDiv").innerText;
+            var CELevelDesiredSelect = document.getElementById("certificationSelect");
+            var CELevelDesired = CELevelDesiredSelect.options[CELevelDesiredSelect.selectedIndex].value;
+            var IndustrySectorList = document.getElementById("IndustrySectorList");
+            var optionValue = IndustrySectorList.options[IndustrySectorList.selectedIndex].value;
+            var DateOfResponse = $('#startdate').val();
+            var NumberOfEmployees = document.getElementById("NumberOfEmployees").value;
+            //var orgcustId = document.getElementById("orgcustId").val;
+            var orgcustId = $("#orgcustId").val();
+            $('.checkvalid').each(function () {
+                $('.checkvalid').attr("data-text", "Please Complete");
+                if ($(this).text().length > 0) {
+                    $(this).removeClass('error');
+                }
+                else {
+                    $(this).addClass('error');
+                }
+            });
+            $('.checkvalid').keyup(function () {
+                if ($(this).text().length > 0) {
+                    $(this).removeClass('error');
+                }
+                else {
+                    $(this).addClass('error');
+                }
+            });
+            $('.validationclass').each(function () {
+                console.log($(this).val());
+                if ($(this).val() > 0) {
+                    $(this).parent().removeClass('error');
+                }
+                else {
+                    $(this).parent().addClass('error');
+                }
+            });
+            $('.validationclass').change(function () {
+                if ($(this).val().length > 0) {
+                    $(this).parent().removeClass('error');
+                }
+                else {
+                    $(this).parent().addClass('error');
+                }
+            });
+            if (DateOfResponse.length > 0) {
+
+                $('.form-control').attr("placeholder", "Please Complete");
+                setTimeout(function () { $('#DataDiv').removeClass('error'); }, 1000);
+            }
+            else {
+
+                $('.form-control').attr("placeholder", "Please Complete");
+                $('#DataDiv').addClass('error');
+                return false;
+            }
+            var email = document.getElementById("ContactEmail").innerText;
+            console.log(x);
+            if (email.length > 0 && OrganisationName.length > 0 && RegisteredAddress.length > 0 && Company_CharityNumber.length > 0 && Turnover.length > 0 && MainContactName.length > 0 && ContactJobTitle.length > 0 && ContactEmail.length > 0 && ContactTelephone.length > 0 && CELevelDesired.length > 0 && optionValue > 0) {
+                var x = document.getElementById("ContactEmail").innerText;
+                if (x != '') {
+                    var atpos = x.indexOf("@@");
+                    var dotpos = x.lastIndexOf(".");
+                    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+                        alert("Not a valid e-mail address");
+                        $('#ContactEmail').addClass('error');
+                        return false;
+                    }
+                    else {
+                        var NumberOfEmployees = parseInt(document.getElementById("NumberOfEmployees").value);
+                        if ((Number.isInteger(NumberOfEmployees)) || NumberOfEmployees.length == 0) {
+                            if (NumberOfEmployees > 0) {
+                                $('#NOEDiv').removeClass('error');
+                                if (OrganisationName.length > 0 && RegisteredAddress.length > 0 && Company_CharityNumber.length > 0 && Turnover.length > 0 && MainContactName.length > 0 && ContactJobTitle.length > 0 && ContactEmail.length > 0 && ContactTelephone.length > 0 && CELevelDesired.length > 0 && optionValue > 0) {
+                                    $('#loaderDiv2').show();
+                                    saveOrgnisationDetails();
+                                    return true;
+                                }
+                            }
+                            else if (NumberOfEmployees == 0) {
+                                $('#NOEDiv').addClass('error');
+                                alert("Number of Employees can not be zero");
+                                return false;
+                            }
+                            else {
+                                $('#NOEDiv').addClass('error');
+                                alert("Not valid Number of Employees");
+                                return false;
+                            }
+                        }
+                        else {
+                            $('#NOEDiv').addClass('error');
+                            alert("Not valid Number of Employees");
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        function saveOrgnisationDetails() {
+            var OrganisationName = document.getElementById("OrganisationName").innerText;
+            var RegisteredAddress = document.getElementById("RegisteredAddress").innerText;
+            var Company_CharityNumber = document.getElementById("Company_CharityNumber").innerText;
+            var Turnover = document.getElementById("Turnover12").innerText;
+            var MainContactName = document.getElementById("MainContactName").innerText;
+            var ContactJobTitle = document.getElementById("ContactJobTitle").innerText;
+            var ContactEmail = document.getElementById("ContactEmail").innerText;
+            var ContactTelephone = document.getElementById("ContactTelephone").innerText;
+            var CELevelDesiredDiv = document.getElementById("CELevelDesiredDiv").innerText;
+            var CELevelDesiredSelect = document.getElementById("certificationSelect");
+            var CELevelDesired = CELevelDesiredSelect.options[CELevelDesiredSelect.selectedIndex].value;
+            var CELevelDesiredText = CELevelDesiredSelect.options[CELevelDesiredSelect.selectedIndex].text;
+            var IndustrySectorList = document.getElementById("IndustrySectorList");
+            var IndustrySector = IndustrySectorList.options[IndustrySectorList.selectedIndex].value;
+            var IndustrySectorText = IndustrySectorList.options[IndustrySectorList.selectedIndex].text;
+            var DateOfResponse = $('#startdate').val();
+            var ScopeOfAssHtml = $('#scopeOfAss').html();
+            var NumberOfEmployees = document.getElementById("NumberOfEmployees").value;
+            // var orgcustId = document.getElementById("orgcustId").val;
+            var orgcustId = $("#orgcustId").val();
+            var ProjectId = document.getElementById("ProjectId").value;
+            var data = {
+                "OrganisationName": OrganisationName,
+                "RegisteredAddress": RegisteredAddress,
+                "Company_CharityNumber": Company_CharityNumber,
+                "MainContactName": MainContactName,
+                "ContactJobTitle": ContactJobTitle,
+                "ContactEmail": ContactEmail,
+                "ContactTelephone": ContactTelephone,
+                "CELevelDesired": CELevelDesiredDiv,
+                "IndustrySector": IndustrySector,
+                "DateOfResponse": DateOfResponse,
+                "NumberOfEmployees": NumberOfEmployees,
+                "Turnover": Turnover,
+                "certificationSelect": CELevelDesired,
+                "orgcustId": orgcustId,
+                "ProjectId": ProjectId,
+            };
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded',
+                url: "/Questionnaire/SaveOrganisationDetails",
+                data: data,
+                async: false,
+                success: function (response) {
+                    $("#sp11 i").removeClass();
+                    $("#sp11 i").removeAttr("style");
+                    alert("Record saved successfully..!!");
+                    $("#sp11 i").addClass("fas fa-check");
+                    $("#sp11 i").css("color", "green");
+                },
+                error: function () {
+                    $('#loaderDiv2').hide();
+                    alert("Error");
+                }
+            });
+        }
+
+    </script>
+
+    @*remVulScan*@
+
+    <script>
+        function remVulScanAdd() {
+        
+            var check = true;
+            $('#RVSTable').find('.tableRow').each(function () {
+                var count = 0;
+                $(this).find('.tableCell').each(function () {
+                    if ($(this).text() == "") {
+                        count++;
+                    }
+                });
+                if (count == 4) {
+                    check = false;
+                }
+            });
+            if (check == false) {
+                swal({
+                    type: 'error',
+                    // title: 'Oops...',
+                    text: 'Please complete alteast all cell of each row ! ',
+                    //  footer: '<a href>Why do I have this issue?</a>',
+                    padding: '2em'
+                })
+            }
+
+            $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell1"><select class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></div><div class="tableCell" contenteditable="true"></div></div>');
+
+        }
+    </script>
+
+    <script>
+        function remVulScanDelete() {
+            var delCount = 0;
+            $('#RVSTable').find('.tableRow').each(function () {
+
+                $(this).find('.tableCell2').each(function () {
+                    if (($(this).find('.del-Check').prop("checked"))) {
+
+
+                        var abc = ($(this).find('.del-Check:checked').val());
+                    if (abc == "on") {
+
+                    } else {
+                        $.ajax({
+                            url: '@Url.Action("DeleteCEQRvs", "Questionnaire")',
+                            type: "post",
+                            contentType: 'application/x-www-form-urlencoded',
+                            data: { "id": abc.toString()},
+      success: function (result) {
+         if (result == "Success") {
+             //window.location.href = '/Home/Index';
+         }
+         console.log(result);
+     }
+ });
+                    }
+
+                        $(this).parent().remove();
+                        delCount++;
+                    }
+                });
+            });
+
+            if (delCount == 0) {
+                swal({
+                    type: 'error',
+                    text: 'Please select alteast one row to delete !  ',
+                    padding: '2em'
+                })
+            }
+
+        }
+    </script>
+
+    <script>
+        $('#orgdetbtn2').click(function () {
+        var check = true;
+        $('#RVSTable').find('.tableRow').each(function () {
+            var count = 0;
+            $(this).find('.tableCell').each(function () {
+                if ($(this).text() == "") {
+                    count++;
+                }
+            });
+            if (count == 5) {
+                check = false;
+            }
+        });
+        if (check == false) {
+          //  alert("Please complete alteast one cell of each row ! ");
+
+            swal({
+                type: 'error',
+               // title: 'Oops...',
+                text: 'Please complete alteast all cell of each row ! ',
+              //  footer: '<a href>Why do I have this issue?</a>',
+                padding: '2em'
+            })
+
+
+        }
+        else {
+            remVulScanSave();
+        }
+    });
+
+        function remVulScanSave() {
+        var RVSData = "";
+        var options = [];
+         var orgcustId = $("#orgcustId").val();
+        var i = 0;
+
+        $('#RVSTable').find('.tableRow').each(function () {
+            $(this).find('.tableCell').each(function () {
+                RVSData = RVSData + "|" + $(this).text();
+                i++;
+            });
+            $(this).find('.tableCell1').each(function () {
+                $(this).text($(this).find('select').find("option:selected").val());
+                options[i] = $(this).text();
+                i++;
+            });
+        });
+        if (i == 0) {
+            alert("Please add alteast one row to save ! ");
+            return false;
+        }
+
+        else {
+            var RVSTableHtml = $('#RVSTable').html();
+            var Title = '';
+            var ScanDate = '';
+            var ScanType = '';
+
+            if (RVSData != null) {
+                var ProjectId = document.getElementById("ProjectId").value;
+                SaveRemoteScan(RVSData, options,ProjectId, orgcustId);
+            }
+
+
+        }
+    }
+        function SaveRemoteScan(RVSData, options, ProjectId, orgcustId) {
+            var data = { "rVSData": RVSData, "options": options, "ProjectId": ProjectId, "orgcustId": orgcustId};
+
+ $.ajax({
+     url: '@Url.Action("SaveRVS", "Questionnaire")',
+     type: "post",
+     contentType: 'application/x-www-form-urlencoded',
+     data: data,
+     success: function (result) {
+         if (result == "Success") {
+             //window.location.href = '/Home/Index';
+             $("#sp12 i").removeClass();
+             $("#sp12 i").removeAttr("style");
+             alert("Record saved successfully..!!");
+             $("#sp12 i").addClass("fas fa-check");
+             $("#sp12 i").css("color", "green");
+           //  window.location.href = '/Home/Index';
+         }
+         console.log(result);
+     }
+ });
+    }
+    </script>
+
+    @*WorkstationAssessment*@
+
+    <script>
+        function WorkstationAssessmentAdd() {
+            var check = true;
+            $('#WATable').find('.tableRow').each(function () {
+                var count = 0;
+                $(this).find('.tableCell').each(function () {
+                    if ($(this).text() == "") {
+                        count++;
+                    }
+                });
+                if (count == 6) {
+                    check = false;
+                }
+            });
+            if (check == false) {
+                swal({
+                    type: 'error',
+                    // title: 'Oops...',
+                    text: 'Please complete alteast all cell of each row ! ',
+                    //  footer: '<a href>Why do I have this issue?</a>',
+                    padding: '2em'
+                })
+            }
+            else {
+                $('#WATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div></div>');
+            }
+        }
+    </script>
+
+    <script>
+        function WorkstationAssessmentDelete() {
+            var delCount = 0;
+            $('#WATable').find('.tableRow').each(function () {
+
+                $(this).find('.tableCell2').each(function () {
+                    if (($(this).find('.del-Check').prop("checked"))) {
+                        $(this).parent().remove();
+                        delCount++;
+                    }
+                });
+            });
+
+            if (delCount == 0) {
+                swal({
+                    type: 'error',
+                    text: 'Please select alteast one row to delete !  ',
+                    padding: '2em'
+                })
+            }
+
+        }
+    </script>
+
+    <script>
+        $('#orgdetbtn3').click(function () {
+        var check = true;
+            $('#WATable').find('.tableRow').each(function () {
+                var count = 0;
+                $(this).find('.tableCell').each(function () {
+                    if ($(this).text() == "") {
+                        count++;
+                    }
+                });
+                if (count == 6) {
+                    check = false;
+                }
+            });
+        if (check == false) {
+          //  alert("Please complete alteast one cell of each row ! ");
+
+            swal({
+                type: 'error',
+               // title: 'Oops...',
+                text: 'Please complete alteast all cell of each row ! ',
+              //  footer: '<a href>Why do I have this issue?</a>',
+                padding: '2em'
+            })
+
+
+        }
+        else {
+            orgdetbtn3Save();
+        }
+    });
+
+        function orgdetbtn3Save() {
+            var WATableData = "";
+        var options = [];
+            var orgcustId = $("#orgcustId").val();
+        var i = 0;
+
+            $('#WATable').find('.tableRow').each(function () {
+            $(this).find('.tableCell').each(function () {
+                WATableData = WATableData + "|" + $(this).text();
+                i++;
+            });
+        });
+        if (i == 0) {
+            alert("Please add alteast one row to save ! ");
+            return false;
+        }
+
+        else {
+            var WATableHtml = $('#WATable').html();
+            var Title = '';
+            var ScanDate = '';
+            var ScanType = '';
+
+            if (WATableData != null) {
+                var ProjectId = document.getElementById("ProjectId").value;
+                Saveorgdetbtn3(WATableData, ProjectId, orgcustId);
+            }
+
+
+        }
+    }
+        function Saveorgdetbtn3(WATableData, ProjectId, orgcustId) {
+            var data = { "WATabledata": WATableData, "ProjectId": ProjectId, "orgcustId": orgcustId };
+
+ $.ajax({
+     url: '@Url.Action("SaveWATQues", "Questionnaire")',
+     type: "post",
+     contentType: 'application/x-www-form-urlencoded',
+     data: data,
+     success: function (result) {
+         if (result == "Success") {
+             //window.location.href = '/Home/Index';
+             $("#sp13 i").removeClass();
+             $("#sp13 i").removeAttr("style");
+             alert("Record saved successfully..!!");
+             $("#sp13 i").addClass("fas fa-check");
+             $("#sp13 i").css("color", "green");
+           //  window.location.href = '/Home/Index';
+         }
+         console.log(result);
+     }
+ });
+    }
+    </script>
+
+    <script>
+        function CloudAdd() {
+            var check = true;
+            $('#CloudTable').find('.tableRow').each(function () {
+                var count = 0;
+                $(this).find('.tableCell').each(function () {
+                    if ($(this).text() == "") {
+                        count++;
+                    }
+                });
+                if (count == 4) {
+                    check = false;
+                }
+            });
+            if (check == false) {
+                swal({
+                    type: 'error',
+                    // title: 'Oops...',
+                    text: 'Please complete alteast all cell of each row ! ',
+                    //  footer: '<a href>Why do I have this issue?</a>',
+                    padding: '2em'
+                })
+            }
+            else {
+                $('#CloudTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div></div>');
+            }
+        }
+    </script>
+
+    <script>
+        function CloudDelete() {
+            var delCount = 0;
+            $('#CloudTable').find('.tableRow').each(function () {
+
+                $(this).find('.tableCell2').each(function () {
+                    if (($(this).find('.del-Check').prop("checked"))) {
+                        $(this).parent().remove();
+                        delCount++;
+                    }
+                });
+            });
+
+            if (delCount == 0) {
+                swal({
+                    type: 'error',
+                    text: 'Please select alteast one row to delete !  ',
+                    padding: '2em'
+                })
+            }
+
+        }
+    </script>
+
+    <script>
+        $('#orgdetbtn4').click(function () {
+        var check = true;
+            $('#CloudTable').find('.tableRow').each(function () {
+                var count = 0;
+                $(this).find('.tableCell').each(function () {
+                    if ($(this).text() == "") {
+                        count++;
+                    }
+                });
+                if (count == 4) {
+                    check = false;
+                }
+            });
+        if (check == false) {
+          //  alert("Please complete alteast one cell of each row ! ");
+
+            swal({
+                type: 'error',
+               // title: 'Oops...',
+                text: 'Please complete alteast all cell of each row ! ',
+              //  footer: '<a href>Why do I have this issue?</a>',
+                padding: '2em'
+            })
+
+
+        }
+        else {
+            orgdetbtn4Save();
+        }
+    });
+
+
+        function orgdetbtn4Save() {
+            var CloudTableData = "";
+        var options = [];
+            var orgcustId = $("#orgcustId").val();
+        var i = 0;
+
+            $('#CloudTable').find('.tableRow').each(function () {
+            $(this).find('.tableCell').each(function () {
+                CloudTableData = CloudTableData + "|" + $(this).text();
+                i++;
+            });
+        });
+        if (i == 0) {
+            alert("Please add alteast one row to save ! ");
+            return false;
+        }
+
+        else {
+            var CloudTableDataHtml = $('#CloudTable').html();
+            var Title = '';
+            var ScanDate = '';
+            var ScanType = '';
+
+            if (CloudTableData != null) {
+                var ProjectId = document.getElementById("ProjectId").value;
+                Saveorgdetbtn4(CloudTableData, ProjectId, orgcustId);
+            }
+
+
+        }
+    }
+        function Saveorgdetbtn4(CloudTableData, ProjectId, orgcustId) {
+            var data = {
+                "CloudTabledata": CloudTableData, "ProjectId": ProjectId, "orgcustId": orgcustId };
+
+ $.ajax({
+     url: '@Url.Action("SaveCloudQues", "Questionnaire")',
+     type: "post",
+     contentType: 'application/x-www-form-urlencoded',
+     data: data,
+     success: function (result) {
+         if (result == "Success") {
+             alert("Record saved successfully..!!");
+         }
+         console.log(result);
+     }
+ });
+    }
+    </script>
+
+    <script>
+        function selectMarker(obj) {
+            $(obj).hide();
+            $('#eraser').show();
+            $('#colors_sketch').sketch();
+        }
+
+        function selectEraser(obj) {
+            // $(obj).hide();
+            // $('#marker').show();
+            $('#colors_sketch').empty();
+            $('#canvasDiv').html(''); //remove canvas from container
+            $('#canvasDiv').html('<canvas id="colors_sketch" width="500" height="200"></canvas>'); //add it back to the container
+            $('#colors_sketch').sketch();
+        }
+
+        function newSignature() {
+            $("#newsign").val('false');
+            $('#sigImage').hide();
+            $('.newSignatureDiv').css('display', 'none');
+            $('.tools').css('display', 'block');
+            // $('#marker').show();
+            $('#canvasDiv').css('display', 'block');
+            $('#canvasDiv').html(''); //remove canvas from container
+            $('#canvasDiv').html('<canvas id="colors_sketch" width="500" height="200"></canvas>'); //add it back to the container
+            //$('#colors_sketch').css('display', 'block');
+            setTimeout(function () {
+                $("#marker").trigger("click");
+            }, 500);
+            return false;
+        }
+
+        $('#signaturebtn').click(function () {
+            //$('#sigImage').show();
+            $("#newSigA").hide();
+            validateSignature();
+        });
+
+    </script>
+
+    <script>
+        function validateSignature() {
+            //var canvas1 = $('#colors_sketch')[0].toDataURL();
+            //var canvas2 = $('#blank')[0].toDataURL();
+            var checkImg = false;
+            var c = document.getElementById("colors_sketch");
+            var ctx = c.getContext("2d");
+            var imgData = ctx.getImageData(0, 0, c.width, c.height);
+            // invert colors
+            if ($("#newsign").val() == 'true') {
+                checkImg = true;
+            } else {
+                for (var i = 0; i < imgData.data.length; i++) {
+                    if (imgData.data[i] != 0) {
+                        checkImg = true;
+                        $('#colors_sketch').removeClass('error');
+                    }
+                }
+            }
+            if (!checkImg) {
+                $('#colors_sketch').addClass('error');
+                return false;
+            }
+            else {
+
+                $('#colors_sketch').removeClass('error');
+
+                var PrintName = document.getElementById("printName").innerText;
+                var JobTitle = document.getElementById("jobTitle").innerText;
+                var organisation = document.getElementById("organisation").innerText;
+                var DateOfSignature = $('#sigDate').val();
+                $('.checkvalid1').each(function () {
+                    if ($(this).text().length > 0) {
+                        $(this).removeClass('error');
+                    }
+                    else {
+                        $(this).addClass('error');
+                    }
+                });
+                $('.checkvalid1').keyup(function () {
+                    if ($(this).text().length > 0) {
+                        $(this).removeClass('error');
+                    }
+                    else {
+                        $(this).addClass('error');
+                    }
+                });
+                if (DateOfSignature.length > 0) {
+                    $('#DOSDiv').removeClass('error');
+                }
+                else {
+                    $('#DOSDiv').addClass('error');
+                    return false;
+                }
+                if ($('#sigInput').val() == "" || DateOfSignature.length == 0 || PrintName.length == 0 ||
+                    JobTitle.length == 0 || organisation.length == 0) {
+
+                    return false;
+                }
+                else {
+                    $('#sigImage').show();
+                    $('#loaderDiv2').show();
+                    if ($("#newsign").val() == 'false') {
+                        saveSigImage();
+                    }
+                    else {
+                        saveSignatureData($("#sigImage").attr('src'));
+                    }
+                    return true;
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function saveSigImage() {
+            var path = "";
+            var base64 = $('#colors_sketch')[0].toDataURL();
+            var ImageUrl = $("#sigImage").attr("src", base64);
+            var pic = base64.replace(/^data:image\/(png|jpg);base64,/, "")
+            var data = {
+                "imageData": pic,
+                "filename": "Singnature.png",
+            };
+            saveSignatureData(pic);
+            //$.ajax({
+            //    type: 'POST',
+            //    contentType: 'application/x-www-form-urlencoded',
+            //    url: '/Questionnaire/UploadSigImage',
+            //    data: data,
+            //    async: false,
+            //    success: function (msg) {
+            //        path = "/lib/Content/QuetionnaireSigImages/" + msg + "";
+            //        saveSignatureData(path);
+            //        $('#eraser').hide();
+            //        $('#marker').hide();
+
+            //    }
+            //});
+            return path;
+        }
+
+        function displayBase64Image(placeholder, base64Image) {
+            placeholder.html('');
+            $('<img>', {
+                src: base64Image
+            }).appendTo(placeholder);
+        }
+
+    </script>
+
+    <script>
+        function saveSignatureData(SignatureFile) {
+            var PrintName = document.getElementById("printName").innerText;
+            var JobTitle = document.getElementById("jobTitle").innerText;
+            var Organisation = document.getElementById("organisation").innerText;
+            var DateOfSignature = $('#sigDate').val();
+            var BusinessUnit = document.getElementById("businessUnit").innerText;
+            var SignatureOrganisationName = Organisation;
+            var SignatureHtml = $('#sig').html();
+            var orgcustId = $("#orgcustId").val();
+            var ProjectId = document.getElementById("ProjectId").value;
+            var data = {
+                "SignatureFile": SignatureFile,
+                "PrintName": PrintName,
+                "JobTitle": JobTitle,
+                "Organisation": Organisation,
+                "DateOfSignature": DateOfSignature,
+                "BusinessUnit": BusinessUnit,
+                "SignatureOrganisationName": SignatureOrganisationName,
+                "SignatureHtml": SignatureHtml,
+                "ProjectId": ProjectId,
+                "orgcustId": orgcustId,             
+            };
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded',
+                url: "/Questionnaire/SaveSignatureDetails",
+                data: data,
+                async: false,
+                success: function (response) {
+                    $('#loaderDiv2').hide();
+                    $("#sp16 i").addClass("fas fa-check");
+                    $("#sp16 i").css("color", "green");
+                    alert("Record saved successfully..!!");
+                    var spans = document.getElementById("span5");
+
+                    $("#newSigA").show();
+                    $('#colors_sketch').hide();
+                    $('#sigDate').val(DateOfSignature);
+
+                },
+                error: function (response) {
+                    $('#loaderDiv2').hide();
+                    console.log(response);
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        function saveQuestionnaire() {
+            var ans36 = "";
+            $('.emptydataerror').each(function () {
+                if ($(this).attr("sec") == "3") {
+                    if ($(this).attr("qid") == "36" && $(this).find("option:selected").text() != "Select") {
+                        ans36 = $(this).find("option:selected").text();
+                    }
+                    else {
+                        var qid = $(this).attr("qid");
+                        if (ans36 == "a") {
+                            if (parseInt(qid) >= 37 && parseInt(qid) <= 40) {
+                                AddRemoveErrorClass($(this));
+                            }
+                            else { $(this).parent().removeClass('error'); }
+                        }
+                        else
+                            if (ans36 == "b") {
+                                if (parseInt(qid) >= 41 && parseInt(qid) <= 43) {
+                                    AddRemoveErrorClass($(this));
+                                } else { $(this).parent().removeClass('error'); }
+                            }
+                            else
+                                if (ans36 == "c") {
+                                    if (parseInt(qid) == 44) {
+                                        AddRemoveErrorClass($(this));
+
+                                    } else { $(this).parent().removeClass('error'); }
+                                }
+                                else {
+                                    AddRemoveErrorClass($(this));
+                                }
+                    }
+                }
+                else {
+                    AddRemoveErrorClass($(this));
+                }
+            });
+
+            function AddRemoveErrorClass(object) {
+                if (object.find("option:selected").text() == "Select") {
+                    object.parent().addClass('error');
+                }
+                else {
+                    object.parent().removeClass('error');
+                }
+            }
+            $('.emptydataerror').change(function () {
+                if ($(this).attr("qid") == "36") {
+                    for (var i = 1; i <= 8; i++) {
+                        $("#" + "Option_" + i + "_3").prop("selectedIndex", 0);
+                    }
+                }
+                AddRemoveErrorClass($(this));
+            });
+       
+            var dataType = 'application/x-www-form-urlencoded; charset=utf-8';
+            // var data = $('form').serialize();
+            // console.log(data.deserialize());
+
+
+            var sectionCount = 1;
+            var optionValue = "";
+            var option = [];
+            var orgcustId = $("#orgcustId").val();
+            var QuestStatus = document.getElementById("QuestStatus");
+            QuestStatus.value = "1";
+            $('.section').each(function () {
+                $(this).find('select').each(function () {
+                    var responseOption = ($(this).find("option:selected").val());
+                    var responseOption2 = $(this).parent().find('input[type=hidden]').val();
+                    if (responseOption == "Select") {
+                        QuestStatus.value = "0";
+                    }
+                    option.push({ "Value": responseOption, "QuestionId": responseOption2, });
+                });
+                sectionCount++;
+            });
+            console.log(option);
+            // var Title = "";
+            //   Title = document.getElementById("title").innerText;
+
+            if ($('#securityControlsQuestionnaire').find('.error').length > 0) {
+                return false;
+            }
+            else {
+                $('#loaderDiv2').show();
+                var ProjectId = document.getElementById("ProjectId").value;
+                SaveQuestion(option,ProjectId, orgcustId);
+            }
+        }
+
+        function SaveQuestion(option, ProjectId, orgcustId) {
+            var data = { "optionValue": option, "ProjectId": ProjectId, "orgcustId": orgcustId};
+            $.ajax({
+                  url: '@Url.Action("SaveQuestionnaire", "Questionnaire")',
+                type: "post",
+                contentType: 'application/x-www-form-urlencoded',
+                data: data,
+                async:false,
+                success: function (result) {
+                    if (result == "Success") {
+                        alert("Record saved successfully..!!");
+                    }
+                    console.log(result);
+
+                },
+
+            });
+        }
+
+    </script>
+
+
+}
+

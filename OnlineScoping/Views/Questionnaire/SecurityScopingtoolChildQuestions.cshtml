@@ -1,0 +1,788 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+@{
+    ViewData["Title"] = "SecurityScopingtoolChildQuestions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/custom/childquestion.css" rel="stylesheet" />
+<style>
+    .ActionMode a {
+        color: #0366d6 !important;
+    }
+
+    .qus-align b {
+        display: table-cell
+    }
+
+    .qus-align span {
+        display: table-cell
+    }
+
+    .security-scoping-card .form-group label, label {
+        margin: 0;
+    }
+
+    .security-scoping-card .card-title {
+        margin-bottom: 0;
+    }
+</style>
+
+
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="pt-3">
+                Update Scope
+            </h3>
+        </div>
+        <div class="col-md-6" style="margin-left: -100px;">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="EditAllQuestionnaires">Scope</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Update Scope</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    @if (TempData["UpdateSingleSecurityScopingQuestion"] != null)
+    {
+        <div style="margin: 0% 0% 0% 65%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> @TempData["UpdateSingleSecurityScopingQuestion"]  </div>
+    }
+    @if (TempData["UpdateSingleSecurityScopingQuestionError"] != null)
+    {
+        <div style="margin: 0% 0% 0% 70%;" class="alert alert-danger mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> @TempData["UpdateSingleSecurityScopingQuestionError"]  </div>
+    }
+
+    @if (TempData["DeleteSingleQuestion"] != null)
+    {
+        <div style="margin: 0% 0% 0% 65%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> @TempData["DeleteSingleQuestion"]  </div>
+    }
+    @if (TempData["DeleteSingleQuestionError"] != null)
+    {
+        <div style="margin: 0% 0% 0% 70%;" class="alert alert-danger mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> @TempData["DeleteSingleQuestionError"]  </div>
+    }
+
+
+
+</div>
+<hr />
+
+
+
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+
+        <div class=" component-card_1 security-scoping-card ">
+            <div class="skills layout-spacing">
+                <div class="widget-content widget-content-area text-center">
+
+                    <div class="card ">
+                        <div class="row mb-3">
+                            <div class="col-md-8 text-left align-self-center">
+                                <h5 class="card-title align-self-center ">Security Scoping Questionnaire</h5>
+                            </div>
+                            <div class="col-md-2 align-self-center text-right"><label>Select Mode</label></div>
+                            <div class="col-md-2 align-self-center text-right">
+
+                                <select id="mySelect" class="form-control form-control" onchange="BothMode()">
+                                    <option value="View" selected>View</option>
+                                    <option value="Edit">Edit</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-12 text-left">
+                                <a asp-action="CretaeEquestion" asp-controller="Questionnaire" asp-route-id="@Model.QuestionnaireId" class="btn btn-primary float-right ActionMode" id="btncal"> Create Equestions</a>
+
+                                <a class="btn btn-primary float-right ActionMode mx-3" data-toggle="modal" style="cursor:pointer" aria-expanded="false" data-target="#QuesAddNewModel" data-placement="top" title="Edit" onclick="BindNewQues('@Model.QuestionnaireId','@Model.SectionId')">Create New Question</a>
+                            </div>
+                        </div>
+                        @if (Model.EquestionViewModelData != null)
+                        {
+                            <h5 class="mb-3  text-left mr-5 col-md-10">Days Equestion : <strong>@Model.EquestionViewModelData.DaysEquestion</strong></h5>
+
+                            <h5 class="mb-3 text-left mr-5 col-md-10">Cost Equestion : <strong>@Model.EquestionViewModelData.CostEquestion</strong></h5>
+
+                            <h5 class="mb-3 text-left mr-5 col-md-10">Requirment Equestion : <strong>@Model.EquestionViewModelData.RequirmentEquestion</strong></h5>
+
+                        }
+                        else
+                        {
+                            <h5 class="mb-3 text-left mr-5 col-md-10">Days Equestion : <strong></strong></h5>
+
+                            <h5 class="mb-3 text-left mr-5 col-md-10">Cost Equestion : <strong></strong></h5>
+
+                            <h5 class="mb-3 text-left mr-5 col-md-10 ">Requirment Equestion : <strong></strong></h5>
+
+                        }
+
+                        <form asp-action="SecurityScopingtoolChildQuestions" method="post">
+                            <div class="w-100 " role="listbox">
+                                <input type="hidden" asp-for="@Model.QuestionnaireId" />
+                                <input type="hidden" asp-for="@Model.SectionId" />
+                                <input type="hidden" asp-for="@Model.CustomerId" />
+                                @if (Model.Questions.Count == 0)
+                                {
+                                    <input type="hidden" asp-for="@Model.SectionId" />
+                                    <h5 class="mb-4 ml-5 text-left mr-5">Thank You</h5>
+                                }
+                                else
+                                {
+
+                                    @for (int i = 0; i < Model.Questions.Count; i++)
+                                    {
+
+                                        <input type="hidden" asp-for="@Model.Questions[i].SectionId" />
+                                        <input type="hidden" asp-for="@Model.Questions[i].QuestionId" />
+                                        <input type="hidden" asp-for="@Model.Questions[i].QuestionNumber" />
+                                        <input type="hidden" asp-for="@Model.Questions[i].QuestionText" />
+                                        <input type="hidden" asp-for="@Model.Questions[i].QuestionType" />
+                                        <input type="hidden" asp-for="@Model.Questions[i].QuestionnaireId" />
+                                        <input type="hidden" asp-for="@Model.Questions[i].UserName" value="@User.Identity.Name" />
+
+                                        <div id="@Model.Questions[i].QuestionNumber" class="row">
+
+
+                                            <div class="form-group">
+                                                @if (Model.Questions[i].QuestionNumber == "6a")
+                                                {
+                                                    <h5 class="mb-4 ml-5 text-left mr-5" style="display: -webkit-inline-box;">
+                                                        @Model.Questions[i].QuestionNumber . @Model.Questions[i].QuestionText <a href="#">Click here</a> and a member of sales will be in touch soon to find out more info and provide a scope. If you’d like to use this tool to help identify what you may need tested,select <a asp-action="ChildQuestions" asp-controller="Questionnaire" asp-route-SectionId="6" asp-route-QuestionnaireId="@Model.Questions[i].QuestionnaireId" asp-route-id="@Model.CustomerId">'to better understand security posture of our environment'</a> <span style="color:red">(VARIABLE=@Model.Questions[i].VariableName)</span>
+                                                        <span class="ActionMode">
+                                                            <a data-toggle="modal" style="font-size: 15px;cursor:pointer" aria-expanded="false" data-target="#QuesUpdateModel" data-placement="top" title="Edit" onclick="BindQues('@Model.Questions[i].QuestionId','@Model.QuestionnaireId','@Model.Questions[i].QuestionText','','@Model.SectionId')"><i class="fas fa-pencil-alt"></i></a> |
+                                                            <a asp-action="DeleteSingleQuestions" asp-controller="Questionnaire" asp-route-id="@Model.Questions[i].QuestionId" asp-route-QuestionnaireId="@Model.QuestionnaireId" asp-route-SectionId="@Model.Questions[i].SectionId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><i class="far fa-trash-alt"></i></a>
+                                                           
+                                                        </span>
+                                                    </h5>
+                                                }
+                                                else
+                                                {
+                                                    <h5 class="mb-4 ml-5 text-left mr-5" style="display: -webkit-inline-box;">
+                                                        @Model.Questions[i].QuestionNumber . @Model.Questions[i].QuestionText
+                                                        <span style="color:red">(VARIABLE=@Model.Questions[i].VariableName)</span>
+                                                        <span class="ActionMode">
+                                                            <a data-toggle="modal" style="font-size: 15px;cursor:pointer" aria-expanded="false" data-target="#QuesUpdateModel" data-placement="top" title="Edit" onclick="BindQues('@Model.Questions[i].QuestionId','@Model.QuestionnaireId','@Model.Questions[i].QuestionText','','@Model.SectionId')"><i class="fas fa-pencil-alt"></i></a> |
+                                                            <a asp-action="DeleteSingleQuestions" asp-controller="Questionnaire" asp-route-id="@Model.Questions[i].QuestionId" asp-route-QuestionnaireId="@Model.QuestionnaireId" asp-route-SectionId="@Model.Questions[i].SectionId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><i class="far fa-trash-alt"></i></a>
+
+                                                        </span>
+                                                    </h5>
+                                                }
+
+
+
+                                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                    <div class="row">
+                                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Days">Days</label>
+
+                                                        <input type="text" asp-for="@Model.Questions[i].Days" class="form-control col-md-8 valid" onkeypress="return isNumber(event)" autocomplete="off" onpaste="return false;">
+
+                                                    </div>
+                                                </div>
+                                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                    <div class="row">
+                                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Cost">Cost</label>
+
+                                                        <input type="text" asp-for="@Model.Questions[i].Cost" class="form-control col-md-8 valid" onkeypress="return isNumber(event)" autocomplete="off" onpaste="return false;">
+
+                                                    </div>
+                                                </div>
+                                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                    <div class="row">
+                                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Requirement">Requirement</label>
+
+                                                        <input type="text" asp-for="@Model.Questions[i].Requirement" class="form-control col-md-8 valid" autocomplete="off">
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                @if (Model.Questions[i].ChildQuestionsList.Count > 0)
+                                                {
+                                                    @for (int j = 0; j < Model.Questions[i].ChildQuestionsList.Count; j++)
+                                                    {
+                                                        <div id="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber">
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].SectionId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ChildQuestionId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionText" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionnaireId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].UserName" value="@User.Identity.Name" />
+
+
+                                                            <div class="col-md-12 qus-align">
+                                                                <div class="form-row">
+                                                                    <div class="col-md-6"> <h6 class="mb-4 ml-5 mr-5 text-left"><strong>@Model.Questions[i].ChildQuestionsList[j].QuestionNumber</strong> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionText</span> <span style="color:red">(VARIABLE=@Model.Questions[i].ChildQuestionsList[j].VariableName)</span></h6></div>
+
+                                                                    <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                                        <div class="row">
+                                                                            <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].ChildQuestionsList[j].Days">Days</label>
+                                                                            <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Days" class="form-control col-md-7 valid" onkeypress="return isNumber(event)" autocomplete="off">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                                        <div class="row">
+                                                                            <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].ChildQuestionsList[j].Cost">Cost</label>
+                                                                            <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Cost" class="form-control col-md-7 valid" onkeypress="return isNumber(event)" autocomplete="off">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                                        <div class="row">
+                                                                            <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].ChildQuestionsList[j].Requirement">Requirement</label>
+                                                                            <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Requirement" class="form-control col-md-7 valid" autocomplete="off">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <hr />
+                                                            </div>
+                                                        </div>
+                                                    }
+
+                                                }
+
+
+
+
+
+                                            </div>
+
+
+                                        </div>
+
+
+
+                                    }
+
+                                }
+
+                                @if (Model.Methodology_Deliverablesdata != null)
+                                {
+                                    <div id="" style="width:100%" class="container">
+                                        <div class="col-md-12 qus-align">
+                                            <div class="form-row">
+                                                <div class="col-md-6"> <h6 class="mb-4  ml-3 text-left"><strong>1.</strong> <span>Scope Type Methodology </span></h6></div>
+                                                <input type="hidden" asp-for="@Model.Methodology_Deliverablesdata.Methodology_DeliverablesId " />
+
+                                                <div class="mb-3 col-md-5">
+                                                    <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy" class="form-control" autocomplete="off">
+                                                    <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy"></label>
+                                                    <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6"> <h6 class="mb-4  ml-3 text-left"><strong>2.</strong> <span>Scope Type Methodology FileName </span></h6></div>
+
+                                                <div class="mb-3  col-md-5">
+                                                    @if (Model.MethodologyeList.Count == 0)
+                                                    {
+                                                        <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName" class="form-control" autocomplete="off">
+                                                        <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName"></label>
+                                                        <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName" class="text-danger"></span>
+                                                    }
+                                                    else
+                                                    {
+                                                <select asp-for="@Model.Methodology_Deliverablesdata.MethodologyId" class="form-control">
+                                                    <option value="">-- Please Select --</option>
+                                                    @foreach (var option in Model.MethodologyeList)
+                                                    {
+                                                        <option value="@option.Id">@option.FileName</option>
+                                                    }
+                                                </select>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6"> <h6 class="mb-4 ml-3 text-left"><strong>3.</strong> <span>Scope Type SampleReport </span></h6></div>
+
+                                                <div class="mb-3 col-md-5">
+                                                    <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport" class="form-control" autocomplete="off">
+                                                    <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport"></label>
+                                                    <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6"> <h6 class="mb-4 ml-3 text-left"><strong>4.</strong> <span>Scope Type SampleReport FileName  </span></h6></div>
+
+                                                <div class="mb-3 col-md-5">
+                                                    @if (Model.SampleReportList.Count == 0)
+                                                    {
+                                                        <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName" class="form-control" autocomplete="off">
+                                                        <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName"></label>
+                                                        <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName" class="text-danger"></span>
+
+                                                    }
+                                                    else
+                                                    {
+                                                <select asp-for="@Model.Methodology_Deliverablesdata.MethodologyReportId" class="form-control">
+                                                    <option value="">-- Please Select --</option>
+                                                    @foreach (var option in Model.SampleReportList)
+                                                    {
+                                                        <option value="@option.Id">@option.FileName</option>
+                                                    }
+                                                </select>
+                                                    }
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+
+
+
+                            </div>
+
+                            <div class="form-group float-right" id="finish">
+                                <input type="submit" value="Finish" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body con-bo1">
+                <p class="modal-text">How many issues require checking ?</p>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="less"> 5 or less</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="more">more than 5</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalMsg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body con-bo1">
+                <p class="modal-text"> They qualify for a free verification check and the sales guy will be in touch to schedule.</p>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnclose"> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalMsg3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body con-bo1">
+                <p class="modal-text">We provide red teaming and sales will be in touch to chat.</p>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnclose"> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalMsg8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body con-bo1">
+                <p class="modal-text">Sales will be in contact to find out what’s to be tested.</p>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnclose"> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalMsg7f" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body con-bo1">
+                <h5>From your answers it sounds like you will require:</h5>
+                <p class="modal-text">
+                    -	An internal application test of the thick client<br />
+                    -	A remote unauthenticated and authenticated application test of the internet-facing application<br />
+                    -	An external infrastructure test<br />
+                    -	An internal infrastructure test of a 10% sample of network servers and devices<br />
+                    -	A firewall rule set review<br />
+                    -	An assessment of the security of your wireless networks.<br />
+                    -	A build review of the desktop build used by staff
+                </p>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnclose"> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade bd-example-modal-lg" id="QuesUpdateModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="UpdateSecurityScopingQuestions" asp-controller="Questionnaire" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="@Model.QuestionUpdateData.QuestionnaireId" id="QuestId" />
+                    <input type="hidden" asp-for="@Model.QuestionUpdateData.QuestionId" id="QuestionId" />
+                    <input type="hidden" asp-for="@Model.QuestionUpdateData.ChieldQuestionType" id="ChieldQuestionType" />
+                    <input type="hidden" asp-for="@Model.QuestionUpdateData.SectionId" id="QuestionSectionId" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.QuestionUpdateData.Name" class="control-label"></label>
+                                <input asp-for="@Model.QuestionUpdateData.Name" class="form-control" id="QuestionName" />
+                                <span asp-validation-for="@Model.QuestionUpdateData.Name" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="QuesAddNewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form asp-action="AddNewSecurityScopingQuestions" asp-controller="Questionnaire" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Question</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" asp-for="@Model.QuestionUpdateData.QuestionnaireId" id="AddNewQuestId" />
+                        <input type="hidden" asp-for="@Model.QuestionUpdateData.SectionId" id="AddNewSectionIdQuestId" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="@Model.QuestionUpdateData.Name" class="control-label"></label>
+                                    <input asp-for="@Model.QuestionUpdateData.Name" class="form-control" id="AddNewQuestionName" />
+                                    <span asp-validation-for="@Model.QuestionUpdateData.Name" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+@*<div class="modal fade bd-example-modal-lg" id="QuesAddNewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="AddNewQuestId" />
+
+                    <input type="hidden" id="AddNewSectionIdQuestId" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Question Name </label>
+                                <span id="errormsg" class="text-danger">This Question Name is required</span>
+                                <input type="text" class="form-control" id="AddNewQuestionName" required onblur="Validate()" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Question Type </label>
+                                <select id="TypeSelect" class="form-control form-control" onchange="QuestMode()">
+                                    <option value="2" selected>Text</option>
+                                    <option value="0">Options</option>
+                                    <option value="1">Date</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-12">
+                            <input type="button" id="add" value="Add" style=" width: 80px;float: right; margin-top: 9px;" class="btn btn-primary " />
+                        </div>
+                    </div>
+                    <div class="row QuestText" id="AddNewOptionList">
+                        <span class="text-danger" id="errtype" style="margin-left: 27px;">This Options Name is required</span>
+                        <div class="col-md-12">
+
+                            <div class="form-group optionchek">
+                                <label class="control-label">Option Name</label>
+
+                                <input type="text" class="form-control" id="txtname" />
+                                <a data-itemId="0" href="#" class="deleteItem btn btn-danger" style="margin-top: 10px;">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closemodel" class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                    <button type="button" id="SaveDetails" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>*@
+
+
+
+
+<script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/custom/Questionnaire/Questionnaire.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#03503f7b-2c04-4c44-8690-541b8fa6366a").click(function () {
+                var rVal = $("#03503f7b-2c04-4c44-8690-541b8fa6366a:checked ").val();
+                if (rVal == "03503f7b-2c04-4c44-8690-541b8fa6366a") {
+                    $('#exampleModal').modal('show');
+                }
+            });
+            $(".Datecss").css("display", "none");
+            //document.querySelectorAll('.ActionMode').forEach(function (el) {
+            //    el.style.display = 'none';
+            //});
+            var x = document.getElementById("mySelect").value;
+            if (x == 'Edit') {
+                document.querySelectorAll('.ActionMode').forEach(function (el) {
+                    el.style.display = 'block';
+                });
+            } else {
+                document.querySelectorAll('.ActionMode').forEach(function (el) {
+                    el.style.display = 'none';
+                });
+            }
+            document.querySelectorAll('.QuestText').forEach(function (el) {
+                el.style.display = 'none';
+                $("#add").css("display", "none");
+                $("#errormsg").css("display", "none");
+                $("#errtype").css("display", "none");
+            });
+            $('#add').click(function () {
+                remVulScanAdd();
+            });
+            $('#SaveDetails').click(function () {
+             
+                var res = "";
+                var res2 = "";
+                if ($("#AddNewQuestionName").val() == "") {
+                    $("#AddNewQuestionName").focus();
+                    $("#errormsg").css("display", "block");
+                    res = "fail";
+                }
+                else {
+                    $("#errormsg").css("display", "none");
+                    res = "Suc";
+                }
+
+                var x = document.getElementById("TypeSelect").value;
+
+                if (x == '0') {
+                    var responseOption = '';
+                    $('#AddNewOptionList').each(function () {
+                        $(this).find('.optionchek').each(function () {
+                            responseOption = ($(this).find("input[type=text]").val());
+                        });
+
+                    });
+                    if (responseOption == "") {
+                        $("#errtype").css("display", "block");
+                        res2 = "fail";
+                    }
+                    else {
+                        $("#errtype").css("display", "none");
+                        res2 = "Suc";
+                    }
+
+                }
+                else if (x == '2') {
+                    res2 = "Suc";
+                }
+                else if (x == '1') {
+                    res2 = "Suc";
+                }
+                if (res == "Suc" && res2 == "Suc") {
+               
+                    $("#errormsg").css("display", "none");
+                    $("#errtype").css("display", "none");
+                    SaveVulScanAdd();
+                }
+
+            });
+        });
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+        function BothMode() {
+            var x = document.getElementById("mySelect").value;
+            if (x == 'Edit') {
+                document.querySelectorAll('.ActionMode').forEach(function (el) {
+                    el.style.display = 'block';
+                });
+            } else {
+                document.querySelectorAll('.ActionMode').forEach(function (el) {
+                    el.style.display = 'none';
+                });
+            }
+        }
+        function BindQues(QuestionId, QuestioneerId, Name, ChieldQuestion, SectionId) {
+            document.getElementById('QuestId').value = QuestioneerId;
+            document.getElementById('QuestionId').value = QuestionId;
+            document.getElementById('QuestionName').value = Name;
+            document.getElementById('ChieldQuestionType').value = ChieldQuestion;
+            document.getElementById('QuestionSectionId').value = SectionId;
+            return true;
+        }
+        function BindNewQues(QuestioneerId, SectionId) {
+            document.getElementById('AddNewQuestId').value = QuestioneerId;
+            document.getElementById('AddNewSectionIdQuestId').value = SectionId;
+        }
+        function QuestMode() {
+            var x = document.getElementById("TypeSelect").value;
+            if (x == '2') {
+                document.querySelectorAll('.QuestText').forEach(function (el) {
+                    el.style.display = 'none';
+                    $("#add").css("display", "none");
+                    $(".Datecss").css("display", "none");
+                });
+            }
+            else if (x == '1') {
+                //document.querySelectorAll('.Datecss').forEach(function (el) {
+                //    el.style.display = 'block';
+                    document.querySelectorAll('.QuestText').forEach(function (el) {
+                        el.style.display = 'none';
+                        $("#add").css("display", "none");
+
+
+                    });
+               /* });*/
+            }
+            else {
+                document.querySelectorAll('.QuestText').forEach(function (el) {
+                    el.style.display = 'block';
+                    $("#add").css("display", "block");
+                    $(".Datecss").css("display", "none");
+                });
+            }
+        }
+
+         $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('.optionchek').css("background-color", "#fff").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+
+        function remVulScanAdd() {
+            var elementCount = $('#AddNewOptionList .form-control').length;
+            $('#AddNewOptionList').append(' <div class="col-md-12"><div class="form-group optionchek"><label class="control-label" >Option Name</label><input class="form-control"  type="text" value=""><a data-itemId="0" href="#" class="deleteItem btn btn-danger" style="margin-top: 10px;" >Remove</a></div></div>');
+
+        }
+        function SaveVulScanAdd() {
+          $("#QuesAddNewModel").modal('hide');
+        var option = [];
+            var data = [];
+            $('#AddNewOptionList').each(function () {
+                $(this).find('.optionchek').each(function () {
+                    var responseOption = ($(this).find("input[type=text]").val());
+
+                    option.push({"name":responseOption});
+                });
+
+            });
+
+            var questionName = $("#AddNewQuestionName").val();
+            var questionType = document.getElementById("TypeSelect").value;
+            var questioneerId = $("#AddNewQuestId").val();
+            var sectionId = $("#AddNewSectionIdQuestId").val();
+            var optionValue = [];
+            data = { "options": option, "questionName": questionName, "questionType": questionType, "questioneerId": questioneerId, "sectionId": sectionId };
+
+        console.log(data);
+
+     $.ajax({
+         url: '@Url.Action("AddNewSecuirtyQuestionnaire2", "Questionnaire")',
+         type: "post",
+         contentType: 'application/x-www-form-urlencoded',
+         data: data,
+         success: function (result) {
+             if (result == "Success") {
+                 window.location = window.location.href;
+             }
+             else {
+                 window.location = window.location.href;
+             }
+         }
+    });
+
+}
+        function Validate() {
+            if ($("#AddNewQuestionName").val() == "") {
+                $("#AddNewQuestionName").focus();
+                $("#errormsg").css("display", "block");
+
+            }
+            else {
+                $("#errormsg").css("display", "none");
+            }
+
+        }
+    </script>
+
+}
+
+

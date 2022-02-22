@@ -1,0 +1,4 @@
+Hi Amba, we've had this problem before where users with hyphenated username (-) get an error message as they can't log into the site. I have this users: christina.arrhult-bjork@saabgroup.com who is getting the message. Can you please fix this bug so she can enter the site? Thanks.
+
+
+ADv62TSG2Qc5cTHkl7FB1B1YKoyP/2Y2oz5+EM6C237VfomvgwndNMKZ0YzKc5j82g==

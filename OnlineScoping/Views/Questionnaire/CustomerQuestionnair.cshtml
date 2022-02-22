@@ -1,0 +1,669 @@
+﻿@model OnlineScoping.ViewModels.CustomerQuestionnairViewModel
+@{
+    ViewData["Title"] = "CustomerQuestionnair";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+<link href="~/lib/layout/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
+<link href="~/lib/layout/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" class="dashboard-sales" />
+<link href="~/lib/layout/plugins/file-upload/file-upload-with-preview.min.css" rel="stylesheet" />
+<link href="~/lib/layout/assets/css/users/user-profile.css" rel="stylesheet" />
+<!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+<style>
+    #withoutSpacing .card-header {
+        background: #e5e5e5;
+    }
+
+    .model_icon {
+        position: absolute;
+        right: 20%;
+        top: 27%;
+    }
+
+    .model_btn {
+        position: absolute;
+        right: 4%;
+        top: 0;
+        bottom: 0;
+        padding: 5px 0;
+    }
+
+    .table-questionnair-1 {
+        /*height: 300px;*/
+        max-height: 300px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .model_btn1 {
+        position: absolute;
+        right: 20%;
+        top: 0;
+        bottom: 0;
+        padding: 6px 0;
+    }
+
+    .upload_btn.text-right {
+        margin-right: 40px;
+        padding: 10px;
+    }
+
+    .Proposals-list .fa-circle {
+        font-size: .5rem
+    }
+    .card-body {
+        /*height: 400px;*/
+        max-height: 400px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: gray;
+        border-radius: 10px;
+    }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+        }
+
+       /*second div scroll*/
+
+</style>
+<div class="page-top" id="page_top_Questionnair">
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="pt-3" style="word-break:break-all;">
+                Questionnaires
+            </h3>
+        </div>
+        <div class="col-md-9">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/Customers/Index">Customers</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Questionnaires</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+@if (TempData["FileUploadMessage"] != null)
+{
+    <div style="margin: 0% 0% 0% 70%;" class="alert alert-success mb-4 delayMsg" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <strong>Success!</strong> @TempData["FileUploadMessage"]
+    </div>
+}
+@if (TempData["FileUploadErrorMessage"] != null)
+{
+    <div style="margin: 0% 0% 0% 0%;" class="alert alert-danger mb-12 delayMsg" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <strong>Error!</strong>@TempData["FileUploadErrorMessage"]
+    </div>
+}
+<div class="layout-px-spacing" id="Questionnair">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-heading row">
+                    <div class="col-md-6">
+                        <h6 class="pt-3">
+                            Projects
+                        </h6>
+                    </div>
+                </div>
+                <div class="widget-content">
+                    <div id="withoutSpacing" class="">
+                        @if (Model.ProjectsViewList.Count == 0)
+                        {
+                            <div class="card">
+                                <div class="card-header">
+                                    <section class="mb-0 mt-0">
+                                        <div role="menu" class="">
+                                            <div class="Accordion_text" id="" data-toggle="collapse" data-target="" aria-expanded="true" aria-controls="">
+                                                <span> No data available </span>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            @for (int i = 0; i < Model.ProjectsViewList.Count; i++)
+                            {
+                                @if (i == 0)
+                                {
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <section class="mb-0 mt-0">
+                                                <div role="menu" class="">
+                                                    <div class="Accordion_text" id="heading_@i" data-toggle="collapse" data-target="#withoutSpacingAccordion_@i" aria-expanded="true" aria-controls="withoutSpacingAccordionOne">
+                                                        <div class="icons">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                                            </svg>
+                                                        </div>
+                                                        <span> @Model.ProjectsViewList[i].ProjectName </span>
+                                                    </div>
+                                                    @if (User.IsInRole("Sales"))
+                                                    {
+                                                        @if (Model.ProjectsViewList[i].CustomerRequestsId != Guid.Empty)
+                                                        {
+                                                            <div class="model_btn1">
+                                                                <a asp-controller="Home" asp-action="AcceptProposal" asp-route-CustomerId="@Model.ProjectsViewList[i].CustomerId" asp-route-ProjectId="@Model.ProjectsViewList[i].ProjectsId" class="btn btn-primary" onclick="return confirm('Are you sure you want to accept request?')">Accept Request</a>
+                                                            </div>
+                                                        }
+                                                        <div class="col-md-2 align-self-center" style="position: absolute; right: 30%; top: 0; bottom: 0; padding: 17px 0;"><label class="select-label">Select Status</label></div>
+                                                        <div class="col-md-2 align-self-center select-row" style="position: absolute; right: 20%; top: 0; bottom: 0; padding: 5px 0;">
+                                                            <select class="form-control status-select" style=" height: 38px; padding: 5px;" asp-for="@Model.ProjectsViewList[i].RequestStatus" onchange="jsFunction(this.value ,'@(Model.ProjectsViewList[i].CustomerId)','@(Model.ProjectsViewList[i].ProjectsId)');"
+                                                                    asp-items="@(new SelectList(Model.StatusList, "Id", "Name"))">
+                                                                <option value="0">Please select</option>
+                                                            </select>                  
+                                                        </div>
+                                                    }
+                                                    <div class="model_btn">
+                                                        <a class="btn btn-primary" onclick="SetCustomer(' ','@(Model.ProjectsViewList[i].ClientNmae)','@(Model.ProjectsViewList[i].SalesNmae)','@(Model.ProjectsViewList[i].ProjectName)','@(Model.ProjectsViewList[i].ProjectsId)')" data-target="#QuestionnaireModal" data-toggle="modal">Generate Proposal </a>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div id="withoutSpacingAccordion_@i" class="collapse show" aria-labelledby="heading_@i" data-parent="#withoutSpacing">
+                                            <div class="upload_btn text-right">
+                                                <a class="btn btn-primary" onclick="SetUpload('@Model.ProjectsViewList[i].CustomerId ','@(Model.ProjectsViewList[i].ProjectsId)')" data-target="#UploadProposalModal" data-toggle="modal">Upload</a>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <div class="table-questionnair-1">
+                                                        <table class="table  table-hover table-striped table-checkable table-highlight-head">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Projects Questionnairs
+                                                                    </th>
+                                                                    <th>Create Date</th>
+                                                                    <th class="text-center">QUESTIONNAIRE COMPLETED</th>
+                                                                    @*
+                                                                        <th class="text-right">Action</th>
+                                                                    *@
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (Model.ProjectsViewList[i].QDataList.Count == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td colspan="4" class="text-left pl-2">No data available</td>
+                                                                    </tr>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @foreach (var item in Model.ProjectsViewList[i].QDataList)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @if (item.IsQuestionnaire == true)
+                                                                                {
+                                                                                    <span><a asp-action="QuestionnaireResponseDetails" asp-controller="Questionnaire" asp-route-id="@item.CustomerId" asp-route-Projectid="@Model.ProjectsViewList[i].ProjectsId" asp-route-QuestionnaireId="@item.QuestionnaireId" asp-route-Page="CustomerQuestionnaires">@item.Nmae</a></span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    @Html.DisplayFor(modelItem => item.Nmae)
+                                                                                }
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                @if (item.IsQuestionnaire == true)
+                                                                                {
+                                                                                    <span><em style="color:green" class="fas fa-check"></em> </span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <em style="color:red" class="fas fa-times"></em> 
+                                                                                }
+                                                                            </td>
+                                                                            @*
+                                                                                <td class="text-right">
+                                                                                   <a style="color:#0366d6;cursor:pointer;" onclick="SetCustomer('@(item.QuestionnaireId)','@(item.ClientNmae)','@(item.SalesNmae)','@(Model.ProjectsViewList[i].ProjectName)','@(Model.ProjectsViewList[i].ProjectsId)')" data-target="#QuestionnaireModal" data-toggle="modal">Generate Report </a>
+                                                                                </td>
+                                                                            *@
+                                                                        </tr>
+                                                                    }
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="table-questionnair-1">
+                                                    <table class="table  table-hover table-striped table-checkable table-highlight-head Proposals-list" summary="Projects View-list">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    Sales Uploads
+                                                                </th>
+                                                                <th class="text-center pr-4">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.ProjectsViewList[i].UplodDocList.Count == 0)
+                                                            {
+                                                                <tr>
+                                                                    <td colspan="4" class="text-left pl-3">No data available</td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+                                                                @foreach (var item in Model.ProjectsViewList[i].UplodDocList)
+                                                                {
+                                                                    <tr>
+                                                                        <td class="text-left pl-3">
+                                                                            <em class="fa fa-circle  fa-xs"></em>    @Html.DisplayFor(modelItem => item.FileName)
+                                                                        </td>
+                                                                        <td class="text-center pr-4 pl-2 ">
+                                                                            <a href="@item.FileContents" download id="download"><em class="fa fa-download"></em> </a> |
+                                                                            <a asp-action="DeleteProposals" asp-controller="Questionnaire" asp-route-id="@item.UploadedDocumentsId" asp-route-customerId="@Model.CustomerId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><em class="far fa-trash-alt"></em> </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="table-questionnair-1">
+                                                    <table class="table  table-hover table-striped table-checkable table-highlight-head Proposals-list " summary="Projects View List">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    Client Uploads
+                                                                </th>
+                                                                <th class="text-center pr-4">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.ProjectsViewList[i].UplodAdditionalDocList.Count == 0)
+                                                            {
+                                                                <tr>
+                                                                    <td colspan="4" class="text-left pl-3">No data available</td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+                                                                @foreach (var item in Model.ProjectsViewList[i].UplodAdditionalDocList)
+                                                                {
+                                                                    <tr>
+                                                                        <td class="text-left pl-3">
+                                                                            <em class="fa fa-circle"></em>  @Html.DisplayFor(modelItem => item.FileName)
+                                                                        </td>
+                                                                        <td class="text-center pr-4 pl-2">
+                                                                            <a href="@item.FileContents" download id="download"><em class="fa fa-download"></em> </a> |
+                                                                            <a asp-action="DeleteFiles" asp-controller="Questionnaire" asp-route-id="@item.UploadedDocumentsId" asp-route-customerId="@Model.CustomerId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><em class="far fa-trash-alt"></em> </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <section class="mb-0 mt-0">
+                                                <div role="menu" class="">
+                                                    <div class="Accordion_text" id="headingOne_@i" data-toggle="collapse" data-target="#withoutSpacingAccordion_@i" aria-expanded="true" aria-controls="withoutSpacingAccordionOne">
+                                                        <div class="icons">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                                            </svg>
+                                                        </div>
+                                                        <span> @Model.ProjectsViewList[i].ProjectName </span>
+                                                    </div>
+                                                    @if (User.IsInRole("Sales"))
+                                                    {
+                                                        @if (Model.ProjectsViewList[i].CustomerRequestsId != Guid.Empty)
+                                                        {
+                                                            <div class="model_btn1">
+                                                                <a asp-controller="Home" asp-action="AcceptProposal" asp-route-CustomerId="@Model.ProjectsViewList[i].CustomerId" asp-route-ProjectId="@Model.ProjectsViewList[i].ProjectsId" class="btn btn-primary" onclick="return confirm('Are you sure you want to accept request?')">Accept Request</a>
+                                                            </div>
+                                                        }
+                                                        <div class="col-md-2 align-self-center" style="position: absolute; right: 30%; top: 0; bottom: 0; padding: 17px 0;"><label class="select-label">Select Status</label></div>
+                                                        <div class="col-md-2 align-self-center select-row" style="position: absolute; right: 20%; top: 0; bottom: 0; padding: 5px 0;">
+                                                            <select class="form-control status-select" style="height: 38px;padding: 5px;" asp-for="@Model.ProjectsViewList[i].RequestStatus" onchange="jsFunction(this.value ,'@(Model.ProjectsViewList[i].CustomerId)','@(Model.ProjectsViewList[i].ProjectsId)');"
+                                                                    asp-items="@(new SelectList(Model.StatusList, "Id", "Name"))">
+                                                                <option value="0">Please select</option>
+                                                            </select>
+                                                            @*
+                                                                <select class="form-control form-control" value="@Model.ProjectsViewList[i].RequestStatus" onchange="jsFunction(this.value ,'@(Model.ProjectsViewList[i].CustomerId)','@(Model.ProjectsViewList[i].ProjectsId)');">
+                                                                   <option value="Select">Select</option>
+                                                                   <option value="Request Awaiting Review">Request Awaiting Review</option>
+                                                                   <option value="Request Under Review">Request Under Review</option>
+                                                                   <option value="Scope Finalised/Pre Req’s required">Scope Finalised/Pre Req’s required</option>
+                                                                   <option value="Booking Confirmed">Booking Confirmed</option>
+                                                                </select>
+                                                            *@
+                                                        </div>
+                                                    }
+                                                    <div class="model_btn">
+                                                        <a class="btn btn-primary" onclick="SetCustomer(' ','@(Model.ProjectsViewList[i].ClientNmae)','@(Model.ProjectsViewList[i].SalesNmae)','@(Model.ProjectsViewList[i].ProjectName)','@(Model.ProjectsViewList[i].ProjectsId)')" data-target="#QuestionnaireModal" data-toggle="modal">Generate Proposal </a>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div id="withoutSpacingAccordion_@i" class="collapse" aria-labelledby="heading_@i" data-parent="#withoutSpacing">
+                                            <div class="upload_btn text-right">
+                                                <a class="btn btn-primary" onclick="SetUpload('@Model.ProjectsViewList[i].CustomerId ','@(Model.ProjectsViewList[i].ProjectsId)')" data-target="#UploadProposalModal" data-toggle="modal">Upload</a>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <div class="table-questionnair-1">
+                                                        <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Projects View List">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Projects Questionnairs
+                                                                    </th>
+                                                                    <th>Create Date</th>
+                                                                    <th class="text-center">QUESTIONNAIRE COMPLETED</th>
+                                                                    @*
+                                                                        <th class="text-right">Action</th>
+                                                                    *@
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (Model.ProjectsViewList[i].QDataList.Count == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td colspan="4" class="text-left pl-2">No data available</td>
+                                                                    </tr>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @foreach (var item in Model.ProjectsViewList[i].QDataList)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @if (item.IsQuestionnaire == true)
+                                                                                {
+                                                                                    <span><a asp-action="QuestionnaireResponseDetails" asp-controller="Questionnaire" asp-route-id="@item.CustomerId" asp-route-Projectid="@Model.ProjectsViewList[i].ProjectsId" asp-route-QuestionnaireId="@item.QuestionnaireId" asp-route-Page="CustomerQuestionnaires">@item.Nmae</a></span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    @Html.DisplayFor(modelItem => item.Nmae)
+                                                                                }
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                @if (item.IsQuestionnaire == true)
+                                                                                {
+                                                                                    <span><em style="color:green" class="fas fa-check"></em> </span>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <em style="color:red" class="fas fa-times"></em> 
+                                                                                }
+                                                                            </td>
+                                                                            @*
+                                                                                <td class="text-right">
+                                                                                   <a style="color:#0366d6;cursor:pointer;" onclick="SetCustomer('@(item.QuestionnaireId)','@(item.ClientNmae)','@(item.SalesNmae)','@(Model.ProjectsViewList[i].ProjectName)','@(Model.ProjectsViewList[i].ProjectsId)')" data-target="#QuestionnaireModal" data-toggle="modal">Generate Report </a>
+                                                                                </td>
+                                                                            *@
+                                                                        </tr>
+                                                                    }
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="table-questionnair-1">
+                                                        <table class="table  table-hover table-striped table-checkable table-highlight-head Proposals-list" summary="Projects View List">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Sales Uploads
+                                                                    </th>
+                                                                    <th class="text-center pr-4">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (Model.ProjectsViewList[i].UplodDocList.Count == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td colspan="4" class="text-left pl-3">No data available</td>
+                                                                    </tr>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @foreach (var item in Model.ProjectsViewList[i].UplodDocList)
+                                                                    {
+                                                                        <tr>
+                                                                            <td class="text-left pl-3">
+                                                                                <em class="fa fa-circle"></em>  @Html.DisplayFor(modelItem => item.FileName)
+                                                                            </td>
+                                                                            <td class="text-center pr-4 pl-2">
+                                                                                <a href="@item.FileContents" download id="download"><em class="fa fa-download"></em> </a> |
+                                                                                <a asp-action="DeleteProposals" asp-controller="Questionnaire" asp-route-id="@item.UploadedDocumentsId" asp-route-customerId="@Model.CustomerId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><em class="far fa-trash-alt"></em> </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="table-questionnair-1">
+                                                        <table class="table  table-hover table-striped table-checkable table-highlight-head Proposals-list" summary="Projects View List">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Client Uploads
+                                                                    </th>
+                                                                    <th class="text-center pr-4">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @if (Model.ProjectsViewList[i].UplodAdditionalDocList.Count == 0)
+                                                                {
+                                                                    <tr>
+                                                                        <td colspan="4" class="text-left pl-3">No data available</td>
+                                                                    </tr>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @foreach (var item in Model.ProjectsViewList[i].UplodAdditionalDocList)
+                                                                    {
+                                                                        <tr>
+                                                                            <td class="text-left pl-3">
+                                                                                <em class="fa fa-circle"></em>  @Html.DisplayFor(modelItem => item.FileName)
+                                                                            </td>
+                                                                            <td class="text-center pr-4 pl-2">
+                                                                                <a href="@item.FileContents" download id="download"><em class="fa fa-download"></em> </a> |
+                                                                                <a asp-action="DeleteFiles" asp-controller="Questionnaire" asp-route-id="@item.UploadedDocumentsId" asp-route-customerId="@Model.CustomerId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><em class="far fa-trash-alt"></em> </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }}
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="QuestionnaireModal" tabindex="-1" role="dialog" aria-labelledby="QuestionnaireModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create a Report</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body table-responsive">
+                <form asp-action="CustomerReportData">
+                    <input type="hidden" asp-for="@Model.CustomerId" />
+                    <input type="hidden" id="QuestionnaireId" asp-for="@Model.QuestionnaireId" />
+                    <input type="hidden" id="ProjectsIdid" asp-for="@Model.ProjectId" />
+                    <div class="form-group">
+                        <label asp-for="@Model.ProposalViewModel.DocumentReference" class="control-label">Project Name</label>
+                        <input id="DocumentReference" asp-for="@Model.ProposalViewModel.DocumentReference" class="form-control" readonly />
+                        <span asp-validation-for="@Model.ProposalViewModel.DocumentReference" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Client</label>
+                        <input id="clientName" class="form-control flatpickr flatpickr-input active calendar" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Account Manager</label>
+                        <input id="AccountManager" class="form-control flatpickr flatpickr-input active calendar" readonly />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="UploadProposalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="UploadProposalFile" asp-controller="Questionnaire" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.UploadedDocumentsData.CustomerId" />
+                <input type="hidden" asp-for="@Model.UploadedDocumentsData.ProjectId" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload Proposal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="custom-file-container" data-upload-id="myFirstImage2">
+                                <label>Upload (Single File) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                <label class="custom-file-container__custom-file">
+                                    <input asp-for="@Model.UploadedDocumentsData.MyImage" class="custom-file-container__custom-file__custom-file-input" accept="doc/*">
+                                    <span asp-validation-for="@Model.UploadedDocumentsData.MyImage" class="text-danger"></span>
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                                </label>
+                                <div class="custom-file-container__image-preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><em class="flaticon-cancel-12"></em>  Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*<script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+    <script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>*@
+<script src="~/lib/layout/plugins/file-upload/file-upload-with-preview.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+
+            var firstUpload = new FileUploadWithPreview('myFirstImage2');
+        });
+    </script>
+}
+<script>
+   function SetCustomer(Customer, ClientNmae, SalesNmae, ProjectName, ProjectsId) {
+       document.getElementById("QuestionnaireId").value = Customer;
+       document.getElementById("ProjectsIdid").value = ProjectsId;
+       document.getElementById("clientName").value = ClientNmae;
+       document.getElementById("AccountManager").value = SalesNmae;
+
+       if (ProjectName != null) {
+           document.getElementById("DocumentReference").value = ProjectName;
+       } else {
+           document.getElementById("DocumentReference").value = "CU220720DL – Cranfield Secure Environment’ (CSE)";
+       }
+   }
+
+   function SetUpload(Customer, ProjectsId) {
+       document.getElementById("UploadedDocumentsData_CustomerId").value = Customer;
+       document.getElementById("UploadedDocumentsData_ProjectId").value = ProjectsId;
+   }
+
+   function jsFunction(value, CustomerId, ProjectsId) {
+       if (value != "0") {
+           var data = { "Status": value, "CustomerId": CustomerId, "ProjectsId": ProjectsId };
+           $.ajax({
+               url: '@Url.Action("StatusUpdate", "Questionnaire")',
+               type: "post",
+               contentType: 'application/x-www-form-urlencoded',
+               data: data,
+               success: function (result) {
+                   if (result == "1") {
+                      // alert("Status Update succesfully !");
+                       const toast = swal.mixin({
+                           toast: true,
+                           position: 'top-end',
+                           showConfirmButton: false,
+                           timer: 3000,
+                           padding: '2em'
+                       });
+
+                       toast({
+                           type: 'success',
+                           title: 'Status Update succesfully !',
+                           padding: '2em',
+                       })
+                   } else {
+                       alert("Error in Update Status !");
+                   }
+               }
+           });
+       }
+
+   }
+</script>

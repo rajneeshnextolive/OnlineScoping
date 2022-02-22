@@ -1,0 +1,276 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmailConfirmOTPPage</title>
+    <link href="~/lib/layout/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+ <link  hhref="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+ <script  hhref="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
+        <style>
+            body {
+                background-image: linear-gradient(to right, rgba(109, 179, 242, .6), rgba(109, 179, 242, .6)), url(/lib/layout/assets/img/bg-8.jpg) !important;
+                background-size: cover !important;
+                background-position: center, right bottom !important;
+                background-repeat: no-repeat, no-repeat !important;
+                min-height: 100vh;
+            }
+
+            .container {
+                height: 100vh;
+            }
+            .card {
+                width: 400px;
+                border: none;
+                height: auto;
+                box-shadow: 0px 5px 20px 0px #d2dae3;
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20px !important;
+            }
+
+                .card h6 {
+                    color: #1670b7;
+                    font-size: 20px
+                }
+
+            .inputs input {
+                width: 40px;
+                height: 40px
+            }
+
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                margin: 0
+            }
+
+            .card-2 {
+                background-color: #fff;
+                padding: 10px;
+                width: 350px;
+                height: 100px;
+                bottom: -56px;
+                left: 26px;
+                position: absolute;
+                border-radius: 5px;
+            }
+
+                .card-2 .content {
+                    margin-top: 50px
+                }
+
+                    .card-2 .content a {
+                        color: #1670b7
+                    }
+
+            .form-control:focus {
+                box-shadow: none;
+                border: 2px solid #1670b7
+            }
+
+            .validate {
+                border-radius: 20px;
+                height: 40px;
+                background-color: #1670b7;
+                border: 1px solid #1670b7;
+                width: 140px
+            }
+            .Resend {
+                border-radius: 10px;
+                height: 30px;
+                background-color: #1670b7;
+                border: 1px solid #1670b7;
+                padding: 5px;
+                line-height: normal;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                padding-top: 3px;
+                padding-left: 10px;
+                padding-right: 10px;
+                margin-left: 10px;
+            }
+        </style>
+</head>
+<body>
+    <input type="hidden" value="@ViewBag.Id" name="id" id="hddId">
+    <div class="container height-100 d-flex justify-content-center align-items-center">
+        <div class="position-relative">
+            <div class="card p-2 text-center">
+                <h3 id="msg" style="color: green; font-family: 'Quicksand', sans-serif"></h3>
+                <h6>Please enter the one time password <br> to verify your account</h6>
+                <div> <span>A code has been sent to</span> <small>Your Email </small> </div>
+                <div>Time left  :  <span id="timer" style="font-family: fantasy;"></span></div>
+                <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" />
+                </div>
+                <div class="mt-4"> <button class="btn btn-primary px-4 validate" id="btnSubmit">Submit OTP</button> </div>
+                <div class="content d-flex justify-content-center align-items-center" id="resend" style="margin-top: 10px;">
+                    <span>Didn't get the code </span>
+                    <button class="text-decoration-none ms-3 btn btn-success Resend" id="btnresend" >Resend</button>
+                </div>
+            </div>
+            <!--<div class="card-2">-->
+                @*<div class="content d-flex justify-content-center align-items-center">
+                    <span>Didn't get the code </span>
+                    <button class="text-decoration-none ms-3 btn btn-success Resend" id="btnresend" style="display:none">Resend</button>
+                </div>*@
+            <!--</div>-->
+        </div>
+    </div>
+
+
+
+
+    @*<h1>Email Confirm OTP</h1>
+    <div>Time left  :  <span id="timer" style="font-family: fantasy; padding: 5px"></span></div>  <br />*@
+    @*<button id="btnresend" style="display:none">Resend  OTP</button>   <br />*@
+    @*<form asp-action="EmailConfirmOTPPage" method="post">
+        OTP  <input id="otp" name="OTP" type="text" class="form-control" placeholder="OTP">   <br />   <br />
+        <input type="hidden" value="@ViewBag.Id" name="id" id="hddId">
+        <button type="submit" id="submit" class="btn btn-primary" value="">Submit OTP</button>
+    </form>*@
+    @*<div id="Status">
+        <p id="msg" style="color:green"></p>
+    </div>*@
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        document.getElementById('timer').innerHTML = 01 + ":" + 00;
+        startTimer();
+        function startTimer() {
+            var presentTime = document.getElementById('timer').innerHTML;
+            var timeArray = presentTime.split(/[:]+/);
+            var m = timeArray[0];
+            var s = checkSecond((timeArray[1] - 1));
+            if (s == 59) { m = m - 1 }
+            if (m < 0) {
+                return
+            }
+            document.getElementById('timer').innerHTML =
+                m + ":" + s;
+            console.log(m)
+            if (m == 0 && s == 0) {
+                document.getElementById('btnSubmit').style.display = 'none';
+
+            }
+            setTimeout(startTimer, 1000);
+        }
+        function checkSecond(sec) {
+            if (sec < 10 && sec >= 0) { sec = "0" + sec }; // add zero in front of numbers < 10
+            if (sec < 0) { sec = "59" };
+            return sec;
+        }
+        function msg() {
+            setTimeout(function () {
+                $('#msg').fadeOut('slow');
+            }, 10000); // <-- time in milliseconds
+        }
+        $("#btnresend").click(function () {
+            document.getElementById('timer').innerHTML = 01 + ":" + 00;
+            startTimer();
+            document.getElementById('btnSubmit').style.display = 'block';
+            var id = document.getElementById('hddId').value;
+            $.ajax({
+                type: 'POST',
+                url: '/Home/ResendOtp?id=' + id + '',
+                data: '{ }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.message == "success") {
+                        $('#msg').text('OTP Resend ');
+                        msg();
+                    }
+                    else {
+                        $('#msg').text('OTP Not Send  ');
+                        msg();
+                    }
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            })
+        });
+
+
+        $("#btnSubmit").click(function () {
+            //document.getElementById('btnsubmit').style.display = 'block';
+            //document.getElementById('timer').innerHTML = 01 + ":" + 00;
+          //  startTimer();
+            //document.getElementById('btnresend').style.display = 'none';
+            var n1 = $('#first').val();
+            var n2 = $('#second').val();
+            var n3 = $('#third').val();
+            var n4 = $('#fourth').val();
+         //   alert(n1 + ',' + n2 + ',' + n3 + ',' + n4);
+            var otp = n1 + n2 + n3 + n4;
+         //   alert(otp);
+            var id = document.getElementById('hddId').value;
+            $.ajax({
+                type: 'POST',
+                url: '/Home/EmailConfirmOTPPage?id=' + id + '&otp='+otp+'',
+                data: '{ }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.message == 'success') {
+                        window.location.href = "Index";
+                    }
+                    else {
+                        $('#msg').text('Invalid OTP');
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        });
+
+
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            function OTPInput() {
+                const inputs = document.querySelectorAll('#otp > *[id]');
+                for (let i = 0; i < inputs.length; i++) {
+                    inputs[i].addEventListener('keydown', function (event) {
+                        if (event.key === "Backspace") {
+                            inputs[i].value = '';
+                            if (i !== 0) inputs[i - 1].focus();
+                        }
+                        else {
+                            if (i === inputs.length - 1 && inputs[i].value !== '') { return true; }
+                            else if (event.keyCode > 47 && event.keyCode < 58) {
+                                inputs[i].value = event.key;
+                                if (i !== inputs.length - 1) inputs[i + 1].focus(); event.preventDefault();
+                            }
+                            else if (event.keyCode > 64 && event.keyCode < 91) {
+                                inputs[i].value = String.fromCharCode(event.keyCode);
+                                if (i !== inputs.length - 1) inputs[i + 1].focus(); event.preventDefault();
+                            }
+                        }
+                    });
+                }
+            }
+            OTPInput();
+        });
+    </script>
+
+</body>
+</html>

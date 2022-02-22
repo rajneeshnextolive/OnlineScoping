@@ -1,0 +1,1228 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+
+@using Microsoft.AspNetCore.Identity
+@using OnlineScoping.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "QuestionnaireResponseDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/css/custom/childquestion.css" rel="stylesheet" />
+<style>
+    .qus-align b {
+        display: table-cell
+    }
+
+    .qus-align span {
+        display: table-cell
+    }
+
+    .picker-2 input {
+        width: 100%;
+    }
+
+    .pr-6 {
+        padding-right: 5rem !important;
+    }
+
+    .custom-control.ml-10.col-md-10.ml-5 {
+        padding-left: 80px;
+    }
+    .testpa {
+        padding-left: 85px;
+    }
+</style>
+
+<style>
+    .n-chk {
+        margin-left: 63px;
+        color: #000;
+    }
+
+        .n-chk label {
+            color: #000 !important;
+        }
+
+    .qus-align b {
+        display: table-cell
+    }
+
+    .qus-align span {
+        display: table-cell
+    }
+
+    .no-padding {
+        padding: 0;
+    }
+
+    .ml-100 {
+        margin-left: 90px;
+    }
+
+    /*//table*/
+    .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+        position: relative;
+    }
+
+    .table {
+        display: table;
+        width: 100%;
+    }
+
+    .tableRow {
+        display: table-row;
+    }
+
+    .tableHead {
+        display: table-row;
+        font-weight: bold;
+    }
+
+    .tableCell {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell1 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell2 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+        text-align: center;
+    }
+
+    .tableRow .tableCell:first-child {
+        cursor: auto;
+    }
+
+    .del-Check {
+        height: 20px !important;
+        width: 20px !important;
+    }
+
+    .card.security-scoping-card .custom-control.custom-radio {
+        padding-left: 70px;
+    }
+
+    .h3, h3 {
+        font-size: 1.40rem;
+        font-weight: 400;
+    }
+    .custom-control.custom-radio.mb-3.ml-10.col-md-10.ml-5 {
+        padding-left: 100px;
+    }
+</style>
+
+<div class="page-top col-md-12">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="pt-3">
+                @if (Model.QuestionnaireData.Name.Length > 15)
+                {
+                    @Model.QuestionnaireData.Name.Substring(0, 15).Insert(15, "...")
+
+                }
+                else
+                {
+                    @Model.QuestionnaireData.Name
+
+                }
+            </h3>
+        </div>
+        <div class="col-md-6">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    }
+
+                    @if (@Model.Pages == "EditQuestionnaires")
+                    {
+
+                        <li class="breadcrumb-item"><a asp-action="EditQuestionnaires">Questionnaires</a></li>
+                    }
+                    else if (@Model.Pages == "CustomerQuestionnaires")
+                    {
+                        <li class="breadcrumb-item"><a href="/Customers/Index">Customers</a></li>
+                        <li class="breadcrumb-item"><a asp-action="CustomerQuestionnair" asp-route-id="@Model.CustomerId">Questionnaires</a></li>
+                    }
+                    else if (@Model.Pages == "HomeIndex")
+                    {
+
+
+                    }
+                    else
+                    {
+                        <li class="breadcrumb-item"><a href="/Customers/Index">Customers</a></li>
+                        <li class="breadcrumb-item"><a asp-action="CustomerQuestionnair" asp-route-id="@Model.CustomerId">Questionnaires</a></li>
+                    }
+
+
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Questionnaire Response</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="card component-card_1 security-scoping-card">
+    @if (User.IsInRole("Sales") || User.IsInRole("Admin"))
+    {
+        <div class="form-group" id="finish">
+            <input type="submit" value="Export to Word" class="btn btn-primary" onclick="exportToWord()" style="margin-left: 20px; margin-top: 15px;" />
+        </div>}
+
+    <div class="card-body" id="RepordToWord">
+
+        @*<h5 class="card-title mb-5 mt-3">Security Scoping Questionnaire Response</h5>*@
+        <h1 class="card-title mb-5 mt-3" style="font-size: 35px;color: #0460af; text-align: center; font-weight: 700; font-family: Calibri;"> @Model.QuestionnaireData.Name</h1>
+        <h5 class="mb-4 ml-5">
+        </h5>
+
+        <div class="w-100 carousel-inner" role="listbox">
+            @if (Model.Questions.Count == 0)
+            {
+                <input type="hidden" asp-for="@Model.SectionId" />
+                <h5 class="mb-4 ml-5 text-left mr-5">Thank You</h5>
+            }
+            else
+            {
+                if (Model.QuestionnaireId == new Guid("0A2DFC0B-1F17-447C-A7B8-067F9980325A"))
+                {
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 ml-auto mr-auto">
+                                <dl class="row">
+                                    <dt class="col-sm-5">
+                                        Project Name
+                                    </dt>
+                                    <dd class="col-sm-7 p-0">
+                                        @if (@Model.ProjectsViewdata != null)
+                                        {
+                                            <input width="100" value="@Model.ProjectsViewdata.ProjectName" class="form-control" type="text" disabled>
+
+                                        }
+                                        else
+                                        {
+                                            <input width="100" value="" class="form-control" type="text" disabled>
+
+                                        }
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-5 ml-auto mr-auto">
+                                <dl class="row">
+                                    <dt class="col-sm-6">
+                                        Customer Name
+                                    </dt>
+                                    <dd class="col-sm-6 p-0">
+                                        @if (@Model.ProjectsViewdata != null)
+                                        {
+                                            <input width="100" value="@Model.ProjectsViewdata.CustomerName" class="form-control" type="text" disabled>
+
+                                        }
+                                        else
+                                        {
+                                            <input width="100" value="" class="form-control" type="text" disabled>
+
+                                        }
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+
+                    <h4 class="mb-4 ml-5 text-left mr-5" style="font-size:26px;color:#0b78b8 ; margin-bottom: 15px; ">Details of PCI ASV assessment</h4>
+
+
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style=" text-align: left; color: black;font-size: 1.25rem;"> 1.	Please list all external-facing IP addresses, subdomains and domains that are part of the cardholder data environment (CDE), as well as any externally facing system component that may provide access to the CDE. Please include all URLs as all web application will need to be individually tested</p>
+                    <br />
+
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">  The PCI DSS security requirements apply to all system components included in or connected to the cardholder data environment (CDE). The CDE is comprised of people, processes, and technologies that store, process, or transmit cardholder data or sensitive authentication data. “System components” include network devices, servers, computing devices, and applications. Examples of system components include but are not limited to the following:</p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;"> •Systems that provide security services (for example, authentication servers) facilitate segmentation (for example, internal firewalls) or may impact the security of (for example, name-resolution or web-redirection servers) the CDE.</p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Virtualization components such as virtual machines, virtual switches/routers, virtual appliances, virtual applications/desktops, and hypervisors.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Network components including but not limited to firewalls, switches, routers, wireless access points, network appliances, and other security appliances.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Server types including but not limited to web, application, database, authentication, mail, proxy, Network Time Protocol (NTP), and Domain Name System (DNS).
+                    </p> <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Applications including all purchased and custom applications, including internal and external (for example, Internet) applications.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Any other component or device located within or connected to the CDE.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        *Please note that we will need third-party permission if the servers are not owned by the customer.
+                    </p>
+
+                    <div class="panel-body">
+                        <div id="RemoteVulnerabilityScan">
+                            <div id="RVSTable" class="table mb-4 ml-5 text-left mr-5" style="border: 1px solid #2a2a2a; border-image: none; width: 90%; border-collapse:collapse">
+                                <div class="tableHead">
+                                    <div class="tableCell">
+                                        IP Address (or range) v4 and v6 addresses
+                                    </div>
+                                    <div class="tableCell">
+                                        Fully Qualified Domain Name (FQDN) *where appropriate
+                                    </div>
+                                    <div class="tableCell">
+                                        Nature & Description of System (eg, firewall, website, cms,)
+                                    </div>
+                                    <div class="tableCell">
+                                        System Ownership and Hosting (eg internal system, dedicated external hosted, dedicated cloud system, shared platform)
+                                    </div>
+                                </div>
+
+                                @for (int g = 0; g < Model.PCIQuestionnaireList.Count; g++)
+                                {
+                                    <div class="tableRow">
+                                        <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].IPAddress</div>
+                                        <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].FQDN</div>
+                                        <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].Description</div>
+                                        <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].Ownership</div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @for (int i = 0; i < Model.Questions.Count; i++)
+                    {
+                        <div class="row">
+                            <div class="form-group col-md-12">
+
+                                @if (Model.Questions[i].QuestionData != null)
+                                {
+
+                                    @if (@Model.Questions[i].QuestionData.QuestionNumber == "3")
+                                    {
+                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                            3.Do you deploy any active protection systems that dynamically modify their behaviour? Examples include, but are not limited to:
+                                        </p>
+
+                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                            •	Intrusion Prevention System(IPS) that drops malicious packets based on previous behaviour from originating IP addresses.
+                                        </p>
+                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                            •	eb Application Firewall(WAF) that block traffic based on the number of requests.
+                                        </p>
+
+                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                            •	Firewall that blocks IP address based on activities such as port scanning.
+                                        </p>
+                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                            •	Next generation firewalls(NGF) that block IP address ranges based on previous network traffic patterns.
+                                        </p>
+                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                            •	Quality of Service(QoS) devices that limit certain traffic based on traffic volume anomalies(for example, blocking DNS traffic because DNS traffic exceeded a defined threshold).
+                                        </p>
+                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                            •	Spam filters that blacklist a sending IP address based on certain previous SMTP commands originating from that address
+                                        </p>
+                                        <h5 class="mb-4 ml-4 text-left mr-5 col-md-10"> @Model.Questions[i].QuestionData.QuestionText</h5>
+
+                                    }
+                                    else if (Model.Questions[i].QuestionId == new Guid("DD1327D2-6CC5-41D8-8C22-9C69FC582B4F"))
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        <h5 class="mb-4 ml-4 text-left mr-5 col-md-10">@Model.Questions[i].QuestionData.QuestionNumber . @Model.Questions[i].QuestionData.QuestionText</h5>
+
+                                    }
+
+                                }
+
+
+                                @if (Model.Questions[i].OptionType == 0)
+                                {
+                                    @for (var k = 0; k < Model.Questions[i].OptionsList.Count; k++)
+                                    {
+                                        @if (Model.Questions[i].ResponseOptionId == Model.Questions[i].OptionsList[k].OptionId)
+                                        {
+                                            <div class="custom-control custom-radio mb-3 ml-10 col-md-10 ml-5">
+                                                <input type="radio" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" checked disabled>
+                                                <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="custom-control custom-radio mb-3 ml-10 col-md-10 ml-5">
+                                                <input type="radio" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" disabled>
+                                                <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                            </div>
+                                        }
+
+                                    }
+
+                                }
+                                else if (Model.Questions[i].OptionType == 2)
+                                {
+                                    <div class="custom-control  col-md-10 ml-3">
+                                        <input width="100" value="@Model.Questions[i].Responsetext" class="form-control" type="text" disabled>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    if (Model.QuestionnaireId == new Guid("2d61b607-2e62-4149-9721-778926e1fced") || Model.QuestionnaireId == new Guid("36afd4f3-1f4d-4723-85a1-54858f39783c"))
+                    {
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5 ml-auto mr-auto">
+                                    <dl class="row">
+                                        <dt class="col-sm-5">
+                                            Project Name
+                                        </dt>
+                                        <dd class="col-sm-7 p-0">
+                                            @if (@Model.ProjectsViewdata != null)
+                                            {
+                                                <input value="@Model.ProjectsViewdata.ProjectName" class="form-control" type="text" width="100" disabled>
+
+                                            }
+                                            else
+                                            {
+                                                <input value="" class="form-control" type="text" width="100" disabled>
+
+                                            }
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-md-5 ml-auto mr-auto">
+                                    <dl class="row">
+                                        <dt class="col-sm-6">
+                                            Name of Application
+                                        </dt>
+                                        <dd class="col-sm-6 p-0">
+                                            @if (@Model.ProjectsViewdata != null)
+                                            {
+                                                <input value="@Model.ProjectsViewdata.ApplicationName" class="form-control" type="text" width="100" disabled>
+
+                                            }
+                                            else
+                                            {
+                                                <input value="" class="form-control" type="text" width="100" disabled>
+
+                                            }
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    }
+                    else
+                    {
+                        <div class="container">
+                            <div class="col-md-10 ml-auto mr-auto ">
+                                <dl class="row">
+                                    <dt class="col-sm-4">
+                                        <h3 class="text-start m-0 mt-2" style=" font-size: 20px; font-weight: 400;"> Project Name</h3>
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @if (@Model.ProjectsViewdata != null)
+                                        {
+                                            <input width="100" value="@Model.ProjectsViewdata.ProjectName" class="form-control" type="text" disabled>
+
+                                        }
+                                        else
+                                        {
+                                            <input width="100" value="" class="form-control" type="text" disabled>
+
+                                        }
+                                    </dd>
+                                </dl>
+                            </div>
+
+                        </div>
+                        <hr />
+                    }
+
+
+
+
+                    var a = 0;
+                    var Qid1 = Guid.Empty;
+                    @for (int i = 0; i < Model.Questions.Count; i++)
+                    {
+
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                @if (Model.Questions[i].QuestionData != null)
+                                {
+                                    @if (Model.Questions[i].QuestionData.QuestionId == new Guid("479B47D8-743E-4BF5-B1CE-3D8AAE294A46"))
+                                    {
+                                        if (a == 0)
+                                        {
+                                            <h3 style=" font-size: 20px; font-weight: 400;" class="mb-4 ml-5 text-left mr-5 col-md-10">@Model.Questions[i].QuestionData.QuestionNumber . @Model.Questions[i].QuestionData.QuestionText</h3>
+                                        }
+                                        a++;
+                                    }
+                                    else if (Model.Questions[i].QuestionData.QuestionId == new Guid("d28633f6-49ae-4660-89d8-83976e72ab62"))
+                                    {
+
+                                        if (a == 0)
+                                        {
+                                            <h3 style=" font-size: 20px; font-weight: 400;" class="mb-4 ml-5 text-left mr-5 col-md-10">@Model.Questions[i].QuestionData.QuestionNumber . @Model.Questions[i].QuestionData.QuestionText</h3>
+                                        }
+                                        a++;
+                                    }
+                                    else
+                                    {
+                                        @if (Model.Questions[i].QuestionData.QuestionNumber == "-" || Model.Questions[i].QuestionData.QuestionNumber == "")
+                                        {
+                                            <h3 style=" font-size: 20px; font-weight: 400;" class="mb-4 ml-5 text-left mr-5 col-md-10">@Model.Questions[i].QuestionData.QuestionNumber  @Model.Questions[i].QuestionData.QuestionText</h3>
+
+                                        }
+                                        else
+                                        {
+                                            @if (Model.Questions[i].OptionType == 4)
+                                            {
+
+
+                                                if (Qid1 != Model.Questions[i].QuestionData.QuestionId)
+                                                {
+                                                    <h3 style=" font-size: 20px; font-weight: 400;" class="mb-4 ml-5 text-left mr-5 col-md-10">@Model.Questions[i].QuestionData.QuestionNumber.@Model.Questions[i].QuestionData.QuestionText</h3>
+                                                }
+                                                else
+                                                {
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Qid1 = Guid.Empty;
+                                                <h3 style=" font-size: 20px; font-weight: 400;" class="mb-4 ml-5 text-left mr-5 col-md-10"><span>@Model.Questions[i].QuestionData.QuestionNumber.</span><span>@Model.Questions[i].QuestionData.QuestionText</span></h3>
+                                            }
+
+
+
+                                        }
+
+                                        @*<h5 class="mb-4 ml-5 text-left mr-5 col-md-10">@Model.Questions[i].QuestionData.QuestionNumber . @Model.Questions[i].QuestionData.QuestionText</h5>*@
+
+                                    }
+
+
+
+                                    @if (Model.Questions[i].OptionType == 0)
+                                    {
+                                        @for (var k = 0; k < Model.Questions[i].OptionsList.Count; k++)
+                                        {
+                                            @if (Model.Questions[i].ResponseOptionId == Model.Questions[i].OptionsList[k].OptionId)
+                                            {
+                                                <div class="custom-control custom-radio mb-3 ml-10 col-md-10 ml-5">
+                                                    <input type="radio" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" checked disabled>
+                                                    <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="custom-control custom-radio mb-3 ml-10 col-md-10 ml-5">
+                                                    <input type="radio" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" disabled>
+                                                    <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                </div>
+                                            }
+
+                                        }
+
+                                    }
+                                    else if (Model.Questions[i].OptionType == 2)
+                                    {
+                                        <div class="custom-control picker-2 col-md-10 ml-5" style="padding-left: 85px;">
+                                            <input value="@Model.Questions[i].Responsetext" class="form-control" type="text" width="100" disabled>
+                                        </div>
+                                    }
+                                    else if (Model.Questions[i].OptionType == 1)
+                                    {
+                                        <div class="custom-control picker-2 col-md-10 ml-5" style="padding-left: 85px;">
+                                            <input value="@Model.Questions[i].ResponseDateTime" class="form-control flatpickr flatpickr-input active calendar" type="text" width="100" disabled>
+                                        </div>
+                                    }
+                                    else if (Model.Questions[i].OptionType == 4)
+                                    {
+                                        <table>
+                                            <tr>
+
+
+                                                @for (var k = 0; k < Model.Questions[i].OptionsList.Count; k++)
+                                                {
+                                                    Qid1 = Model.Questions[i].QuestionId;
+                                                    if (Model.Questions[i].ResponseOptionId == Model.Questions[i].OptionsList[k].OptionId)
+                                                    {
+                                                        if (Model.Questions[i].Chk == true)
+                                                        {
+                                                            <td class="testpa">
+                                                                <input type="checkbox" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="" checked disabled>
+                                                            </td>
+                                                            <td>
+                                                                <label style="margin: 0px 5px;" class="" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                            </td>
+                                                            @*<div class="custom-control ml-10 col-md-10 ml-5">
+                                                                    <input type="checkbox" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="" checked disabled>
+
+                                                                    <label class="" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                                </div>*@
+                                                        }
+                                                        else
+                                                        {
+                                                            <td class="testpa" >
+                                                                <input type="checkbox" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="" disabled>
+                                                            </td>
+                                                            <td>
+                                                                <label style="margin: 0px 5px;" class="" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                            </td>
+                                                            @*<div class="custom-control ml-10 col-md-10 ml-5">
+                                                                    <input type="checkbox" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="" disabled>
+
+                                                                    <label class="" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                                </div>*@
+                                                        }
+                                                    }
+
+
+                                                }
+                                            </tr>
+                                        </table>
+                                    }
+
+                                }
+
+
+
+
+
+
+                                @if (Model.Questions[i].ChildQuestionsList.Count > 0)
+                                {
+                                    var Qid = Guid.Empty;
+                                    @for (int j = 0; j < Model.Questions[i].ChildQuestionsList.Count; j++)
+                                    {
+                                        if (@Model.Questions[i].ChildQuestionsList[j].QuestionData != null)
+                                        {
+                                            if (@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber == "1.3")
+                                            {
+
+                                                <div id="13">
+                                                    <div class="col-md-12 qus-align">
+                                                        <div class="form-row">
+                                                            <div class="col-md-6"> <h4 style="font-weight: 300; font-size: 18px;" class="mb-4 ml-5 mr-5 text-left"><span>@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber</span> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionText</span></h4></div>
+                                                            @if (Model.Questions[i].ChildQuestionsList[j].OptionType == 0)
+                                                            {
+
+                                                                @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                                {
+                                                                    @if (Model.Questions[i].ChildQuestionsList[j].ResponseOptionId == Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId)
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" disabled>
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 1)
+                                                            {
+                                                                <div class="custom-control picker-2 col-md-5 mr-5">
+                                                                    <input value="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" class="form-control flatpickr flatpickr-input active calendar" type="text" width="100" disabled>
+
+                                                                </div>
+
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 2)
+                                                            {
+                                                                <div class="custom-control picker-2 col-md-5 mr-5">
+                                                                    <input value="@Model.Questions[i].ChildQuestionsList[j].Responsetext" class="form-control flatpickr flatpickr-input active calendar" type="text" width="100" disabled>
+
+                                                                </div>
+
+                                                            }
+
+                                                        </div>
+                                                        @*<hr />*@
+                                                    </div>
+                                                </div>
+
+                                            }
+
+                                            else if (@Model.Questions[i].ChildQuestionsList[j].QuestionNumber == "1.5a")
+                                            {
+                                                <div id="15a" style="padding-top: 15px; width: 100%">
+
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].SectionId" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ChildQuestionId" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionText" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].UserName" value="@User.Identity.Name" />
+                                                    <div class="col-md-12 qus-align">
+                                                        <div class="form-row">
+                                                            <div class="col-md-6"> <h4 style="font-weight: 300; font-size: 18px;" class="mb-4 ml-5 mr-5 text-left">@Model.Questions[i].ChildQuestionsList[j].QuestionNumber <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionText</span></h4></div>
+                                                            @if (Model.Questions[i].ChildQuestionsList[j].QuestionType == QuestionType.multipleResponseType)
+                                                            {
+
+                                                                @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                                {
+                                                                    if (l == 0)
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input">
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].QuestionType == QuestionType.DateTimeType)
+                                                            {
+                                                                <div class="custom-control picker-1 col-md-6">
+                                                                    <input width="100" class="form-control flatpickr flatpickr-input active calendar" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" type="text">
+
+                                                                </div>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="mb-3 ml-8 mr-5 col-md-4">
+                                                                    <input width="100" type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Responsetext" class="form-control">
+                                                                    <label class="control-label" for="@Model.Questions[i].ChildQuestionsList[j].Responsetext"></label>
+                                                                </div>
+                                                            }
+
+                                                        </div>
+                                                        @*<hr />*@
+                                                    </div>
+                                                </div>
+
+                                            }
+                                            else if (@Model.Questions[i].ChildQuestionsList[j].QuestionNumber == "2.1a")
+                                            {
+                                                <div id="21a" style="padding-top: 15px; width: 100%">
+
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].SectionId" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ChildQuestionId" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionText" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].UserName" value="@User.Identity.Name" />
+                                                    <div class="col-md-12 qus-align">
+                                                        <div class="form-row">
+                                                            <div class="col-md-6"> <h4 style="font-weight: 300; font-size: 18px;" class="mb-4 ml-5 mr-5 text-left">@Model.Questions[i].ChildQuestionsList[j].QuestionNumber<span> . @Model.Questions[i].ChildQuestionsList[j].QuestionText</span></h4></div>
+                                                            @if (Model.Questions[i].ChildQuestionsList[j].QuestionType == QuestionType.multipleResponseType)
+                                                            {
+
+                                                                @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                                {
+                                                                    if (l == 0)
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input">
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].QuestionType == QuestionType.DateTimeType)
+                                                            {
+                                                                <div class="custom-control picker-1 col-md-6">
+                                                                    <input width="100" class="form-control flatpickr flatpickr-input active calendar" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" type="text">
+
+                                                                </div>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="mb-3 ml-8 mr-5 col-md-4">
+                                                                    <input width="100" type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Responsetext" class="form-control">
+                                                                    <label class="control-label" for="@Model.Questions[i].ChildQuestionsList[j].Responsetext"></label>
+                                                                </div>
+                                                            }
+
+                                                        </div>
+                                                        @*<hr />*@
+                                                    </div>
+                                                </div>
+
+                                            }
+                                            else if (@Model.Questions[i].ChildQuestionsList[j].QuestionNumber == "2.1b")
+                                            {
+                                                <div id="21b" style="padding-top:15px;width:100% ">
+
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].SectionId" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ChildQuestionId" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionText" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                    <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].UserName" value="@User.Identity.Name" />
+                                                    <div class="col-md-12 qus-align">
+                                                        <div class="form-row">
+                                                            <div class="col-md-6"> <h4 style="font-weight: 300; font-size: 18px;" class="mb-4 ml-5 mr-5 text-left">@Model.Questions[i].ChildQuestionsList[j].QuestionNumber <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionText</span></h4></div>
+                                                            @if (Model.Questions[i].ChildQuestionsList[j].QuestionType == QuestionType.multipleResponseType)
+                                                            {
+
+                                                                @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                                {
+                                                                    if (l == 0)
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input">
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].QuestionType == QuestionType.DateTimeType)
+                                                            {
+                                                                <div class="custom-control picker-1 col-md-6">
+                                                                    <input width="100" class="form-control flatpickr flatpickr-input active calendar" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" type="text">
+
+                                                                </div>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="mb-3 ml-8 mr-5 col-md-4">
+                                                                    <input width="100" type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Responsetext" class="form-control">
+                                                                    <label class="control-label" for="@Model.Questions[i].ChildQuestionsList[j].Responsetext"></label>
+                                                                </div>
+                                                            }
+
+                                                        </div>
+                                                        @*<hr />*@
+                                                    </div>
+                                                </div>
+
+                                            }
+
+                                            else
+                                            {
+
+                                                <div id="@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber" style="padding-top:15px;">
+                                                    <div class="col-md-12 qus-align">
+                                                        <div class="form-row">
+                                                            @if (Model.Questions[i].ChildQuestionsList[j].OptionType == 4)
+                                                            {
+                                                                if (Qid != Model.Questions[i].ChildQuestionsList[j].QuestionData.ChildQuestionId)
+                                                                {
+                                                   
+                                                                        <div class="col-md-12"> <h4 style="font-weight: 300; font-size: 18px;" class="mb-4 ml-5 mr-5 text-left"><span>@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber</span> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionText</span></h4></div>                                                                    
+                                                                }
+                                                                else
+                                                                {
+
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                Qid = Guid.Empty;
+                                                                <div class="col-md-6"> <h4 style="font-weight: 300; font-size: 18px;" class="mb-4 ml-5 mr-5 text-left"><span>@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber</span> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionText</span></h4></div>
+                                                            }
+
+                                                            @if (Model.Questions[i].ChildQuestionsList[j].OptionType == 0)
+                                                            {
+
+                                                                @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                                {
+                                                                    @if (Model.Questions[i].ChildQuestionsList[j].ResponseOptionId == Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId)
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                            <input type="radio" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" disabled>
+                                                                            <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 1)
+                                                            {
+                                                                <div class="custom-control picker-2 col-md-6">
+                                                                    <input width="100" value="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" class="form-control flatpickr flatpickr-input active calendar" type="text" disabled>
+
+                                                                </div>
+
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 2)
+                                                            {
+                                                                <div class="custom-control picker-2 col-md-5 pr-6">
+                                                                    <input width="100" value="@Model.Questions[i].ChildQuestionsList[j].Responsetext" class="form-control flatpickr flatpickr-input active calendar" type="text" disabled>
+
+                                                                </div>
+
+                                                            }
+                                                            else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 4)
+                                                            {
+
+
+                                                                @for (var k = 0; k < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; k++)
+                                                                {
+                                                                    Qid = Model.Questions[i].ChildQuestionsList[j].ChildQuestionId;
+                                                                    if (Model.Questions[i].ChildQuestionsList[j].ResponseOptionId == Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId)
+                                                                    {
+                                                                        if (Model.Questions[i].ChildQuestionsList[j].Chk == true)
+                                                                        {
+                                                                            <table>
+                                                                                <tr>
+
+                                                                                    <td class="testpa">
+                                                                                        <input type="checkbox" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" class="" checked disabled>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <label class="" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionText</label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+
+                                                                            @*<div class="custom-control ml-10 col-md-10 ml-5">
+                                                                                    <input type="checkbox" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" class="" checked disabled>
+
+                                                                                    <label class="" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionText</label>
+                                                                                </div>*@
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td class="testpa">
+                                                                                        <input type="checkbox" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" class="" disabled>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <label class="" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionText</label>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                            @*<div class="custom-control ml-10 col-md-10 ml-5">
+                                                                                    <input type="checkbox" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId" class="" disabled>
+
+                                                                                    <label class="" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionText</label>
+                                                                                </div>*@
+                                                                        }
+                                                                    }
+
+
+                                                                }
+
+
+                                                            }
+
+
+                                                        </div>
+                                                        @*<hr />*@
+                                                    </div>
+                                                </div>
+
+                                            }
+                                        }
+
+
+
+                                    }
+
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                    }
+
+
+
+                }
+
+
+                @*@if (Model.Methodology_Deliverablesdata != null)
+                    {
+                        <div>
+                            <div class="col-md-12 qus-align">
+                                <div class="form-row ml-2">
+
+                                    <div class="col-md-7"> <h5 class="mb-4 ml-5 mr-5 text-left"><span>1. Scope Type Methodolgy </span></h5></div>
+                                    <div class="mb-3 ml-8 mr-5 col-md-4">
+                                        <input type="text" value="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-row ml-2">
+                                    <div class="col-md-7"> <h5 class="mb-4 ml-5 mr-5 text-left"><span>2. Scope Type Methodolgy FileName </span></h5></div>
+                                    <div class="mb-3 ml-8 mr-5 col-md-4">
+                                        <input type="text" value="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-row ml-2">
+                                    <div class="col-md-7"> <h5 class="mb-4 ml-5 mr-5 text-left"><span>3. Scope Type SampleReport </span></h5></div>
+                                    <div class="mb-3 ml-8 mr-5 col-md-4">
+                                        <input type="text" value="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-row ml-2">
+                                    <div class="col-md-7"> <h5 class="mb-4 ml-5 mr-5 text-left"><span>4. Scope Type SampleReport FileName  </span></h5></div>
+                                    <div class="mb-3 ml-8 mr-5 col-md-4">
+                                        <input type="text" value="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+
+                    }*@
+
+
+
+
+
+
+
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+
+            var rVal2 = $("#04c742d9-6c7a-48b5-9cfb-5959476c9032:checked ").val();
+            if (rVal2 == "04c742d9-6c7a-48b5-9cfb-5959476c9032") {
+                $("#8a").show();
+            }
+            var rVal2 = $("#c445f578-bdac-4f3e-9f66-63b19dfcb6d7:checked ").val();
+            if (rVal2 == "c445f578-bdac-4f3e-9f66-63b19dfcb6d7") {
+                $("#8a").hide();
+            }
+
+            var rVal2 = $("#d6557126-e6dc-43b2-b66d-2b28462baae6:checked ").val();
+            if (rVal2 == "d6557126-e6dc-43b2-b66d-2b28462baae6") {
+                $("#11a").show();
+            }
+
+            var rVal2 = $("#4a9d91f3-4efb-42a9-ba13-ec60abac78ff:checked ").val();
+            if (rVal2 == "4a9d91f3-4efb-42a9-ba13-ec60abac78ff") {
+                $("#11a").hide();
+            }
+            var rVal2 = $("#93ff6f4e-fd7e-45d8-b888-bb31e38e38e1:checked ").val();
+            if (rVal2 == "93ff6f4e-fd7e-45d8-b888-bb31e38e38e1") {
+                $("#12a").show();
+            }
+            var rVal2 = $("#64ecddde-df26-4208-9859-521b763f5a2c:checked ").val();
+            if (rVal2 == "64ecddde-df26-4208-9859-521b763f5a2c") {
+                $("#12a").hide();
+            }
+
+
+
+            var SectionId = $("#SectionId").val();
+            jQuery("#" + SectionId).attr('checked', true);
+
+            var rVal2 = $("#a559e534-50fe-4995-ba47-fdda54285d68:checked ").val();
+
+            if (rVal2 == "a559e534-50fe-4995-ba47-fdda54285d68") {
+                $("#13").hide();
+            }
+
+            var rVal2 = $("#d13ca5e1-439f-4247-9dd1-362b64a8d77e:checked ").val();
+            if (rVal2 == "d13ca5e1-439f-4247-9dd1-362b64a8d77e") {
+                $("#13").show();
+            }
+            //office 365
+
+            var rVal2 = $("#739beb8f-bbcc-4aca-bc08-4e005fb4805b:checked ").val();
+            if (rVal2 == "739beb8f-bbcc-4aca-bc08-4e005fb4805b") {
+                $("#15a").show();
+            }
+
+            var rVal2 = $("#f07206f8-dec2-4f10-bc9f-e7118cf67890:checked ").val();
+
+            if (rVal2 == "f07206f8-dec2-4f10-bc9f-e7118cf67890") {
+                $("#15a").hide();
+            }
+
+
+            var rVal2 = $("#a9e7f6f8-10fd-4010-9d23-1e6727d20343:checked ").val();
+            if (rVal2 == "a9e7f6f8-10fd-4010-9d23-1e6727d20343") {
+                $("#21a").show();
+                $("#21b").show();
+            }
+
+
+
+            var rVal2 = $("#9ef2cad4-6ae8-4f13-9cae-c9ace1d5af50:checked ").val();
+
+            if (rVal2 == "9ef2cad4-6ae8-4f13-9cae-c9ace1d5af50") {
+                $("#21a").hide();
+                $("#21b").hide();
+            }
+
+
+            const calendars = flatpickr(".calendar", {
+                defaultDate: 'today'
+            });
+
+        });
+
+    </script>
+    <script>
+        function exportToWord(contentHtml, filename) {
+            html = this.contentHtmlfunction(document.getElementById("RepordToWord").innerHTML);
+
+            html = html.replace("&#39;", "'");
+            html = html.replace("&#44;", "'");
+            html = html.replace("&#94;", "'");
+            html = html.replace("‘", "'");
+            html = html.replace("’", "'");
+            html = html.replace("â€¢", ".");
+            html = html.replace("&quot;", '"');
+            html = html.replace("&apos;", "'");
+            html = html.replace("&amp;lt;", "<");
+            html = html.replace("&amp;gt;", ">");
+            html = html.replace("&amp;apos;", "'");
+
+            var blob = new Blob(['\ufeff', html], {
+                type: 'application/msword'
+            });
+
+            var url = window.URL.createObjectURL(blob);
+
+            // Specify file name
+            filename = filename ? filename + '.doc' : 'ProCheckUpReport.doc';
+
+            // Create download link element
+            var downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = url;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+
+            document.body.removeChild(downloadLink);
+
+        }
+        function contentHtmlfunction(contentHtml) {
+            var rootUrl = "https://localhost:44368";
+            var preHtml = "<!DOCTYPE html>\n<html xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"  xmlns:w=\"urn:schemas-microsoft-com:office:word\"  xmlns:m=\"http://schemas.microsoft.com/office/2004/12/omml\" xmlns=\"http://www.w3.org/TR/REC-html40\">" +
+                "<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:Orientation>Landscape</w:Orientation></w:WordDocument></xml><![endif]--><title>Export HTML To Doc</title>" +
+                "<style>pre {word-break: break-all; white-space: normal;} footerImg{height: 20px; width: 90px} headerImg{height: 85px; width: 515px} p.MsoFooter, li.MsoFooter, div.MsoFooter{margin:0in; margin-bottom:.0001pt; mso-pagination:widow-orphan;  tab-stops:center 3.0in right 6.5in; font-size:12.0pt;}@@page Section1{ size:8.5in 11.0in; margin:1.0in 1.0in 1.0in 1.0in;  mso-header-margin:.5in;  mso-footer-margin:.5in;  mso-title-page:yes;  mso-header: h1;   mso-footer: f1;   mso-first-header: fh1;   mso-first-footer: ff1;  mso-paper-source:0;} div.Section1{ page:Section1; } table#hrdftrtbl{ margin:0in 0in 0in 900in; width:1px; height:1px; overflow:hidden;}.group-vul-des p{margin: 0px !important;} .reposrt-text{background-color:#373b3e; color: #fff; padding-top:2px; padding-bottom:24px; font-family:'Calibri (Body)'; }</style>" +
+                "</head><body>";
+
+            var html = "" + contentHtml + "<div  class='Section1'><div id='Sectiondata'>" +
+                //"<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'><tbody><tr><td><div style='mso-element: header;' id='h1'>" +
+                //"<table style='width: 100%; font-family:Calibri;font-size:8pt; '><tbody><tr><td><div style='float: left '>" +
+                //"<img alt='' src='" + rootUrl + "/Report/img/ri_4.png' style='position: absolute; top: 10px; left: 0.6in; width: 0.21in; height: 0.24in;' ><span style=''> http://www.procheckup.com/labs </span></div></td><td style='text-align: right'>" +
+                //"<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_9.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' > <span>+44 (0) 20 7612 7777</span>" +
+                //"</div></td><td style='text-align: right'>" +
+                //"<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_10.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >  info@procheckup.com" +
+                //"</div></td><td style='text-align: right'>" +
+                //"<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_4.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >    http://www.procheckup.com/" +
+                //"</div></td></tr></tbody></table><hr></div></td><td>" +
+
+                //"<div style='mso-element: footer' id='f1'><hr><table style='width: 100%; font-family:Calibri;font-size:10pt;'><tbody><tr><td><div style='float: left'>" +
+                //"Cranfield University </div></td><td style='text-align: right'>" +
+                //"<div style='float: right'>    <span style='float: right; font-family:Calibri;font-size:10pt;'><span style='mso-tab-count: 2;'></span> <span style='mso-field-code: PAGE'><span style='mso-no-proof: yes'></span></span></span>      " +
+                //"</div></td><td style='text-align: right'>" +
+                //"<div style='float: right'>CU220720DL – Cranfield Secure Environment’ (CSE)" +
+                //"</div></td></tr></tbody></table></div></td></tr></tbody></table></div>" +
+                "</div>";
+
+            var postHtml = "</body></html>";
+            var finalhtml = preHtml + html + postHtml;
+
+            return finalhtml;
+        }
+
+    </script>
+
+}
+
+

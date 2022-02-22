@@ -1,0 +1,85 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+@{
+    ViewData["Title"] = "SectionEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="pt-3">
+                @Model.QuestionnaireData.Name.Substring(0, 15) ...
+            </h3>
+        </div>
+        <div class="col-md-6" style="margin-left: -65px;">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#"> @Model.QuestionnaireData.Name.Substring(0, 15) ...</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="card component-card_1 security-scoping-card">
+    <div class="card-body">
+
+        <h5 class="card-title mb-5 mt-3">Security Scoping Questionnaire</h5>
+        <form method="post" asp-action="SectionEdit">
+            <input type="hidden" asp-for="@Model.QuestionnaireId" />
+            <input type="hidden" asp-for="@Model.CustomerId" />
+            <input type="hidden" asp-for="@Model.SectionId" />
+            <input type="hidden" asp-for="@Model.ProjectId" />
+            @for (var i = 0; i < Model.Questions.Count; i++)
+            {
+
+                <input type="hidden" asp-for="@Model.Questions[i].QuestionId" />
+                <input type="hidden" asp-for="@Model.Questions[i].QuestionnaireId" />
+                <h5 class="mb-4 ml-5">
+                    <span>@Model.Questions[i].QuestionNumber</span>
+                    <span>@Model.Questions[i].QuestionText</span>
+                </h5>
+
+                @for (var j = 0; j < Model.Questions[i].OptionsList.Count; j++)
+                {
+                    if (@Model.Questions[i].OptionsList[j].OptionId1 == Model.SectionId)
+                    {
+                        <input type="hidden" asp-for="@Model.Questions[i].OptionsList[j].OptionId1" />
+                        <div class="custom-control custom-radio mb-3 ml-10">
+
+                            <input asp-for="@Model.Questions[i].ResponseOptionId1" value="@Model.Questions[i].OptionsList[j].OptionId1" type="radio" id="@Model.Questions[i].OptionsList[j].OptionId1" class="custom-control-input" checked disabled>
+                            <label class="custom-control-label" for="@Model.Questions[i].OptionsList[j].OptionId1">@Model.Questions[i].OptionsList[j].OptionText</label>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="@Model.Questions[i].OptionsList[j].OptionId1" />
+                        <div class="custom-control custom-radio mb-3 ml-10">
+
+                            <input asp-for="@Model.Questions[i].ResponseOptionId1" value="@Model.Questions[i].OptionsList[j].OptionId1" type="radio" id="@Model.Questions[i].OptionsList[j].OptionId1" class="custom-control-input" disabled>
+                            <label class="custom-control-label" for="@Model.Questions[i].OptionsList[j].OptionId1">@Model.Questions[i].OptionsList[j].OptionText</label>
+                        </div>
+                    }
+
+
+                }
+
+            }
+            <button type="submit" id="btnSave" class="btn btn-primary  mb-3  mt-3 ">Save</button>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+
+
+        <script src="~/js/custom/Questionnaire/Questionnaire.js" asp-append-version="true"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

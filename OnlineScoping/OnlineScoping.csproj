@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>0889caf8-6a26-4d78-b29d-0441362d60c1</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201015094752_Questions.cs" />
+    <Compile Remove="Migrations\20201015094752_Questions.Designer.cs" />
+    <Compile Remove="Migrations\20201019041016_response.cs" />
+    <Compile Remove="Migrations\20201019041016_response.Designer.cs" />
+    <Compile Remove="Migrations\20201019041159_Response.cs" />
+    <Compile Remove="Migrations\20201019041159_Response.Designer.cs" />
+    <Compile Remove="Migrations\20201019060814_Response.cs" />
+    <Compile Remove="Migrations\20201019060814_Response.Designer.cs" />
+    <Compile Remove="Migrations\20201020085708_clildQuestion.cs" />
+    <Compile Remove="Migrations\20201020085708_clildQuestion.Designer.cs" />
+    <Compile Remove="Migrations\20201102055013_QuestionnaireUpdateQuestion.cs" />
+    <Compile Remove="Migrations\20201102055013_QuestionnaireUpdateQuestion.Designer.cs" />
+    <Compile Remove="Migrations\20201103045020_CustomerQuestionnair.cs" />
+    <Compile Remove="Migrations\20201103045020_CustomerQuestionnair.Designer.cs" />
+    <Compile Remove="Migrations\20201110063141_uodateAddTable_10112020.cs" />
+    <Compile Remove="Migrations\20201110063141_uodateAddTable_10112020.Designer.cs" />
+    <Compile Remove="Migrations\20201125120245_newQues.cs" />
+    <Compile Remove="Migrations\20201125120245_newQues.Designer.cs" />
+    <Compile Remove="Migrations\20201216072552_updateCeq.cs" />
+    <Compile Remove="Migrations\20201216072552_updateCeq.Designer.cs" />
+    <Compile Remove="Migrations\20210106065901_questionupdate_06_01_2021.cs" />
+    <Compile Remove="Migrations\20210106065901_questionupdate_06_01_2021.Designer.cs" />
+    <Compile Remove="Migrations\20210122071200_AddProject.cs" />
+    <Compile Remove="Migrations\20210122071200_AddProject.Designer.cs" />
+    <Compile Remove="Migrations\20210129093758_Methodology_Deliverables.cs" />
+    <Compile Remove="Migrations\20210129093758_Methodology_Deliverables.Designer.cs" />
+    <Compile Remove="Migrations\20210415074120_adminmethodology_id_update.cs" />
+    <Compile Remove="Migrations\20210415074120_adminmethodology_id_update.Designer.cs" />
+    <Compile Remove="Migrations\20220119070433_QuestionvalueUpdate.cs" />
+    <Compile Remove="Migrations\20220119070433_QuestionvalueUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20220213194818_AddColumnOTP.cs" />
+    <Compile Remove="Migrations\20220213194818_AddColumnOTP.Designer.cs" />
+    <Compile Remove="Migrations\20220213194947_AddColumnOTP.cs" />
+    <Compile Remove="Migrations\20220213194947_AddColumnOTP.Designer.cs" />
+    <Compile Remove="ViewModels\QuestionsViewModel - Copy.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Questionnaire\Index - Copy.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailChimp.Net.V3" Version="5.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\QuetionnaireSigImages\" />
+    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\Uploads\Documents\" />
+    <Folder Include="wwwroot\Uploads\Methodology\" />
+  </ItemGroup>
+
+</Project>

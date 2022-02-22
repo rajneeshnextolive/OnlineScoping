@@ -1,0 +1,562 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+@{
+
+    ViewData["Title"] = "PCIASVquestionnaire";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/custom/childquestion.css" rel="stylesheet" />
+<link href="~/lib/layout/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" />
+<link href="~/lib/layout/plugins/sweetalerts/sweetalert.css" rel="stylesheet" />
+<style>
+    .n-chk {
+        margin-left: 63px;
+        color: #000;
+    }
+
+        .n-chk label {
+            color: #000 !important;
+        }
+
+    .qus-align b {
+        display: table-cell
+    }
+
+    .qus-align span {
+        display: table-cell
+    }
+
+    .no-padding {
+        padding: 0;
+    }
+
+    .ml-100 {
+        margin-left: 90px;
+    }
+
+    /*//table*/
+    .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+        position: relative;
+    }
+
+    .table {
+        display: table;
+        width: 100%;
+    }
+
+    .tableRow {
+        display: table-row;
+    }
+
+    .tableHead {
+        display: table-row;
+        font-weight: bold;
+    }
+
+    .tableCell {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell1 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell2 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+        text-align: center;
+    }
+
+    .tableRow .tableCell:first-child {
+        cursor: auto;
+    }
+
+    .del-Check {
+        height: 20px !important;
+        width: 20px !important;
+    }
+</style>
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="pt-3">
+                @Model.QuestionnaireData.Name.Substring(0, 15) ...
+            </h3>
+        </div>
+        <div class="col-md-6" style="margin-left: -65px;">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#"> @Model.QuestionnaireData.Name.Substring(0, 15) ...</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<hr />
+
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+
+        <div class=" component-card_1 security-scoping-card ">
+            <div class="skills layout-spacing">
+                <div class="widget-content widget-content-area text-center">
+
+                    <div class="card ">
+                        <div>
+                            @*<h5 class="card-title mb-5 mt-3">@Model.Module</h5>*@
+                            <form asp-action="SavePCIQuestionnaire" method="post">
+                                <input type="hidden" asp-for="@Model.ProjectId" />
+                                <div class="row" style="margin-bottom: -40px !important;">
+                                    <div class="col-md-6">
+                                        <dl class="row">
+                                            <dt class="col-sm-4">
+                                                <p class="mt-3">  Project Name</p>
+                                            </dt>
+                                            <dd class="col-sm-8">
+                                                <input type="text" asp-for="@Model.ProjectName" class="form-control" autocomplete="off" readonly>
+                                                <label class="control-label" for="@Model.ProjectName"></label>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <dl class="row">
+                                            <dt class="col-sm-5">
+                                                <p class="mt-3">  Customer Name</p>
+                                            </dt>
+                                            <dd class="col-sm-7">
+                                                <input type="text" asp-for="@Model.CustomerName" value="@Model.CustomerName" class="form-control" autocomplete="off" readonly>
+                                                <label class="control-label" for="@Model.CustomerName"></label>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <hr />
+
+
+                                <h4 class="mb-4 ml-5 text-left mr-5" style="font-size:26px;color:#0b78b8 ; margin-bottom: 15px; ">Details of PCI ASV assessment</h4>
+
+                                <div class="form-group">
+
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style=" text-align: left; color: black;font-size: 1.25rem;">
+                                        1.	Please list all external-facing IP addresses, subdomains and domains that are part of the cardholder data environment
+                                        (CDE), as well as any externally facing system component that may provide access to the CDE. Please include all URLs as all
+                                        web application will need to be individually tested
+
+                                    </p>
+
+
+                                    @*<p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style=" text-align: left; color: black;">
+                For clarity, please see the excerpt taken from the ASV Program Guide v3.0
+            </p>*@
+                                    <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">  The PCI DSS security requirements apply to all system components included in or connected to the cardholder data environment (CDE). The CDE is comprised of people, processes, and technologies that store, process, or transmit cardholder data or sensitive authentication data. “System components” include network devices, servers, computing devices, and applications. Examples of system components include but are not limited to the following:</p>
+                                    <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;"> • Systems that provide security services (for example, authentication servers) facilitate segmentation (for example, internal firewalls) or may impact the security of (for example, name-resolution or web-redirection servers) the CDE.</p>
+                                    <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Virtualization components such as virtual machines, virtual switches/routers, virtual appliances, virtual applications/desktops, and hypervisors.
+                                    </p>
+                                    <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Network components including but not limited to firewalls, switches, routers, wireless access points, network appliances, and other security appliances.
+                                    </p>
+                                    <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Server types including but not limited to web, application, database, authentication, mail, proxy, Network Time Protocol (NTP), and Domain Name System (DNS).
+                                    </p>  <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Applications including all purchased and custom applications, including internal and external (for example, Internet) applications.
+                                    </p>
+                                    <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Any other component or device located within or connected to the CDE.
+                                    </p>
+                                    <br />
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        *Please note that we will need third-party permission if the servers are not owned by the customer.
+                                    </p>
+                                </div>
+
+
+                                <div class="panel-body">
+                                    <div id="RemoteVulnerabilityScan">
+                                        <div class="mb-4 ml-5 text-right mr-5">
+                                            <input type="button" id="remVulScanAddbtn" value="Add" class="btn btn-warning" />
+                                            <input type="button" id="remVulScanDeletebtn" value="Delete" class="btn btn-danger" />
+
+                                        </div>
+                                        <div id="RVSTable" class="table mb-4 ml-5 text-left mr-5" style="width:90%;">
+                                            <div class="tableHead">
+                                                <div class="tableCell">
+                                                    Select
+                                                </div>
+                                                <div class="tableCell">
+                                                    IP Address (or range) v4 and v6 addresses
+                                                </div>
+                                                <div class="tableCell">
+                                                    Fully Qualified Domain Name (FQDN) *where appropriate
+                                                </div>
+                                                <div class="tableCell">
+                                                    Nature & Description of System (eg, firewall, website, cms,)
+                                                </div>
+                                                <div class="tableCell">
+                                                    System Ownership and Hosting (eg internal system, dedicated external hosted, dedicated cloud system, shared platform)
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div id="quest">
+                                    <input type="hidden" asp-for="@Model.QuestionnaireId" />
+                                    @if (Model.Questions.Count == 0)
+                                    {
+                                        <input type="hidden" asp-for="@Model.SectionId" />
+                                        <h5 class="mb-4 ml-5 text-left mr-5">Thank You</h5>
+                                    }
+                                    else
+                                    {
+
+                                        @for (int i = 0; i < Model.Questions.Count; i++)
+                                        {
+                                            if (i == 0)
+                                            {
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionId" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionNumber" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionnaireId" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].UserName" value="@User.Identity.Name" />
+                                            }
+                                            else
+                                            {
+                                                <input type="hidden" asp-for="@Model.Questions[i].SectionId" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionId" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionNumber" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionText" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionType" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].QuestionnaireId" />
+                                                <input type="hidden" asp-for="@Model.Questions[i].UserName" value="@User.Identity.Name" />
+
+
+                                                <div id="@Model.Questions[i].QuestionId">
+                                                    <div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+
+
+                                                                    <h5 class="mb-4 ml-5 text-left mr-5" style="font-size:26px;color:#0b78b8"><b><u>@Model.Questions[i].Title</u></b> </h5>
+
+                                                                    <h5 class="mb-4 ml-5 text-left mr-5" style="font-size:24px;color:#0b78b8"><b>@Model.Questions[i].SubTitle</b> </h5>
+
+                                                                </div>
+                                                                <div class="form-group row" id="questno">
+                                                                    @if (Model.Questions[i].QuestionNumber == "3")
+                                                                    {
+                                                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                                                            3.Do you deploy any active protection systems that dynamically modify their behaviour? Examples include, but are not limited to:
+                                                                        </p>
+
+                                                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                                                            •	Intrusion Prevention System(IPS) that drops malicious packets based on previous behaviour from originating IP addresses.
+                                                                        </p>
+                                                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                                                            •	eb Application Firewall(WAF) that block traffic based on the number of requests.
+                                                                        </p>
+
+                                                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                                                            •	Firewall that blocks IP address based on activities such as port scanning.
+                                                                        </p>
+                                                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                                                            •	Next generation firewalls(NGF) that block IP address ranges based on previous network traffic patterns.
+                                                                        </p>
+                                                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                                                            •	Quality of Service(QoS) devices that limit certain traffic based on traffic volume anomalies(for example, blocking DNS traffic because DNS traffic exceeded a defined threshold).
+                                                                        </p>
+                                                                        <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                                                            •	Spam filters that blacklist a sending IP address based on certain previous SMTP commands originating from that address
+                                                                        </p>
+                                                                        <h5 class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding"> @Model.Questions[i].QuestionText</h5>
+
+                                                                    }
+                                                                    else if (Model.Questions[i].QuestionId == new Guid("DD1327D2-6CC5-41D8-8C22-9C69FC582B4F"))
+                                                                    {
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <h5 class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding">@Model.Questions[i].QuestionNumber . @Model.Questions[i].QuestionText</h5>
+
+                                                                    }
+
+
+                                                                    @if (Model.Questions[i].QuestionType == QuestionType.multipleResponseType)
+                                                                    {
+
+                                                                        @for (var k = 0; k < Model.Questions[i].OptionsList.Count; k++)
+                                                                        {
+                                                                            if (k == 0)
+                                                                            {
+                                                                                <div class="custom-control custom-radio mb-3 ml-100 col-md-10 no-padding">
+                                                                                    <input type="radio" asp-for="@Model.Questions[i].ResponseOptionId" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" checked>
+                                                                                    <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                                                </div>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div class="custom-control custom-radio mb-3 ml-100 col-md-10 no-padding">
+                                                                                    <input type="radio" asp-for="@Model.Questions[i].ResponseOptionId" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input">
+                                                                                    <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                                                </div>
+                                                                            }
+
+                                                                        }
+                                                                    }
+
+                                                                    else if (Model.Questions[i].QuestionType == QuestionType.TextType)
+                                                                    {
+                                                                        <div class="mb-3 ml-5 mr-5 col-md-10 no-padding">
+                                                                            <input type="text" asp-for="@Model.Questions[i].Responsetext" class="form-control" autocomplete="off">
+                                                                            <label class="control-label" for="@Model.Questions[i].Responsetext"></label>
+                                                                        </div>
+                                                                    }
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        }
+
+                                    }
+                                </div>
+
+
+
+                                <div class="form-group float-right" id="finish">
+                                    <input type="button" id="remVulScanSavebtn" value="Finish" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+    <script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>
+    @*<script src="~/lib/layout/plugins/sweetalerts/custom-sweetalert.js"></script>
+        <script src="~/lib/layout/plugins/sweetalerts/sweetalert2.min.js"></script>*@
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $('#remVulScanAddbtn').click(function () {
+            remVulScanAdd();
+        });
+        $('#remVulScanDeletebtn').click(function () {
+            remVulScanDelete();
+        });
+
+
+        $(window).on("load", function () {
+            window.setTimeout(function () {
+                $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div></div>');
+                $('#CSSATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div></div>');
+            }, 250)
+        });
+    </script>
+
+    <script>
+    $('#remVulScanSavebtn').click(function () {
+        var check = true;
+        $('#RVSTable').find('.tableRow').each(function () {
+            var count = 0;
+            $(this).find('.tableCell').each(function () {
+                if ($(this).text() == "") {
+                    count++;
+                }
+            });
+            if (count == 4) {
+                check = false;
+            }
+        });
+        if (check == false) {
+          //  alert("Please complete alteast one cell of each row ! ");
+
+            swal({
+                type: 'error',
+               // title: 'Oops...',
+                text: 'Please complete alteast all cell of each row ! ',
+              //  footer: '<a href>Why do I have this issue?</a>',
+                padding: '2em'
+            })
+
+
+        }
+        else {
+            remVulScanSave();
+        }
+    });
+
+
+    function remVulScanSave() {
+        var RVSData = "";
+        var options = [];
+        var valueSelected = "0";
+        var i = 0;
+        var Ques1 = $('#Questions_0__Responsetext').val();
+        var Ques3 = $('#Questions_2__Responsetext').val();
+        var Ques4 = $('#Questions_3__Responsetext').val();
+        var Ques5 = $('#Questions_4__Responsetext').val();
+        var ProjectName = $('#ProjectName').val();
+        var CustomerName = $('#CustomerName').val();
+        var ProjectId = $('#ProjectId').val();
+        var Methodolgy = $('#ScopeTypeMethodolgy').val();
+        var Methodolgy_FileName = $('#ScopeTypeMethodolgy_FileName').val();
+        var SampleReport = $('#ScopeTypeSampleReport').val();
+        var SampleReport_FileName = $('#ScopeTypeSampleReport_FileName').val();
+        var Ques2 = $("input[name='Questions[1].ResponseOptionId']:checked").val();
+        $('#RVSTable').find('.tableRow').each(function () {
+            $(this).find('.tableCell').each(function () {
+                RVSData = RVSData + "|" + $(this).text();
+                i++;
+            });
+        });
+        if (i == 0) {
+            alert("Please add alteast one row to save ! ");
+            return false;
+        }
+        else if ($('#Questions_2__Responsetext').val() == "" || $('#Questions_3__Responsetext').val() == "" || $('#Questions_4__Responsetext').val() == "") {
+            swal({
+                type: 'error',
+                //  title: 'Oops...',
+                text: 'All fields are mandatory! ',
+                //  footer: '<a href>Why do I have this issue?</a>',
+                padding: '2em'
+            })
+            return false;
+        }
+        else {
+            var RVSTableHtml = $('#RVSTable').html();
+            var Title = '';
+            var ScanDate = '';
+            var ScanType = '';
+
+            if (RVSData != null) {
+                console.log(RVSData);
+                SaveRemoteScan(RVSData, Ques2, Ques3, Ques4, Ques5, Ques1, ProjectName, CustomerName, ProjectId, Methodolgy, Methodolgy_FileName, SampleReport, SampleReport_FileName);
+            }
+
+
+        }
+    }
+        function SaveRemoteScan(RVSData, Ques2, Ques3, Ques4, Ques5, Ques1, ProjectName, CustomerName, ProjectId, Methodolgy, Methodolgy_FileName, SampleReport, SampleReport_FileName) {
+            var data = { "rVSData": RVSData, "ques2": Ques2, "ques3": Ques3, "ques4": Ques4, "ques5": Ques5, "ques1": Ques1, "ProjectName": ProjectName, "CustomerName": CustomerName, "ProjectId": ProjectId, "Methodolgy": Methodolgy, "Methodolgy_FileName": Methodolgy_FileName, "SampleReport": SampleReport, "SampleReport_FileName": SampleReport_FileName};
+
+ $.ajax({
+     url: '@Url.Action("SavePCIQuestionnaire", "Questionnaire")',
+     type: "post",
+     contentType: 'application/x-www-form-urlencoded',
+     data: data,
+     success: function (result) {
+         if (result == "Success") {
+             window.location.href = '/Home/Index';
+         }
+         console.log(result);
+     }
+ });
+    }
+    </script>
+
+
+    <script>
+        function remVulScanAdd() {
+
+            var check = true;
+            $('#RVSTable').find('.tableRow').each(function () {
+                var count = 0;
+                $(this).find('.tableCell').each(function () {
+                    if ($(this).text() == "") {
+                        count++;
+                    }
+                });
+                if (count == 4) {
+                    check = false;
+                }
+            });
+            if (check == false) {
+                //   alert("Please complete alteast one cell of each row ! ");
+                swal({
+                    type: 'error',
+                    //  title: 'Oops...',
+                    text: 'Please complete alteast all cell of each row ! ',
+                    //  footer: '<a href>Why do I have this issue?</a>',
+                    padding: '2em'
+                })
+            }
+            else {
+                $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div></div>');
+            }
+        }
+    </script>
+}
+
+
+<script>
+    function remVulScanDelete() {
+        var delCount = 0;
+        $('#RVSTable').find('.tableRow').each(function () {
+
+            $(this).find('.tableCell2').each(function () {
+                if (($(this).find('.del-Check').prop("checked"))) {
+                    $(this).parent().remove();
+                    delCount++;
+                }
+            });
+        });
+
+        if (delCount == 0) {
+            swal({
+                type: 'error',
+                text: 'Please select alteast one row to delete !  ',
+                padding: '2em'
+            })
+        }
+
+    }
+
+
+
+
+
+
+
+</script>

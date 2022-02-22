@@ -1,0 +1,322 @@
+﻿@model OnlineScoping.ViewModels.SalesViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+<link href="~/lib/layout/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
+<link href="~/lib/layout/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" class="dashboard-sales" />
+<!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+@*@if (TempData["SuccessMessage"] != null)
+    {
+        <div style="margin: 0% 0% 0% 70%;" class="alert alert-success mb-4" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Sales saved succesfully !  </div>
+    }*@
+@if (TempData["UpdateMessage"] != null)
+{
+    <div style="margin: 0% 0% 0% 70%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Sales Update succesfully !  </div>
+}
+
+@if (TempData["SalesMailErrerMessage"] != null)
+{
+    <div style="margin: 0% 0% 0% 0%;" class="alert alert-danger mb-12 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> @TempData["SalesMailErrerMessage"]  </div>
+}
+
+@if (TempData["SalesMailsuccessMessage"] != null)
+{
+    <div style="margin: 0% 0% 0% 0%;" class="alert alert-success mb-12 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> @TempData["SalesMailsuccessMessage"]  </div>
+}
+
+@if (TempData["PasswordUpdateMessage"] != null)
+{
+    <div style="margin: 0% 0% 0% 70%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Password Update succesfully !  </div>
+}
+
+@if (TempData["PasswordUpdateErrerMessage"] != null)
+{
+    <div style="margin: 0% 0% 0% 0%;" class="alert alert-danger mb-12 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> Your account is not registered ! Please click on link in your email to activate the account </div>
+}
+@if (TempData["SalesAuthEnableDisable"] != null)
+{
+    <div style="margin: 0% 0% 0% 65%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Authentication  Update succesfully !  </div>
+}
+<div class="page-top">
+    <div class="row">
+        <div class="col-md-1">
+            <h3 class="pt-3">
+                Sales
+            </h3>
+        </div>
+        <div class="col-md-6">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                 <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                 <li class="breadcrumb-item active" aria-current="page"><a href="#">Sales</a></li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="layout-px-spacing" >
+
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-heading row">
+
+                    <div class="col-md-12 text-right">
+                        <a asp-action="Create" class="btn btn-primary ml-3 mt-3">Create New</a>
+                    </div>
+
+                </div>
+
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Sales view">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IsEmailSent)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Is Activated")
+                                    </th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Salesviewmodel)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @if (string.IsNullOrEmpty(item.UserName))
+                                            {
+                                                @Html.DisplayFor(modelItem => item.TempUserName)
+
+                                            }
+                                            else
+                                            {
+                                                @Html.DisplayFor(modelItem => item.UserName)
+
+                                            }
+
+                                        </td>
+                                        <td>
+                                            @if (item.IsEmailSent)
+                                            {
+                                                <em style="color:green" class="fas fa-check"></em>
+                                            }
+                                            else
+                                            {
+                                                <em style="color:red" class="fas fa-times"></em>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (string.IsNullOrEmpty(item.UserName))
+                                            {
+                                                <em style="color:red" class="fas fa-times"></em>
+                                            }
+                                            else
+                                            {
+                                                <em style="color:green" class="fas fa-check"></em>
+                                            }
+                                        </td>
+                                        <td class="text-center">
+                                            @if (User.IsInRole("Admin"))
+                                            {
+                                                <a class="open-AddBookDialog" style="cursor:pointer;" data-toggle="modal" data-target="#AuthSalesModal" data-id="@item.CustomerId" data-placement="top" title="EditAuth" onclick="CustomerAuthData('@item.CustomerId','@item.UserName','@item.Auth');">
+                                            <img src="~/logo/icon1.png" alt="Logo" height="22" width="22" /></a> @Html.Raw("|")
+                                            }
+
+                                            <a asp-action="Edit" asp-route-id="@item.CustomerId" data-toggle="tooltip" data-placement="top" title="Edit"><em class="fas fa-pencil-alt"></em></a> |
+                                            <a asp-action="Details" asp-route-id="@item.CustomerId" data-toggle="tooltip" data-placement="top" title="Details"><em class="fas fa-info-circle"></em></a> |
+                                            <a asp-action="Delete" asp-route-id="@item.CustomerId" data-toggle="tooltip" data-placement="top" title="Delete"><em class="far fa-trash-alt"></em></a>
+                                            @if (!item.IsEmailSent || string.IsNullOrEmpty(item.UserName))
+                                            {
+                                                @Html.Raw("|") <a asp-action="SendMail" asp-route-id="@item.CustomerId" data-toggle="tooltip" data-placement="top" title="Send Email"><em class="far fa-envelope"></em></a>
+                                            }
+                                            @if (string.IsNullOrEmpty(item.UserName))
+                                            {
+                                                @if (item.IsEmailSent == true)
+                                                {
+                                                    @Html.Raw("|") <a class="open-AddBookDialog" style="cursor:pointer;" data-placement="top" title="Change Password" onclick="SaleDataAlert();"><em class="fas fa-lock"></em></a>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                @if (item.IsEmailSent == true)
+                                                {
+                                                    @Html.Raw("|") <a class="open-AddBookDialog" style="cursor:pointer;" data-toggle="modal" data-target="#PasswordChangeModal" data-id="@item.CustomerId" data-placement="top" title="Change Password" onclick="SaleData('@item.CustomerId','@item.UserName');"><em class="fas fa-lock"></em></a>
+                                                }
+                                            }
+
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade bd-example-modal-lg" id="PasswordChangeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="SalesChangePassword" asp-controller="Sales" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.Accountmodel.Id" id="custId" />
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password -<span id="username"></span>  </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.Accountmodel.Password" class="control-label"></label>
+                                <input asp-for="@Model.Accountmodel.Password" class="form-control" />
+                                <span asp-validation-for="@Model.Accountmodel.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Accountmodel.ConfirmPassword" class="control-label"></label>
+                                <input asp-for="@Model.Accountmodel.ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="@Model.Accountmodel.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><em class="flaticon-cancel-12"></em> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="AuthSalesModal" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog modal-ml modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Multifactor authentication -<span id="Authusername"></span>  </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <form asp-action="AuthEnableDisable" asp-controller="Sales" enctype="multipart/form-data">
+                <input type="hidden" asp-for="@Model.authmodel.Id" id="AuthcustId" />
+                <div class="modal-body text-center pt-5 pb-3 px-3">
+                    <div class="row">
+                        <div class="col-md-6 checkbox" style="display:flex;margin-top: -30px;">
+                            <label class="" style="margin-right: 5px;">
+                                <span>Disable</span>
+                            </label>
+
+                            <label class="switch s-icons s-outline s-outline-info mr-2" asp-for="@Model.authmodel.Auth">
+                                <input type="checkbox" asp-for="@Model.authmodel.Auth">
+                                <span class="slider round"></span>
+                            </label>
+
+                            <label class="">
+                                <span>Enable</span>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="Authfooter" style="margin-bottom:26px;">
+                        <button type="button" class="btn btn-sm float-lg-right" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-sm btn btn-primary float-lg-right">Save</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/layout/plugins/sweetalerts/custom-sweetalert.js"></script>
+    <script src="~/lib/layout/plugins/sweetalerts/sweetalert2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$(document).on("click", ".open-AddBookDialog", function () {
+            //    var myId = $(this).data('id');
+            //    $(".modal-body #custId").val(myId);
+            //    $("#custId").val(myId);
+            //});
+
+
+
+        });
+        function CustomerAuthData(id, name, auth) {
+            $("#AuthcustId").val(id);
+            $("#Authusername").html(name);
+            if (auth == "True") {
+                $("#authmodel_Auth").val(auth);
+                $('#authmodel_Auth').attr('checked', true);
+            } else {
+                $('#authmodel_Auth').attr('checked', false);
+            }
+        }
+
+
+        function SaleData(id, name) {
+            $("#custId").val(id);
+            $("#username").html(name);
+        }
+
+        function SaleDataAlert() {
+            swal({
+                type: 'error',
+                text: 'Your account is not registered ! Please click on link in your email to activate the account',
+                padding: '2em'
+            })
+        }
+
+    </script>
+}

@@ -1,0 +1,770 @@
+﻿<!DOCTYPE html>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"  xmlns:w="urn:schemas-microsoft-com:office:word"  xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">><head><meta charset='utf-8'>
+<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:Orientation>Portrait</w:Orientation></w:WordDocument></xml><![endif]--><title>Export HTML To Doc</title><style>pre {word-break: break-all; white-space: normal;} footerImg{height: 20px; width: 90px} headerImg{height: 85px; width: 515px} p.MsoFooter, li.MsoFooter, div.MsoFooter{margin:0in; margin-bottom:.0001pt; mso-pagination:widow-orphan;  tab-stops:center 3.0in right 6.5in; font-size:12.0pt;}@page Section1{ size:8.5in 11.0in; margin:1.0in 1.0in 1.0in 1.0in;  mso-header-margin:.5in;  mso-footer-margin:.5in;  mso-title-page:yes;  mso-header: h1;   mso-footer: f1;   mso-first-header: fh1;   mso-first-footer: ff1;  mso-paper-source:0;} div.Section1{ page:Section1; } table#hrdftrtbl{ margin:0in 0in 0in 900in; width:1px; height:1px; overflow:hidden;}.group-vul-des p{margin: 0px !important;} .reposrt-text{background-color:#373b3e; color: #fff; padding-top:2px; padding-bottom:24px; font-family:'Calibri (Body)'; }</style></head><body><div id="remove">
+<div class="row" id="cover">
+<div style="width:100%;float:left;font-family:Cambria;">
+<div style="width:100%;text-align:center;font-family:Cambria;font-size: 26pt;color:#004171;border-bottom:1px solid #004171;font-weight: bold;font-style: italic;">new</div>
+<div style="font-size:15pt;color:#005897;margin:42px 0px 20px; text-align:center;">nextolive</div>
+<div style="font-size:15pt;color:#005897; text-align:center;">11/03/2021</div>
+<p style="text-align:center">&nbsp;</p>
+<div style="margin-top:70px;text-align:center;"><img alt="" src="https://report.portal.procheckup.com/Content/Uploads/137.jpeg" width="250"></div>
+<div style="height:250px;">&nbsp;</div>
+</div>
+</div>
+<br style="page-break-after: always;"><p class="MsoToc1" style="tab-stops:right dotted 467.5pt"><b><span style="mso-no-proof:yes"><span style="mso-element:field-begin"></span><span style="mso-spacerun:yes">&nbsp;</span>TOC \o "1-3" \h \z \u <span style="mso-element:field-separator"></span></span></b><span class="MsoHyperlink"><span style="mso-no-proof: yes"><a href="#_Toc18506788"><span style="mso-fareast-font-family:" times="" new="" roman""="">Table of content - Please right-click and choose "Update fields".</span><span style="color:windowtext;display:none;mso-hide:screen;text-decoration:none;text-underline:none"><span style="mso-tab-count:1 dotted"> </span></span><span style="color:windowtext;display:none;mso-hide:screen;text-decoration:none;text-underline:none"><span style="mso-element:field-end"></span></span></a></span></span><span style="font-size:11.0pt;font-family:" calibri",sans-serif;mso-ascii-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"times="" new="" roman";mso-bidi-theme-font:minor-bidi;mso-no-proof:yes"=""><o:p></o:p></span></p><br style="page-break-after: always;">
+
+
+</div>
+<div>
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">Non-Disclosure Statement and Legal Notice</span></h1>
+</div>
+<div id="Non-Disclosure_Statement_and_Legal_Notice">&nbsp;</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Non-Disclosure Statement</span></h2>
+</div>
+<div id="Non-Disclosure_Statement">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This report has been made for nextolive. All information obtained during a ProCheckUp assessment about our customer's systems and assets including, but not limited to, its procedures and systems, is deemed privileged information and not for public dissemination.&nbsp; ProCheckUp Ltd pledge their commitment that this information will remain strictly confidential.&nbsp; This information will not be disclosed or discussed to any third party without the written consent of the customer.&nbsp;&nbsp; ProCheckUp Ltd is fully committed to maintaining the highest level of ethical standards in its business practice.</span></span></span></p>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Legal Notice</span></h2>
+</div>
+<div id="Legal_Notice">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">It is impossible to test an internal network for 100% security within normal timeframes. This report does not constitute and should not be construed as a guarantee of the target's security.</span></span></span></p>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">How to use this report </span></h1>
+</div>
+<div id="How_to_use_this_report">&nbsp;</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Executive Summary</span></h2>
+</div>
+<div id="Executive_Summary">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This section provides an overview of the test background and details and gives an indication to the security posture of the overall environment.</span></span></span></p>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Scope of testing</span></h2>
+</div>
+<div id="Scope_of_testing">
+<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This section details the scope agreed with nextolive before ProCheckUp testing was conducted.</span></span></span></p>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Restrictions on testing</span></h2>
+</div>
+<div id="Restrictions_on_testing">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This section details any problems that occurred which disrupted or prevented with testing</span></span></span></p>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Summary of findings</span></h2>
+</div>
+<div id="Summary_of_findings">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This section gives a high-level summary of the main findings</span></span></span></p>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Test Results</span></h2>
+</div>
+<div id="Test_Results">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This section details the results obtained whilst testing the targets and presents the LOW to HIGH severity vulnerabilities discovered. Each vulnerability includes an indication of its level of impact, a description, results and how it can be resolved. Whenever possible, an exploit for the identified vulnerability will be supplied.</span></span></span></p>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">CVSS Scoring System</span></h2>
+</div>
+<div id="CVSS_Scoring_System">
+<div style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">ProCheckUp currently uses version 2 of the Common Vulnerability Scoring System (CVSS) when rating vulnerabilities discovered during security testing. CVSS is an open industry framework used to assess the severity of security vulnerabilities based on three distinct metrics:</span></span></span></div>
+<ul>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Base Metrics are associated with intrinsic characteristics of a vulnerability</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Temporal Metrics are associated with evolving characteristics of a vulnerability</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Environmental Metrics are associated with vulnerabilities that are dependent on environmental factors.</span></span></span></li>
+</ul>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">The outcome of these metrics is a score indicating the severity of the vulnerability and provides an accurate input to an enterprises prioritised approach to remediation. The CVSS scheme scores are grouped as follows:</span></span></span></p>
+<ul>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">CVSS scored 7.0-10 would be considered HIGH severity</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">CVSS scored 4.0-6.9 would be considered Medium severity</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">CVSS scored 0-3.9 would be considered as LOW severity</span></span></span></li>
+</ul>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">ProCheckUp use base metrics to build a traffic light system in their vulnerability reporting tables in the 'Test Results' section of this report. CVSS v3 is due to be released imminently and will be rolled out to all of our clients shortly afterwards.</span></span></span></p>
+&nbsp;
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">More information on the system we use to rate vulnerabilities can be found in Appendix A.</span></span></span></p>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">Test Details </span></h1>
+</div>
+<div id="Test_Details">
+<div style="min-height: 30px;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">&nbsp;</span></div>
+<table align="left" cellpadding="2" cellspacing="0" style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 64%; margin-right: 215px; margin-bottom: 30px;" width="60%">
+	<tbody>
+		<tr>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 25%; height: 31px; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; background-color: rgb(20, 111, 180);width:44.4%;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Date of Test</span></span></span></td>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 44%; height: 31px; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; background-color: rgb(20, 111, 180);width:55.6%;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Test Location</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">ProcheckUp Ltd<br>
+			[Address]<br>
+			[Country]<br>
+			[Zip] </span> </span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Customer Contact</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">NextOlive</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Telephone</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">[Telephone]</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Email</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">[Email]</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-right-width: 1px; border-right-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Tester</span></span></span></td>
+			<td style="width: 75%; font-size: 10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">next olive</span></span></span></td>
+		</tr>
+	</tbody>
+</table>
+<div style="min-height: 30px;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">&nbsp;</span></div>
+<table align="left" cellpadding="2" cellspacing="0" style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 64%; margin-right: 215px; margin-bottom: 30px;" width="60%">
+	<tbody>
+		<tr>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 25%; height: 31px; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; background-color: rgb(20, 111, 180);width:44.4%;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Item</span> </span></span></td>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 44%; height: 31px; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; background-color: rgb(20, 111, 180);width:55.6%;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Details</span> </span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Testing Company</span> </span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">ProCheckUp Ltd</span> </span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Website</span> </span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;"><a href="https://www.procheckup.com">www.procheckup.com</a></span> </span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Project ID</span> </span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">new</span> </span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Test Location</span> </span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">ProcheckUp Ltd<br>
+			4th Floor Fairgate House<br>
+			78 New Oxford Street&nbsp;<br>
+			London<br>
+			WC1A 1HB</span> </span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Customer Contact</span> </span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">NextOlive</span> </span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Telephone</span> </span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Email</span> </span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Lead Consultant</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Consultant Contact Details</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Qualifications</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Project Start</span></span></span></td>
+			<td style="width: 44.72%; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25%; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-right-width: 1px; border-right-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Project Complete</span></span></span></td>
+			<td style="width: 75%; font-size: 10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div style="min-height:30px">&nbsp;</div>
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">Document Control </span></h1>
+</div>
+<div id="Document_Control">
+<div style="min-height: 30px;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">&nbsp;</span></div>
+<table cellpadding="2" cellspacing="0" style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 100%;">
+	<tbody>
+		<tr>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 25%; height: 31px; text-align: center; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; vertical-align: top; background-color: rgb(20, 111, 180);"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Date</span></span></span></td>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 25%; height: 31px; text-align: center; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; vertical-align: top; background-color: rgb(20, 111, 180);"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Action</span></span></span></td>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 25%; height: 31px; text-align: center; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; vertical-align: top; background-color: rgb(20, 111, 180);"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Version</span></span></span></td>
+			<td style="border: 1px solid rgb(20, 111, 180); border-image: none; width: 25%; height: 31px; text-align: center; color: rgb(255, 240, 245); font-size: 10pt; font-weight: bold; vertical-align: top; background-color: rgb(20, 111, 180);"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Author</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Initial Draft</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">0.1</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">next-olive</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Draft Report sent</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">0.3</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">General QA</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">0.2</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Technical QA</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">0.4</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Technical QA</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-bottom-color: rgb(20, 111, 180); border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">0.5</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-right-width: 1px; border-right-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">11/03/2021</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-right-width: 1px; border-right-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Final report</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt; border-right-color: rgb(20, 111, 180); border-right-width: 1px; border-right-style: solid;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">1.0</span></span></span></td>
+			<td style="width: 25.86%; text-align: center; font-size: 10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">next-olive</span></span></span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">1 Executive Summary </span></h1>
+</div>
+<div id="x1_Executive_Summary">&nbsp;</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">1.1 Introduction</span></h2>
+</div>
+<div id="x1.1_Introduction">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">On 11/03/2021, ProCheckUp was commissioned to perform an internal penetration test on a environment. .</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Overall the security of the environment was found to be Choose an item..</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">ProCheckUp identified a significant number of missing patches during this test.&nbsp; This could be an indication of a weak patch management process and could be a warnig that software updates are not being deployed in a timely manner.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">It can be seen that the issues discovered during this engagement highlight serious flaws in the security posture of which, if not remediated immediately, could lead to complete compromise of the environment under test.</span></span></span></p>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">1.2 Issues Identified</span></h2>
+</div>
+<div id="x1.2_Issues_Identified">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This section identifies the issues discovered on each of the networks tested during this engagement. A summary of the most serious issues can be found in Section 4 (Summary of Findings) and full details of the issues, together with detailed remediation advice, can be found in Section 5 (Test Results).</span></span></span></p>
+&nbsp;
+<div style="margin-bottom:25px;">
+<h3><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#146fb4;font-family:Cambria; font-size:12pt;">1.2.1 Infrastructure Test(s)</span></span></h3>
+<div style="margin-bottom:10px;margin-top:10px;text-align:justify;color:#000;font-family:Calibri;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">This section identifies the issues discovered on each of the infrastructure tested during this engagement. A summary of the most serious issues can be found in Section 4(Summary of Findings) and full details of the issues, together with detailed remediation advice, can be found in Section 5(Test Results).</span></div>
+<table cellpadding="6" cellspacing="0" id="IssuesTemplate_IssuesIdentified_Table" style="font-size: 10pt; font-family:Calibri;border: 0.5pt solid rgb(20, 111, 180); border-collapse: collapse;" width="100%">
+	<tbody>
+		<tr>
+			<td align="center" bgcolor="#146fb4" style="color: rgb(255, 255, 255); vertical-align: top; padding-bottom: 18px; font-weight: bold; border: 0.5pt solid rgb(20, 111, 180);" width="15%"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Issue ID </span></span></td>
+			<td bgcolor="#146fb4" style="color: rgb(255, 255, 255); vertical-align: top; padding-bottom: 18px; font-weight: bold; border: 0.5pt solid rgb(20, 111, 180); " width="63%">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Issue</span></span></div>
+			</td>
+			<td bgcolor="#146fb4" style="color: rgb(255, 255, 255); vertical-align: top; padding-bottom: 18px; font-weight: bold; border: 0.5pt solid rgb(20, 111, 180);" width="22%">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Issue Rating</span></span></div>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">INF-1</span></span></div>
+			</td>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Environment information disclosure</span></span></div>
+			</td>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#00cc00;">ll</span><span style="color:#f2f2f2;">lll</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Calibri;font-size:12pt;font-weight:bold;"><span style="color:#00cc00;">LOW</span></span></span></div>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">INF-2</span></span></div>
+			</td>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">TCP Timestamp Option Enabled</span></span></div>
+			</td>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#00cc00;">l</span><span style="color:#f2f2f2;">llll</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Calibri;font-size:12pt;font-weight:bold;"><span style="color:#00cc00;">INFO</span></span></span></div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div style="margin-bottom:25px;">
+<h3><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#146fb4;font-family:Cambria; font-size:12pt;">1.2.2 Application Test(s)</span></span></h3>
+<div style="margin-bottom:10px;margin-top:10px;text-align:justify;color:#000;font-family:Calibri;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">This section identifies the issues discovered on each of the application tested during this engagement. A summary of the most serious issues can be found in Section 4(Summary of Findings) and full details of the issues, together with detailed remediation advice, can be found in Section 5(Test Results).</span></div>
+<table cellpadding="6" cellspacing="0" id="IssuesTemplate_IssuesIdentified_Table" style="font-size: 10pt; font-family:Calibri;border: 0.5pt solid rgb(20, 111, 180); border-collapse: collapse;" width="100%">
+	<tbody>
+		<tr>
+			<td align="center" bgcolor="#146fb4" style="color: rgb(255, 255, 255); vertical-align: top; padding-bottom: 18px; font-weight: bold; border: 0.5pt solid rgb(20, 111, 180);" width="15%"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Issue ID </span></span></td>
+			<td bgcolor="#146fb4" style="color: rgb(255, 255, 255); vertical-align: top; padding-bottom: 18px; font-weight: bold; border: 0.5pt solid rgb(20, 111, 180); " width="63%">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Issue</span></span></div>
+			</td>
+			<td bgcolor="#146fb4" style="color: rgb(255, 255, 255); vertical-align: top; padding-bottom: 18px; font-weight: bold; border: 0.5pt solid rgb(20, 111, 180);" width="22%">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Issue Rating</span></span></div>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">APP-1</span></span></div>
+			</td>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Firewall Detected</span></span></div>
+			</td>
+			<td style="border: 0.5pt solid rgb(0, 88, 151); vertical-align: top;">
+			<div align="center">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#c00000;">llll</span><span style="color:#f2f2f2;">l</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Calibri;font-size:12pt;font-weight:bold;"><span style="color:#c00000;">HIGH</span></span></span></div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">1.3 Recommended Actions</span></h2>
+</div>
+<div id="x1.3_Recommended_Actions">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">ProCheckUp recommends that the high, medium and low risk issues identified during this engagement should be subject to urgent remedial work to ensure an increase in the security posture of the environment to project it from immediate attack.&nbsp; The following prioritised approach is recommended:</span></span></span></p>
+</div>
+<div style="">
+<h3 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:12pt;font-family:Cambria">1.3.1 Immediate Actions</span></h3>
+</div>
+<div id="x1.3.1_Immediate_Actions">
+<ul style="padding: 0px 15px; margin-left: 25px;">
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">The password policy should be assessed and amended to fall in line with current best</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">The session management of the application should be upgraded to ensure that a session expires when the user logs out.</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">All missing CRITICAL and HIGH risk patches should be applied across the environment in accordance with the corporate patching policy.</span></span></span></li>
+</ul>
+</div>
+<div style="">
+<h3 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:12pt;font-family:Cambria">1.3.2 Medium Term Actions</span></h3>
+</div>
+<div id="x1.3.2_Medium_Term_Actions">
+<ul style="padding: 0px 15px; margin-left: 25px;">
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">should implement an enterprise wide patching policy that ensures any new patches are applied in a timely manner.</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">should consider having a gold build for all like devices which should be security tested following operational testing.</span></span></span></li>
+</ul>
+</div>
+<div style="">
+<h3 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:12pt;font-family:Cambria">1.3.3 Long Term Actions</span></h3>
+</div>
+<div id="x1.3.3_Long_Term_Actions">
+<ul style="padding: 0px 15px; margin-left: 25px;">
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">should consider adopting a regular scheduled testing framework. ProCheckUp security testing is a snapshot of security posture at a point in time. New vulnerabilities are identified every day resulting in a significant window of exposure during the 12 months between tests. ProCheckUp can assist in designing a bespoke testing programme to ensure that serious vulnerabilities are identified and remediated as soon as possible.</span></span></span></li>
+</ul>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">2 Scope of testing </span></h1>
+</div>
+<div id="x2_Scope_of_testing">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">The scope for this engagement was agreed on 11/03/2021 following between from &nbsp; and from ProCheckUp.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">The aim of the test was to highlight vulnerabilities and attack avenues that could be utilised by an attacker to subvert the environment or gain access to sensitive information on the Verve environment.<br>
+The following targests were in scope for this test:</span></span></span></p>
+&nbsp;
+<table cellpadding="2" cellspacing="0" style="width:100.0%;border:1px solid #146fb4;">
+	<tbody>
+		<tr>
+			<td style="background-color:#146fb4; height:24px; width:50%;border-width:1px;border-style: solid;border-color: #146fb4;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri (Body);Font-Weight:Bold;"><span style="color:white">Network(s)/IPs/Host Names</span></span></span></p>
+			</td>
+			<td style="background-color:#146fb4; height:24px; width:50%;border-width:1px;border-style: solid;border-color: #146fb4;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;font-family:Calibri (Body);Font-Weight:Bold;"><span style="color:white">Test Type</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:24px;width:50%;border-right:1px solid #146fb4;border-bottom:1px solid #146fb4;font-size:10pt;font-family:Calibri (Body);"><span style="font-size:10pt;font-family:Calibri;text-align:justify">178.250.102.166</span></td>
+			<td style="height:24px;width:50%;border-bottom:1px solid #146fb4;font-size:10pt;font-family:Calibri (Body);"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Unauthenticated</span></td>
+		</tr>
+		<tr>
+			<td style="height:24px;width:50%;border-right:1px solid #146fb4;border-bottom:1px solid #146fb4;font-size:10pt;font-family:Calibri (Body);"><span style="font-size:10pt;font-family:Calibri;text-align:justify">192.250.102.120</span></td>
+			<td style="height:24px;width:50%;border-bottom:1px solid #146fb4;font-size:10pt;font-family:Calibri (Body);"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Unauthenticated</span></td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">Background &amp; Scope</span></span></h1>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Background</span></span></h2>
+</div>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">AmeriaBank CJSC is an Armenian universal bank offering corporate, investment and retail banking services headquartered in Yerevan. It was established in 1910 as a branch of Caucasian Trade Bank, which during the Soviet era was transformed to the Armenian branch of the USSR Vneshtorgbank. It became a standalone bank again in 1992 after it obtained a banking license from the Central Bank of Armenia. By 2014, it had won the Euromoney award for best bank in Armenia three times. </span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">ProCheckUp (PCU) have been invited by Ameriabank CISC to participate in the bidding of the vulnerability and penetration test implementation process for 2019. </span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">AmeriaBank (the Bank) is planning to conduct evaluation of the security level of the Bank's information systems and computer network to identify vulnerabilities by conducting, among other things, penetration tests. The purpose of these tests is to: </span></span></span></p>
+<ol>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Gain an understanding of possible vulnerabilities of the Bank's corporate computer network which can be assailable from outside (Internet, ATM, CBANet, inter -branch networks) and inside (LAN);</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Assess the protection level of the Bank's external web resources (the Bank's website, online services such as Online and Mobile Banking systems, online payment tools);</span></span></span></li>
+	<li style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Receive a detailed report summarising the current state of IT systems and networks, any existing gaps and vulnerabilities, and consultation about how to resolve existing problems;</span></span></span></li>
+</ol>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">All work must be performed by an external service provider — an Independent specialized non-resident. CREST-certified organization.</span></span></span></p>
+<div style="margin-top: 20px;">
+<h2 style="margin:0;font-weight: normal;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">Scope of Requirements</span></span></h2>
+</div>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Further to a scoping study on 18/03/2019 between Ashkhen Grigoryan of Ameriabank CJSC and Clive Adams of ProCheckUp the following scope was agreed:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Works should be conducted in 2 stages:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Stage 1. Advanced persistent threat (APT) hunting exercise, to be conducted in April -May 2019</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">APT hunting exercise: this exercise is planned to last for up to 1 week and is aimed at identification of any successful attacks containing advanced persistent threats against the Bank's systems.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Stage 2. To be conducted in October -November 2019</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">2.1. Vulnerability assessment and penetration test for external computer network</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">2.2. Vulnerability assessment and penetration test for local computer network, including head office and 2 branches</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">2.3. Vulnerability assessment and penetration test for external web resources and systems (the Bank's websites, online payment tools such as Virtual POS)</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">2.4. Identification of social engineering vulnerabilities</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">2.5. Vulnerability assessment and penetration test for external WEB applications (Internet Banking, Mobile Banking)</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">2.6. APT hunting exercise. This exercise is planned to last for up to 1 week and is aimed at identification of any successful attacks containing advanced persistent threats against the Bank's systems.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Proposals should contain a detailed description of the methodology, software tools and solutions for the works.All works should be planned and carried out in a manner which does not damage, disturb or interfere with the data, systems, information networks, other information resources and routine operations of the Bank.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">The whole process must be organized and carried out under the condition of strict confidentiality.</span></span></span></p>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">3 Restrictions on testing </span></h1>
+</div>
+<div id="x3_Restrictions_on_testing">&nbsp;</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">3.1 Network Infrastructure</span></h2>
+</div>
+<div id="x3.1_Network_Infrastructure">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">The environment under test was a pre-production environment with a limited number of users, devices and accounts and, as such, was not a true reflection of the realtime environment. It should be considered that having an expanded user set cause additional &nbsp;vulnerabilities to occur.</span></span></span></p>
+</div>
+<div style="">
+<h2 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:14pt;font-family:Cambria">3.2 Application</span></h2>
+</div>
+<div id="x3.2_Application">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.</span></span></span></p>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">4 Summary of findings </span></h1>
+</div>
+<div id="x4_Summary_of_findings">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Multiple HIGH, MEDIUM and LOW risk vulnerabilities were identified during the infrastructure and application API tests conducted during this engagement. The most significant of these vulnerabilities are discussed below and detailed along with the lower-risk issues in Section 5(Test Results).</span></p>
+<h3><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#146fb4;font-size:14pt;font-family:Cambria;font-weight:bold;">4.1&nbsp;&nbsp;&nbsp;Infrastructure</span></span></h3>
+<h3 style="margin:0;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#146fb4;font-size:14pt;font-family:Cambria;font-weight:normal;">4.1.1&nbsp;&nbsp;&nbsp;Environment information disclosure</span></span></h3>
+<div class="group-vul-des" style="font-size:10pt;font-family:Calibri;margin:0;">
+<p><span style="font-size:10pt;font-family:Calibri;text-align:justify">The target discloses environment information which may help attackers perform more focused attacks.</span></p>
+</div>
+<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-weight:600">Firewall Detected - </span><span>A packet filtering device protecting this IP was detected. This is likely to be a firewall or a router using access control. </span></span></div>
+&nbsp;
+<h3><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#146fb4;font-size:14pt;font-family:Cambria;font-weight:bold;">4.2&nbsp;&nbsp;&nbsp;Application</span></span></h3>
+<h3 style="margin:0;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#146fb4;font-size:14pt;font-family:Cambria;font-weight:normal;">4.2.1&nbsp;&nbsp;&nbsp;Firewall Detected</span></span></h3>
+<div class="group-vul-des" style="font-size:10pt;font-family:Calibri;margin:0;">
+<p><span style="font-size:10pt;font-family:Calibri;text-align:justify">A packet filtering device protecting this IP was detected. This is likely to be a firewall or a router using access control.</span></p>
+</div>
+<br>
+&nbsp;</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">5 Test Results </span></h1>
+</div>
+<div id="x5_Test_Results">&nbsp;
+<h3><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt; font-family:Calibri; text-align:left"><span style="color:#146fb4;font-size:14pt;font-family:Cambria;font-weight:normal;">5.1 Infrastructure</span></span></span></h3>
+<table cellpadding="0" cellspacing="0" class="testResultcls" id="TestResult_FixedWidth" style="width:100%;table-layout:fixed;border: 0.5pt solid rgb(0, 88, 151); border-collapse: collapse; font-family:Calibri;font-size:10pt">
+	<tbody>
+		<tr>
+			<td style="background-color: #146fb4; border-top: 0.5pt solid rgb(0, 88, 151); border-bottom: none; border-left: 0.5pt solid rgb(0, 88, 151); width:12.8%; text-align: center;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="display: inline-block;"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#00cc00;">ll</span><span style="color:#f2f2f2;">lll</span></span></span></span></td>
+			<td style="background-color: #146fb4; border-top: 0.5pt solid rgb(0, 88, 151); border-bottom: none;border-right: 0.5pt solid rgb(0, 88, 151);"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#FFF0F5;display:inherit; text-align: left;">&nbsp;&nbsp;<b>Environment information disclosure (CVSS: 2.6)</b></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:12.8%;text-align:center;vertical-align:top;border: 0.5pt solid rgb(0, 88, 151);">
+			<div style="">
+			<p style="margin-bottom:5px;margin-top:0px;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>INF-1</b></span></p>
+			</div>
+			</td>
+			<td style="width:87.2%; word-break: break-all; border: 0.5pt solid rgb(0, 88, 151);">
+			<div class="ResultData" style="font-style:normal;font-weight:normal;font-family:Calibri;color:#000000;margin: 5pt;text-align:left; display:block; word-wrap:break-word;">
+			<div class="group-vul-des" style="text-align:left;word-break: normal;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify">The target discloses environment information which may help attackers perform more focused attacks.</span></p>
+			</div>
+			&nbsp;
+			<div style="font-size:10pt;font-family:Calibri;font-weight:bold;text-align:left;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Firewall Detected (CVSS: 8.0)</span></div>
+			<div class="group-vul-des" style="font-size:10pt;font-family:Calibri;font-weight:normal;text-align:left;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify">A packet filtering device protecting this IP was detected. This is likely to be a firewall or a router using access control.</span></p>
+			</div>
+			&nbsp;
+			<div style="margin-top:10px;margin-bottom:0px;font-weight:bold;font-family:Calibri;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Results:</span></div>
+			<div class="ltData">&nbsp;</div>
+			<div style="margin-top:10px;margin-bottom:0px;font-weight:bold;font-family:Calibri;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><u>Affected Hosts:</u></span></div>
+			<div>
+			<div style="font-size:10pt;margin-top:5px;margin-bottom:0px;margin-left:5px;font-family:Calibri;font-weight:bold;text-align:left;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">Firewall Detected (CVSS: 8.0)</span>
+			<table style="width:100%; display: inline-block; word-break: break-all;border-collapse: collapse;font-weight:500;">
+				<tbody>
+					<tr>
+						<td style="font-size:10pt;font-family:Calibri"><span style="font-size:10pt;font-family:Calibri;text-align:justify">192.250.102.120</span></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			</div>
+			<div style="margin-top:10px;color:#B22222;font-weight:bold;font-family:Calibri !important;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><u>Recommendations</u></span></div>
+			<div style="color:#B22222">
+			<div class="group-vul-des" style="text-align:left;font-size:10pt;font-family:Calibri;word-break: normal;margin-top:0pt;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>In general, avoid disclosing environment information, such as version numbers, error pages and internal IP addresses.</b></span></p>
+			</div>
+			</div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div style="min-height:30px">&nbsp;</div>
+<table cellpadding="0" cellspacing="0" class="testResultcls" id="TestResult_FixedWidth" style="width:100%;table-layout:fixed;border: 0.5pt solid rgb(0, 88, 151); border-collapse: collapse; font-family:Calibri;font-size:10pt">
+	<tbody>
+		<tr>
+			<td style="background-color: #146fb4; border-top: 0.5pt solid rgb(0, 88, 151); border-bottom: none; border-left: 0.5pt solid rgb(0, 88, 151); width:12.8%; text-align: center;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="display: inline-block;"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#00cc00;">l</span><span style="color:#f2f2f2;">llll</span></span></span></span></td>
+			<td style="background-color: #146fb4; border-top: 0.5pt solid rgb(0, 88, 151); border-bottom: none;border-right: 0.5pt solid rgb(0, 88, 151);"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#FFF0F5;display:inherit; text-align: left;">&nbsp;&nbsp;<b>TCP Timestamp Option Enabled (CVSS: 0.0)</b></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:12.8%;text-align:center;vertical-align:top;border: 0.5pt solid rgb(0, 88, 151);">
+			<div style="">
+			<p style="margin-bottom:5px;margin-top:0px;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>INF-2</b></span></p>
+			</div>
+			</td>
+			<td style="width:87.2%; word-break: break-all;border: 0.5pt solid rgb(0, 88, 151);">
+			<div class="ResultData" style="font-style:normal;font-weight:normal;font-family:Calibri;color:#000000;margin: 5pt;text-align:left; display:block; word-wrap:break-word;">
+			<div style="text-align:left;word-break: normal;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify">Typically, the timestamp used is the host's uptime (since last reboot) in various units (e.g., one hundredth of second, one tenth of a second, etc.). Based on this, we can obtain the host's uptime.<br>
+			After determining the uptime of the system it could be possible for an attacker to deduce which patches have been applied to the system. Some critical patches require system reboots, thus, if a system has been up for a long time, this might indicate that the recent patch has not been applied to the host.</span></p>
+			</div>
+			<table style="width:100%; display: inline-block; word-break: break-all;border-collapse: collapse;">
+				<tbody>
+					<tr>
+						<td>
+						<div style="margin:0px;font-weight:bold;font-family:Calibri;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><u>Affected Hosts</u></span></div>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-size:10pt;font-family:Calibri"><span style="font-size:10pt;font-family:Calibri;text-align:justify">178.250.102.166</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="margin-top:10px;color:#B22222;font-weight:bold;font-family:Calibri !important;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><u>Recommendations</u></span></div>
+			<div class="group-vul-des" style="color:#B22222;word-break: normal;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>The TCP timestamp option on the host should be disabled. Alternatively, this could be filtered at the router or firewall.</b></span></p>
+			&nbsp;
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>More information can be found at the following URL(s):<br>
+			• http://www.ietf.org/rfc/rfc1323.txt<br>
+			• https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0524</b></span></p>
+			<div style="text-align:left;font-size:10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>More information can be found at the following URL(s)</b></span></div>
+			<div style="text-align:left;font-size:10pt;font-family:Calibri;">
+			<ul style="margin-top:0px !important;margin-bottom:0px !important;padding-right:0px !important;">
+				<li><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b><span style="color:#0003FF;">http://www.ietf.org/rfc/rfc1323.txt</span></b></span></li>
+			</ul>
+			</div>
+			</div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div style="min-height:30px">&nbsp;</div>
+<h3><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt; font-family:Calibri; text-align:left"><span style="color:#146fb4;font-size:14pt;font-family:Cambria;font-weight:normal;">5.2 Application</span></span></span></h3>
+<table cellpadding="0" cellspacing="0" class="testResultcls" id="TestResult_FixedWidth" style="width:100%;table-layout:fixed;border: 0.5pt solid rgb(0, 88, 151); border-collapse: collapse; font-family:Calibri;font-size:10pt">
+	<tbody>
+		<tr>
+			<td style="background-color: #146fb4; border-top: 0.5pt solid rgb(0, 88, 151); border-bottom: none; border-left: 0.5pt solid rgb(0, 88, 151); width:12.8%; text-align: center;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="display: inline-block;"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#c00000;">llll</span><span style="color:#f2f2f2;">l</span></span></span></span></td>
+			<td style="background-color: #146fb4; border-top: 0.5pt solid rgb(0, 88, 151); border-bottom: none;border-right: 0.5pt solid rgb(0, 88, 151);"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="color:#FFF0F5;display:inherit; text-align: left;">&nbsp;&nbsp;<b>Firewall Detected (CVSS: 8.0)</b></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:12.8%;text-align:center;vertical-align:top;border: 0.5pt solid rgb(0, 88, 151);">
+			<div style="">
+			<p style="margin-bottom:5px;margin-top:0px;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>APP-1</b></span></p>
+			</div>
+			</td>
+			<td style="width:87.2%; word-break: break-all;border: 0.5pt solid rgb(0, 88, 151);">
+			<div class="ResultData" style="font-style:normal;font-weight:normal;font-family:Calibri;color:#000000;margin: 5pt;text-align:left; display:block; word-wrap:break-word;">
+			<div style="text-align:left;word-break: normal;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify">A packet filtering device protecting this IP was detected. This is likely to be a firewall or a router using access control.</span></p>
+			</div>
+			<table style="width:100%; display: inline-block; word-break: break-all;border-collapse: collapse;">
+				<tbody>
+					<tr>
+						<td>
+						<div style="margin:0px;font-weight:bold;font-family:Calibri;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><u>Affected Hosts</u></span></div>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-size:10pt;font-family:Calibri"><span style="font-size:10pt;font-family:Calibri;text-align:justify">192.250.102.120</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="margin-top:10px;color:#B22222;font-weight:bold;font-family:Calibri !important;font-size:10pt;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><u>Recommendations</u></span></div>
+			<div class="group-vul-des" style="color:#B22222;word-break: normal;">
+			<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><b>N/A</b></span></p>
+			</div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div style="min-height:30px">&nbsp;</div>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">Appendix A- Severity Scale </span></h1>
+</div>
+<div id="Appendix_A-_Severity_Scale">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Vulnerabilities are supplied with corresponding ratings indicating their severity, and these are rated on a scale of one to five using the icons below.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">A rating of five means that the vulnerability could enable an attacker to compromise the device, and a rating of one is of low severity.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">A more detailed description of the rating system, including examples, can be found in the table below:</span></span></span></p>
+<table cellpadding="3" cellspacing="0" style="border-image:none;border:1px solid rgb(20, 111, 180);line-height:16px;width:100%;border-collapse:collapse;">
+	<tbody>
+		<tr>
+			<td style="text-align: center; background-color: rgb(20, 111, 180);border:1px solid #ffffff ;">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size: 11pt;"><span style="font-family: Calibri;"><span style="color: rgb(255, 240, 245);"><strong>Severity</strong></span></span></span></span></div>
+			</td>
+			<td style="text-align: center; background-color: rgb(20, 111, 180);">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size: 11pt;"><span style="font-family: Calibri;"><span style="color: rgb(255, 240, 245);"><strong>Description</strong></span></span></span></span></div>
+			</td>
+		</tr>
+		<tr>
+			<td style="width: 102px; text-align: center;  background-color: rgb(20, 111, 180);border:1px solid #ffffff ;">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#00cc00;">l</span><span style="color:#f2f2f2;">llll</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:12pt;"><span style="font-family:calibri;"><span style="color: rgb(0, 204, 0);"><strong>INFO</strong></span></span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:9pt;"><span style="font-family:calibri;"><span style="color: rgb(0, 204, 0);"><strong>(CVSS 0)</strong></span></span></span></span></div>
+			</td>
+			<td style="border-bottom: 1px solid rgb(20, 111, 180); text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">Level 1 issues are raised purely for&nbsp;<strong>informational</strong>&nbsp;purposes and do not pose any risks to security.&nbsp; The reason for their inclusion is to make the customer aware of their presence in case their status was to change.&nbsp; For example, sensitive entries in a robots.txt file may not be accessible at the time of testing, but may become accessible in the future.</span></span></span></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;  background-color: rgb(20, 111, 180);border:1px solid #ffffff ;">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#00cc00;">ll</span><span style="color:#f2f2f2;">lll</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:12pt;"><span style="font-family: Calibri;"><span style="color: rgb(0, 204, 0);"><strong>LOW</strong></span></span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:9pt;"><span style="font-family: Calibri;"><span style="color: rgb(0, 204, 0);"><strong>(CVSS 0.1-3.9)</strong></span></span></span></span></div>
+			</td>
+			<td style="border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">
+			<div style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Level 2 vulnerabilities pose a&nbsp;<strong>low</strong>&nbsp;threat to security. Low threat issues include for example: Leakage of information (such as software versions) which an attacker may find useful; exposure of unnecessary content/functionality; configurations that do not meet best security practice.</span></span></span></div>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;  background-color: rgb(20, 111, 180);border:1px solid #ffffff ;">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#ff9900;">lll</span><span style="color:#f2f2f2;">ll</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:12pt;"><span style="font-family: Calibri;"><span style="color: rgb(255, 153, 0);"><strong>MEDIUM</strong></span></span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:9pt;"><span style="font-family: Calibri;"><span style="color: rgb(255, 153, 0);"><strong>(CVSS 4-6.9)</strong></span></span></span></span></div>
+			</td>
+			<td style="border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">
+			<div style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Level 3 vulnerabilities pose a&nbsp;<strong>medium</strong>&nbsp;threat to security. Medium-risk issues could allow an attacker to gain limited access to system commands or sensitive data.&nbsp; In addition, vulnerabilities addressed as medium risk when combined with other factors could have a high impact on security if exploited.</span></span></span></div>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;  background-color: rgb(20, 111, 180);border:1px solid #ffffff ;">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#c00000;">llll</span><span style="color:#f2f2f2;">l</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:12pt;"><span style="font-family: Calibri;"><span style="color: rgb(192, 0, 0);"><strong>HIGH</strong></span></span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:9pt;"><span style="font-family: Calibri;"><span style="color: rgb(192, 0, 0);"><strong>(CVSS 7-9.9)</strong></span></span></span></span></div>
+			</td>
+			<td style="border-bottom-color: rgb(20, 111, 180); border-bottom-width: 1px; border-bottom-style: solid;">
+			<div style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Level 4 vulnerabilities pose a&nbsp;<strong>high</strong>&nbsp;threat to security. Issues are raised as high-threat when exploitation could result in a major security breach, such as allowing attackers to gain privileged access, escalate privileges, or to access/modify/remove sensitive information and/or functionality.</span></span></span></div>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;  background-color: rgb(20, 111, 180);border:1px solid #ffffff ;">
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-family:Wingdings;font-size:10pt;font-weight:bold;"><span style="color:#c00000;">lllll</span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:12pt;"><span style="font-family: Calibri;"><span style="color: rgb(192, 0, 0);"><strong>CRITICAL</strong></span></span></span></span></div>
+			<div><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:9pt;"><span style="font-family: Calibri;"><span style="color: rgb(192, 0, 0);"><strong>(CVSS 10)</strong></span></span></span></span></div>
+			</td>
+			<td>
+			<div style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family: Calibri;">Level 5 vulnerabilities pose a&nbsp;<strong>critical</strong>&nbsp;threat to security. Security issues raised at this level would generally allow an attacker to gain unauthorised access to a system or sensitive data using publicly-available tools and exploits. As an example, if a host was found to be running an unsupported operating system for which exploits were publicly available, this would qualify as a level 5.&nbsp; If fully exploited such vulnerabilities could have disastrous effects on the business.&nbsp;</span></span></span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">Appendix B Port Scans </span></h1>
+</div>
+<div id="Appendix_B_Port_Scans">
+<p style="text-align: justify;"><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This section of the report details the results of ports scans conducted against all of the targets in scope for this testing.&nbsp; Full port TCP scans and common port UDP scans were conducted during this test.&nbsp; Only OPEN and CLOSED ports are shown in this section, filtered ports have been omitted.</span></span></span></p>
+<p style="display: none;"><span style="font-size:10pt;font-family:Calibri;text-align:justify">IP_Information</span></p>
+</div>
+<br style="page-break-after: always;" class="page-break">
+<div style="">
+<h1 style="margin:0;font-weight: normal;"><span style="color:rgb(0,88,151);font-size:20pt;font-family:Cambria">Appendix C - Supplementary Information </span></h1>
+</div>
+<div id="Appendix_C_-_Supplementary_Information">
+<p><span style="font-size:10pt;font-family:Calibri;text-align:justify"><span style="font-size:10pt;"><span style="font-family:calibri;">This could contain anything which would bulk out the report unnecessarily, such as a list of missing patches per host, dirbuster output etc.</span></span></span></p>
+</div>
+</div>
+
+        <div class="Section1">
+            <table id="hrdftrtbl" border="0" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td>
+                        <div style="mso-element: header" id="h1">
+                            <br><p style="text-align: center"><span style="color: #c00000; font-family: Calibri; font-size: 20pt; font-weight: bold; margin-bottom: 1px">Commercial in Confidence</span></p>
+                            <br>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="mso-element: footer" id="f1">
+
+
+                            <p class="MsoFooter">
+                                <span style="float: left">
+                                    <img id="footerImg" alt="" src="https://report.portal.procheckup.com/Content/images/logo/footer-logo-small.png" height="21" width="100">
+                                </span>
+                                <span style="float: right; font-family:Calibri;font-size:10pt;">
+                                    <span style="mso-tab-count: 2;"></span>
+                                    Page <span style="mso-field-code: PAGE"><span style="mso-no-proof: yes"></span></span>&nbsp;of <span style="mso-field-code: NUMPAGES"></span>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div style="mso-element: header" id="fh1">
+                            <br><div style="text-align: center"><span style="color: #c00000; font-family: Calibri; font-size: 20pt; font-weight: bold; margin-bottom: 1px">Commercial in Confidence</span></div>
+
+                                <center>
+                                    <img id="headerImg" alt="" src="https://report.portal.procheckup.com/Content/images/logo/header-logo-large.png" height="94" width="500">
+                                </center>
+                            <br>
+                        </div>
+
+                        <div style="mso-element: footer" id="ff1">
+
+                            <p class="MsoFooter">
+                                <span lang="EN-US" style="mso-ansi-language: EN-US">
+                                    </span></p><div id="footerTable">
+                                        <table style="width: 100%; border:1px solid #146fb4; border-collapse:collapse;font-family:Calibri;font-size:10pt;">
+                                            <thead style="background:#146fb4; color:#FFF;">
+                                                <tr>
+                                                    <th style="text-align:center;">ID</th>
+                                                    <th style="text-align:center;">Author</th>
+                                                    <th style="text-align:center;">Date</th>
+                                                    <th style="text-align:center;">Account Manager</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border:1px solid #146fb4;text-align:center;">new</td>
+                                                    <td style="border:1px solid #146fb4;text-align:center;">next&nbsp;olive</td>
+                                                    <td style="border:1px solid #146fb4;text-align:center;">11/03/2021</td>
+                                                    <td style="border:1px solid #146fb4;text-align:center;"> Luck-Tim</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <span style="font-size:10pt;font-family:Calibri;"><br></span>
+                                    </div>
+                                    <o:p></o:p>
+                                
+                            <br>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div></body></html>

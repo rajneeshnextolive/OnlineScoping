@@ -1,0 +1,346 @@
+﻿@model OnlineScoping.ViewModels.EquestionViewModel
+
+@{
+    ViewData["Title"] = "Create Equestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background-color: #fff;
+        margin: 0px auto;
+    }
+
+    .calbody {
+        background: #1b334c;
+        border: 1px solid #ff0;
+        padding: 23px;
+        margin-left: 450px;
+        min-width: 27.4em;
+        max-width: 27.4em;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        color: #003652;
+    }
+
+    #lcd {
+        text-align: right;
+        width: 23em;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    #lcdu {
+        color: grey;
+        text-align: right;
+        width: 27.6em;
+        height: 35px;
+        font-size: 15px;
+    }
+
+    .btn {
+        background-color: #fff;
+        width: 80px;
+        height: 60px;
+        font-size: 20px;
+        border: 1px solid #097C9B;
+    }
+
+    .btn:hover {
+        background-color: #1861ac !important;
+        color: #fff !important;
+    }
+
+    .div-eq {
+        margin: 0px auto !important;
+        padding: 16px !important;
+        background-color: #1b334c !important;
+        color: #fff !important;
+        font-size: 25px !important;
+        width: 80% !important;
+        text-align: center !important;
+        font-weight: 700 !important;
+        letter-spacing: 2px !important;
+        border-radius: 5px !important;
+    }
+    .calbody {
+        background: #e5e5e5 !important;
+        border: none;
+        border-radius: 11px;
+        margin-left: 450px;
+        min-width: 40%;
+        max-width: 55%;
+        margin-top: 50px !important;
+        margin-bottom: 5% !important;
+    }
+    .div-eq-btn {
+        width: 70% !important;
+    }
+
+    #calbutton {
+        margin: 0 !important;
+        
+        padding: 0 !important;
+        
+        text-align: center !important;
+        
+    }
+        #calbutton .btn {
+            border-radius: 5px !important;
+            border: none !important;
+            background-color: #fff;
+            width: 70px;
+            height: 70px;
+            font-size: 20px;
+            margin: 7px 7px !important;
+            box-shadow: 5px 5px #d4d4d4 !important;
+        }
+</style>
+<div class="page-top col-md-12">
+
+    <div class="row">
+        <div class="col-md-4">
+            @if (Model.EquestionViewModelData != null)
+            {<h3 class="pt-3">
+     Update Equations
+</h3>
+            }
+            else
+            {
+        <h3 class="pt-3">
+            Create Equations
+        </h3>
+            }
+
+        </div>
+        <div class="col-md-6">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="EditAllQuestionnaires">Questionnaires</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Create Equations</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+@*@if (TempData["SuccesMessage"] != null)
+    {
+        <div style="margin: 0% 0% 0% 70%;" class="alert alert-success mb-4" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> @TempData["SuccesMessage"] </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div style="margin: 0% 0% 0% 0%;" class="alert alert-danger mb-12" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong>@TempData["ErrorMessage"] </div>
+    }*@
+
+<div class="card component-card_1 security-scoping-card" style="        margin-top: 10px;
+">
+    <div class="col-md-10 pt-4 m-auto pb-4r">
+        <form name="lcdform" id="lcdform" asp-action="CreateEquestion"  autocomplete="off">
+            <input type="hidden" asp-for="@Model.QuestionnaireId" />
+            @if (Model.EquestionViewModelData != null)
+            {
+                <input type="hidden" asp-for="@Model.EquestionViewModelData.CostEquestion" id="CostEquestionId" />
+                <input type="hidden" asp-for="@Model.EquestionViewModelData.DaysEquestion" id="DaysEquestionId" />
+            }
+            else
+            {
+                <input type="hidden" asp-for="@Model.CostEquestion" id="CostEquestionId" />
+                <input type="hidden" asp-for="@Model.DaysEquestion" id="DaysEquestionId" />
+            }
+
+        <div class="row p-3">
+            <textarea asp-for="@Model.CreatedFormula" value="@Model.CreatedFormula" class="div-eq" id="display" readonly style="background-color: #1b334c !important;"></textarea>
+            <span asp-validation-for="CreatedFormula" class="text-danger"></span>
+        </div>
+            <div class="row">
+                <div class="card-body calbody m-auto pb-4">
+
+
+                    <div id="calbutton">
+                        <input type="button" value="A" id="AValue" class="btn Cal" onclick="lcdform.display.value += 'A'">
+                        <input type="button" value="(" class="btn Cal1 calle" onclick="lcdform.display.value += '('">
+                        <input type="button" value=")" class="btn Cal1 calle" onclick="lcdform.display.value += ')'">
+                        <input type="button" value="/" class="btn Cal calsym" onclick="lcdform.display.value += '/'">
+                        <input type="button" value="7" class="btn Cal1" onclick="lcdform.display.value += '7'">
+                        <input type="button" value="8" class="btn Cal1" onclick="lcdform.display.value += '8'">
+                        <input type="button" value="9" class="btn Cal1" onclick="lcdform.display.value += '9'">
+                        <input type="button" value="*" class="btn Cal calsym" onclick="lcdform.display.value += '*'">
+                        <input type="button" value="4" class="btn Cal1" onclick="lcdform.display.value += '4'">
+                        <input type="button" value="5" class=" btn Cal1" onclick="lcdform.display.value += '5'">
+                        <input type="button" value="6" class="btn Cal1" onclick="lcdform.display.value += '6'">
+                        <input type="button" value="-" class="btn Cal calsym" onclick="lcdform.display.value += '-'">
+                        <input type="button" value="1" class="btn Cal1" onclick="lcdform.display.value += '1'">
+                        <input type="button" value="2" class="btn Cal1" onclick="lcdform.display.value += '2'">
+                        <input type="button" value="3" class="btn Cal1" onclick="lcdform.display.value += '3'">
+                        <input type="button" value="+" class="btn Cal calsym" onclick="lcdform.display.value += '+'">
+
+                        <input type="button" value="0" class="btn Cal1" onclick="lcdform.display.value += '0'">
+                        <span type="button" class="btn" id="clr" onclick="cut();"><em class="fa fa-backspace" style="padding-top:18px;" ></em></span>
+                        <span type="button" value="" class="btn del" onclick="lcdform.display.value = ''" style="width: 150px;"><i class="fa fa-trash-o" aria-hidden="true" style="padding-top:18px;"></i></span>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row" style="margin-bottom:29px;" >
+
+
+                <div class="col-md-6">
+                    <select id="EquestionChange" class="form-control div-eq-btn" asp-for="@Model.EquestionType" >
+
+                        <option value="Days">
+                            Days Equation
+                        </option>
+                        <option value="Cost">
+                            Cost Equation
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-6 text-align-end">
+                    <input type="submit" value="Save" class="form-control btn-primary  div-eq-btn">
+                </div>
+            </div>
+        </form>
+
+    </div>
+  
+    <!-- Javascript code -->
+    <script>
+
+        function cut() {
+            var str = document.lcdform.display.value;
+            var newStr = str.slice(0, -1);
+            document.lcdform.display.value = newStr;
+            $(".Cal").prop('disabled', false);    
+            return;
+        }
+        function EquestionChange() {
+          
+        }
+    </script>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $(document).ready(function () {
+        var x = document.getElementById("EquestionChange").value;
+        if (x == 'Days') {
+            var DaysValue = document.getElementById("DaysEquestionId").value;
+            if (DaysValue != null) {
+                document.getElementById('display').value = DaysValue;
+            }
+        } else if (x == 'Cost') {
+            var CostValue = document.getElementById("CostEquestionId").value;
+            if (CostValue != null) {
+                document.getElementById('display').value = CostValue;
+            }
+        }
+
+        $(function () {
+            $("#EquestionChange").on('change', function () {
+                var x = document.getElementById("EquestionChange").value;
+                if (x == 'Days') {
+                    var DaysValue = document.getElementById("DaysEquestionId").value;
+                    if (DaysValue != null) {
+                        document.getElementById('display').value = DaysValue;
+                    }
+                } else if (x == 'Cost') {
+                    var CostValue = document.getElementById("CostEquestionId").value;
+                    if (CostValue != null) {
+                        document.getElementById('display').value = CostValue;
+                    }
+                }
+            })
+
+        });
+
+
+        $(function () {
+            $(".Cal").on('click', function (e) {           
+                $(".Cal").prop('disabled', false);      
+                $(this).prop('disabled', true);
+            })
+
+        });
+
+        $(function () {
+            $(".Cal1").on('click', function (e) {
+                var a = $("#AValue").is(":disabled");
+                if (a == true) {
+                    $(".Cal").prop('disabled', false);
+                    $("#AValue").prop('disabled', true);
+                } else {
+                    $(".Cal").prop('disabled', false);
+                }             
+            })
+
+        });
+
+        $(function () {
+            $(".del").on('click', function (e) {
+                $(".Cal").prop('disabled', false);         
+            })
+
+        });
+        $(function () {
+            $("#AValue").on('click', function (e) {        
+                var str = document.lcdform.display.value;
+                if (str!='A') {
+                    var res = str.charAt(str.length - 2);
+                    if (res == 'A') {
+                        var newStr = str.slice(0, -1);
+                        document.lcdform.display.value = newStr;
+                    }
+                }
+                
+            })
+
+        });
+
+        $(function () {
+            $(".calsym").on('click', function (e) {      
+                var value = $(this).val();
+                var str = document.lcdform.display.value;
+                if (str == '+' || str == '*' || str == '/' || str == '-') {
+                    document.lcdform.display.value = '';
+                    document.lcdform.display.value ="0" + str;
+                } else {
+                    var res = str.charAt(str.length - 2);
+                    if (res == '+' || res == '*' || res == '/' || res == '-') {
+                        var newStr = str.slice(0, -2);                    
+                        document.lcdform.display.value = "" + newStr+""+ value;
+                      
+                    }
+                }
+            })
+
+        });
+
+        $(function () {
+            $(".calle").on('click', function (e) {
+                $(".Cal").prop('disabled', false);
+            })
+
+        });
+
+    });
+
+    //var inputText = document.getElementById("display");
+    //inputText.addEventListener("keyup", function (event) {
+    //    if (event.keyCode == 65) {
+    //        $('#AValue').click();
+    //    }
+    //    console.log(event);
+    //    console.log(event.keyCode);
+    //    alert(event.keyCode);
+    //});
+</script>
+
+}

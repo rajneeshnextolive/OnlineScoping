@@ -1,0 +1,759 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+@{
+    ViewData["Title"] = "UpdatepciQuestions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<style>
+    .n-chk {
+        margin-left: 63px;
+        color: #000;
+    }
+
+        .n-chk label {
+            color: #000 !important;
+        }
+
+    .qus-align b {
+        display: table-cell
+    }
+
+    .qus-align span {
+        display: table-cell
+    }
+
+    .no-padding {
+        padding: 0;
+    }
+
+    .ml-100 {
+        margin-left: 90px;
+    }
+
+    /*//table*/
+    .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+        position: relative;
+    }
+
+    .table {
+        display: table;
+        width: 100%;
+    }
+
+    .tableRow {
+        display: table-row;
+    }
+
+    .tableHead {
+        display: table-row;
+        font-weight: bold;
+    }
+
+    .tableCell {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell1 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell2 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+        text-align: center;
+    }
+
+    .tableRow .tableCell:first-child {
+        cursor: auto;
+    }
+
+    .del-Check {
+        height: 20px !important;
+        width: 20px !important;
+    }
+
+    .security-scoping-card .form-group label, label {
+        margin-bottom: 0;
+    }
+
+    .security-scoping-card .card-title {
+        margin-bottom: 0;
+    }
+
+    .highlight {
+        border-color: red;
+    }
+</style>
+
+
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="pt-3">
+                Update Scope
+            </h3>
+        </div>
+        <div class="col-md-5" style="margin-left: -100px;">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="EditAllQuestionnaires">Scope</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Update Scope</a></li>
+                </ol>
+            </nav>
+        </div>
+        @if (TempData["SuccesMessage"] != null)
+        {
+            <div style="margin: 0% 0% 0% 0%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong>  @TempData["SuccesMessage"]   </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div style="margin: 0% 0% 0% 0%;" class="alert alert-danger mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> @TempData["ErrorMessage"]   </div>
+        }
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="card component-card_1 security-scoping-card mt-5">
+    @*<a class="word-export" href="javascript:void(0)" onclick="ExportToDoc()">Export to Doc</a>*@
+    <div class="card-body" id="RepordToWord">
+        <div class="row mb-3">
+            <div class="col-md-8 text-left align-self-center">
+                <h5 class="card-title align-self-center">PCI ASV Scoping Questionnaire</h5>
+            </div>
+            <div class="col-md-2 text-right align-self-center"><label>Select Mode</label></div>
+            <div class="col-md-2 text-right align-self-center">
+
+                <select id="mySelect" class="form-control form-control" onchange="BothMode()">
+                    <option value="View" selected>View</option>
+                    <option value="Edit">Edit</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-12 text-left">
+                @*<a asp-action="CretaeEquestion" asp-controller="Questionnaire" asp-route-id="@Model.QuestionnaireId" class="btn btn-primary float-right ActionMode" id="btncal"> Create Equestions</a>*@
+
+                <a class="btn btn-primary float-right ActionMode mx-3" data-toggle="modal" style="cursor:pointer" aria-expanded="false" data-target="#QuesAddNewModel" data-placement="top" title="Edit" onclick="BindNewQues('@Model.QuestionnaireId','@Model.SectionId')">Create New Question</a>
+            </div>
+        </div>
+        @*<h5 class="card-title mb-5 mt-3">PCI ASV Scoping Questionnaire</h5>*@
+
+        <form asp-action="UpdateAllQuestionnaires" method="post">
+            <input type="hidden" asp-for="@Model.QuestionnaireId" />
+            <input type="hidden" id="CustomerId" asp-for="@Model.CustomerId" />
+
+            <div class="w-100 carousel-inner" role="listbox">
+
+                @if (Model.QuestionnaireId == new Guid("0A2DFC0B-1F17-447C-A7B8-067F9980325A"))
+                {
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style=" text-align: left; color: black;font-size: 1.25rem;"> 1.	Please list all external-facing IP addresses, subdomains and domains that are part of the cardholder data environment (CDE), as well as any externally facing system component that may provide access to the CDE. Please include all URLs as all web application will need to be individually tested</p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">  The PCI DSS security requirements apply to all system components included in or connected to the cardholder data environment (CDE). The CDE is comprised of people, processes, and technologies that store, process, or transmit cardholder data or sensitive authentication data. “System components” include network devices, servers, computing devices, and applications. Examples of system components include but are not limited to the following:</p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;"> •Systems that provide security services (for example, authentication servers) facilitate segmentation (for example, internal firewalls) or may impact the security of (for example, name-resolution or web-redirection servers) the CDE.</p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Virtualization components such as virtual machines, virtual switches/routers, virtual appliances, virtual applications/desktops, and hypervisors.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Network components including but not limited to firewalls, switches, routers, wireless access points, network appliances, and other security appliances.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Server types including but not limited to web, application, database, authentication, mail, proxy, Network Time Protocol (NTP), and Domain Name System (DNS).
+                    </p> <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Applications including all purchased and custom applications, including internal and external (for example, Internet) applications.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        •	Any other component or device located within or connected to the CDE.
+                    </p>
+                    <br />
+                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                        *Please note that we will need third-party permission if the servers are not owned by the customer.<span style="color:red">(VARIABLE=A1)</span>
+                        @*<span class="ActionMode">
+                                <a data-toggle="modal" style="font-size: 15px;cursor:pointer" aria-expanded="false" data-target="#QuesUpdateModel" data-placement="top" title="Edit" onclick="BindQues('@Model.Questions[i].QuestionId','@Model.QuestionnaireId','@Model.Questions[i].QuestionText','','@Model.SectionId')"><em class="fas fa-pencil-alt"></em></a> |
+                                <a asp-action="DeleteSingleQuestions" asp-controller="Questionnaire" asp-route-id="@Model.Questions[i].QuestionId" asp-route-QuestionnaireId="@Model.QuestionnaireId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><em class="far fa-trash-alt"></em></a>
+
+                            </span>*@
+                    </p>
+
+                    <div class="panel-body">
+                        <div id="RemoteVulnerabilityScan">
+                            <div class="mb-4 ml-5 text-right mr-5">
+                                @*<input type="button" id="remVulScanAddbtn" value="Add" class="btn btn-warning" />
+                                    <input type="button" id="remVulScanDeletebtn" value="Delete" class="btn btn-danger" />*@
+
+                            </div>
+                            <div id="RVSTable" class="table mb-4 ml-5 text-left mr-5" style="border: 1px solid #2a2a2a; border-image: none; width: 90%; border-collapse:collapse">
+                                <div class="tableHead">
+                                    <div class="tableCell">
+                                        Select
+                                    </div>
+                                    <div class="tableCell">
+                                        IP Address (or range) v4 and v6 addresses
+                                    </div>
+                                    <div class="tableCell">
+                                        Fully Qualified Domain Name (FQDN) *where appropriate
+                                    </div>
+                                    <div class="tableCell">
+                                        Nature & Description of System (eg, firewall, website, cms,)
+                                    </div>
+                                    <div class="tableCell">
+                                        System Ownership and Hosting (eg internal system, dedicated external hosted, dedicated cloud system, shared platform)
+                                    </div>
+
+                                </div>
+
+                                @*@for (int g = 0; g < Model.PCIQuestionnaireList.Count; g++)
+                                    {
+                                        <div class="tableRow">
+                                            <div class="tableCell2" contenteditable="true"><input class="del-Check" value="@Model.PCIQuestionnaireList[g].PCIQuestionnaireId" type="checkbox" /></div>
+
+                                            <div class="tableCell" contenteditable="true" hidden>@Model.PCIQuestionnaireList[g].PCIQuestionnaireId</div>
+
+                                            <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].IPAddress</div>
+                                            <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].FQDN</div>
+                                            <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].Description</div>
+                                            <div class="tableCell" contenteditable="true">@Model.PCIQuestionnaireList[g].Ownership</div>
+
+
+                                        </div>
+                                    }*@
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @for (int i = 0; i < Model.Questions.Count; i++)
+                    {
+                        <div class="row">
+                            <div class="form-group col-md-12">
+
+
+                                @if (Model.Questions[i].QuestionNumber == "3")
+                                {
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        3.Do you deploy any active protection systems that dynamically modify their behaviour? Examples include, but are not limited to:
+                                    </p>
+
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Intrusion Prevention System(IPS) that drops malicious packets based on previous behaviour from originating IP addresses.
+                                    </p>
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	eb Application Firewall(WAF) that block traffic based on the number of requests.
+                                    </p>
+
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Firewall that blocks IP address based on activities such as port scanning.
+                                    </p>
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Next generation firewalls(NGF) that block IP address ranges based on previous network traffic patterns.
+                                    </p>
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Quality of Service(QoS) devices that limit certain traffic based on traffic volume anomalies(for example, blocking DNS traffic because DNS traffic exceeded a defined threshold).
+                                    </p>
+                                    <p class="mb-4 ml-5 text-left mr-5 col-md-10 no-padding" style="text-align: left;color: black;font-size: 1.25rem;">
+                                        •	Spam filters that blacklist a sending IP address based on certain previous SMTP commands originating from that address <span style="color:red">(VARIABLE=@Model.Questions[i].VariableName)</span>
+                                        <span class="ActionMode">
+                                            <a data-toggle="modal" style="font-size: 15px;cursor:pointer" aria-expanded="false" data-target="#QuesUpdateModel" data-placement="top" title="Edit" onclick="BindQues('@Model.Questions[i].QuestionId','@Model.QuestionnaireId','@Model.Questions[i].QuestionText','','@Model.SectionId')"><i class="fas fa-pencil-alt"></i></a> |
+                                            <a asp-action="DeleteSinglepciQuestions" asp-controller="Questionnaire" asp-route-id="@Model.Questions[i].QuestionId" asp-route-QuestionnaireId="@Model.QuestionnaireId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><i class="far fa-trash-alt"></i></a>
+
+                                        </span>
+                                    </p>
+
+                                }
+                                else if (Model.Questions[i].QuestionId == new Guid("DD1327D2-6CC5-41D8-8C22-9C69FC582B4F"))
+                                {
+
+                                }
+                                else
+                                {
+                                    <h5 class="mb-4 ml-5 text-left mr-5 col-md-10">
+                                        @Model.Questions[i].QuestionNumber . @Model.Questions[i].QuestionText <span style="color:red">(VARIABLE=@Model.Questions[i].VariableName)</span>
+                                        <span class="ActionMode">
+                                            <a data-toggle="modal" style="font-size: 15px;cursor:pointer" aria-expanded="false" data-target="#QuesUpdateModel" data-placement="top" title="Edit" onclick="BindQues('@Model.Questions[i].QuestionId','@Model.QuestionnaireId','@Model.Questions[i].QuestionText','','@Model.SectionId')"><i class="fas fa-pencil-alt"></i></a> |
+                                            <a asp-action="DeleteSinglepciQuestions" asp-controller="Questionnaire" asp-route-id="@Model.Questions[i].QuestionId" asp-route-QuestionnaireId="@Model.QuestionnaireId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><i class="far fa-trash-alt"></i></a>
+
+                                        </span>
+                                    </h5>
+
+                                }
+
+
+
+
+                                <input type="hidden" asp-for="@Model.Questions[i].QuestionId" />
+
+
+                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                    <div class="row">
+                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Days">Days</label>
+                                        <input type="text" asp-for="@Model.Questions[i].Days" class="form-control col-md-7 valid" onkeypress="return isNumber(event)" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                    <div class="row">
+                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Cost">Cost</label>
+                                        <input type="text" asp-for="@Model.Questions[i].Cost" class="form-control col-md-7 valid" onkeypress="return isNumber(event)" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                    <div class="row">
+                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Requirement">Requirement</label>
+                                        <input type="text" asp-for="@Model.Questions[i].Requirement" class="form-control col-md-7 valid" autocomplete="off">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                }
+
+            </div>
+            @if (Model.Methodology_Deliverablesdata != null)
+            {
+                <div id="" style="width:100%" class="container">
+                    <div class="col-md-12 qus-align">
+                        <div class="form-row">
+                            <div class="col-md-6"> <h6 class="mb-4  ml-3 text-left"><b>1.</b> <span>Scope Type Methodology </span></h6></div>
+                            <input type="hidden" asp-for="@Model.Methodology_Deliverablesdata.Methodology_DeliverablesId " />
+
+                            <div class="mb-3 col-md-5">
+                                <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy" class="form-control" autocomplete="off">
+                                <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy"></label>
+                                <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6"> <h6 class="mb-4  ml-3 text-left"><b>2.</b> <span>Scope Type Methodology FileName </span></h6></div>
+
+                            <div class="mb-3  col-md-5">
+                                @if (Model.MethodologyeList.Count == 0)
+                                {
+                                    <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName" class="form-control" autocomplete="off">
+                                    <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName"></label>
+                                    <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName" class="text-danger"></span>
+                                }
+                                else
+                                {
+                            <select asp-for="@Model.Methodology_Deliverablesdata.MethodologyId" class="form-control">
+                                <option value="">-- Please Select --</option>
+                                @foreach (var option in Model.MethodologyeList)
+                                {
+
+                                    <option value="@option.Id">@option.FileName</option>
+
+                                }
+                            </select>
+                                }
+
+
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6"> <h6 class="mb-4 ml-3 text-left"><b>3.</b> <span>Scope Type SampleReport </span></h6></div>
+
+                            <div class="mb-3 col-md-5">
+                                <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport" class="form-control" autocomplete="off">
+                                <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport"></label>
+                                <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6"> <h6 class="mb-4 ml-3 text-left"><b>4.</b> <span>Scope Type SampleReport FileName  </span></h6></div>
+
+                            <div class="mb-3 col-md-5">
+                                @if (Model.SampleReportList.Count == 0)
+                                {
+                                    <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName" class="form-control" autocomplete="off">
+                                    <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName"></label>
+                                    <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName" class="text-danger"></span>
+
+                                }
+                                else
+                                {
+                            <select asp-for="@Model.Methodology_Deliverablesdata.MethodologyReportId" class="form-control">
+                                <option value="">-- Please Select --</option>
+                                @foreach (var option in Model.SampleReportList)
+                                {
+
+                                    <option value="@option.Id">@option.FileName</option>
+
+                                }
+                            </select>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+            <div class="form-group float-right" id="finish">
+                <input type="submit" id="remVulScanSavebtn" value="Update" class="btn btn-primary" />
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" id="QuesUpdateModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="UpdateQuestions" asp-controller="Questionnaire" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="@Model.QuestionUpdateData.QuestionnaireId" id="QuestId" />
+                    <input type="hidden" asp-for="@Model.QuestionUpdateData.QuestionId" id="QuestionId" />
+                    <input type="hidden" asp-for="@Model.QuestionUpdateData.ChieldQuestionType" id="ChieldQuestionType" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.QuestionUpdateData.Name" class="control-label"></label>
+                                <input asp-for="@Model.QuestionUpdateData.Name" class="form-control" id="QuestionName" />
+                                <span asp-validation-for="@Model.QuestionUpdateData.Name" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="modal fade bd-example-modal-lg" id="QuesAddNewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <form asp-action="AddNewQuestions" asp-controller="Questionnaire" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Question</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" asp-for="@Model.QuestionUpdateData.QuestionnaireId" id="AddNewQuestId" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.QuestionUpdateData.Name" class="control-label"></label>
+                                        <input asp-for="@Model.QuestionUpdateData.Name" class="form-control" id="AddNewQuestionName" />
+                                        <span asp-validation-for="@Model.QuestionUpdateData.Name" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>*@
+
+
+<div class="modal fade bd-example-modal-lg" id="QuesAddNewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create New Question</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="AddNewQuestId" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Question Name </label>
+                                <span id="errormsg" class="text-danger">This Question Name is required</span>
+                                <input type="text" class="form-control" id="AddNewQuestionName" required onblur="Validate()" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Question Type </label>
+                                <select id="TypeSelect" class="form-control form-control" onchange="QuestMode()">
+                                    <option value="2" selected>Text</option>
+                                    <option value="0">Options</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="button" id="add" value="Add" style=" width: 80px;float: right; margin-top: 9px;" class="btn btn-primary " />
+                        </div>
+                    </div>
+                    <div class="row QuestText" id="AddNewOptionList">
+                        <span class="text-danger" id="errtype" style="margin-left: 11px;">This Options Name is required</span>
+                        <div class="col-md-12">
+
+                            <div class="form-group optionchek">
+                                <label class="control-label">Option Name</label>
+
+                                <input type="text" class="form-control" id="txtname" />
+                                <a data-itemId="0" href="#" class="deleteItem btn btn-danger" style="margin-top: 10px;">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closemodel" class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
+                    <button type="button" id="SaveDetails" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            document.querySelectorAll('.QuestText').forEach(function (el) {
+                el.style.display = 'none';
+                $("#add").css("display", "none");
+                $("#errormsg").css("display", "none");
+                $("#errtype").css("display", "none");
+            });
+            $('#add').click(function () {
+                remVulScanAdd();
+            });
+
+            $('#SaveDetails').click(function () {
+                var res = "";
+                var res2 = "";
+                if ($("#AddNewQuestionName").val() == "") {
+                    $("#AddNewQuestionName").focus();
+                    $("#errormsg").css("display", "block");
+                    res = "fail";
+                }
+                else {
+                    $("#errormsg").css("display", "none");
+                    res = "Suc";
+                }
+
+                var x = document.getElementById("TypeSelect").value;
+
+                if (x == '0') {
+                    var responseOption = '';
+                    $('#AddNewOptionList').each(function () {
+                        $(this).find('.optionchek').each(function () {
+                             responseOption = ($(this).find("input[type=text]").val());
+                        });
+
+                    });
+                    if (responseOption == "") {
+                        $("#errtype").css("display", "block");
+                        res2 = "fail";
+                    }
+                    else {
+                        $("#errtype").css("display", "none");
+                        res2 = "Suc";
+                    }
+
+                }
+                else if (x == '2') {
+                    res2 = "Suc";
+                }
+                if (res == "Suc" && res2 == "Suc") {
+                    $("#errormsg").css("display", "none");
+                    $("#errtype").css("display", "none");
+                    SaveVulScanAdd();
+                }
+
+            });
+        });
+
+        function Validate() {
+            if ($("#AddNewQuestionName").val() == "") {
+                $("#AddNewQuestionName").focus();
+                $("#errormsg").css("display", "block");
+
+            }
+            else {
+                $("#errormsg").css("display", "none");
+            }
+
+        }
+
+        $(window).on("load", function () {
+            window.setTimeout(function () {
+                $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div> <div class="tableCell" contenteditable="true"></div></div>');
+                $('#CSSATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div><div class="tableCell" contenteditable="true"></div></div>');
+            }, 250)
+
+            document.querySelectorAll('.ActionMode').forEach(function (el) {
+                el.style.display = 'none';
+            });
+
+
+        });
+
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('.optionchek').css("background-color", "#fff").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+
+        function remVulScanAdd() {
+            var elementCount = $('#AddNewOptionList .form-control').length;
+            $('#AddNewOptionList').append(' <div class="col-md-12"><div class="form-group optionchek"><label class="control-label" >Option Name</label><input class="form-control"  type="text" value=""><a data-itemId="0" href="#" class="deleteItem btn btn-danger" style="margin-top: 10px;" >Remove</a></div></div>');
+
+        }
+        function SaveVulScanAdd() {
+          $("#QuesAddNewModel").modal('hide');
+        var option = [];
+            var data = [];
+            $('#AddNewOptionList').each(function () {
+                $(this).find('.optionchek').each(function () {
+                    var responseOption = ($(this).find("input[type=text]").val());
+
+                    option.push({"name":responseOption});
+                });
+
+            });
+
+            var questionName = $("#AddNewQuestionName").val();
+            var questionType = document.getElementById("TypeSelect").value;
+            var questioneerId = $("#AddNewQuestId").val();
+            var optionValue = [];
+            data = { "options": option, "questionName": questionName, "questionType": questionType, "questioneerId": questioneerId };
+
+        console.log(data);
+
+     $.ajax({
+     url: '@Url.Action("AddNewPCIQuestionnaire", "Questionnaire")',
+     type: "post",
+     contentType: 'application/x-www-form-urlencoded',
+     data: data,
+     success: function (result) {
+         if (result == "Success") {     
+             window.location = window.location.href;
+         }
+         else {
+             window.location = window.location.href;
+         }
+     }
+ });
+
+}
+
+        function QuestMode() {
+            var x = document.getElementById("TypeSelect").value;
+            if (x == '2') {
+                document.querySelectorAll('.QuestText').forEach(function (el) {
+                    el.style.display = 'none';
+                    $("#add").css("display", "none");
+                });
+            } else {
+                document.querySelectorAll('.QuestText').forEach(function (el) {
+                    el.style.display = 'block';
+                    $("#add").css("display", "block");
+                });
+            }
+        }
+
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+
+        function BothMode() {
+            var x = document.getElementById("mySelect").value;
+            if (x == 'Edit') {
+                document.querySelectorAll('.ActionMode').forEach(function (el) {
+                    el.style.display = 'block';
+                });
+            } else {
+                document.querySelectorAll('.ActionMode').forEach(function (el) {
+                    el.style.display = 'none';
+                });
+            }
+        }
+
+        function BindQues(QuestionId, QuestioneerId, Name, ChieldQuestion) {
+            document.getElementById('QuestId').value = QuestioneerId;
+            document.getElementById('QuestionId').value = QuestionId;
+            document.getElementById('QuestionName').value = Name;
+            document.getElementById('ChieldQuestionType').value = ChieldQuestion;
+            return true;
+        }
+
+        function BindNewQues(QuestioneerId) {
+            document.getElementById('AddNewQuestId').value = QuestioneerId;
+        }
+
+    </script>
+
+
+}

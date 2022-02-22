@@ -1,0 +1,2390 @@
+﻿
+@{
+    ViewData["Title"] = "Report1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<button type="submit" class="btn btn-primary" id="WordHide" onclick="exportToWord()">Export As Word</button>
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-content">
+                    <div id="RepordToWord" style="font-family: Arial, Helvetica, sans-serif;width: 70%;margin: 0 auto; background-color: white;">
+                        <header style="background-color: #fff;padding: 10px;margin-bottom: -9px;padding-left: 40px;">
+                            <img src="https://localhost:44368/Report/img/logo.png" width="400" height="100" style="pa-left:40px" alt="Logo">
+                        </header>
+
+                        <div class="row" id="cover" style="margin-top:10px;">
+                            <div style="width:100%;">
+                                <table cellpadding="0" cellspacing="0" summary="Technical Proposal" style="border-collapse: collapse;border-width: 0px;background-color: #383B3E;padding: 0;border: none;height: 100%;margin: 0px auto;width: 97%;">
+                                    <tbody>
+                                        <tr id="docCover" style="padding: 0px;width: 100%">
+                                            <td style="width: 100%;height: 100%;">
+                                                <p style="font-size: 24px;color: #5e9dbb;margin: 0;margin-left: 40px;"><u>Technical Proposal and Quotation</u></p>
+                                                <p style="font-size: 24px;color: #fff;margin-left: 40px;"> Cranfield University</p>
+                                                <p style="font-size: 24px;color: #ccc;margin-left: 40px;">  CU220720DL – Cranfield Secure Environment’ (CSE)</p>
+                                                <p style="font-size: 18px;color: #fff;margin-left: 40px;">  23/07/2020</p>
+                                            </td>
+                                        </tr>
+                                        <tr style="padding:0px;width:100%;">
+                                            <td style="padding: 0px; border: none; width: 100%;"><img alt="" height="510" id="coverImg1" src="https://localhost:44368/Report/img/procheckup.png" style="margin:0px;" width="100%" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+
+                        <div style="background: #fff;">
+                            <h1 style="color: #065ea4;padding: 30px;text-align: center;">Document Information</h1>
+                            <table cellpadding="2" cellspacing="0" summary="Document Information" style="border: 1px solid #000; border-image: none; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="border-right: 1px solid #000; border-image: none; width: 25%; height: 31px;  background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Client Contacts</span></td>
+                                        <td style=" border-image: none; width: 75%; height: 31px; background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Client</span></td>
+
+                                        <td style="border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Cranfield University</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Full Name</span></td>
+
+                                        <td style=" border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Phil Maud</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Direct Line</span></td>
+
+                                        <td style=" border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">09719161880</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Email</span></td>
+
+                                        <td style=" border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">P.H.Maud@cranfield.ac.uk</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Client Address</span></td>
+
+                                        <td style=" border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;">
+                                            <span style="font-size:10pt;font-family:Calibri;text-align:left">
+                                                Building 63 (IT) G7,
+                                                Cranfield University, Cranfield, Bedfordshire,
+                                                MK43 0AL
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="background: #fff">
+                            <table cellpadding="2" cellspacing="0" summary="ProCheckUp" style="border: 1px solid #000; border-image: none; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="border-right: 1px solid #000; border-image: none; width: 25%; height: 31px; text-align:center; background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left">ProCheckUp</span></td>
+                                        <td style="border-image: none; width: 75%; height: 31px; text-align:center; background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="  border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Document Reference </span></td>
+                                        <td style="  border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">CU220720DL – Cranfield Secure Environment’ (CSE)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="  border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Date Prepared </span></td>
+                                        <td style="  border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">23/07/2020</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="  border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Account Manager </span></td>
+                                        <td style="  border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">David Livesey</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="  border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Direct Line & Mobile  </span></td>
+                                        <td style="  border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">+44 (0) 7496183540</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="  border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Email</span></td>
+                                        <td style="  border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">david.livesey@procheckup.com</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="  border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Company Address</span></td>
+                                        <td style="  border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;">
+                                            <span style="font-size:10pt;font-family:Calibri;text-align:left">
+                                                ProCheckUp Ltd,
+                                                4th Floor, Fairgate House,
+                                                78 New Oxford Street,
+                                                London, WC1A 1HB.
+
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+                        <div>&nbsp;</div>
+                        <div style="background: #fff;">
+                            <table cellpadding="2" cellspacing="0" summary="Document Control" style="border: 1px solid #000; border-image: none; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="border-right: 1px solid #000; border-image: none; width: 25%; height: 31px; text-align:center; background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Document Control</span></td>
+                                        <td style="border-right: 1px solid #000; border-image: none; width: 25%; height: 31px; text-align:center; background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left"></span></td>
+                                        <td style="border-right: 1px solid #000; border-image: none; width: 25%; height: 31px; text-align:center; background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left"></span></td>
+                                        <td style=" border-image: none; width: 25%; height: 31px; text-align:center; background-color: rgb(20, 111, 180);vertical-align:top;font-size: 10pt;font-family:Calibri;color: rgb(255, 240, 245);font-weight:bold;"><span style="font-size:10pt;font-family:Calibri;text-align:left"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%; text-align: center; border-right-color: #000; border-bottom-color:#000; border-right: 1px solid #000; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Version</span></td>
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-right: 1px solid #000;border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Date</span></td>
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-right: 1px solid #000;border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Action</span></td>
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Author</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%; text-align: center; border-right-color: #000; border-bottom-color:#000; border-right: 1px solid #000; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">0.1 </span></td>
+                                        <td style="border-right: 1px solid #000 ;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">23/07/2020</span></td>
+                                        <td style="border-right: 1px solid #000;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;">
+                                            <span style="font-size: 10pt;font-family: Calibri;text-align: left">Proposal Generated </span>
+                                        </td>
+                                        <td style="width: 25.86%;text-align: center;border-bottom-color: #000;border-bottom-width: 1px;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size:10pt;font-family:Calibri;text-align:left">David Livesey</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%; text-align: center; border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">0.2 </span></td>
+                                        <td style="border-right: 1px solid #000;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">23/07/2020</span></td>
+                                        <td style="border-right: 1px solid #000;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Technical Sign Off </span></td>
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Richard Brain</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%; text-align: center; border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">0.3 </span></td>
+                                        <td style="border-right: 1px solid #000;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">23/07/2020</span></td>
+                                        <td style="border-right: 1px solid #000;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Commercial Sign Off</span></td>
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Richard Southwell</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%; text-align: center; border-right-color: #000; border-bottom-color:#000; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">1.0 </span></td>
+                                        <td style="border-right: 1px solid #000;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px;border-right-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">23/07/2020</span></td>
+                                        <td style="border-right: 1px solid #000;width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">Proposal Issued to Cranfield University </span></td>
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid;font-size: 10pt;font-family:Calibri;"><span style="font-size:10pt;font-family:Calibri;text-align:left">David Livesey</span></td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+
+                        <div style="background: #fff;">
+                            <h1 style="color: #065ea4; padding: 30px; text-align: center;">Confidentiality Agreement</h1>
+
+                            <p>
+                                <span style="font-size: 10pt; font-family: Calibri;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            ProCheckUp Ltd is fully committed to maintaining the highest level of ethical standards in its business practice. 
+                                            This proposal has been produced specifically for Cranfield University.
+                                            All information submitted in this document about ProCheckUp’s methodology,technology,procedures and systems,is deemed
+                                            privileged information and not for public dissemination.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <p>
+                                <span style="font-size: 10pt; font-family: Calibri;">
+                                    <span style="font-size: 10pt;
+">
+                                        <span style="font-family: calibri;">
+                                            ProCheckUp Ltd severally pledge their commitment that this information will remain strictly confidential.
+                                            This information will not be disclosed or discussed to any third party withoutthe
+                                            express written consent of Cranfield University.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <div style="background: #fff;">
+                                <h1 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 20pt; font-family: Calibri;">Background & Scope</span></h1>
+                            </div>
+
+                            <div style="background: #fff;">
+                                <h2 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 14pt; font-family: Calibri; margin-left: 15px;">Background & Scope</span></h2>
+                            </div>
+
+                            <div>
+                                <p style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;">
+                                            <span style="font-family: Calibri;">
+                                                SSE have engaged with Procheckup to complete a penetration test of their Smart Metering End to
+                                                End System.This was proviously tested by procheckUp in 2019.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+                                <p style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;">
+                                            <span style="font-family: Calibri;">
+                                                Following conference calls with SSE, ProcheckUp Have Understand that the scope has remained
+                                                the same and the following will be tested as part of this assessment.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+                                <table cellpadding="3" cellspacing="0" summary=" " style="border-image: none; border: 1px solid #000; line-height: 16px; width: 100%; border-collapse: collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: rgb(255, 240, 245);"><strong></strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #2281aa;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: rgb(255, 240, 245);"><strong>Pen Test Time</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #2281aa;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: rgb(255, 240, 245);"><strong>Days Testing</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #2281aa;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: rgb(255, 240, 245);"><strong>Days Reporting</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #2281aa;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: rgb(255, 240, 245);"><strong>Totle</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>DDC Adaptar Application Server</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>Web Application</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>4</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>5</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>MDMS (SGG Fusion, INT Fusion, MTP Fusion, MDM, MWM, MDMS, Oracle DB Server)</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>General Test x 6 Application Pentest x 5 Network Segregation (VLAN testing)</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>8</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>11</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>Symantec DCS Agent</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>Application Pentest (Binary)</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>DCC Adeptor Net Scaler</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>General Test Build Reciew Configuration Review</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>DCC Adepter Workstation </strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong> General Test Build Review</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>Midrange System </strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>Review WILLT1166.docx secure configration document for AIX/Linux Build review of a systam againststandard </strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>5</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>DCC Adapter HSM </strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>General Test Build Review</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #99c5d3; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>MDMS NetScaler</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>General Test Build Review Configuration Review</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>Support Servers (Jump boxes)</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>General Test Build Review Configuration Review(SLIMS)</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>4</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>6</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>Backbone Firewalla</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>Network segregation (VLAN testing) Firewall Rule & configration review x 3 (Corporate Backbone, outer DMZ,Inner DMZ  )</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>5</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>Backup VLAN-Strong Drive</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>General Test Nerwork Segregation(VLAN testing) Firewall Review</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>2</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; background-color: #2281aa; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #fff;"><strong>MDMS Firewall</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>Nerwork Segregation(VLAN testing)</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>3</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>1</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; background-color: #d9f8fb; border: 1px solid #d9f8fb6e;">
+                                                <div>
+                                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                        <span style="font-size: 9pt;">
+                                                            <span style="font-family: Calibri;">
+                                                                <span style="color: #2a2a2a;"><strong>4</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div style="background-color: #fff;">
+                            <h1 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 20pt; font-family: Calibri;">How to use this report </span></h1>
+
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;"> Project Commencement: Monday 3rd February-Friday 28th February 2020 </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            A document,2020 Pentest Timeline V1.5(PCU Breakdown), has been provided to SSE which outlines the full schedule of this engagement.
+                                            This included the consultant’s name, the day on which they’re onsite and the days they’re reporting remotely, for each individual project.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <h1 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 20pt; font-family: Calibri;">Report </span></h1>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;"> For each engagement, report delivery should be no more than 5 working days than the completion of the project. However, 
+                                        ProCheckUp will be able to provide draft reports on the completion of the engagement. </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            ProCheckUp will produce an individual report for each engagement ,13 in total:
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <ul>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">DCC Adaptor Application Server</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">MDMS</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">	Symantec DCS Agent </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">DCC Adapter Net Scaler </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">DCC Adaptor Workstation</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Midrange System </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">DCC Adaptor HSM </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">MDMS NetScaler</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Support Server (Jump boxes) </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Backbone Firewalls</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Backup VLAN-Storage Drive</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">MDMS Firewall </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Backup Infrastructure</span></span>
+                                    </span>
+                                </li>
+                            </ul>
+                            <div style="">
+                                <h1 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 20pt; font-family: Calibri;">Project Requirement </span></h1>
+                            </div>
+                            <ul>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Job Schedule Form(s) to be completed</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">A point of contact for reporting during the project should be provided </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Purchase Order (PO) </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;">
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        <span style="font-size: 10pt;"><span style="font-family: calibri;">Pre-requisites (TBC between SSE and PCU)</span></span>
+                                    </span>
+                                </li>
+                               
+                            </ul>
+                        </div>
+
+                        <div style="background: #fff;">
+                            <h1 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 20pt; font-family: Calibri;">Pricing</span></h1>
+                            <h2 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 14pt; font-family: Calibri; margin-left: 15px;">Payment Terms</span></h2>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: Calibri;">
+                                            The below service will be provided subject to receipt of a valid order. Pricing is valid for 30 days.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: Calibri;">
+                                            The invoice will be raised upon receipt of a purchase order (PO).Payment terms are 30 days
+                                            from date of invoice.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <h2 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 14pt; font-family: Calibri; margin-left: 15px;">Project Pricing</span></h2>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: Calibri;">
+                                            ProCheckUp have provided SSE Pic with a breakedown of the associated cast for this contract:-
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <table cellpadding="2" cellspacing="0" summary="contract" style="border: 1px solid #000; border-image: none; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="
+                                                        border-right: 1px solid#000;
+                                                        border-image: none;
+                                                        width: 25%;
+                                                        height: 31px;
+                                                        text-align: center;
+                                                        background-color: rgb(20, 111, 180);
+                                                        vertical-align: top;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                        color: rgb(255, 240, 245);
+                                                        font-weight: bold;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;"> Description</span>
+                                        </td>
+
+                                        <td style="
+                                                        border-right: 1px solid#000;
+                                                        border-image: none;
+                                                        width: 25%;
+                                                        height: 31px;
+                                                        text-align: center;
+                                                        background-color: rgb(20, 111, 180);
+                                                        vertical-align: top;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                        color: rgb(255, 240, 245);
+                                                        font-weight: bold;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Day Rate</span>
+                                        </td>
+                                        <td style="
+                                                        border-right: 1px solid#000;
+                                                        border-image: none;
+                                                        width: 25%;
+                                                        height: 31px;
+                                                        text-align: center;
+                                                        background-color: rgb(20, 111, 180);
+                                                        vertical-align: top;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                        color: rgb(255, 240, 245);
+                                                        font-weight: bold;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Test Location</span>
+                                        </td>
+                                        <td style="
+                                                        border-right: 1px solid#000;
+                                                        border-image: none;
+                                                        width: 25%;
+                                                        height: 31px;
+                                                        text-align: center;
+                                                        background-color: rgb(20, 111, 180);
+                                                        vertical-align: top;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                        color: rgb(255, 240, 245);
+                                                        font-weight: bold;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Totle Price</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• O356 configuration review including reporting </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">3 </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£1000.00</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• Azure resource group review including reporting * Time limited*</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">1</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• O356 configuration review including reporting </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">3 </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£1000.00</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• Azure resource group review including reporting * Time limited*</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">1</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• O356 configuration review including reporting </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">3 </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£1000.00</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• Azure resource group review including reporting * Time limited*</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">1</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• O356 configuration review including reporting </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">3 </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£1000.00</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• Azure resource group review including reporting * Time limited*</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">1</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• O356 configuration review including reporting </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">3 </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£1000.00</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• Azure resource group review including reporting * Time limited*</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">1</span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 20px;">
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;"> </span>
+                                        </td>
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;"></span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color: #000; border-right: 1px solid #000; border-bottom-width: 1px; border-bottom-style: solid; font-size: 10pt; font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;"></span>
+                                        </td>
+
+                                        <td style="
+                                                        width: 25.86%;
+                                                        text-align: center;
+                                                        border-right-color: #000;
+                                                        border-bottom-color: #000;
+                                                        border-right-width: 1px;
+                                                        border-bottom-width: 1px;
+                                                        border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;
+                                                        border-bottom-style: solid;
+                                                        font-size: 10pt;
+                                                        font-family: Calibri;
+                                                    ">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">• Azure resource group review including reporting * Time limited*</span>
+                                        </td>
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">1</span>
+                                        </td>
+
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="background-color: #9bd2e1;">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Totle</span>
+                                        </td>
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color: #000; border-right: 1px solid #000; border-bottom-width: 1px; border-bottom-style: solid; font-size: 10pt; font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">-</span>
+                                        </td>
+
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">£3,000</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="background: #fff;">
+                            <h1 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 20pt; font-family: Calibri;">How to use this report </span></h1>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: Calibri;">
+                                            The below service will be provided subject to receipt of a valid order. Pricing is valid for 30 days. The invoice will be raised upon confirmation of a valid order. (Payment terms are 30 days
+                                            from date of invoice).
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: Calibri;">
+                                            The below service will be provided subject to receipt of a valid order. Pricing is valid for 30 days.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <table cellpadding="2" cellspacing="0" summary="Receipt of a valid order" styles ="border: 1px solid #000; border-image: none; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="border-image: none;width: 25%;height: 31px;text-align: center;background-color:rgb(20, 111, 180);vertical-align: top;font-size: 10pt;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;border-right: 1px solid #000;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Client Contacts</span>
+                                        </td>
+                                        <td style="border-image: none;width: 25%;height: 31px;text-align: center;background-color: rgb(20, 111, 180);vertical-align: top;font-size: 10pt;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Client</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%;text-align: center;border-right-color:#000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Client</span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000); border-bottom-width: 1px; border-bottom-style: solid; font-size: 10pt; font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%;text-align: center;border-right-color:#000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Full Name</span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color:#000; border-bottom-width: 1px; border-bottom-style: solid; font-size: 10pt; font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%;text-align: center;border-right-color:#000;border-bottom-color: #000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Email</span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color: #000; border-bottom-width: 1px; border-bottom-style: solid; font-size: 10pt; font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: calibri; text-align: justify;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25.86%;text-align: center;border-right-color:#000;border-bottom-color:#000;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 10pt;font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Client Address</span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color: #000; border-bottom-width: 1px; border-bottom-style: solid; font-size: 10pt; font-family: Calibri;">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: Calibri;">
+                                            The below service will be provided subject to receipt of a valid order. Pricing is valid for 30 days.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <table summary="Receipt of a valid order" style="width:100%; display: inline-block; word-break: break-all;border-collapse: collapse;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="">
+                                                <span style="">
+                                                    <img src="https://localhost:44368/Report/img/signature.png" width="140" height="100" alt="sign">
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:10pt;font-family:Calibri">
+                                            <span style="font-size:10pt;font-family:Calibri;text-align:left">
+                                                Reached Brain<br>
+                                                Technical Director
+                                            </span>
+                                        </td>
+                                        <td style="font-size:10pt;font-family:Calibri"><span style="font-size:10pt;font-family:Calibri;text-align:left">9/11/2020 </span></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <table summary="ProCheckUp Limited" style="width:100%; display: inline-block; word-break: break-all;border-collapse: collapse;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="margin:0px;font-weight:bold;font-family:Calibri;font-size:10pt;margin-bottom: 10px;">
+                                                <span style="font-size:10pt;font-family:Calibri;text-align:left">
+                                                    <u>
+                                                        ProCheckUp Limited
+                                                    </u>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:10pt;font-family:Calibri">
+                                            <span style="font-size:10pt;font-family:Calibri;text-align:left">
+                                                Fairgate House, 78 New Oxford Street,<br>
+                                                4th Floor, London,
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:10pt;font-family:Calibri"><span style="font-size:10pt;font-family:Calibri;text-align:left">Tel: +44 (0)207 612 7777</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:10pt;font-family:Calibri"><span style="font-size:10pt;font-family:Calibri;text-align:left">www.Procheckup.com</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div style="background: #fff;">
+                            <div style="">
+                                <h1 style="margin: 0; font-weight: normal;"><span style="color: rgb(0, 88, 151); font-size: 20pt; font-family: Calibri;">5 Test Results </span></h1>
+                            </div>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            1. No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <ul>
+                                <li>
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        Strict Transport Security - The HTTP Strict Transport Security policy defines a timeframe where a browser must connect to the web server via HTTPS.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        Content Sniffing - The lack of this header causes certain browsers to try and determine the content type and encoding of the response even when these properties are defined correctly. This can
+                                        make the web application vulnerable against Cross-Site Scripting (XSS) attacks.
+                                    </span>
+                                </li>
+                                <li><span style="font-size: 10pt; font-family: Calibri; text-align: justify;">X-XSS-Protection - This tells a supported browser to filter any possible XSS injection</span></li>
+                                <li><span style="font-size: 10pt; font-family: Calibri; text-align: justify;">X-Frame-Options - This header prevents the application from being framed within a separate website.</span></li>
+                                <li><span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Cache-Control - Prevents sensitive web pages from being cached on the local disk.</span></li>
+                            </ul>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <table cellpadding="2" cellspacing="0" summary="Environement" style="width: 100%; border: 1px solid #146fb4;">
+                                <tbody>
+                                    <tr>
+                                        <td style="background-color: #146fb4; height: 24px; width: 25%; border-width: 1px; border-style: solid; border-color: #fff;">
+                                            <p>
+                                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                    <span style="font-size: 10pt; font-family: Calibri (Body); font-weight: Bold;"><span style="color: white;">Network(s)/IPs/Host Names</span></span>
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td style="background-color: #146fb4; height: 24px; width: 25%; border-width: 1px; border-style: solid; border-color: #fff;">
+                                            <p>
+                                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                    <span style="font-size: 10pt; font-family: Calibri (Body); font-weight: Bold;"><span style="color: white;">Test Type</span></span>
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td style="background-color: #146fb4; height: 24px; width: 25%; border-width: 1px; border-style: solid; border-color: #fff;">
+                                            <p>
+                                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                    <span style="font-size: 10pt; font-family: Calibri (Body); font-weight: Bold;"><span style="color: white;">Test Type</span></span>
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td style="background-color: #146fb4; height: 24px; width: 25%; border-width: 1px; border-style: solid; border-color: #fff;">
+                                            <p>
+                                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                    <span style="font-size: 10pt; font-family: Calibri (Body); font-weight: Bold;"><span style="color: white;">Test Type</span></span>
+                                                </span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">52.49.3.108</span>
+                                        </td>
+                                        <td style="border-right: 1px solid #146fb4; height: 24px; width: 25%; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">52.49.3.108</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">52.208.93.227</span>
+                                        </td>
+                                        <td style="border-right: 1px solid #146fb4; height: 24px; width: 25%; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">52.49.3.108</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">api.imaginecurve.com</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">52.49.3.108</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">vpn.imaginecurve.com</span>
+                                        </td>
+                                        <td style="border-right: 1px solid #146fb4; height: 24px; width: 25%; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-right: 1px solid #146fb4; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">52.49.3.108</span>
+                                        </td>
+                                        <td style="height: 24px; width: 25%; border-bottom: 1px solid #146fb4; font-size: 10pt; font-family: Calibri (Body);">
+                                            <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Unauthenticated</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            2. No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            .<table cellpadding="2" cellspacing="0" summary="Environement under test" style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td style="height: 24px; width: 33.33%;">
+                                            <p>
+                                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                    <span style="font-size: 10pt; font-family: Calibri (Body); font-weight: Bold;">
+                                                        <span style="color: #000;"> <input type="checkbox" id="test1" /> <label for="test1">Red</label></span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td style="height: 24px; width: 33.33%;">
+                                            <p>
+                                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                    <span style="font-size: 10pt; font-family: Calibri (Body); font-weight: Bold;">
+                                                        <span style="color: #000;"> <input type="checkbox" id="test1" /> <label for="test1">Red</label></span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td style="height: 24px; width: 33.33%;">
+                                            <p>
+                                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                                    <span style="font-size: 10pt; font-family: Calibri (Body); font-weight: Bold;">
+                                                        <span style="color: #000;"> <input type="checkbox" id="test1" /> <label for="test1">Red</label></span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            3. No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <ul>
+                                <li>
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        Strict Transport Security - The HTTP Strict Transport Security policy defines a timeframe where a browser must connect to the web server via HTTPS.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                        Content Sniffing - The lack of this header causes certain browsers to try and determine the content type and encoding of the response even when these properties are defined correctly. This can
+                                        make the web application vulnerable against Cross-Site Scripting (XSS) attacks.
+                                    </span>
+                                </li>
+                                <li><span style="font-size: 10pt; font-family: Calibri; text-align: justify;">X-XSS-Protection - This tells a supported browser to filter any possible XSS injection</span></li>
+                                <li><span style="font-size: 10pt; font-family: Calibri; text-align: justify;">X-Frame-Options - This header prevents the application from being framed within a separate website.</span></li>
+                                <li><span style="font-size: 10pt; font-family: Calibri; text-align: justify;">Cache-Control - Prevents sensitive web pages from being cached on the local disk.</span></li>
+                            </ul>
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <input type="text" id="test1" style="width: 100%;" />
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            4- No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <input type="text" id="test1" style="width: 100%;" />
+                            <p style="text-align: justify;">
+                                <span style="font-size: 10pt; font-family: Calibri; text-align: justify;">
+                                    <span style="font-size: 10pt;">
+                                        <span style="font-family: calibri;">
+                                            5- No test data was available for the environement under test and databases were therefore empty. This may not have identified some issues which may exist in the live database.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <input type="text" id="test1" style="width: 100%;" />
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function exportToWord(contentHtml, filename) {
+        html = this.contentHtmlfunction(document.getElementById("RepordToWord").innerHTML);
+
+        html = html.replace("&#39;", "'");
+        html = html.replace("&#44;", "'");
+        html = html.replace("&#94;", "'");
+        html = html.replace("‘", "'");
+        html = html.replace("’", "'");
+        html = html.replace("â€¢", ".");
+        html = html.replace("&quot;", '"');
+        html = html.replace("&apos;", "'");
+        html = html.replace("&amp;lt;", "<");
+        html = html.replace("&amp;gt;", ">");
+        html = html.replace("&amp;apos;", "'");
+
+        var blob = new Blob(['\ufeff', html], {
+            type: 'application/msword'
+        });
+
+        var url = window.URL.createObjectURL(blob);
+
+        // Specify file name
+        filename = filename ? filename + '.doc' : 'ProCheckUpReport.doc';
+
+        // Create download link element
+        var downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = url;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+
+        document.body.removeChild(downloadLink);
+
+    }
+
+    function contentHtmlfunction(contentHtml) {
+        var rootUrl = "https://localhost:44368";
+        var preHtml = "<!DOCTYPE html>\n<html xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"  xmlns:w=\"urn:schemas-microsoft-com:office:word\"  xmlns:m=\"http://schemas.microsoft.com/office/2004/12/omml\" xmlns=\"http://www.w3.org/TR/REC-html40\">" +
+            "<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:Orientation>Landscape</w:Orientation></w:WordDocument></xml><![endif]--><title>Export HTML To Doc</title>" +
+            "<style>pre {word-break: break-all; white-space: normal;} footerImg{height: 20px; width: 90px} headerImg{height: 85px; width: 515px} p.MsoFooter, li.MsoFooter, div.MsoFooter{margin:0in; margin-bottom:.0001pt; mso-pagination:widow-orphan;  tab-stops:center 3.0in right 6.5in; font-size:12.0pt;}@@page Section1{ size:8.5in 11.0in; margin:1.0in 1.0in 1.0in 1.0in;  mso-header-margin:.5in;  mso-footer-margin:.5in;  mso-title-page:yes;  mso-header: h1;   mso-footer: f1;   mso-first-header: fh1;   mso-first-footer: ff1;  mso-paper-source:0;} div.Section1{ page:Section1; } table#hrdftrtbl{ margin:0in 0in 0in 900in; width:1px; height:1px; overflow:hidden;}.group-vul-des p{margin: 0px !important;} .reposrt-text{background-color:#373b3e; color: #fff; padding-top:2px; padding-bottom:24px; font-family:'Calibri (Body)'; }</style>" +
+            "</head><body>";
+
+        var html = "" + contentHtml + "<div  class='Section1'><div id='Sectiondata'>" +
+            "<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'><tbody><tr><td><div style='mso-element: header;' id='h1'>" +
+            "<table style='width: 100%; font-family:Calibri;font-size:8pt; '><tbody><tr><td><div style='float: left '>" +
+            "<img alt='' src='" + rootUrl + "/Report/img/ri_4.png' style='position: absolute; top: 10px; left: 0.6in; width: 0.21in; height: 0.24in;' ><span style=''> http://www.procheckup.com/labs </span></div></td><td style='text-align: right'>" +
+            "<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_9.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' > <span>+44 (0) 20 7612 7777</span>" +
+            "</div></td><td style='text-align: right'>" +
+            "<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_10.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >  Info@procheckup.com" +
+            "</div></td><td style='text-align: right'>" +
+            "<div style='float: right'><img alt='' src='" + rootUrl + "/Report/img/ri_4.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >    http://www.procheckup.com/" +
+            "</div></td></tr></tbody></table><hr></div></td><td>" +
+
+            "<div style='mso-element: footer' id='f1'><hr><table style='width: 100%; font-family:Calibri;font-size:10pt;'><tbody><tr><td><div style='float: left'>" +
+            "Cranfield University </div></td><td style='text-align: right'>" +
+            "<div style='float: right'>    <span style='float: right; font-family:Calibri;font-size:10pt;'><span style='mso-tab-count: 2;'></span> <span style='mso-field-code: PAGE'><span style='mso-no-proof: yes'></span></span></span>      " +
+            "</div></td><td style='text-align: right'>" +
+            "<div style='float: right'>CU220720DL – Cranfield Secure Environment’ (CSE)" +
+            "</div></td></tr></tbody></table></div></td></tr></tbody></table></div>" +
+            "</div>";
+
+        var postHtml = "</body></html>";
+        var finalhtml = preHtml + html + postHtml;
+
+        return finalhtml;
+    }
+
+</script>
+
+
+
+
+

@@ -1,0 +1,616 @@
+﻿@model OnlineScoping.ViewModels.ReceivedProposalModel
+@{
+    ViewData["Title"] = "ReceivedProposal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/lib/layout/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
+<link href="~/lib/layout/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" class="dashboard-sales" />
+<style>
+    #withoutSpacing .card-header {
+        background: #e5e5e5;
+    }
+
+    .model_btn {
+        position: absolute;
+        right: 4%;
+        top: 10px;
+        bottom: 0;
+        padding: 5px 0;
+    }
+</style>
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="pt-3">
+                <span> Scope Responses </span>
+            </h3>
+        </div>
+        <div class="col-md-6" style="margin-left: -55px;">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#"> Scope Responses </a></li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="layout-px-spacing">
+
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-heading row">
+
+                    <div class="col-md-6">
+                        <h6 class="pt-3">
+                            Projects
+                        </h6>
+                    </div>
+
+                </div>
+
+
+                <div class="widget-content">
+                    <div id="withoutSpacing" class="">
+                        @if (Model.CustomerRequestsList.Count == 0)
+                        {
+                            <div class="card">
+                                <div class="card-header">
+                                    <section class="mb-0 mt-0">
+                                        <div role="menu" class="">
+                                            <div class="Accordion_text" id="" data-toggle="collapse" data-target="" aria-expanded="true" aria-controls="">
+                                                <span> No data available </span>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            int index = 1;
+
+                            @for (int i = 0; i < Model.CustomerRequestsList.Count; i++)
+                            {
+
+                                @if (i == 0)
+                                {
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <section class="mb-0 mt-0">
+                                                <div role="menu" class="">
+                                                    <div class="Accordion_text" id="heading_@i" data-toggle="collapse" data-target="#withoutSpacingAccordion_@i" aria-expanded="true" aria-controls="withoutSpacingAccordionOne">
+                                                        <div class="icons"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                                                        <span> @Model.CustomerRequestsList[i].ProjectName </span>
+                                                    </div>
+                                                    <div class="model_btn">
+                                                        <a class="">Is Accepted</a>
+                                                        @if (@Model.CustomerRequestsList[i].IsAccept)
+                                                        {
+                                                            <em style="color:green" class="fas fa-check"></em>
+                                                        }
+                                                        else
+                                                        {
+                                                            <em style="color:red" class="fas fa-times"></em>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </section>
+                                        </div>
+
+                                        <div id="withoutSpacingAccordion_@i" class="collapse show" aria-labelledby="heading_@i" data-parent="#withoutSpacing">
+
+                                            <div class="card-body">
+
+
+
+
+                                                <div class="table-responsive">
+                                                    <table class="table  table-hover table-striped table-checkable table-highlight-head">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    Projects Questionnairs
+                                                                </th>
+                                                                <th class="text-center">Methodologies</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.CustomerRequestsList[i].ProjectCustomerQuestionnairList.Count == 0)
+                                                            {
+                                                                <tr>
+                                                                    <td colspan="4" class="text-left pl-2">No data available</td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+
+
+                                                                @foreach (var item1 in Model.CustomerRequestsList[i].ProjectCustomerQuestionnairList)
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item1.Name)
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <a class="" style="cursor:pointer" data-toggle="modal" data-target="#MethodologiesModal_@index">Download Methodologies</a>
+                                                                        </td>
+
+
+                                                                    </tr>
+
+
+
+                                                                    //Modal
+                                                                    <tr>
+                                                                        <td class="modal fade" id="MethodologiesModal_@index" tabindex="-1" role="dialog" aria-labelledby="MethodologiesModal_@index" aria-hidden="true">
+                                                                            <div>
+                                                                                <div class="modal-dialog" role="document">
+                                                                                    <div class="modal-content" style=" height: 500px;">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="examplemodallabel">Methodologies</h5>
+                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                                                                                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body table-responsive">
+                                                                                            <table summary="Methodologies" class="table  table-hover table-striped table-checkable table-highlight-head" style="width: 100%;table-layout: fixed;">
+                                                                                                <thead>
+                                                                                                    <tr>
+                                                                                                        <th style="text-align:left !important;">
+                                                                                                            Name
+                                                                                                        </th>
+                                                                                                        <th class="text-center">Type</th>
+                                                                                                        <th style="width:30% !important;">Action</th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                    @if (item1.Methodology_DeliverablesData == null)
+                                                                                                    {
+                                                                                                        <tr>
+                                                                                                            <td colspan="3" class="text-left pl-2">No data available</td>
+                                                                                                        </tr>
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        @if (item1.Methodology_DeliverablesData.MethodologyeData == null && item1.Methodology_DeliverablesData.MethodologyeReportData == null)
+                                                                                                        {
+                                                                                                            <tr>
+                                                                                                                <td colspan="3" class="text-left pl-2">No data available</td>
+                                                                                                            </tr>
+                                                                                                        }
+                                                                                                        @if (item1.Methodology_DeliverablesData.MethodologyeData != null)
+                                                                                                        {
+                                                                                                            <tr>
+                                                                                                                <td style="text-align:left;">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeData.FileName)
+                                                                                                                </td>
+                                                                                                                <td class="text-center">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeData.Type)
+
+                                                                                                                </td>
+                                                                                                                <td class="text-right">
+                                                                                                                    <a href="@item1.Methodology_DeliverablesData.MethodologyeData.FileContents" download id="download">download</a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        }
+
+                                                                                                        @if (item1.Methodology_DeliverablesData.MethodologyeReportData != null)
+                                                                                                        {
+                                                                                                            <tr>
+                                                                                                                <td style="text-align:left;">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeReportData.FileName)
+                                                                                                                </td>
+                                                                                                                <td class="text-center">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeReportData.Type)
+
+                                                                                                                </td>
+                                                                                                                <td class="text-right">
+                                                                                                                    <a href="@item1.Methodology_DeliverablesData.MethodologyeReportData.FileContents" download id="download">download</a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        }
+
+
+                                                                                                    }
+
+
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+
+                                                                                            <button type="button" class="btn" data-dismiss="modal">close</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    index++;
+                                                                }
+                                                            }
+
+
+                                                        </tbody>
+                                                    </table>
+
+
+
+
+
+                                                    <table summary="Customer Requests" class="table  table-hover table-striped table-checkable table-highlight-head">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    File Name
+                                                                </th>
+                                                                @*<th class="text-center">Methodologies</th>*@
+                                                                <th class="text-center">
+                                                                    Create Date
+                                                                </th>
+                                                                <th class="text-center">Action</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.CustomerRequestsList[i].UploadedDocumentList.Count == 0)
+                                                            {
+                                                                <tr>
+                                                                    <td colspan="4" class="text-left pl-2">No data available</td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+
+
+                                                                @foreach (var item in Model.CustomerRequestsList[i].UploadedDocumentList)
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.FileName)
+                                                                        </td>
+                                                                        @*<td class="text-center">
+                                                                                <a class="" style="cursor:pointer" data-toggle="modal" data-target="#MethodologiesModal">Download Methodologies</a>
+                                                                            </td>*@
+                                                                        <td class="text-center">
+                                                                            @Html.DisplayFor(modelItem => item.FileModifiedTime)
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <a href="@item.FileContents" download id="download"><em class="fa fa-download"></em></a>
+                                                                        </td>
+
+                                                                    </tr>
+
+                                                                }
+                                                            }
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                }
+                                else
+                                {
+
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <section class="mb-0 mt-0">
+                                                <div role="menu" class="">
+                                                    <div class="Accordion_text" id="headingOne_@i" data-toggle="collapse" data-target="#withoutSpacingAccordion_@i" aria-expanded="true" aria-controls="withoutSpacingAccordionOne">
+                                                        <div class="icons"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+                                                        <span> @Model.CustomerRequestsList[i].ProjectName </span>
+                                                    </div>
+                                                    <div class="model_btn">
+                                                        <a class="">Is Accepted</a>
+                                                        @if (@Model.CustomerRequestsList[i].IsAccept)
+                                                        {
+                                                            <em style="color:green" class="fas fa-check"></em>
+                                                        }
+                                                        else
+                                                        {
+                                                            <em style="color:red" class="fas fa-times"></em>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+
+                                        <div id="withoutSpacingAccordion_@i" class="collapse" aria-labelledby="heading_@i" data-parent="#withoutSpacing">
+
+                                            <div class="card-body">
+
+                                                <div class="table-responsive">
+                                                    <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Projects Questionnairs">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    Projects Questionnairs
+                                                                </th>
+                                                                <th class="text-center">Methodologies</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.CustomerRequestsList[i].ProjectCustomerQuestionnairList.Count == 0)
+                                                            {
+                                                                <tr>
+                                                                    <td colspan="4" class="text-left pl-2">No data available</td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+
+
+                                                                @foreach (var item1 in Model.CustomerRequestsList[i].ProjectCustomerQuestionnairList)
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item1.Name)
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <a class="" style="cursor:pointer" data-toggle="modal" data-target="#MethodologiesModal_@index">Download Methodologies</a>
+                                                                        </td>
+
+
+                                                                    </tr>
+
+
+
+                                                                    //Modal
+                                                                    <tr>
+                                                                        <td class="modal fade" id="MethodologiesModal_@index" tabindex="-1" role="dialog" aria-labelledby="MethodologiesModal_@index" aria-hidden="true">
+                                                                            <div>
+                                                                                <div class="modal-dialog" role="document">
+                                                                                    <div class="modal-content" style=" height: 500px;">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="examplemodallabel">Methodologies</h5>
+                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                                                                                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body table-responsive">
+                                                                                            <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Methodologies" style="width: 100%;table-layout: fixed;">
+                                                                                                <thead>
+                                                                                                    <tr>
+                                                                                                        <th style="text-align:left !important;">
+                                                                                                            Name
+                                                                                                        </th>
+                                                                                                        <th class="text-center">Type</th>
+                                                                                                        <th style="width:30% !important;">Action</th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                    @if (item1.Methodology_DeliverablesData == null)
+                                                                                                    {
+                                                                                                        <tr>
+                                                                                                            <td colspan="3" class="text-left pl-2">No data available</td>
+                                                                                                        </tr>
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        @if (item1.Methodology_DeliverablesData.MethodologyeData == null && item1.Methodology_DeliverablesData.MethodologyeReportData == null)
+                                                                                                        {
+                                                                                                            <tr>
+                                                                                                                <td colspan="3" class="text-left pl-2">No data available</td>
+                                                                                                            </tr>
+                                                                                                        }
+                                                                                                        @if (item1.Methodology_DeliverablesData.MethodologyeData != null)
+                                                                                                        {
+                                                                                                            <tr>
+                                                                                                                <td style="text-align:left;">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeData.FileName)
+                                                                                                                </td>
+                                                                                                                <td class="text-center">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeData.Type)
+
+                                                                                                                </td>
+                                                                                                                <td class="text-right">
+                                                                                                                    <a href="@item1.Methodology_DeliverablesData.MethodologyeData.FileContents" download id="download">download</a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        }
+
+                                                                                                        @if (item1.Methodology_DeliverablesData.MethodologyeReportData != null)
+                                                                                                        {
+                                                                                                            <tr>
+                                                                                                                <td style="text-align:left;">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeReportData.FileName)
+                                                                                                                </td>
+                                                                                                                <td class="text-center">
+                                                                                                                    @Html.DisplayFor(modelitem => item1.Methodology_DeliverablesData.MethodologyeReportData.Type)
+
+                                                                                                                </td>
+                                                                                                                <td class="text-right">
+                                                                                                                    <a href="@item1.Methodology_DeliverablesData.MethodologyeReportData.FileContents" download id="download">download</a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        }
+
+
+                                                                                                    }
+
+
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+
+                                                                                            <button type="button" class="btn" data-dismiss="modal">close</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </td>
+
+                                                                    </tr>
+
+
+
+
+
+                                                                    index++;
+                                                                }
+                                                            }
+
+
+                                                        </tbody>
+                                                    </table>
+
+
+
+
+
+
+                                                    <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Customer Requests">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    File Name
+                                                                </th>
+                                                                @*<th class="text-center">Methodologies</th>*@
+                                                                <th class="text-center">
+                                                                    Create Date
+                                                                </th>
+                                                                <th class="text-center">Action</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (Model.CustomerRequestsList[i].UploadedDocumentList.Count == 0)
+                                                            {
+                                                                <tr>
+                                                                    <td colspan="4" class="text-left pl-2">No data available</td>
+                                                                </tr>
+                                                            }
+                                                            else
+                                                            {
+                                                                @foreach (var item in Model.CustomerRequestsList[i].UploadedDocumentList)
+                                                                {
+                                                                    <tr>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.FileName)
+                                                                        </td>
+                                                                        @*<td class="text-center">
+                                                                                <a class="" style="cursor:pointer" data-toggle="modal" data-target="#MethodologiesModal">Download Methodologies</a>
+                                                                            </td>*@
+                                                                        <td class="text-center">
+                                                                            @Html.DisplayFor(modelItem => item.FileModifiedTime)
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            <a href="@item.FileContents" download id="download"><em class="fa fa-download"></em></a>
+                                                                        </td>
+
+                                                                    </tr>
+
+                                                                }
+                                                            }
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }}
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="modal fade" id="MethodologiesModal" tabindex="-1" role="dialog" aria-labelledby="MethodologiesModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style=" height: 500px;width:700px">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Methodologies</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body table-responsive">
+                    <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Methodologies">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left !important;">
+                                    Name
+                                </th>
+                                <th>Type</th>
+                                <th style="width:30% !important">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.MethodologyeViewModelList.Count == 0)
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-left pl-2">No data available</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                @foreach (var item1 in Model.MethodologyeViewModelList)
+                                {
+                                    <tr>
+                                        <td style="text-align:left !important;">
+                                            @Html.DisplayFor(modelItem => item1.FileName)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item1.Type)
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@item1.FileContents" download="@item1.FileName" id="download"><em class="fa fa-download"></em></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+
+
+        });
+    </script>
+
+
+
+
+}

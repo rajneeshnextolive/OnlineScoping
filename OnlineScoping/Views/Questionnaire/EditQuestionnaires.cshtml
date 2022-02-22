@@ -1,0 +1,156 @@
+﻿@model OnlineScoping.ViewModels.CustomerQuestionnairViewModel
+@{
+    ViewData["Title"] = "EditQuestionnaires";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-2">
+            <h3 class="pt-3">
+                Questionnaires
+            </h3>
+        </div>
+        <div class="col-md-4">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Questionnaires</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-6">
+            @if (TempData["UpdateMessage"] != null)
+            {
+            <div style="margin: 0% 0% 0% 30%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Questionnaire Update succesfully !  </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="layout-px-spacing">
+
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-heading row">
+
+                    <div class="col-md-3 text-right">
+                        <h3 class="pt-3">
+                            Select Customer
+                        </h3>
+                    </div>
+                    <div class="col-md-3" style="margin-top: 12px;">
+                        @if (User.IsInRole("Admin"))
+                        {
+
+                            <select id="mySelect" class="form-control form-control" onchange="BothMode()">
+                                <option value="00000000-0000-0000-0000-000000000000">All</option>
+                                @foreach (var a in Model.CustomerViewList)
+                                {
+                                    <option value="@a.CustomerId">@a.FirstName </option>
+                                }
+                            </select>
+
+                        }
+                    </div>
+                    <div class="col-md-6 text-right">
+                        @*<a class="btn btn-primary ml-3 mt-3" data-toggle="modal" data-target="#QuestionnaireModal">Create New</a>*@
+                    </div>
+
+                </div>
+
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="CustomerQuestionnairList"  >
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>Create Date</th>
+                                    <th>Customer</th>
+                                    <th>QUESTIONNAIRE COMPLETED</th>
+                                    <th class="">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.CustomerQuestionnairList.Count == 0)
+                                {
+                                    <tr>
+                                        <td colspan="5" class="text-left pl-2">No data available</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    @foreach (var item in Model.CustomerQuestionnairList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @if (item.IsQuestionnaire == true)
+                                                {
+                                                    <span><a asp-action="QuestionnaireResponseDetails" asp-controller="Questionnaire" asp-route-id="@item.CustomerId" asp-route-QuestionnaireId="@item.QuestionnaireId"  asp-route-Page="EditQuestionnaires">@item.Nmae</a></span>
+                                                }
+                                                else
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.Nmae)
+
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                                            </td>
+                                            <td>
+                                                   @Html.DisplayFor(modelItem => item.CustomerName)
+                                            </td>
+                                            <td class="text-left">
+                                                @if (item.IsQuestionnaire == true)
+                                                {
+                                                    <span><i style="color:green" class="fas fa-check"></i></span>
+                                                }
+                                                else
+                                                {
+                                                    <i style="color:red" class="fas fa-times"></i>
+                                                }
+                                            </td>
+                                            <td class="text-left">
+                                                <a asp-action="UpdateQuestionnaires" asp-route-id="@item.CustomerId" asp-route-QuestionnaireId="@item.QuestionnaireId" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+        $('#mySelect [value=@Model.CustomerId]').attr('selected', 'true');
+    });
+
+        function BothMode() {
+            var val = document.getElementById("mySelect").value;
+            var url;
+
+            url = "/Questionnaire/EditQuestionnaires/?id=" + val;
+
+            window.location.href = url;
+        }
+
+    </script>
+
+}

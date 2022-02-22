@@ -1,0 +1,251 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+@{
+    ViewData["Title"] = "SecurityScopingtoolChildQuestionsDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/css/custom/childquestion.css" rel="stylesheet" />
+<style>
+
+
+    .qus-align b {
+        display: table-cell
+    }
+
+    .qus-align span {
+        display: table-cell
+    }
+</style>
+
+
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="pt-3">
+                Update Scope
+            </h3>
+        </div>
+        <div class="col-md-6" style="margin-left: -100px;">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="EditAllQuestionnaires">Scope</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#"> Scope Details</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<hr />
+
+
+
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+
+        <div class=" component-card_1 security-scoping-card ">
+            <div class="skills layout-spacing">
+                <div class="widget-content widget-content-area text-center">
+
+                    <div class="card ">
+
+                        <h5 class="card-title mb-5 mt-3">Security Scoping Questionnaire</h5>
+                  
+                        <div class="w-100 " role="listbox">
+
+                            @if (Model.Questions.Count == 0)
+                            {
+                                <input type="hidden" asp-for="@Model.SectionId" />
+                                <h5 class="mb-4 ml-5 text-left mr-5">Thank You</h5>
+                            }
+                            else
+                            {
+
+                                @for (int i = 0; i < Model.Questions.Count; i++)
+                                {
+
+
+                                    <div id="@Model.Questions[i].QuestionNumber" class="row">
+
+
+                                        <div class="form-group">
+                                            @if (Model.Questions[i].QuestionNumber == "6a")
+                                            {
+                                                <h5 class="mb-4 ml-5 text-left mr-5">@Model.Questions[i].QuestionNumber . @Model.Questions[i].QuestionText <a href="#">Click here</a> and a member of sales will be in touch soon to find out more info and provide a scope. If you’d like to use this tool to help identify what you may need tested,select <a asp-action="ChildQuestions" asp-controller="Questionnaire" asp-route-SectionId="6" asp-route-QuestionnaireId="@Model.Questions[i].QuestionnaireId" asp-route-id="@Model.CustomerId">'to better understand security posture of our environment'</a> <span style="color:red">(VARIABLE=@Model.Questions[i].VariableName)</span> </h5>
+                                            }
+                                            else
+                                            {
+                                                <h5 class="mb-4 ml-5 text-left mr-5">@Model.Questions[i].QuestionNumber . @Model.Questions[i].QuestionText <span style="color:red">(VARIABLE=@Model.Questions[i].VariableName)</span></h5>
+                                            }
+
+
+
+                                            <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                <div class="row">
+                                                    <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Days">Days</label>
+
+                                                    <input type="text" asp-for="@Model.Questions[i].Days" class="form-control col-md-8 valid" autocomplete="off" onpaste="return false;" disabled>
+
+                                                </div>
+                                            </div>
+                                            <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                <div class="row">
+                                                    <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Cost">Cost</label>
+
+                                                    <input type="text" asp-for="@Model.Questions[i].Cost" class="form-control col-md-8 valid" autocomplete="off" onpaste="return false;" disabled>
+
+                                                </div>
+                                            </div>
+                                            <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                <div class="row">
+                                                    <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].Requirement">Requirement</label>
+
+                                                    <input type="text" asp-for="@Model.Questions[i].Requirement" class="form-control col-md-8 valid" autocomplete="off" disabled>
+
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                            @if (Model.Questions[i].ChildQuestionsList.Count > 0)
+                                            {
+                                                @for (int j = 0; j < Model.Questions[i].ChildQuestionsList.Count; j++)
+                                                {
+                                                    <div id="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber">
+
+
+                                                        <div class="col-md-12 qus-align">
+                                                            <div class="form-row">
+                                                                <div class="col-md-6"> <h6 class="mb-4 ml-5 mr-5 text-left"><b>@Model.Questions[i].ChildQuestionsList[j].QuestionNumber</b> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionText</span> <span style="color:red">(VARIABLE=@Model.Questions[i].ChildQuestionsList[j].VariableName)</span></h6></div>
+
+                                                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].ChildQuestionsList[j].Days">Days</label>
+                                                                        <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Days" class="form-control col-md-7 valid" autocomplete="off" disabled>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].ChildQuestionsList[j].Cost">Cost</label>
+                                                                        <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Cost" class="form-control col-md-7 valid" autocomplete="off" disabled>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="custom-control picker-2 col-md-10 ml-5 mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-3" style="color: #3b3f5c; font-weight: 500;" for="@Model.Questions[i].ChildQuestionsList[j].Requirement">Requirement</label>
+                                                                        <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Requirement" class="form-control col-md-7 valid" autocomplete="off" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <hr />
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            }
+
+
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                }
+
+                            }
+
+
+                            @if (Model.Methodology_Deliverablesdata != null)
+                            {
+                                <div id="" style="width:100%" class="container">
+                                    <div class="col-md-12 qus-align">
+                                        <div class="form-row">
+                                            <div class="col-md-6"> <h6 class="mb-4  ml-3 text-left"><b>1.</b> <span>Scope Type Methodology </span></h6></div>
+                                            <input type="hidden" asp-for="@Model.Methodology_Deliverablesdata.Methodology_DeliverablesId " disabled />
+
+                                            <div class="mb-3 col-md-5">
+                                                <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy" class="form-control" autocomplete="off" disabled>
+                                                <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy"></label>
+                                                <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6"> <h6 class="mb-4  ml-3 text-left"><b>2.</b> <span>Scope Type Methodology FileName </span></h6></div>
+
+                                            <div class="mb-3  col-md-5">
+                                                <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName" class="form-control" autocomplete="off" disabled>
+                                                <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName"></label>
+                                                <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeMethodolgy_FileName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6"> <h6 class="mb-4 ml-3 text-left"><b>3.</b> <span>Scope Type SampleReport </span></h6></div>
+
+                                            <div class="mb-3 col-md-5">
+                                                <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport" class="form-control" autocomplete="off" disabled>
+                                                <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport"></label>
+                                                <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6"> <h6 class="mb-4 ml-3 text-left"><b>4.</b> <span>Scope Type SampleReport FileName  </span></h6></div>
+
+                                            <div class="mb-3 col-md-5">
+                                                <input type="text" asp-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName" class="form-control" autocomplete="off" disabled>
+                                                <label class="control-label" for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName"></label>
+                                                <span asp-validation-for="@Model.Methodology_Deliverablesdata.ScopeTypeSampleReport_FileName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+
+                          
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/custom/Questionnaire/Questionnaire.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#03503f7b-2c04-4c44-8690-541b8fa6366a").click(function () {
+                var rVal = $("#03503f7b-2c04-4c44-8690-541b8fa6366a:checked ").val();
+                if (rVal == "03503f7b-2c04-4c44-8690-541b8fa6366a") {
+                    $('#exampleModal').modal('show');
+                }
+            });
+        });
+    </script>
+
+}
+
+

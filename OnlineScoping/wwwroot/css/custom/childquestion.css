@@ -1,0 +1,110 @@
+﻿body {
+}
+
+.widget-content-area {
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.daterangepicker.dropdown-menu {
+    z-index: 1059;
+}
+
+.card {
+    border: none;
+}
+
+    .card .carousel-item {
+        min-height: 300px;
+    }
+
+    .card .carousel-caption {
+        padding: 0;
+        right: 0;
+        left: 0;
+        color: #3d3d3d;
+        top: 0;
+    }
+
+.carousel-caption {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.custom-control {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5rem;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    margin-left: 1.0rem;
+}
+
+.card .carousel-caption h3 {
+    color: #3d3d3d;
+}
+
+.card .carousel-caption p {
+    line-height: 30px;
+}
+
+.card .carousel-caption .col-sm-3 {
+    display: flex;
+    // align-items: center;
+}
+
+.card .carousel-caption .col-sm-9 {
+    text-align: left;
+}
+
+.navi a {
+    text-decoration: none;
+}
+
+a > .ico {
+    background-color: grey;
+    padding: 10px;
+}
+
+a:hover > .ico {
+    background-color: #666;
+}
+
+.sr-only {
+    position: static;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+    color: #f3eeee;
+    background: #000;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: none;
+    width: 20px;
+    height: 20px;
+    background: no-repeat 50%/100% 100%;
+}
+
+.carousel {
+    position: relative;
+    text-align: initial;
+}
+
+.picker-1 input {
+    width: 40%;
+}
+
+.picker-1 {
+    margin-left: 8%;
+}

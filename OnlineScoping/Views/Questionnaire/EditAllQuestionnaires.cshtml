@@ -1,0 +1,259 @@
+﻿@model OnlineScoping.ViewModels.CustomerQuestionnairViewModel
+@{
+    ViewData["Title"] = "EditAllQuestionnaires";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-top col-md-12">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="pt-3">
+                Scopes
+            </h3>
+        </div>
+        <div class="col-md-4">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Scopes</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-5">
+
+            @if (TempData["UpdateMessage"] != null)
+            {
+                <div style="margin: 0% 0% 0% 0%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> Questionnaire Update succesfully !  </div>
+            }
+            @if (TempData["DeleteSingleQuestionnaireSuccesMessage"] != null)
+            {
+        <div style="margin: 0% 0% 0% 0%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> @TempData["DeleteSingleQuestionnaireSuccesMessage"]   </div>
+            }
+
+            @if (TempData["DeleteSingleQuestionnaireError"] != null)
+            {
+                <div style="margin: 0% 0% 0% 65%;" class="alert alert-danger mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> @TempData["DeleteSingleQuestionnaireError"]  </div>
+            }
+        </div>
+        @if (TempData["EquestSuccesMessage"] != null)
+        {
+            <div style="margin: 0% 0% 0% 65%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Error!</strong> @TempData["EquestSuccesMessage"]  </div>
+        }
+        @if (TempData["NewQuestionnaireSuccesMessage"] != null)
+        {
+            <div style="margin: 0% 0% 0% 65%;" class="alert alert-success mb-4 delayMsg" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x close" data-dismiss="alert"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button> <strong>Success!</strong> @TempData["NewQuestionnaireSuccesMessage"]  </div>
+        }
+    </div>
+</div>
+
+<div class="layout-px-spacing">
+
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-heading row">
+
+                    <div class="col-md-3">
+                        <h3 class="pt-3">
+                            Edit Scopes
+                        </h3>
+                    </div>
+                    <div class="col-md-3" style="margin-top: 12px;">
+                        @if (User.IsInRole("Admin"))
+                        {
+
+
+
+                        }
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a class="btn btn-primary ml-3 mt-3" data-toggle="modal" data-target="#QuestionnaireModal">Create New Scopes</a>
+                    </div>
+
+                </div>
+
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="QuestionnaireList">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+
+                                    <th class="">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="checkboxCheck">
+                                @if (Model.QuestionnaireList.Count == 0)
+                                {
+                                    <tr>
+                                        <td colspan="5" class="text-left">No data available</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    @foreach (var item in Model.QuestionnaireList)
+                                    {
+                                        <tr>
+                                            <td>
+
+                                                <span><a asp-action="QuestionnaireDetails" asp-controller="Questionnaire" asp-route-QuestionnaireId="@item.QuestionnaireId">@item.Name</a></span>
+
+                                            </td>
+                                            <td class="text-left" style="display: flex;">
+                                                <a asp-action="UpdateAllQuestionnaires" asp-route-id="@item.QuestionnaireId" asp-route-QuestionnaireId="@item.QuestionnaireId" data-toggle="tooltip" data-placement="top" title="Edit Questionnaire Details"><em class="fas fa-pencil-alt"></em></a> |
+                                                <a asp-action="DeleteSingleQuestionnaire" asp-controller="Questionnaire" asp-route-id="@item.QuestionnaireId" style="font-size: 15px;" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><em class="far fa-trash-alt"></em></a>|
+                                                <a data-toggle="modal" style="font-size: 13px; cursor: pointer; color: #007bff;" aria-expanded="false" data-target="#QuestionnaireDataUpdateModel" data-placement="top" title="Edit Questionnaire Title" onclick="BindQuestionnaireData('@item.QuestionnaireId', '@item.Name')"><em class="fas fa-pencil-alt"></em></a>|
+                                                <div class="n-chk">
+                                                    <label class="new-control new-checkbox checkbox-primary">
+                                                        <input type="checkbox" class="new-control-input" id="@item.QuestionnaireId" value="@item.IsHideValue" data-toggle="tooltip" title="IsHide"  onchange="jsFunction('@(item.QuestionnaireId)');">
+                                                        <span class="new-control-indicator"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="QuestionnaireModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="AddNewQuestionnaire" asp-controller="Questionnaire" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Scopes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.AddNewQuestionnairData.Name" class="control-label"></label>
+                                <input asp-for="@Model.AddNewQuestionnairData.Name" class="form-control" id="AddNewQuestionName" />
+                                <span asp-validation-for="@Model.AddNewQuestionnairData.Name" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><em class="flaticon-cancel-12"></em> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="QuestionnaireDataUpdateModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form asp-action="EditQuestionnaire" asp-controller="Questionnaire" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Questionnaire</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="@Model.AddNewQuestionnairData.QuestionnaireId" id="QuestId" />               
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.AddNewQuestionnairData.Name" class="control-label"></label>
+                                <input asp-for="@Model.AddNewQuestionnairData.Name" class="form-control" id="QuestionName" />
+                                <span asp-validation-for="@Model.AddNewQuestionnairData.Name" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal"><em class="flaticon-cancel-12"></em> Discard</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+        $(document).ready(function () {
+            jQuery("#checkboxCheck").find('input').each(function () {
+                var value = $(this).val();
+                if (value == "True") {
+                    $(this).attr("checked", "checked");
+                }
+                else {
+                    $(this).removeAttr('checked');
+                }
+            });
+
+        $('#mySelect [value=@Model.CustomerId]').attr('selected', 'true');
+    });
+        function BindQuestionnaireData(QuestioneerId, Name) {
+            document.getElementById('QuestId').value = QuestioneerId;
+            document.getElementById('QuestionName').value = Name;
+            return true;
+        }
+
+
+    function jsFunction(QuestionnaireId) {
+        var value;
+        if (document.getElementById(QuestionnaireId).checked) {
+            value = "True";
+        } else {
+            value = "False";
+        }
+        var data = { "Toggle": value, "QuestionnaireId": QuestionnaireId};
+           $.ajax({
+               url: '@Url.Action("HideUnHideQuestionnair", "Questionnaire")',
+               type: "post",
+               contentType: 'application/x-www-form-urlencoded',
+               data: data,
+               success: function (result) {
+                   if (result == "1") {
+                       const toast = swal.mixin({
+                           toast: true,
+                           position: 'top-end',
+                           showConfirmButton: false,
+                           timer: 3000,
+                           padding: '2em'
+                       });
+
+                       toast({
+                           type: 'success',
+                           title: 'Permissions Update succesfully !',
+                           padding: '2em',
+                       })
+                   } else {
+                       alert("Error in Update Permissions !");
+                   }
+               }
+           });
+
+   }
+</script>
+
+}
+
+

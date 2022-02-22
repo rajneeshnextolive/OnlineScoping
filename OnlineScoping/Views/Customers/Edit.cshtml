@@ -1,0 +1,167 @@
+﻿@model OnlineScoping.ViewModels.CustomerViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/lib/layout/assets/css/scrollspyNav.css" rel="stylesheet" />
+<link href="~/lib/layout/assets/css/elements/breadcrumb.css" rel="stylesheet" />
+<link href="~/lib/layout/assets/css/elements/miscellaneous.css" rel="stylesheet" />
+<div class="page-top col-md-12">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <h3 class="pt-3">
+                Edit Customer
+            </h3>
+        </div>
+
+        <div class="col-md-6" >
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item "><a href="/Customers">Customers</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Edit Customer</a></li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+
+</div>
+<hr />
+<div class="box box-shadow widget-content-area col-md-8">
+    <form asp-action="Edit">
+        <div class="row">
+            <div class="col-md-12" style="display: flex;">
+                <div class="col-md-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CustomerId" />
+                    <input type="hidden" asp-for="Email" />
+                    <input type="hidden" asp-for="TempUserName" />
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="display: flex;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Client" class="control-label">Client Name</label>
+                        <input asp-for="Client" class="form-control" />
+                        <span asp-validation-for="Client" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Address1" class="control-label"></label>
+                        <input asp-for="Address1" class="form-control" />
+                        <span asp-validation-for="Address1" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="display: flex;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="MobileNumber" class="control-label"></label>
+                        <input asp-for="MobileNumber" class="form-control" />
+                        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Address2" class="control-label"></label>
+                        <input asp-for="Address2" class="form-control" />
+                        <span asp-validation-for="Address2" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="display: flex;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="State" class="control-label"></label>
+                        <input asp-for="State" class="form-control" />
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="display: flex;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Country" class="control-label"></label>
+                        <input asp-for="Country" class="form-control" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Zip" class="control-label"></label>
+                        <input asp-for="Zip" class="form-control" />
+                        <span asp-validation-for="Zip" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="display: flex;">
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CreatedBy" class="control-label"></label>
+                            <select asp-for="CreatedBy"
+                                    class="form-control"
+                                    asp-items="@(new SelectList(Model.SalseList, "CustomerId", "Name"))">
+                                <option value="00000000-0000-0000-0000-000000000000" disabled>Please select</option>
+                            </select>
+
+                        </div>
+                    </div>
+                }
+
+                @*<div class="col-md-6">
+                    <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+                    <input type="hidden" asp-for="Email" class="form-control" />
+
+
+                </div>*@
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group ">
+                <input type="submit" value="Save" class="btn btn-primary" /> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+            </div>
+    </form>
+    </div>
+    <div>
+     
+    </div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

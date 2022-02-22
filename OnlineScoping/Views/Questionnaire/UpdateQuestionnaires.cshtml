@@ -1,0 +1,494 @@
+﻿@model OnlineScoping.ViewModels.QuestionnaireViewModel
+@{
+    ViewData["Title"] = "UpdateQuestionnaires";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var a = 0;
+}
+
+
+
+
+<div class="page-top col-md-12">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="pt-3">
+                Update Questionnaires
+            </h3>
+        </div>
+        <div class="col-md-6">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    @*<li class="breadcrumb-item"><a asp-action="EditQuestionnaires">Questionnaires</a></li>*@
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Update Questionnaire</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="card component-card_1 security-scoping-card" style="margin-top: 10px;">
+    @*<a class="word-export" href="javascript:void(0)" onclick="ExportToDoc()">Export to Doc</a>*@
+    <div class="card-body" id="RepordToWord">
+
+        <h5 class="card-title mb-5 mt-3">Security Scoping Questionnaire Response</h5>
+        <h5 class="mb-4 ml-5">
+        </h5>
+        <form asp-action="UpdateQuestionnaires" method="post" autocomplete="off">
+            <input type="hidden" asp-for="@Model.QuestionnaireId" />
+            <input type="hidden" asp-for="@Model.ProjectId" />
+            <input type="hidden" asp-for="@Model.CustomerId" />
+
+            <div class="w-100 carousel-inner" role="listbox">
+                @if (Model.Questions.Count != 0)
+                {
+                    var Qid1 = Guid.Empty;
+                    @for (int i = 0; i < Model.Questions.Count; i++)
+                    {
+
+                        <input type="hidden" asp-for="@Model.Questions[i].OptionType" />
+                        <input type="hidden" asp-for="@Model.Questions[i].QuestionId " />
+                        <input type="hidden" asp-for="@Model.Questions[i].ResponseId" />
+                        <input type="hidden" asp-for="@Model.Questions[i].QuestionnaireId" />
+                        <input type="hidden" asp-for="@Model.Questions[i].UserName" value="@User.Identity.Name" />
+
+                        <div id="@Model.Questions[i].QuestionNumber">
+                            <div>
+                                <div>
+
+
+                                    <div class="row">
+
+                                        <div class="form-group col-md-12">
+
+                                            <h3 class="mb-4 ml-5 text-left mr-5 col-md-10"> <b>@Model.Questions[i].QuestionData.Title</b></h3>
+                                            <h3 class="mb-4 ml-5 text-left mr-5 col-md-10"> <b>@Model.Questions[i].QuestionData.SubTitle</b></h3>
+                                            @if (Model.Questions[i].QuestionData.QuestionId == new Guid("479B47D8-743E-4BF5-B1CE-3D8AAE294A46"))
+                                            {
+
+
+                                                if (a == 0)
+                                                {
+                                                    <h5 class="mb-4 ml-5 text-left mr-5 col-md-10"><b>@Model.Questions[i].QuestionData.QuestionNumber</b> . @Model.Questions[i].QuestionData.QuestionText    </h5>
+                                                }
+                                                a++;
+                                            }
+                                            else
+                                            {
+                                                @if (Model.Questions[i].QuestionData.QuestionNumber == "-" || Model.Questions[i].QuestionData.QuestionNumber == "")
+                                                {
+                                                    <h5 class="mb-4 ml-5 text-left mr-5 col-md-10">@Model.Questions[i].QuestionData.QuestionNumber  @Model.Questions[i].QuestionData.QuestionText </h5>
+
+                                                }
+                                                else
+                                                {
+                                                    @if (Model.Questions[i].OptionType == 4)
+                                                    {
+                                                        if (Qid1 != Model.Questions[i].QuestionData.QuestionId)
+                                                        {
+                                                            <h5 class="mb-4 ml-5 text-left mr-5 col-md-10"><b>@Model.Questions[i].QuestionData.QuestionNumber</b>.@Model.Questions[i].QuestionData.QuestionText </h5>
+                                                        }
+                                                        else
+                                                        {
+
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        Qid1 = Guid.Empty;
+                                                        <h5 class="mb-4 ml-5 text-left mr-5 col-md-10"><b>@Model.Questions[i].QuestionData.QuestionNumber</b>.@Model.Questions[i].QuestionData.QuestionText </h5>
+                                                    }
+
+                                                }
+
+                                            }
+                                            @if (Model.Questions[i].OptionType == 0)
+                                            {
+                                                @for (var k = 0; k < Model.Questions[i].OptionsList.Count; k++)
+                                                {
+                                                    @if (Model.Questions[i].ResponseOptionId == Model.Questions[i].OptionsList[k].OptionId)
+                                                    {
+                                                        <div class="custom-control custom-radio mb-3 ml-10 col-md-10 ml-5">
+                                                            <input type="radio" asp-for="@Model.Questions[i].ResponseOptionId" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input" checked>
+                                                            <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="custom-control custom-radio mb-3 ml-10 col-md-10 ml-5">
+                                                            <input type="radio" asp-for="@Model.Questions[i].ResponseOptionId" id="@Model.Questions[i].OptionsList[k].OptionId" value="@Model.Questions[i].OptionsList[k].OptionId" class="custom-control-input">
+                                                            <label class="custom-control-label" for="@Model.Questions[i].OptionsList[k].OptionId"> @Model.Questions[i].OptionsList[k].OptionText</label>
+                                                        </div>
+                                                    }
+
+                                                }
+
+                                            }
+                                            else if (Model.Questions[i].OptionType == 2)
+                                            {
+                                                @if (Model.Questions[i].QuestionData.InputType == 1)
+                                                {
+                                                    <div class="mb-3 ml-5 mr-5 col-md-10 no-padding">
+                                                        <input type="text" asp-for="@Model.Questions[i].Responsetext" class="form-control" onkeypress="return isNumber(event)" autocomplete="off" onpaste="return false;">
+                                                        <label class="control-label" for="@Model.Questions[i].Responsetext"></label>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+
+
+                                                    <div class="custom-control picker-2 col-md-10 ml-5">
+                                                        <input type="text" asp-for="@Model.Questions[i].Responsetext" class="form-control" autocomplete="off">
+                                                        <label class="control-label" for="@Model.Questions[i].Responsetext"></label>
+                                                    </div>
+                                                }
+
+
+
+                                            }
+                                            else if (Model.Questions[i].OptionType == 1)
+                                            {
+                                                <div class="custom-control picker-2 col-md-10 ml-5">
+                                                    <input value="@Model.Questions[i].ResponseDateTime.ToString("yyyy-MM-dd")" asp-for="@Model.Questions[i].ResponseDateTime" class="form-control flatpickr flatpickr-input active calendar1" type="text">
+                                                </div>
+
+                                            }
+                                            else if (Model.Questions[i].OptionType == 4)
+                                            {
+                                                @for (var k = 0; k < Model.Questions[i].OptionsList.Count; k++)
+                                                {
+                                                    Qid1 = Model.Questions[i].QuestionId;
+
+                                                    if (Model.Questions[i].ResponseOptionId == Model.Questions[i].OptionsList[k].OptionId)
+                                                    {
+                                                        if (Model.Questions[i].Chk == true)
+                                                        {
+                                                            <div class="custom-control ml-10 col-md-10 ml-5">
+
+                                                                <input type="checkbox" asp-for="@Model.Questions[i].Chk" checked />
+                                                                <label asp-for="@Model.Questions[i].Chk">@Model.Questions[i].OptionsList[k].OptionText</label>
+
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="custom-control ml-10 col-md-10 ml-5">
+                                                                <input type="checkbox" asp-for="@Model.Questions[i].Chk" />
+                                                                <label asp-for="@Model.Questions[i].Chk">@Model.Questions[i].OptionsList[k].OptionText</label>
+
+                                                            </div>
+                                                        }
+                                                    }
+
+
+                                                }
+
+                                            }
+
+
+                                            @if (Model.Questions[i].ChildQuestionsList.Count > 0)
+                                            {
+                                                var Qid = Guid.Empty;
+
+                                                @for (int j = 0; j < Model.Questions[i].ChildQuestionsList.Count; j++)
+                                                {
+                                                    if (@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber == "1.3")
+                                                    {
+
+                                                        <div id="13">
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].SectionId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ChildQuestionId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionText" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].UserName" value="@User.Identity.Name" />
+
+
+
+                                                            <div class="col-md-12 qus-align">
+                                                                <div class="form-row">
+                                                                    <div class="col-md-6"> <h6 class="mb-4 ml-5 mr-5 text-left"><b>@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber</b> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionText</span></h6></div>
+                                                                    @if (Model.Questions[i].ChildQuestionsList[j].OptionType == 0)
+                                                                    {
+
+                                                                        @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                                        {
+                                                                            @if (Model.Questions[i].ChildQuestionsList[j].ResponseOptionId == Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId)
+                                                                            {
+                                                                                <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                                    <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                                    <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                                </div>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                                    <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input">
+                                                                                    <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                                </div>
+                                                                            }
+                                                                        }
+
+                                                                    }
+                                                                    else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 1)
+                                                                    {
+                                                                        <div class="custom-control picker-2 col-md-4 mb-3">
+                                                                            <input value="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime.ToString("yyyy-MM-dd")" id="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" class="form-control flatpickr flatpickr-input active calendar1" type="text">
+
+
+                                                                        </div>
+
+                                                                    }
+                                                                    else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 2)
+                                                                    {
+                                                                        <div class="custom-control picker-2 col-md-4">
+                                                                            <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Responsetext" class="form-control">
+                                                                            <label class="control-label" for="@Model.Questions[i].ChildQuestionsList[j].Responsetext"></label>
+                                                                        </div>
+
+                                                                    }
+
+                                                                </div>
+                                                                <hr />
+                                                            </div>
+                                                        </div>
+
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <div id="@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber">
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].SectionId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ChildQuestionId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionNumber" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionText" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseId" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].QuestionType" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].OptionType" />
+                                                            <input type="hidden" asp-for="@Model.Questions[i].ChildQuestionsList[j].UserName" value="@User.Identity.Name" />
+
+
+
+                                                            <div class="col-md-12 qus-align">
+                                                                <div class="form-row">
+                                                                    @if (Model.Questions[i].ChildQuestionsList[j].OptionType == 4)
+                                                                    {
+                                                                        if (Qid != Model.Questions[i].ChildQuestionsList[j].QuestionData.ChildQuestionId)
+                                                                        {
+                                                                            <div class="col-md-6"> <h6 class="mb-4 ml-5 mr-5 text-left"><b>@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber</b> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionText</span></h6></div>
+                                                                        }
+                                                                        else
+                                                                        {
+
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        Qid = Guid.Empty;
+                                                                        <div class="col-md-6"> <h6 class="mb-4 ml-5 mr-5 text-left"><b>@Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionNumber</b> <span> . @Model.Questions[i].ChildQuestionsList[j].QuestionData.QuestionText</span></h6></div>
+                                                                    }
+
+
+                                                                    @if (Model.Questions[i].ChildQuestionsList[j].OptionType == 0)
+                                                                    {
+
+                                                                        @for (var l = 0; l < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; l++)
+                                                                        {
+                                                                            @if (Model.Questions[i].ChildQuestionsList[j].ResponseOptionId == Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId)
+                                                                            {
+                                                                                <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                                    <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input" checked>
+                                                                                    <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                                </div>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div class="custom-control custom-radio mb-3 col-md-2">
+                                                                                    <input type="radio" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseOptionId" id="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" value="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId" class="custom-control-input">
+                                                                                    <label class="custom-control-label" for="@Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionId"> @Model.Questions[i].ChildQuestionsList[j].OptionsList[l].OptionText</label>
+                                                                                </div>
+                                                                            }
+                                                                        }
+
+
+                                                                    }
+                                                                    else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 1)
+                                                                    {
+                                                                        <div class="custom-control picker-2 col-md-6">
+                                                                            <input value="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime.ToString("yyyy-MM-dd")" id="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" asp-for="@Model.Questions[i].ChildQuestionsList[j].ResponseDateTime" class="form-control flatpickr flatpickr-input active calendar1" type="text">
+
+                                                                        </div>
+
+                                                                    }
+                                                                    else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 2)
+                                                                    {
+                                                                        <div class="custom-control picker-2 col-md-6">
+                                                                            <input type="text" asp-for="@Model.Questions[i].ChildQuestionsList[j].Responsetext" class="form-control">
+                                                                            <label class="control-label" for="@Model.Questions[i].ChildQuestionsList[j].Responsetext"></label>
+                                                                        </div>
+
+                                                                    }
+                                                                    else if (Model.Questions[i].ChildQuestionsList[j].OptionType == 4)
+                                                                    {
+                                                                        Qid = Model.Questions[i].ChildQuestionsList[j].ChildQuestionId;
+                                                                        @for (var k = 0; k < Model.Questions[i].ChildQuestionsList[j].OptionsList.Count; k++)
+                                                                        {
+
+
+                                                                            if (Model.Questions[i].ChildQuestionsList[j].ResponseOptionId == Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionId)
+                                                                            {
+                                                                                if (Model.Questions[i].ChildQuestionsList[j].Chk == true)
+                                                                                {
+                                                                                    <div class="custom-control ml-10 col-md-10 ml-5">
+
+                                                                                        <input type="checkbox" asp-for="@Model.Questions[i].ChildQuestionsList[j].Chk" checked />
+                                                                                        <label asp-for="@Model.Questions[i].ChildQuestionsList[j].Chk">@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionText</label>
+
+                                                                                    </div>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <div class="custom-control ml-10 col-md-10 ml-5">
+                                                                                        <input type="checkbox" asp-for="@Model.Questions[i].ChildQuestionsList[j].Chk" />
+                                                                                        <label asp-for="@Model.Questions[i].ChildQuestionsList[j].Chk">@Model.Questions[i].ChildQuestionsList[j].OptionsList[k].OptionText</label>
+
+                                                                                    </div>
+                                                                                }
+                                                                            }
+
+
+                                                                        }
+
+                                                                    }
+
+                                                                </div>
+                                                                <hr />
+                                                            </div>
+                                                        </div>
+
+                                                    }
+
+
+
+
+                                                }
+
+                                            }
+
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                }
+
+            </div>
+
+            <div class="form-group float-right" id="finish">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
+
+
+
+<script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+<script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/custom/Questionnaire/Questionnaire1.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var rVal2 = $("#04c742d9-6c7a-48b5-9cfb-5959476c9032:checked ").val();
+            if (rVal2 == "04c742d9-6c7a-48b5-9cfb-5959476c9032") {
+                $("#8a").show();
+            }
+            var rVal2 = $("#c445f578-bdac-4f3e-9f66-63b19dfcb6d7:checked ").val();
+            if (rVal2 == "c445f578-bdac-4f3e-9f66-63b19dfcb6d7") {
+                $("#8a").hide();
+            }
+
+            var rVal2 = $("#d6557126-e6dc-43b2-b66d-2b28462baae6:checked ").val();
+            if (rVal2 == "d6557126-e6dc-43b2-b66d-2b28462baae6") {
+                $("#11a").show();
+            }
+
+            var rVal2 = $("#4a9d91f3-4efb-42a9-ba13-ec60abac78ff:checked ").val();
+            if (rVal2 == "4a9d91f3-4efb-42a9-ba13-ec60abac78ff") {
+                $("#11a").hide();
+            }
+            var rVal2 = $("#b462f7b9-cd01-46ab-8176-1f7fcdcb2339:checked ").val();
+            if (rVal2 == "b462f7b9-cd01-46ab-8176-1f7fcdcb2339") {
+                $("#12a").show();
+            }
+            var rVal2 = $("#224558d2-145d-43e4-9375-d1b458610962:checked ").val();
+            if (rVal2 == "224558d2-145d-43e4-9375-d1b458610962") {
+                $("#12a").hide();
+            }
+            var rVal10 = $("#a559e534-50fe-4995-ba47-fdda54285d68:checked ").val();
+            if (rVal10 == "a559e534-50fe-4995-ba47-fdda54285d68") {
+                $("#13").hide();
+            }
+
+            var rVal12 = $("#d13ca5e1-439f-4247-9dd1-362b64a8d77e:checked ").val();
+            if (rVal12 == "d13ca5e1-439f-4247-9dd1-362b64a8d77e") {
+                $("#13").show();
+            }
+
+
+
+
+            $("#d13ca5e1-439f-4247-9dd1-362b64a8d77e").click(function () {
+                var rVal2 = $("#d13ca5e1-439f-4247-9dd1-362b64a8d77e:checked ").val();
+                if (rVal2 == "d13ca5e1-439f-4247-9dd1-362b64a8d77e") {
+                    $("#13").show();
+                }
+            });
+
+            $("#a559e534-50fe-4995-ba47-fdda54285d68").click(function () {
+                var rVal2 = $("#a559e534-50fe-4995-ba47-fdda54285d68:checked ").val();
+
+                if (rVal2 == "a559e534-50fe-4995-ba47-fdda54285d68") {
+                    $("#13").hide();
+                }
+            });
+
+
+
+
+
+            var SectionId = $("#SectionId").val();
+            jQuery("#" + SectionId).attr('checked', true);
+
+
+            const calendars = flatpickr(".calendar1", {
+                // defaultDate: 'today'
+            });
+
+        });
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+}
+

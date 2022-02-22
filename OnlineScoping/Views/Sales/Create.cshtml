@@ -1,0 +1,124 @@
+﻿@model OnlineScoping.ViewModels.SalesViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-top">
+    <div class="row">
+        <div class="col-md-2">
+            <h3 class="pt-3">
+                Create Sales 
+            </h3>
+        </div>
+        <div class="col-md-6 text-right">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item "><a href="/Sales">Sales</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Create Sale</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="box box-shadow widget-content-area col-md-8">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TempUserName" class="control-label"></label>
+                    <input asp-for="TempUserName" class="form-control" />
+                    <span asp-validation-for="TempUserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MobileNumber" class="control-label"></label>
+                    <input asp-for="MobileNumber" class="form-control" />
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+                @*<div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="IsEmailSent" /> @Html.DisplayNameFor(model => model.IsEmailSent) @Html.DisplayFor(model => model.IsEmailSent)
+            </label>
+        </div>*@
+
+                <div class="form-group">
+                    <input type="submit" value="Create and send e-mail" class="btn btn-primary" /> |
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade bd-example-modal-lg" id="ModalSales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Send Email</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>          
+            <div class="modal-body">
+                <p class="modal-text">Sales account has been created now please send an activation e-mail.</p>
+
+                <a asp-action="Index">Back to List</a> |
+                <a asp-action="SendMail" class="btn btn-primary" asp-route-id="@Model.CustomerId">Send</a>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+@if(Model.msg==true)
+{
+<script>
+    function modalsales() {
+            $("#ModalSales").modal('show');
+    }
+</script>
+}else
+{
+<script>
+    function modalsales() {
+
+    }
+</script>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $(document).ready(function () {
+        modalsales();
+        $("#LastName").focusout(function () {
+            var FName = $("#FirstName").val();
+            var LName = $("#LastName").val();
+            $("#TempUserName").val("" + FName + "" + LName + "");
+        });
+    });
+</script>
+}

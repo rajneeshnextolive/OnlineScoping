@@ -1,0 +1,1721 @@
+﻿@model OnlineScoping.ViewModels.CyberEssentialsQuestionnaireModel
+@{
+    ViewData["Title"] = "CEQCustomerReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .ultd ul {
+        list-style: lower-alpha;
+    }
+
+    .cypermain {
+        margin-top: 20px;
+        padding: 0px 20px;
+    }
+
+    .hdng-style {
+        font-size: 16px;
+        font-weight: 600;
+        color: #323d4e;
+    }
+
+    .cypermain .panel-default {
+        border-color: #6f7988;
+    }
+
+        .cypermain .panel-default > .panel-heading {
+            background-color: #323d4e;
+            border-color: #323d4e;
+            color: #fff !important;
+        }
+
+            .cypermain .panel-default > .panel-heading a:hover {
+                color: #f5f5f5 !important;
+            }
+
+    .checker {
+        display: inline-block;
+    }
+
+    .ThisLink {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .error {
+        border: 1px solid red !important;
+    }
+</style>
+<style>
+    .skills .widget-content-area h3:after {
+        display: none;
+    }
+
+    .nav-pills .nav-link {
+        border-radius: .25rem;
+        margin-bottom: 15px;
+        background: #edf4fb;
+    }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            color: #fff;
+            background-color: #1b334c;
+            border-color: #1b334c;
+        }
+</style>
+
+
+<style>
+    table#scopeOfAss td, table#scopeOfAss th {
+        word-wrap: break-word;
+        table #scopeOfAss td select option
+
+    {
+        width: 100px;
+        white-space: pre-wrap;
+    }
+
+    .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+        position: relative;
+    }
+
+    .table {
+        display: table;
+        width: 100%;
+    }
+
+    .tableRow {
+        display: table-row;
+    }
+
+    .tableHead {
+        display: table-row;
+        font-weight: bold;
+    }
+
+    .tableCell {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell1 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+    }
+
+    .tableCell2 {
+        display: table-cell;
+        padding: 3px 10px;
+        border: 1px solid #999999;
+        width: auto;
+        height: 30px;
+        text-align: center;
+    }
+
+    .tableRow .tableCell:first-child {
+        cursor: auto;
+    }
+
+    .del-Check {
+        height: 20px !important;
+        width: 20px !important;
+    }
+</style>
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-primary" id="WordHide" onclick="exportToWord()">Export As Word</button>
+        <div id="loader" style="margin: -7px 1px; display:none" class=" spinner-border text-primary align-self-center "></div>
+    </div>
+    <div class="col-md-5 text-right"><label style="margin-top: 12px;font-size: 16px;">Select Mode</label></div>
+    <div class="col-md-3 text-right">
+
+        <select id="mySelect" class="form-control form-control" onchange="BothMode()">
+            <option value="Standard" selected>Standard</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+</div>
+
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="">
+                <div class="widget-content">
+                    <div id="RepordToWord" style="font-family: Calibri; width: 70%; margin: 0 auto; background-color: white;">
+
+                        <header style="background-color: #fff;padding: 10px;margin-bottom: -9px;padding-left: 40px;width: 80%;margin: 0 auto;">
+                            <h2 style="text-align:center;color:red">Commercial In Confidence</h2>
+                            <img src="https://scoping.procheckup.com/Report/img/logo.png" width="400" height="100" style="margin: 0 auto; display: block;" alt="Logo" />
+                        </header>
+                        <div class="" id="cover" style="margin-top: 10px;">
+                            <div style="width: 100%;">
+                                <table  summary="Customer Proposal View"  cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-width: 0px;background-color: #383b3e; padding: 0; border: none; height: 100%; margin: 0px auto; width: 80%;">
+                                    <tbody>
+                                        <tr id="docCover" style="padding: 0px; width: 100%;">
+                                            <td style="width: 100%; height: 100%;">
+                                                <p style="font-size: 33px; color: #fff; margin: 2% 10% 0; padding: 11px 0; font-family: Calibri; text-align: center; line-height: 44px; border-bottom: 1px solid #1c5995; ">Cyber Essentials Scheme (CES)<br /> Questionnaire</p>
+                                                <p style="font-size: 20px; color: #e3dfdf; font-family: Calibri; margin: 5% auto 2%; width: 100%; text-align: center; display: block; "><span style="background: yellow; padding: 0px 30px;color:black">@Model.CustomerViewModel.Client</span></p>
+                                                <p style="font-size: 18px; color: #fff; font-family: Calibri;text-align:center">@Model.CustomerProposalViewModel.CreatedDate.ToShortDateString()</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr style="padding: 0px; width: 100%;">
+                                            <td style="padding: 0px; border: none; width: 100%;"><img alt="" id="coverImg1" src="https://scoping.procheckup.com/Report/img/procheckup.png" style="margin: 0px;" width="100%" /></td>
+                                            @*<td style="padding: 0px; border: none; width: 100%;"><img alt="" id="coverImg1" src="https://localhost:44368/Report/img/procheckup.png" style="margin: 0px;" width="100%" /></td>*@
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+                        <div style="width:80%;margin:0 auto">
+                            <table cellpadding="0" cellspacing="0" summary="  " style="border-collapse: collapse; border-width: 0px;background-color: #fff; padding: 0; border: none; height: 100%; margin: 0px auto; width: 80%;">
+                                <tbody>
+                                    @*<tr>
+                                            <td><img alt="" id="" src="https://scoping.procheckup.com/img/Report/Fitness-preview.png" style="margin: 0px;width: 200px;" width="200" height="100" /></td>
+                                            <td><img alt="" id="" src="https://scoping.procheckup.com/img/Report/CE-logo.png" style="margin: 0px auto; width: 200px;" width="200" height="49" /></td>
+                                            <td><img alt="" id="" src="https://scoping.procheckup.com/img/Report/cyber-essentials.png" style="margin: 0px auto;width: 120px;" width="120" height="90" /></td>
+                                            <td><img alt="" id="" src="https://scoping.procheckup.com/img/Report/cyber.png" style="margin: 0px auto; width: 180px; " width=" 180" height="90" /></td>
+                                        </tr>*@
+                                    <tr>
+                                        <td><img alt="" id="" src="~/Report/img/Fitness-preview.png" style="margin: 0px;width: 200px;" width="200" height="100" /></td>
+                                        <td><img alt="" id="" src="~/Report/img/CE-logo.png" style="margin: 0px auto; width: 200px;" width="200" height="49" /></td>
+                                        <td><img alt="" id="" src="~/Report/img/cyber-essentials.png" style="margin: 0px auto;width: 120px;" width="120" height="90" /></td>
+                                        <td><img alt="" id="" src="~/Report/img/cyber.png" style="margin: 0px auto; width: 180px; " width=" 180" height="90" /></td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+                        <div style="background: #fff;width:80%; margin:0 auto">
+                            <h2 style="color: #3A6084;font-weight:normal; margin:20px 0"> Document Control</h2>
+                            <table cellpadding="2" summary="Document Control" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td style="border-bottom: 1px solid #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri; text-align: center">
+                                            <span style=" text-align: center; font-family: Calibri;">Date</span>
+                                        </td>
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: bold;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;">Action</span>
+                                        </td>
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;color: rgb(255, 240, 245);font-weight: bold;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;">Version</span>
+                                        </td>
+                                        <td style="border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;color: rgb(255, 240, 245);font-weight: bold;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;">Author</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;color:#2a2a2a">@Model.CustomerProposalViewModel.CreatedDate.ToShortDateString() </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style=" font-size: 11pt;color:#2a2a2a">ProCheckUp Issue to @Model.SalesViewModel.FirstName @Model.SalesViewModel.LastName</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 11pt;">
+                                            <span style="color: #2a2a2a">1.0 </span>
+                                        </td>
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; ">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Tengku Zahasman</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;color:#2a2a2a">  </span>
+                                        </td>
+                                        <td style="border-right: 1px solid #2a2a2a;width: 25.86%;text-align: center;border-bottom-color: #2a2a2a;border-bottom-width: 1px;border-bottom-style: solid;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Completed Return from </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">2.0 </span>
+                                        </td>
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a"> </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Questionnaire Assessed</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">2.1</span>
+                                        </td>
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">
+                                                <select id="myDropDownList" name="myDropDownList">
+                                                    <option value="Darren Rackliff">Darren Rackliff</option>
+                                                    <option value="Edd Jones">Edd Jones</option>
+                                                    <option value="Jonathan Bush">Jonathan Bush</option>
+                                                    <option value="Richard Mead" selected>Richard Mead</option>
+                                                </select>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="background: #fff; width:80%; margin:0 auto">
+                            <p style="font-size: 12pt;font-family: Calibri; margin:20px 0">
+                                Note: This document is created from v3.3 of Cyber Essentials Scheme (CES) Questionnaire issued by CREST (GB) Ltd (CREST) issued 16/01/2019.
+                            </p>
+                        </div>
+                        @*<div style="background: #fff;font-family: Calibri;">
+                                <h1 style=""><span style="color: #0460af; padding: 30px 0; text-align: center; font-weight: 700;">1&nbsp;&nbsp;&nbsp;Assumptions</span></h1>
+                            </div>*@
+
+                        <div style="background: #fff; width:80%; margin:0 auto">
+                            <h2 style="color: #3A6084; font-weight: normal; margin: 20px 0">1 Assumptions</h2>
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+
+
+                                    It is assumed that organisations are an appropriate size, scale and IT complexity level for an audit within the scope of Cyber Essentials.
+
+
+                                </span>
+                            </p>
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            The Cyber Essentials test is recommended for organisations looking for a base level Cyber Security test where IT is a business enabler rather than a core deliverable.  It is mainly applicable where IT systems are primarily based on Common-Off-The-Shelf (COTS) products rather than large, heavily customised, complex solutions.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            It is assumed that the questions provided in this questionnaire will be properly researched by the organisation and that answers provided will be accurate and truthful.  Although some claims made during the questionnaire phase will be tested by later phases, others will not.  The Cyber Essentials and Cyber Essentials PLUS schemes do not seek to gather evidence in support of all claims made during the questionnaire phase.  The questionnaire phase is in large part self-certification.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            Where a claim is made that is later found to be false (before the report is issued), the CB should initially assume the erroneous claim was made in good faith.  CBs should discuss such anomalies with the organisation and seek an updated response to the questionnaire if appropriate.  If agreement cannot be reached about how to deal with the anomaly, CREST should be contacted for advice.  No report should be issued until CREST have reviewed the case and ruled on what action should be taken.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            Within this document, several references are made to passwords.  Organisations should understand that it is difficult to define a “difficult to guess” password in a way that does not cause organisations to fail the corresponding questions.  At a high-level Cyber Essentials seeks to determine if a basic level of good security practice has been applied effectively to thwart unsophisticated or opportunistic password guessing attacks.  The following general principles are therefore provided:
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p>
+                                <ul style="font-size: 12pt; font-family: Calibri; color: #515365;">
+
+                                    <li style="font-size: 12pt;"> 	Active Directory’s “Password Complexity” feature is appropriate for the purposes of Cyber Essentials.</li>
+                                    <li style="font-size: 12pt;"> 	Where systems can enforce a minimum password length, this feature should be used.  8 characters is a reasonable minimum password length.</li>
+                                    <li style="font-size: 12pt;"> 	Using vendor-supplied default passwords is never acceptable.</li>
+                                    <li style="font-size: 12pt;"> 	Allowing the password to be set to the username is never acceptable.</li>
+                                    <li style="font-size: 12pt;"> 	Allowing blank passwords is never acceptable.</li>
+                                </ul>
+                            </p>
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;font-size: 12pt;font-family: Calibri;color: #515365;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            Advice and guidance on passwords their use and how to protect them can be found at the links below:
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p>
+                                <ul style="font-size: 12pt; font-family: Calibri; color: #0460af;">
+                                    <li style="font-size: 12pt;">	<a href="https://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach" target="_blank" rel="noopener noreferrer">https://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach</a> </li>
+                                    <li style="font-size: 12pt;">	<a href="https://www.ncsc.gov.uk/articles/problems-forcing-regular-password-expiry" target="_blank" rel="noopener noreferrer">https://www.ncsc.gov.uk/articles/problems-forcing-regular-password-expiry</a> </li>
+
+                                </ul>
+                            </p>
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            The final report to the customer MUST be delivered using the Cyber Essentials reporting template as provided by the accreditation body in order to maximise consistency between testing providers.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                        </div>
+                        <br style="page-break-before:always; clear:both; " />
+
+
+                        <div style="background: #fff; width:80%; margin:0 auto">
+                            <div class="tab-content" id="v-line-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-line-pills-Organisation" role="tabpanel" aria-labelledby="v-line-pills-Organisation-tab">
+                                    <div id="organisationDetails">
+
+                                        <h2 style="color: #3A6084;"><strong>2&nbsp;   Scope of the Assessment</strong></h2>
+                                        <div>
+                                            <h3 style="color: #79A5CC;margin: 0px;margin-bottom: 15px;"><strong>2.1 &nbsp; Organisation details</strong></h3>
+                                        </div>
+                                        <p>
+                                            <span style="font-size: 12pt;font-family: Calibri;">
+                                                <span style="font-size: 12pt;">
+                                                    <span>
+                                                        Please ensure the following date is captured prior to commencing a Cyber Essentials project
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </p>
+
+                                        <table id="scopeOfAss" cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse" summary="Organisation details">
+                                            <tr style="height:35px">
+                                                <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 33.3%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri; text-align:center">
+                                                    Topic
+                                                </td>
+                                                <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 33.3%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;text-align:center">
+                                                    Response
+                                                </td>
+                                                <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 33.3%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;text-align:center">
+                                                    Guidance
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Name of organisation
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="OrganisationName" name="OrganisationName" disabled="disabled"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Registered Address
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="RegisteredAddress"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Company / Charity Number
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="Company_CharityNumber"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Sector
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="SectorListDiv">
+                                                    @Html.DropDownListFor(c => c.IndustrySectorList, new SelectList(Model.IndustrySectorList, "Id", "ItemName"), new { style = "width: 100%;", @class = "form-control validationclass", @disabled = "disabled" })
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    <span>
+                                                        *use the list provided by CREST in the downloads
+                                                        section of the Cyber Essentials Portal.
+                                                    </span>
+
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Turnover
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="Turnover12"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Number of Employees
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="NOEDiv" class="tableCell">
+                                                    <input type="number" name="NumberOfEmployees" id="NumberOfEmployees" min="0" max="100" value="0" style="border: none" class="form-control validationclass" disabled="disabled">
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;"></td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Name of main contact
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="MainContactName"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Contact Job title
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="ContactJobTitle"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Date of response
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="DataDiv" class="tableCell">
+                                                    <span id="startdate" class="form-control " disabled="disabled"></span>
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Contact Email
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="ContactEmail"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Contact Telephone
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="ContactTelephone"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    CE Level Desired
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" id="CELevelDesiredDiv"></td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    *Cyber Essentials or Cyber Essentials Plus
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    Can CREST Publicise your successful certification?
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;" class="tableCell " id="CRESTcertification">
+                                                    <select id="certificationSelect" style="border: none; width: 100%;" class="form-control" disabled="disabled">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </td>
+                                                <td style="width: 33.3%;text-align: left; padding:0 5px;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                    *Cyber Essentials or Cyber Essentials Plus
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                        @*<div class="form-group float-right">
+                                                <input type="button" value="Save" id="orgdetbtn" class="btn btn-primary" />
+                                            </div>*@
+                                    </div>
+                                </div>
+                                <br style="page-break-before:always; clear:both; " />
+                                <div style="background: #fff; width:100%; margin:0 auto">
+                                    <h3 style="color: #79A5CC;margin: 20px 0px;"><strong>2.2 &nbsp; Technology in scope</strong></h3>
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    Technology used by organisations can be diverse and range from smartphones, tablets and laptops to large scale infrastructure, as well as the use of externally hosted systems.  This implementation profile covers only the critical technical controls required to protect an organisation’s most exposed technology against the commonest forms of Internet-based cyber threats.  Technical testing covers a range of external infrastructure and corporate devices including workstations and other devices.  The majority of shared service components hosted by third parties are beyond the scope of this audit and information should be provided to prove they have existing certifications in place for the services they provide. Infrastructure as a Service (IaaS) where the organisation controls and manages the operating system is in scope. This evidence will need to be reviewed by the Cyber Essentials CB consultant as part of the review.<a href="https://www.ncsc.gov.uk/information/requirements-it-infrastructure-cyber-essentials-scheme" target="_blank" rel="noopener noreferrer" >https://www.ncsc.gov.uk/information/requirements-it-infrastructure-cyber-essentials-scheme </a>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <br style="page-break-before:always; clear:both; " />
+                                <div>&nbsp;</div>
+
+                                <div class="tab-pane fade show active" id="v-line-pills-Remote" role="tabpanel" aria-labelledby="v-line-pills-Remote-tab" style="background: #fff; width:100%; margin:0 auto">
+
+
+                                    <h3 style="color: #79A5CC;margin:0px; margin-bottom:30px;"><strong>3 &nbsp;Remote Vulnerability Scan (Stage 1 – Cyber Essentials)</strong></h3>
+
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    The table below should be completed as part of the preparation for the remote assessment. By default, this will include the Internet presence of the entire organisation and may include multiple connections for some organisations.
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    Please include cloud services that are part of the organisation’s infrastructure, even if they are out of scope for the assessment.  Please provide as much information as possible and include all relevant DNS names such as www.crest-approved.org, cms.crest-approved.org etc.
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    Ensure all virtual hosts are captured where multiple websites are hosted on the same IP address.
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    Note:  for shared platforms (e.g. Office 365, Google Mail/Docs etc.), these systems must not be included within the scope of hands on testing and the Cyber Essentials customer must provide evidence of their chosen systems being covered by an existing approved accreditation (e.g. ISO27001)
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="text-right" style="padding: 10px;">
+
+                                    </div>
+                                    <table id="RVSTable" cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse" summary="platforms">
+
+                                        <tr style="height:35px">
+
+                                            <td style="padding:0 10px;border-right: 1px solid #2a2a2a;border-image: none;width: 20%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                                IP Address (or range) v4 and v6 addresses
+                                            </td>
+                                            <td style="padding: 0 10px; border-right: 1px solid #2a2a2a; border-image: none; width: 20%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Fully Qualified Domain Name (FQDN) *where appropriate
+                                            </td>
+                                            <td style="padding: 0 10px; border-right: 1px solid #2a2a2a; border-image: none; width: 20%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Nature & Description of System (eg, firewall, website, cms,)
+                                            </td>
+                                            <td style="padding: 0 10px; border-right: 1px solid #2a2a2a; border-image: none; width: 20%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                System Ownership and Hosting (eg internal system, dedicated external hosted, dedicated cloud system, shared platform)
+                                            </td>
+                                            <td style="padding: 0 10px; border-right: 1px solid #2a2a2a; border-image: none; width: 20%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                If out of scope, please cite a reason why
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    CBs must carefully check the IP addresses provided (e.g. by looking them up in Regional Internet Registries) in order to determine their ownership.  This will help to inform the scope of remote scanning and ensure that authorisation for testing is sought appropriately.
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+
+
+
+                                </div>
+                                <div class="tab-pane fade show active" id="v-line-pills-Workstation" role="tabpanel" aria-labelledby="v-line-pills-Workstation-tab">
+                                    <div id="WorkstationAssessment ">
+
+                                        <h3 style="color: #79A5CC;margin:30px 0px; "><strong>4 &nbsp;Workstation Assessment (Stage 2 - Cyber Essentials PLUS only)</strong></h3>
+
+                                        <p>
+                                            <span style="font-size: 12pt;font-family: Calibri;">
+                                                <span style="font-size: 12pt;">
+                                                    <span>
+                                                        Please ensure the table below is completed as part of the preparation for the Stage 2 assessment.  Ensure a representative sample of each type of standard workstation or device build is included and that additional unique builds are included (eg. all BYOD devices).
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span style="font-size: 12pt;font-family: Calibri;">
+                                                <span style="font-size: 12pt;">
+                                                    <span>
+                                                        A representative workstation is a single instance of a common build, if no such common build exists, all workstations will require testing. Where there are a number of workstations of the same build then the following sample size must be assessed. For example, if a build is being used for 100 workstations, then 5 sample builds is required to be tested:
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </p>
+
+
+                                    </div>
+
+
+
+                                    <table id="WATable" cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse" summary="WATable">
+                                        <tr style="height:35px">
+                                            <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 16.6%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Description of the device
+                                                (with unique ID such as serial number)
+                                            </td>
+                                            <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 16.6%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Operating System
+                                            </td>
+                                            <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 16.6%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Username and password of a test user account representing the device’s typical user.
+                                            </td>
+                                            <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 16.6%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Confirmation that the device and test account supplied have access to Email and Internet (web) access as would a typical user of the device.
+                                            </td>
+                                            <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 16.6%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Confirmation that admin access is available to device (for patch checks)
+                                            </td>
+                                            <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 16.6%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                                Test Location
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    Notes:
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri; margin-left:20px">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    1)	Personal devices used for business purposes (including laptops and tablets, known as Bring Your Own Devices or BYOD) are within the scope of the assessment.
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span style="font-size: 12pt;font-family: Calibri;margin-left:20px">
+                                            <span style="font-size: 12pt;">
+                                                <span>
+                                                    2)	Devices or workstations that do NOT have Email AND do NOT have Internet (web) access are outside the scope of the Cyber Essentials assessment.
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </p>
+
+
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show active" id="v-line-pills-Cloud" role="tabpanel" aria-labelledby="v-line-pills-Cloud-tab">
+                                <div id="Cloud">
+
+                                    <h3 style="color: #79A5CC;margin:20px 0; "><strong>Cloud / Shared Services Assessment</strong></h3>
+
+                                </div>
+                                <table id="CloudTable" cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse" summary="Cloud / Shared Services Assessment">
+                                    <tr style="height:35px">
+
+                                        <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Description of the service
+                                            (with unique customer ID where relevant)
+
+                                        </td>
+                                        <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Supplier
+                                        </td>
+                                        <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Independent audit standards to which the suppliers has been previously assessed.
+                                        </td>
+                                        <td style="padding: 0 10px;border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Evidence of certification provided to CB
+                                            (website URLs, certificate numbers, name of independent audit bodies etc.)
+                                        </td>
+
+                                    </tr>
+                                </table>
+
+
+                            </div>
+                        </div>
+                        <br style="page-break-before:always; clear:both; " />
+                        <div style="width:80%; margin:0 auto">
+                            <div class="tab-pane fade show active" id="v-line-pills-Security" role="tabpanel" aria-labelledby="v-line-pills-Security-tab">
+                                <div id="securityControlsQuestionnaire">
+
+
+                                    <div>
+
+                                        <h2 style="color: #3A6084;margin:30px 0px"><strong>6 &nbsp;Security Controls Questionnaire</strong></h2>
+                                    </div>
+
+                                    @for (int j = 0; j < Model.SectionList.Count; j++)
+                                    {
+
+                                        @*<input type="hidden" id="answer36" name="answer36" />
+                                            <input type="hidden" id="sectionSelected@(j + 1)" name="sectionSelected@(j + 1)" />
+                                            <input type="hidden" id="section@(j + 1)" name="section@(j + 1)" />
+                                            <input type="hidden" id="sectionWeight@(j + 1)" name="sectionWeight@(j + 1)" />*@<input type="hidden" id="answer36" name="answer36" />
+                                        <input type="hidden" id="sectionSelected@(j + 1)" name="sectionSelected@(j + 1)" />
+                                        <input type="hidden" id="section@(j + 1)" name="section@(j + 1)" />
+                                        <input type="hidden" id="sectionWeight@(j + 1)" name="sectionWeight@(j + 1)" />
+                                        <div>
+                                            <h3 style="color: #79A5CC; margin:15px 0;"><strong>@Model.SectionList[j].Name.ToString()</strong></h3>
+                                        </div>
+                                        <table class="table section" cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse">
+                                            <tr style="height:35px">
+                                                <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                                    Question
+                                                </td>
+                                                <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                                    Response Options
+                                                </td>
+                                                <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                                    Available Standard Recommendations
+                                                </td>
+                                            </tr>
+                                            @{var QuestionList = Model.CEQQuestionsViewModelList.Where(m => m.Section == j + 1).ToList();
+                                                @for (int i = 0; i < QuestionList.Count; i++)
+                                                {
+
+                                                    <tr style="height:35px">
+
+                                                        @if (QuestionList[i].CEQOResponceData.QuestionId == new Guid("6D3C1CEF-9CAE-4F9D-AD74-BCD9F1E37833") || QuestionList[i].CEQOResponceData.QuestionId == new Guid("C94F7A3E-34B7-483A-864A-D9183FD6F7AA"))
+                                                        {
+                                                            <td class="ultd" style="width: 25.86%;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                                @QuestionList[i].QuestionNumber .  @Html.Raw(QuestionList[i].QuestionText)
+                                                                <div class="custom-control picker-2 col-md-12  mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-4" style="color: #3b3f5c; font-weight: 500;" for="@QuestionList[i]">Days</label>
+
+                                                                        <input type="text" asp-for="@QuestionList[i].Days" class="Days form-control col-md-8 valid " onkeypress="return isNumber(event)" autocomplete="off" onpaste="return false;" disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="custom-control picker-2 col-md-12  mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-4" style="color: #3b3f5c; font-weight: 500;" for="@QuestionList[i].Cost">Cost</label>
+
+                                                                        <input type="text" asp-for="@QuestionList[i].Cost" class="Cost form-control col-md-8 valid" onkeypress="return isNumber(event)" autocomplete="off" onpaste="return false;" disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="custom-control picker-2 col-md-12  mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-4" style="color: #3b3f5c; font-weight: 500;" for="@QuestionList[i].Requirement">Requirement</label>
+
+                                                                        <input type="text" asp-for="@QuestionList[i].Requirement" class="Requirement form-control col-md-8 valid" autocomplete="off" disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td style="width: 80.86%;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                                @QuestionList[i].QuestionNumber . @QuestionList[i].QuestionText
+                                                                <div class="custom-control picker-2 col-md-12  mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-4" style="color: #3b3f5c; font-weight: 500;" for="@QuestionList[i]">Days</label>
+
+                                                                        <input type="text" asp-for="@QuestionList[i].Days" class="Days form-control col-md-8 valid " onkeypress="return isNumber(event)" autocomplete="off" onpaste="return false;" disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="custom-control picker-2 col-md-12  mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-4" style="color: #3b3f5c; font-weight: 500;" for="@QuestionList[i].Cost">Cost</label>
+
+                                                                        <input type="text" asp-for="@QuestionList[i].Cost" class="Cost form-control col-md-8 valid" onkeypress="return isNumber(event)" autocomplete="off" onpaste="return false;" disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="custom-control picker-2 col-md-12  mb-3">
+                                                                    <div class="row">
+                                                                        <label class="col-md-4" style="color: #3b3f5c; font-weight: 500;" for="@QuestionList[i].Requirement">Requirement</label>
+
+                                                                        <input type="text" asp-for="@QuestionList[i].Requirement" class="Requirement form-control col-md-8 valid" autocomplete="off" disabled>
+
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        }
+
+                                                        <td id="QddDiv" style="width: 25.86%;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                            <input type="hidden" class="textboxclass" value="@QuestionList[i].CEQQuestionId" />
+                                                            @if (QuestionList[i].CEQOResponceData != null)
+                                                            {
+                                                                @if (QuestionList[i].CEQOResponceData.OptionId != Guid.Empty)
+                                                                {
+                                                                    var a = QuestionList[i].CEQOResponceData.OptionId.ToString();
+                                                                    <select name="@Model.CEQQuestionsViewModelList[i].QuestionnaireId" class="form-control" style="border: 0 !important;" disabled="disabled">
+                                                                        @foreach (var option in QuestionList[i].CEQOptionsData)
+                                                                        {
+
+                                                                            if (a == option.CEQOptionId.ToString())
+                                                                            {
+                                                                                <option value="@option.CEQOptionId" selected>@option.OptionText</option>
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <option value="@option.CEQOptionId">@option.OptionText</option>
+
+                                                                            }
+
+                                                                        }
+                                                                    </select>
+                                                                    @*@Html.DropDownListFor(m => QuestionList[i].CEQOptionsData, new SelectList(QuestionList[i].CEQOptionsData, "CEQOptionId", "OptionText", a), "Selected", new { @class = "form-control", @style = "border: 0 !important;" })*@
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.DropDownListFor(m => Model.CEQQuestionsViewModelList[i].QuestionnaireId, new SelectList(QuestionList[i].CEQOptionsData, "CEQOptionId", "OptionText"), "Select", new { @class = "form-control", @style = "border: 0 !important;", @disabled = "disabled" })
+
+                                                                }
+
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DropDownListFor(m => Model.CEQQuestionsViewModelList[i].QuestionnaireId, new SelectList(QuestionList[i].CEQOptionsData, "CEQOptionId", "OptionText"), "Select", new { @class = "form-control", @style = "border: 0 !important;", @disabled = "disabled" })
+
+                                                            }
+
+                                                        </td>
+
+                                                        <td class="tableCell recommendations" style="width: 25.86%;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                                            @QuestionList[i].StandardRecommendation
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    }
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <br style="page-break-before:always; clear:both; " />
+
+                        <div class="tab-pane fade show active" id="v-line-pills-Signature" role="tabpanel" aria-labelledby="v-line-pills-Signature-tab" style="width:80%;margin:0 auto;">
+                            <div id="signature">
+                                <div class="pull-right">
+
+                                </div>
+                                <h3 style="color: #79A5CC; margin-bottom:15px;"><strong>Signature</strong></h3>
+
+                                <p>
+                                    <span style="font-size: 12pt;font-family: Calibri;">
+                                        <span style="font-size: 12pt;">
+                                            <span>
+                                                A duly authorised officer from the organisation undergoing a Cyber Essentials or Cyber Essentials PLUS assessment must sign the CES Questionnaire to state that:
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p>
+                                    <ul style="font-size: 12pt;font-family: Calibri;">
+                                        <li style="font-size: 12pt;">	They are indeed a duly authorised officer; and</li>
+                                        <li style="font-size: 12pt;">	The answer provided are accurate </li>
+
+                                    </ul>
+                                </p>
+                                <table id="sig" cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse" summary="Sign Table">
+
+                                    <tr style="height:35px">
+
+                                        <td style="padding:0 10px;border-bottom: 1px solid; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Sign:
+                                        </td>
+
+                                        <td style="padding: 0 10px; width: 25.86%; text-align: center; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 11pt; font-family: Calibri;">
+
+                                            <div id="canvasDiv">
+                                                <canvas id="colors_sketch" width="500" height="200"></canvas>
+                                                <canvas id='blank' style='display:none'></canvas>
+                                            </div>
+                                            @if (Model.Signature == "true")
+                                            {
+                                                <img id="sigImage" src="data:image/jpg;base64,@Model.CEQSignatureData.FileName" style="border: 1px solid #ccc" alt="sign"/>
+                                            }
+                                            else
+                                            {
+                                                <img id="sigImage" style="border: 1px solid #ccc" alt="sign"/>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="padding: 0 10px; border-bottom: 1px solid; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Date:
+                                        </td>
+                                        <td id="DOSDiv" class="tableCell" style="padding: 0 10px; width: 25.86%; text-align: center; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 11pt; font-family: Calibri;">
+                                            <span id="sigDate" style="border: none; width: 100%; height: 100%;" class="form-control calendar" disabled="disabled"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="padding: 0 10px; border-bottom: 1px solid; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Print name:
+                                        </td>
+                                        <td class="tableCell checkvalid1" id="printName" style="padding: 0 10px; width: 25.86%; text-align: center; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 11pt; font-family: Calibri;"></td>
+
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="padding: 0 10px; border-bottom: 1px solid; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Job Title:
+                                        </td>
+                                        <td class="tableCell checkvalid1" id="jobTitle" style="padding: 0 10px; width: 25.86%; text-align: center; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 11pt; font-family: Calibri;"></td>
+
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="padding: 0 10px; border-bottom: 1px solid; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Name of organisation:
+                                        </td>
+                                        <td class="tableCell checkvalid1" id="organisation" style="padding: 0 10px; width: 25.86%; text-align: center; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 11pt; font-family: Calibri;"></td>
+
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="padding: 0 10px; border-bottom: 1px solid; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 25%; height: 31px; background-color: #0460af; vertical-align: top; font-size: 12pt; color: #fff; font-weight: 400; font-family: Calibri;">
+                                            Name of business unit (if applicable):
+                                        </td>
+                                        <td class="tableCell" id="businessUnit" style="padding: 0 10px; width: 25.86%; text-align: center; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 11pt; font-family: Calibri;">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                        <br style="page-break-before:always; clear:both; " />
+                        <div class="tab-pane fade show active" id="v-line-pills-Result" role="tabpanel" aria-labelledby="v-line-pills-Result-tab" style="width:80%; margin:0 auto;">
+                            <div id="examResult">
+                                <div class="text-right">
+
+                                </div>
+                                <h3 style="color: #79A5CC;"><strong>7.0 &nbsp;Exam Result</strong></h3>
+                                <p>
+                                    <span style="font-size: 12pt;font-family: Calibri;">
+                                        <span style="font-size: 12pt;">
+                                            <span>
+                                                To attain an overall pass each section must be passed individually.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <table cellpadding="2" cellspacing="0" summary="CEQQuestionResponseResultList" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse ; margin-bottom:100px;">
+                                    <tr style="height:35px">
+                                        @*   <td style="padding:0 10px;color: #2a2a2a;border-right: 1px solid #2a2a2a;border-image: none;width: 60.86%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;">*@
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            Question
+                                        </td>
+                                        @* <td style="padding: 0 10px;color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 60.86%; height: 31px; text-align: center; background-color: #0460af; vertical-align: top; font-family: Calibri; color: rgb(255, 240, 245); font-weight: bold;">*@
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            Total Weighted Score
+                                        </td>
+                                        @*<td style="padding: 0 10px; color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 60.86%; height: 31px; text-align: center; background-color: #0460af; vertical-align: top; font-family: Calibri; color: rgb(255, 240, 245); font-weight: bold;">*@
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            Maximum Score
+                                        </td>
+                                        @*<td style="padding: 0 10px; color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 60.86%; height: 31px; text-align: center; background-color: #0460af; vertical-align: top; font-family: Calibri; color: rgb(255, 240, 245); font-weight: bold;">*@
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            Percentage Score
+                                        </td>
+                                        @* <td style="padding: 0 10px; color: #2a2a2a; border-right: 1px solid #2a2a2a; border-image: none; width: 60.86%; height: 31px; text-align: center; background-color: #0460af; vertical-align: top; font-family: Calibri; color: rgb(255, 240, 245); font-weight: bold;">*@
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            Status
+                                        </td>
+                                    </tr>
+
+                                    @for (int j = 0; j < Model.CEQQuestionResponseResultList.Count; j++)
+                                    {
+                                        <tr style="height:35px">
+                                            <td style="padding: 0 10px; color: #2a2a2a; width: 60.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                                <h6 style="color: #3A6084;font-size: 16px;"><strong>@Model.CEQQuestionResponseResultList[j].Name.ToString()</strong></h6>
+                                                Overall score to pass this section – @(Model.CEQQuestionResponseResultList[j].sectionid == 4 ? Html.Raw("<span id='percentage'>70%</span>") : Html.Raw("<span>70%</span>"))
+                                            </td>
+
+                                            <td id="total@(j)" style="padding: 0 10px; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                                @Model.CEQQuestionResponseResultList[j].Responsedata
+                                            </td>
+                                            <td id="max@(j)" style="padding: 0 10px; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                                @(Model.CEQQuestionResponseResultList[j].Weightingdata * Convert.ToDecimal( 5.0))
+                                            </td>
+                                            <td id="per@(j)" style="padding: 0 10px; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                                @(Math.Round((Model.CEQQuestionResponseResultList[j].Responsedata* Convert.ToDecimal(100)/ (Model.CEQQuestionResponseResultList[j].Weightingdata * Convert.ToDecimal(5.0))),2)) %
+                                            </td>
+                                            <td id="status@(j)" style="padding: 0 10px; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                                @if (Model.CEQQuestionResponseResultList[j].sectionid == 2)
+                                                {
+                                                    @if (Math.Round((Model.CEQQuestionResponseResultList[j].Responsedata * Convert.ToDecimal(100) / (Model.CEQQuestionResponseResultList[j].Weightingdata * Convert.ToDecimal(5.0))), 2) > 70)
+                                                    {
+                                                        <span id="result@(Model.CEQQuestionResponseResultList[j].sectionid)">Pass</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span id="result@(Model.CEQQuestionResponseResultList[j].sectionid)">Fail</span>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @if (Math.Round((Model.CEQQuestionResponseResultList[j].Responsedata * Convert.ToDecimal(100) / (Model.CEQQuestionResponseResultList[j].Weightingdata * Convert.ToDecimal(5.0))), 2) > 70)
+                                                    {
+                                                        <span id="result@(Model.CEQQuestionResponseResultList[j].sectionid)">Pass</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span id="result@(Model.CEQQuestionResponseResultList[j].sectionid)">Fail</span>
+                                                    }
+                                                }
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr style="height:35px">
+                                        <td style="border-right: none;color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+
+                                            <h5 style="color: #3A6084;"><strong>Summary Status</strong></h5>
+                                        </td>
+                                        <td style="padding: 0 10px; border-left: none; border-right: none; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                        </td>
+                                        <td style="padding: 0 10px; border-left: none; border-right: none; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                        </td>
+                                        <td style="padding: 0 10px; border-left: none; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;">
+                                        </td>
+                                        <td style="padding: 0 10px; color: #2a2a2a; width: 25.86%; text-align: left; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-family: Calibri;" id="finalStatus">
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="custom-control picker-2 col-md-10 " id="AdminModeid" style="font-family: Calibri;color: #2a2a2a;font-size: 12pt;margin: auto;display:none;padding: 10px;margin-top: 25px;">
+                            <input width="120" style="font-family: Calibri;color: #2a2a2a;color: red;border-color: red;" value="Days calculator=IP address/100, report days=" class="form-control" type="text">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+@if (Model.Organisation == "true")
+{
+    <script>
+    function OrganisationFn() {
+        document.getElementById("OrganisationName").innerHTML = '@Model.OrganisationData.Nameoforganisation';
+        document.getElementById("RegisteredAddress").innerHTML = '@Model.OrganisationData.RegisteredAddress';
+        document.getElementById("Company_CharityNumber").innerHTML = '@Model.OrganisationData.CompanyCharityNumber';
+        document.getElementById("Turnover12").innerHTML = '@Model.OrganisationData.Turnover';
+        document.getElementById("MainContactName").innerHTML = '@Model.OrganisationData.Nameofmaincontact';
+        document.getElementById("ContactJobTitle").innerHTML = '@Model.OrganisationData.ContactJobtitle';
+        document.getElementById("ContactEmail").innerHTML = '@Model.OrganisationData.ContactEmail';
+        document.getElementById("ContactTelephone").innerHTML = '@Model.OrganisationData.ContactTelephone';
+        //  document.getElementById("NumberOfEmployees").innerHTML=@Model.OrganisationData.NumberofEmployees;
+        document.getElementById("OrganisationName").innerHTML = '@Model.OrganisationData.Nameoforganisation';
+        document.getElementById("CELevelDesiredDiv").innerHTML = '@Model.OrganisationData.CELevelDesired';
+        document.getElementById("startdate").innerHTML = '@Model.OrganisationData.Dateofresponse';
+       // $('#startdate').val('@Model.OrganisationData.Dateofresponse');
+
+      //  $("#CELevelSelect").val('@Model.OrganisationData.CELevelDesired');
+        $("#certificationSelect").val('@Model.OrganisationData.CanCRESTpubliciseyoursuccessfulcertification');
+        $("#IndustrySectorList").val('@Model.OrganisationData.Sector');
+        $("#NumberOfEmployees").val('@Model.OrganisationData.NumberofEmployees')
+        $("#IndustrySectorList option[value='@Model.OrganisationData.Sector']").attr("selected", "selected");
+        $("#certificationSelect option[value='@Model.OrganisationData.CanCRESTpubliciseyoursuccessfulcertification']").attr("selected", "selected");
+    }
+    </script>
+}
+else
+{
+    <script>
+        function OrganisationFn() {
+        }
+    </script>
+}
+
+@if (Model.Signature == "true")
+{
+    <script>
+        function CEQSignatureFn() {
+            document.getElementById("printName").innerHTML = '@Model.CEQSignatureData.Name';
+            document.getElementById("jobTitle").innerHTML = '@Model.CEQSignatureData.JobTitle';
+            document.getElementById("organisation").innerHTML = '@Model.CEQSignatureData.Nameoforganisation';
+            document.getElementById("businessUnit").innerHTML = '@Model.CEQSignatureData.Nameofbusiness';
+            document.getElementById("sigDate").innerHTML='@Model.CEQSignatureData.SignatureDate';
+
+            $("#newsign").val('true');
+            $('#sigImage').show();
+            $("#newSigA").show();
+            $('#colors_sketch').hide();
+
+            $('#colors_sketch').sketch();
+            $('.newSignatureDiv').css('display', 'block');
+
+
+
+    }
+    </script>
+}
+else
+{
+    <script>
+        function CEQSignatureFn() {
+
+        }
+    </script>
+
+}
+
+@if (Model.Remote == "true")
+{
+    for (var i = 0; i < Model.RvsData.Count; i++)
+    {
+        <script type="text/javascript">
+
+            $('#RVSTable').append('<tr style="height:35px"><td style="padding:0 10px;border-right: 1px solid #2a2a2a;border-image: none;width: 20%;height: 31px;vertical-align: top;font-size: 12pt;font-weight: 400;font-family: Calibri;">@Model.RvsData[i].IPAddressv4andv6addresses</td><td style="padding:0 10px;border-right: 1px solid #2a2a2a;border-image: none;width: 20%;height: 31px;vertical-align: top;font-size: 12pt;font-weight: 400;font-family: Calibri;">@Model.RvsData[i].FullyQualifiedDomainName</td><td style="padding:0 10px;border-right: 1px solid #2a2a2a;border-image: none;width: 20%;height: 31px;vertical-align: top;font-size: 12pt;font-weight: 400;font-family: Calibri;">@Model.RvsData[i].NatureandDescriptionofSystem</td><td style="padding:0 10px;border-right: 1px solid #2a2a2a;border-image: none;width: 20%;height: 31px;vertical-align: top;font-size: 12pt;font-weight: 400;font-family: Calibri;"><select disabled="disabled" id="@Model.RvsData[i].SystemOwnershipandHosting" class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></td><td style="padding:0 10px;border-right: 1px solid #2a2a2a;border-image: none;width: 20%;height: 31px;vertical-align: top;font-size: 12pt;font-weight: 400;font-family: Calibri;">@Model.RvsData[i].Ifoutofscopepleaseciteareasonwhy</td></tr>');
+
+            $("#@Model.RvsData[i].SystemOwnershipandHosting").val('@Model.RvsData[i].SystemOwnershipandHosting');
+            $("#@Model.RvsData[i].SystemOwnershipandHosting option[value='@Model.RvsData[i].SystemOwnershipandHosting']").attr("selected", "selected");
+
+        </script>
+
+    }
+}
+
+@if (Model.Workstation == "true")
+{
+
+    for (var i = 0; i < Model.WaAssesData.Count; i++)
+    {
+
+        <script type="text/javascript">
+
+            $('#WATable').append('<tr style="height:35px"> <td style="width: 16.60%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;padding:0 10px">@Model.WaAssesData[i].Descriptionofthedevice</td> <td style="width: 16.60%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;padding:0 10px">@Model.WaAssesData[i].OperatingSystem</td> <td style="width: 16.60%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;padding:0 10px">@Model.WaAssesData[i].Usernameandpassword</td>  <td style="width: 16.60%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;padding:0 10px">@Model.WaAssesData[i].Confirmationthatthedevice</td> <td style="width: 16.60%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;padding:0 10px">@Model.WaAssesData[i].Confirmationthatadminaccess</td> <td style="width: 16.60%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;padding:0 10px">@Model.WaAssesData[i].TestLocation</td></tr>');
+
+        </script>
+    }
+
+}
+
+@if (Model.Cloud == "true")
+{
+    for (var i = 0; i < Model.CEQCloudSharedServicesAssesList.Count; i++)
+    {
+        <script type="text/javascript">
+            $('#CloudTable').append(' <tr style="height:35px"> <td style="padding:0 10px;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">@Model.CEQCloudSharedServicesAssesList[i].DescriptionOfService</td> <td style="padding:0 10px;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">@Model.CEQCloudSharedServicesAssesList[i].Supplier</td> <td style="padding:0 10px;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">@Model.CEQCloudSharedServicesAssesList[i].IndependentAuditStandards</td>  <td style="padding:0 10px;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">@Model.CEQCloudSharedServicesAssesList[i].EvidenceOfcertification</td></tr>');
+        </script>
+    }
+}
+
+
+
+@section Scripts {
+    <script src="~/lib/layout/plugins/sweetalerts/custom-sweetalert.js"></script>
+    <script src="~/lib/layout/plugins/sweetalerts/sweetalert2.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/sketch.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var maxLength = 50;
+            $('#IndustrySectorList > option').text(function (i, text) {
+                if (text.length > maxLength) {
+                    return text.substr(0, maxLength) + '...';
+                }
+            });
+        });
+
+
+
+
+        function remVulScanAdd() {
+            var check = true;
+            $('#RVSTable').find('.tableRow').each(function () {
+                var count = 0;
+                $(this).find('.tableCell').each(function () {
+                    if ($(this).text() == "") {
+                        count++;
+                    }
+                });
+                if (count == 4) {
+                    check = false;
+                }
+            });
+            if (check == false) {
+                swal({
+                    type: 'error',
+                    // title: 'Oops...',
+                    text: 'Please complete alteast all cell of each row ! ',
+                    //  footer: '<a href>Why do I have this issue?</a>',
+                    padding: '2em'
+                })
+            }
+
+            $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div> <div class="tableCell1"><select class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></div><div class="tableCell" ></div></div>');
+
+        }
+    </script>
+
+    <script>
+        function remVulScanDelete() {
+            var delCount = 0;
+            $('#RVSTable').find('.tableRow').each(function () {
+
+                $(this).find('.tableCell2').each(function () {
+                    if (($(this).find('.del-Check').prop("checked"))) {
+                        $(this).parent().remove();
+                        delCount++;
+                    }
+                });
+            });
+
+            if (delCount == 0) {
+                swal({
+                    type: 'error',
+                    text: 'Please select alteast one row to delete !  ',
+                    padding: '2em'
+                })
+            }
+
+        }
+    </script>
+
+    <script>
+        function BothMode() {
+            var x = document.getElementById("mySelect").value;
+            if (x == 'Standard') {
+                document.getElementById("AdminModeid").style.display = "none";
+            } else {
+                document.getElementById("AdminModeid").style.display = "block";
+            }
+        }
+
+        function exportToWord(contentHtml, filename) {
+
+            //    document.getElementById("loader").style.display = "block";
+
+            html = this.contentHtmlfunction(document.getElementById("RepordToWord").innerHTML);
+
+            html = html.replace("&#39;", "'");
+            html = html.replace("&#44;", "'");
+            html = html.replace("&#94;", "'");
+            html = html.replace("‘", "'");
+            html = html.replace("’", "'");
+            html = html.replace("â€¢", ".");
+            html = html.replace("&quot;", '"');
+            html = html.replace("&apos;", "'");
+            html = html.replace("&amp;lt;", "<");
+            html = html.replace("&amp;gt;", ">");
+            html = html.replace("&amp;apos;", "'");
+
+
+            var blob = new Blob(['\ufeff', html], {
+                type: 'application/msword'
+            });
+
+            var url = window.URL.createObjectURL(blob);
+
+            // Specify file name
+            filename = filename ? filename + '.doc' : 'ProCheckUpReport.doc';
+
+            // Create download link element
+            var downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = url;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+
+            document.body.removeChild(downloadLink);
+
+
+
+            //   document.getElementById("loader").style.display = "none";
+
+        }
+
+        function contentHtmlfunction(contentHtml) {
+
+
+
+
+
+            var rootUrl = "http://38.17.52.106:2500";
+            var preHtml = "<!DOCTYPE html>\n<html xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"  xmlns:w=\"urn:schemas-microsoft-com:office:word\"  xmlns:m=\"http://schemas.microsoft.com/office/2004/12/omml\" xmlns=\"http://www.w3.org/TR/REC-html40\">" +
+                "<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:Orientation>Landscape</w:Orientation></w:WordDocument></xml><![endif]--><title>Export HTML To Doc</title>" +
+                "<style>pre {word-break: break-all; white-space: normal;} footerImg{height: 20px; width: 90px} headerImg{height: 85px; width: 515px} p.MsoFooter, li.MsoFooter, div.MsoFooter{margin:0in; margin-bottom:.0001pt; mso-pagination:widow-orphan;  tab-stops:center 3.0in right 6.5in; font-size:12.0pt;}@@page Section1{ size:8.5in 11.0in; margin:1.0in 1.0in 1.0in 1.0in;  mso-header-margin:.5in;  mso-footer-margin:.5in;  mso-title-page:yes;  mso-header: h1;   mso-footer: f1;   mso-first-header: fh1;   mso-first-footer: ff1;  mso-paper-source:0;} div.Section1{ page:Section1; } table#hrdftrtbl{ margin:0in 0in 0in 900in; width:1px; height:1px; overflow:hidden;}.group-vul-des p{margin: 0px !important;} .reposrt-text{background-color:#373b3e; color: #fff; padding-top:2px; padding-bottom:24px; font-family:'Calibri (Body)'; }</style>" +
+                "</head><body>";
+
+            var html = "" + contentHtml + "<div  class='Section1'><div id='Sectiondata'>" +
+                "<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'><tbody><tr><td><div style='mso-element: header;' id='h1'>" +
+                "<table style='width: 100%; font-family:Calibri;font-size:8pt; '><tbody><tr><td>" +
+                "<h5 style='text-align:center;color:red;'> COMMERCIAL-IN-CONFIDENCE" +
+                "</h5></td></tr></tbody></table></div></td><td>" +
+
+                "<div style='mso-element: footer' id='f1'><hr><table style='width: 100%; font-family:Calibri;font-size:10pt;'><tbody><tr><td><div style='float: left'>" +
+                "2019-Cyber-Essentials-Questionnaire </div></td><td style='text-align: right'>" +
+                "<div style='float: right'>    <span style='float: right; font-family:Calibri;font-size:10pt;'><span style='mso-tab-count: 2;'>Page</span> <span style='mso-field-code: PAGE'><span style='mso-no-proof: yes'></span></span>&nbsp;of <span style='mso-field-code: NUMPAGES'></span></span>      " +
+                "</div></td></tr></tbody></table></div></td></tr></tbody></table></div>" +
+                "</div>";
+
+            var postHtml = "</body></html>";
+            var finalhtml = preHtml + html + postHtml;
+
+
+
+            console.log(finalhtml);
+            return finalhtml;
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            if ($("#result1").text() == "Pass" && $("#result2").text() == "Pass" && $("#result3").text() == "Pass" && $("#result4").text() == "Pass" && $("#result5").text() == "Pass") {
+                document.getElementById("finalStatus").innerText = "Pass";
+            } else {
+                document.getElementById("finalStatus").innerText = "Fail";
+            }
+            $('#eraser').hide();
+            $('#sigImage').hide();
+            $('#marker').hide();
+            OrganisationFn();
+            CEQSignatureFn();
+            const calendars = flatpickr(".calendar", {
+                defaultDate: 'today'
+            });
+         if ('@Model.Organisation' == "true") {
+        $("#sp11 i").addClass("fas fa-check");
+        $("#sp11 i").css("color", "green");
+
+    } else {
+        $("#sp11 i").addClass("fas fa-times");
+        $("#sp11 i").css("color", "red");
+            }
+
+
+              if ('@Model.Remote' == "true") {
+        $("#sp12 i").addClass("fas fa-check");
+        $("#sp12 i").css("color", "green");
+              } else {
+                  $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div> <div class="tableCell1"><select class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></div><div class="tableCell" ></div></div>');
+        $("#sp12 i").addClass("fas fa-times");
+        $("#sp12 i").css("color", "red");
+            }
+
+
+          if ('@Model.Workstation' == "true") {
+        $("#sp13 i").addClass("fas fa-check");
+        $("#sp13 i").css("color", "green");
+          } else {
+              $('#WATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div> <div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div></div>');
+
+        $("#sp13 i").addClass("fas fa-times");
+        $("#sp13 i").css("color", "red");
+            }
+
+
+          if ('@Model.Cloud' == "true") {
+        $("#sp14 i").addClass("fas fa-check");
+        $("#sp14 i").css("color", "green");
+          } else {
+              $('#CloudTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div> <div class="tableCell" ></div></div>');
+        $("#sp14 i").addClass("fas fa-times");
+        $("#sp14 i").css("color", "red");
+            }
+
+
+              if ('@Model.Security' == "true") {
+        $("#sp15 i").addClass("fas fa-check");
+        $("#sp15 i").css("color", "green");
+    } else {
+        $("#sp15 i").addClass("fas fa-times");
+        $("#sp15 i").css("color", "red");
+            }
+
+              if ('@Model.Signature' == "true") {
+        $("#sp16 i").addClass("fas fa-check");
+        $("#sp16 i").css("color", "green");
+    } else {
+        $("#sp16 i").addClass("fas fa-times");
+                  $("#sp16 i").css("color", "red");
+                  $('#colors_sketch').sketch();
+                  $("#newSigA").show();
+                  $('#eraser').show();
+            }
+
+            $(window).on("load", function () {
+                window.setTimeout(function () {
+                  //  $('#CloudTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div> <div class="tableCell" ></div></div>');
+                   // $('#RVSTable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div> <div class="tableCell1"><select class="selectClass" ><option value="1">Internally Hosted - In Scope</option><option value="2">Externally Hosted - In Scope</option><option value="3">Dedicated Cloud Device - In Scope</option><option value="4">Shared Cloud Device - In Scope</option><option value="5">Shared Cloud Device - Out of Scope</option></select></div><div class="tableCell" ></div></div>');
+                   // $('#WATable').append('<div class="tableRow"><div class="tableCell2"><input class="del-Check" type="checkbox" /></div><div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div> <div class="tableCell" ></div><div class="tableCell" ></div><div class="tableCell" ></div></div>');
+                }, 250)
+            });
+            if ($("#result1").text() == "Pass" && $("#result2").text() == "Pass" && $("#result3").text() == "Pass" && $("#result4").text() == "Pass" && $("#result5").text() == "Pass") {
+                document.getElementById("finalStatus").innerText = "Pass";
+            } else {
+                document.getElementById("finalStatus").innerText = "Fail";
+            }
+            $("#PrintResult").click(function () {
+                var divContents = $('#examResult').find(".table").html();
+                var printWindow = window.open('', 'Results', 'height=400,width=800');
+                printWindow.document.write('<html><head><title>Results</title>');
+                printWindow.document.write('</head><body >');
+                printWindow.document.write('<style>.table {display: table;width: 100%;}.tableRow { display: table-row;}.tableHead { display: table-row; font-weight: bold;} .tableCell { display: table-cell; padding: 3px 10px;border: 1px solid #999999;width:auto; } .sigTableCell {display: table-cell; padding: 25px 10px;border: 1px solid #999999;background-color:#DBE5F1;width:auto;height:70px; } #OrganisationDetail_IndustrySectorList {height:70px; #startdate { border:none;}</style>');
+                printWindow.document.write(divContents);
+                printWindow.document.write('</body></html>');
+                printWindow.document.close();
+                printWindow.print();
+
+                printWindow.close();
+            });
+
+
+        });
+
+        $('#orgdetbtn').click(function () {
+            validateOrgnisationDetails();
+        });
+
+        $('#remVulScanAddbtn').click(function () {
+            remVulScanAdd();
+        });
+        $('#remVulScanDeletebtn').click(function () {
+            remVulScanDelete();
+        });
+
+
+        $('#WorkstationAssessmentAddbtn').click(function () {
+            WorkstationAssessmentAdd();
+        });
+        $('#WorkstationAssessmentDeletebtn').click(function () {
+            WorkstationAssessmentDelete();
+        });
+
+        $('#CloudAddbtn').click(function () {
+            CloudAdd();
+        });
+        $('#CloudDeletebtn').click(function () {
+            CloudDelete();
+        });
+        $('#questionnairebtn').click(function () {
+            saveQuestionnaire();
+        });
+
+    </script>
+
+    <script>
+        function validateOrgnisationDetails() {
+            //  alert();
+            var OrganisationName = document.getElementById("OrganisationName").innerText;
+            var RegisteredAddress = document.getElementById("RegisteredAddress").innerText;
+            var Company_CharityNumber = document.getElementById("Company_CharityNumber").innerText;
+            var Turnover = document.getElementById("Turnover12").innerText;
+            var MainContactName = document.getElementById("MainContactName").innerText;
+            var ContactJobTitle = document.getElementById("ContactJobTitle").innerText;
+            var ContactEmail = document.getElementById("ContactEmail").innerText;
+            var ContactTelephone = document.getElementById("ContactTelephone").innerText;
+            var CELevelDesiredDiv = document.getElementById("CELevelDesiredDiv").innerText;
+            var CELevelDesiredSelect = document.getElementById("certificationSelect");
+            var CELevelDesired = CELevelDesiredSelect.options[CELevelDesiredSelect.selectedIndex].value;
+            var IndustrySectorList = document.getElementById("IndustrySectorList");
+            var optionValue = IndustrySectorList.options[IndustrySectorList.selectedIndex].value;
+            var DateOfResponse = $('#startdate').val();
+            var NumberOfEmployees = document.getElementById("NumberOfEmployees").value;
+            $('.checkvalid').each(function () {
+                $('.checkvalid').attr("data-text", "Please Complete");
+                if ($(this).text().length > 0) {
+                    $(this).removeClass('error');
+                }
+                else {
+                    $(this).addClass('error');
+                }
+            });
+            $('.checkvalid').keyup(function () {
+                if ($(this).text().length > 0) {
+                    $(this).removeClass('error');
+                }
+                else {
+                    $(this).addClass('error');
+                }
+            });
+            $('.validationclass').each(function () {
+                console.log($(this).val());
+                if ($(this).val() > 0) {
+                    $(this).parent().removeClass('error');
+                }
+                else {
+                    $(this).parent().addClass('error');
+                }
+            });
+            $('.validationclass').change(function () {
+                if ($(this).val().length > 0) {
+                    $(this).parent().removeClass('error');
+                }
+                else {
+                    $(this).parent().addClass('error');
+                }
+            });
+            if (DateOfResponse.length > 0) {
+
+                $('.form-control').attr("placeholder", "Please Complete");
+                setTimeout(function () { $('#DataDiv').removeClass('error'); }, 1000);
+            }
+            else {
+
+                $('.form-control').attr("placeholder", "Please Complete");
+                $('#DataDiv').addClass('error');
+                return false;
+            }
+            var email = document.getElementById("ContactEmail").innerText;
+            console.log(x);
+            if (email.length > 0 && OrganisationName.length > 0 && RegisteredAddress.length > 0 && Company_CharityNumber.length > 0 && Turnover.length > 0 && MainContactName.length > 0 && ContactJobTitle.length > 0 && ContactEmail.length > 0 && ContactTelephone.length > 0 && CELevelDesired.length > 0 && optionValue > 0) {
+                var x = document.getElementById("ContactEmail").innerText;
+                if (x != '') {
+                    var atpos = x.indexOf("@@");
+                    var dotpos = x.lastIndexOf(".");
+                    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+                        alert("Not a valid e-mail address");
+                        $('#ContactEmail').addClass('error');
+                        return false;
+                    }
+                    else {
+                        var NumberOfEmployees = parseInt(document.getElementById("NumberOfEmployees").value);
+                        if ((Number.isInteger(NumberOfEmployees)) || NumberOfEmployees.length == 0) {
+                            if (NumberOfEmployees > 0) {
+                                $('#NOEDiv').removeClass('error');
+                                if (OrganisationName.length > 0 && RegisteredAddress.length > 0 && Company_CharityNumber.length > 0 && Turnover.length > 0 && MainContactName.length > 0 && ContactJobTitle.length > 0 && ContactEmail.length > 0 && ContactTelephone.length > 0 && CELevelDesired.length > 0 && optionValue > 0) {
+                                    $('#loaderDiv2').show();
+                                    saveOrgnisationDetails();
+                                    return true;
+                                }
+                            }
+                            else if (NumberOfEmployees == 0) {
+                                $('#NOEDiv').addClass('error');
+                                alert("Number of Employees can not be zero");
+                                return false;
+                            }
+                            else {
+                                $('#NOEDiv').addClass('error');
+                                alert("Not valid Number of Employees");
+                                return false;
+                            }
+                        }
+                        else {
+                            $('#NOEDiv').addClass('error');
+                            alert("Not valid Number of Employees");
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+        function saveOrgnisationDetails() {
+            var OrganisationName = document.getElementById("OrganisationName").innerText;
+            var RegisteredAddress = document.getElementById("RegisteredAddress").innerText;
+            var Company_CharityNumber = document.getElementById("Company_CharityNumber").innerText;
+            var Turnover = document.getElementById("Turnover12").innerText;
+            var MainContactName = document.getElementById("MainContactName").innerText;
+            var ContactJobTitle = document.getElementById("ContactJobTitle").innerText;
+            var ContactEmail = document.getElementById("ContactEmail").innerText;
+            var ContactTelephone = document.getElementById("ContactTelephone").innerText;
+            var CELevelDesiredDiv = document.getElementById("CELevelDesiredDiv").innerText;
+            var CELevelDesiredSelect = document.getElementById("certificationSelect");
+            var CELevelDesired = CELevelDesiredSelect.options[CELevelDesiredSelect.selectedIndex].value;
+            var CELevelDesiredText = CELevelDesiredSelect.options[CELevelDesiredSelect.selectedIndex].text;
+            var IndustrySectorList = document.getElementById("IndustrySectorList");
+            var IndustrySector = IndustrySectorList.options[IndustrySectorList.selectedIndex].value;
+            var IndustrySectorText = IndustrySectorList.options[IndustrySectorList.selectedIndex].text;
+            var DateOfResponse = $('#startdate').val();
+            var ScopeOfAssHtml = $('#scopeOfAss').html();
+            var NumberOfEmployees = document.getElementById("NumberOfEmployees").value;
+
+            var data = {
+                "OrganisationName": OrganisationName,
+                "RegisteredAddress": RegisteredAddress,
+                "Company_CharityNumber": Company_CharityNumber,
+                "MainContactName": MainContactName,
+                "ContactJobTitle": ContactJobTitle,
+                "ContactEmail": ContactEmail,
+                "ContactTelephone": ContactTelephone,
+                "CELevelDesired": CELevelDesiredDiv,
+                "IndustrySector": IndustrySector,
+                "DateOfResponse": DateOfResponse,
+                "NumberOfEmployees": NumberOfEmployees,
+                "Turnover": Turnover,
+                "certificationSelect": CELevelDesired,
+            };
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded',
+                url: "/Questionnaire/SaveOrganisationDetails",
+                data: data,
+                async: false,
+                success: function (response) {
+                    $("#sp11 i").removeClass();
+                    $("#sp11 i").removeAttr("style");
+                    alert("Record saved successfully..!!");
+                    $("#sp11 i").addClass("fas fa-check");
+                    $("#sp11 i").css("color", "green");
+                },
+                error: function () {
+                    $('#loaderDiv2').hide();
+                    alert("Error");
+                }
+            });
+        }
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+}
+
+

@@ -1,0 +1,175 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Procheckup</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 40%;
+            margin: 0 auto;
+            background-color: rgb(17, 17, 17);
+        }
+    </style>
+</head>
+
+<body id="RepordToWord">
+    <button onclick="exportToWord()">click</button>
+    <header style="background-color: #fff;padding: 10px;">
+        <img src="https://localhost:44368/Report/img/logo.png" style=" width: 35%;padding-left: 30px;" alt="Logo">
+    </header>
+
+
+    <div class="mid-header" style=" background-color: #333; height: 300px;padding: 35px;">
+        <p style="margin: 0;"><a href="#" style="font-size: 30px;color: #5e9dbb;">Technical Proposal and Quotation</a></p>
+        <p><a href="#" style="font-size: 30px;color: #fff;"> Cranfield University</a></p>
+        <p style="font-size: 30px;color: #ccc;">  CU220720DL – Cranfield Secure Environment’ (CSE)</p>
+        <p style="font-size: 18px;color: #fff;">  23/07/2020</p>
+    </div>
+    <div class="slider">
+        <img src="https://localhost:44368/Report/img/procheckup.png" style="width: 100%;height: auto;" alt="procheckup">
+    </div>
+    <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+    <div style="background: #fff;">
+        <h1 style="color: #065ea4;padding: 30px;text-align: center;">Document Information</h1>
+        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+        <table summary="Document Information" style="width: 80%;margin: 0 auto;border: 2px solid #000;padding: 0;">
+
+            <thead style="background: #0266bb;">
+                <tr>
+                    <th style="color: #fff;padding: 15px 15px;text-align: left;">First name</th>
+                    <th style="color: #fff;padding: 15px 15px;text-align: left;">Last name</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 15px;
+                        border: 2px solid #000;">
+                        Tiger
+                    </td>
+                    <td>Nixon</td>
+
+                </tr>
+                <tr>
+                    <td>Garrett</td>
+                    <td>Winters</td>
+
+                </tr>
+
+                <tr>
+                    <td>Ashton</td>
+                    <td>Cox</td>
+
+                </tr>
+                <tr>
+                    <td>Ashton</td>
+                    <td>Cox</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</body>
+</html>
+
+
+    <script>
+        function exportToWord(contentHtml, filename) {
+            alert();
+         html = this.contentHtmlfunction(document.getElementById("RepordToWord").innerHTML);
+
+        html = html.replace("&#39;", "'");
+        html = html.replace("&#44;", "'");
+        html = html.replace("&#94;", "'");
+        html = html.replace("‘", "'");
+        html = html.replace("’", "'");
+        html = html.replace("â€¢", ".");
+        html = html.replace("&quot;", '"');
+        html = html.replace("&apos;", "'");
+        html = html.replace("&amp;lt;", "<");
+        html = html.replace("&amp;gt;", ">");
+        html = html.replace("&amp;apos;", "'");
+
+        var blob = new Blob(['\ufeff', html], {
+            type: 'application/msword'
+        });
+
+        var url = window.URL.createObjectURL(blob);
+
+        // Specify file name
+        filename = filename ? filename + '.doc' : 'ProCheckUpReport.doc';
+
+        // Create download link element
+        var downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = url;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+
+        document.body.removeChild(downloadLink);
+
+    }
+
+
+
+    function contentHtmlfunction(contentHtml) {
+        var rootUrl = "https://report.portal.procheckup.com";
+        var preHtml = "<!DOCTYPE html>\n<html xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"  xmlns:w=\"urn:schemas-microsoft-com:office:word\"  xmlns:m=\"http://schemas.microsoft.com/office/2004/12/omml\" xmlns=\"http://www.w3.org/TR/REC-html40\">" +
+            "<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<!--[if gte mso 9]><xml><w: <w:View>Print</w: <w:Zoom>100</w: <w:Orientation>Landscape</w: Orientation ></w: WordDocument ></xml >< ![endif]-- > <title>Export HTML To Doc</title>" +
+    "<style> footerImg{height: 20px; width: 100px} headerImg{height: 85px; width: 515px;margin-bottom:20px;} p.MsoFooter, li.MsoFooter, div.MsoFooter{margin:0in; margin-bottom:.0001pt; mso-pagination:widow-orphan;  tab-stops:center 3.0in right 6.0in; font-size:12pt;}@@page Section1{size:11.0in 8.5in; margin:1.0in 1.0in 1.0in 1.0in;  mso-header-margin:.5in;  mso-footer-margin:.5in;  mso-title-page:yes;  mso-header: h1;   mso-footer: f1;   mso-first-header: fh1;   mso-first-footer: ff1;  mso-paper-source:0;} div.Section1{ page:Section1; } table#hrdftrtbl{ margin:0in 0in 0in 900in; width:1px; height:1px; overflow:hidden;}ul.dotted li, ul.dotted div { height: inherit;  list-style-type: none; } ul.dotted > li div { float: left;  width: 50%; position: relative; overflow: hidden; } .dotted div.item { width: 80%; } .dotted div.prices { width: 20%;  overflow: visible; } .dotted div.item, .dotted div.prices { height: 1em; font-weight: bold; } ul.dotted span { display: block;  position: absolute; padding: 0 5px; } ul.dotted span:after { content: '';  display: block; position: absolute;  top: 67%; width: 1000px; border-top: 2px dotted #000; } div.item span { left: 0;} div.item span:after { left: 100%; } div.prices span {  right: 0;  width: 80%;  }  div.prices div { width: 100% !important; }   div.prices span:after { right: 100%;}  ul.dotted p { padding: 0px 10px 0px; clear: both; margin-bottom: 0; }</style>" +
+        "</head><body>";
+
+    var html = "" + contentHtml + "<div  class='Section1'><div id='Sectiondata'>" +
+        "<table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'><tbody><tr><td><div style='mso-element: header;' id='h1'>" +
+        "<table style='width: 100%'><tbody><tr><td><div style='float: left'>" +
+        "<img alt='' src='" + rootUrl + "/Content/images/PCI logo.png' height='50' width='170'></div></td><td style='text-align: right'>" +
+        "<div style='float: right'><img id='' alt='' src='" + rootUrl + "/Content/images/logo-small.jpg' height='35' width='180'>" +
+        "</div></td></tr></tbody></table></div>" +
+        "<div style='mso-element: header;' id='fh1'>" +
+        "<table style='width: 100%'><tbody><tr><td><div style='float: left'>" +
+        "<img alt='' src='" + rootUrl + "/Content/images/PCI logo.png' height='50' width='170'></div></td><td style='text-align: right'>" +
+        "<div style='float: right'><img id='' alt='' src='" + rootUrl + "/Content/images/logo-small.jpg' height='35' width='180'>" +
+        "</div></td></tr></tbody></table></div></td><td>" +
+
+
+        "<div style='mso-element: footer' id='ff1'><br><div style='font-family:Calibri;font-size:10pt;'>" +
+        ""
+    "</div><br></div></td></tr></tbody></table></div>" +
+        "</div>";
+
+    var postHtml = "</body></html>";
+    var finalhtml = preHtml + html + postHtml;
+
+    return finalhtml;
+    }
+
+</script>
+

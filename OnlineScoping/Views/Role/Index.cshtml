@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="page-top">
+    <div class="row">
+        <div class="col-md-2">
+            <h3 class="pt-3">
+                Roles
+            </h3>
+        </div>
+        <div class="col-md-6 text-right">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Roles</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table  table-hover table-striped table-checkable table-highlight-head" summary="Roles">
+        <thead>
+            <tr>
+                @*<td>Id</td>*@
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    @*<td>@role.Id</td>*@
+                    <td>@role.Name</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    </div>

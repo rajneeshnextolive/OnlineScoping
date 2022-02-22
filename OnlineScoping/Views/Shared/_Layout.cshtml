@@ -1,0 +1,818 @@
+﻿@inject OnlineScoping.Services.ICustomersService a
+@{
+    var image = a.imagedata(User.Identity.Name);
+    var CustomerRequestList = a.CustomerRequestList(User.Identity.Name);
+
+    var TotalRequest = CustomerRequestList.Count();
+
+    //var SalesAcceptList = a.SalesAcceptList(User.Identity.Name);
+    //var TotalAccept = SalesAcceptList.Count();
+
+    var SalesAcceptList = a.CustomerDocUploList(User.Identity.Name);
+    var TotalAccept = SalesAcceptList.Count();
+    var Tatalproject = a.TotalProjectCount(User.Identity.Name);
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - Online Scoping</title>
+    <link rel="icon" type="image/x-icon" href="~/logo/favicon.ico" />
+    <link href="~/lib/layout/assets/css/loader.css" rel="stylesheet" type="text/css" />
+    <script src="~/lib/layout/assets/js/loader.js"></script>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&amp;display=swap" rel="stylesheet">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/layout/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/layout/assets/css/authentication/form-2.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN GLOBAL CUSTOM STYLES -->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/custom/style.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/117ee26968.js" integrity="sha384-4/pbjoox5asptYecobd1PaxyarQqEEu28rBvidbaIGhtYmCSQjGrdxloUgzgBxx1" crossorigin="anonymous"></script>
+    <!-- END GLOBAL CUSTOM STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="~/lib/layout/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
+    <link href="~/lib/layout/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" class="dashboard-analytics" />
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="~/lib/layout/assets/css/users/user-profile.css" rel="stylesheet" type="text/css" />
+    <link href="~/lib/layout/plugins/flatpickr/flatpickr.css" rel="stylesheet" />
+    <link href="~/lib/layout/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" />
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="~/lib/layout/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" class="dashboard-sales" />
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="~/lib/layout/assets/css/components/tabs-accordian/custom-accordions.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/lib/layout/assets/css/scrollspyNav.css" rel="stylesheet" />
+    <link href="~/lib/layout/assets/css/elements/breadcrumb.css" rel="stylesheet" />
+    <link href="~/lib/layout/assets/css/elements/miscellaneous.css" rel="stylesheet" />
+    <link href="~/lib/layout/plugins/notification/snackbar/snackbar.min.css" rel="stylesheet" />
+    <link href="~/lib/layout/assets/css/scrollspyNav.css" rel="stylesheet" />
+    <link href="~/lib/layout/assets/css/forms/switches.css" rel="stylesheet" />
+    <link href="~/lib/layout/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/lib/layout/plugins/sweetalerts/sweetalert.css" rel="stylesheet" />
+    @if (User.Identity.IsAuthenticated)
+    {
+
+    }
+    else
+    {
+        <style>
+            #content {
+                margin-left: 0px !important;
+            }
+
+            header.header.navbar.navbar-expand-sm {
+                margin-left: 0px;
+            }
+        </style>
+    }
+    <style>
+        #tos .toast {
+            -ms-flex-preferred-size: 350px;
+            flex-basis: 350px;
+            min-width: 350px;
+        }
+
+        .navbar .navbar-item .nav-item.dropdown.notification-dropdown .nav-link span.badge {
+            min-width: 18px;
+            min-height: 18px;
+            border-radius: 50%;
+            padding: 0;
+            font-size: 8px;
+            color: #fff !important;
+            background: #ff0000;
+            border: 2px solid #e0e6ed;
+            top: 12px;
+            right: -5px;
+            font-weight: 700;
+            line-height: 14px;
+            width: auto;
+        }
+
+        .navbar .navbar-item .nav-item.dropdown.notification-dropdown .dropdown-menu {
+            min-width: 20rem;
+        }
+
+        .btncustom {
+            line-height: 10px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .navbar .navbar-item .nav-item.dropdown.notification-dropdown .dropdown-menu .media-body.user-name-profile {
+            display: contents;
+        }
+
+        ::-moz-selection { /* Code for Firefox */
+            color: white !important;
+            background: #1A73E8 !important;
+        }
+
+        ::selection {
+            color: white !important;
+            background: #1A73E8 !important;
+        }
+    </style>
+</head>
+
+<body class="dashboard-analytics">
+
+    <!-- BEGIN LOADER -->
+    <div id="load_screen">
+        <div class="loader">
+            <div class="loader-content">
+                <div class="spinner-grow align-self-center"></div>
+            </div>
+        </div>
+    </div>
+    <!--  END LOADER -->
+    <!--  BEGIN NAVBAR  -->
+    <div class="header-container fixed-top">
+        <header class="header navbar navbar-expand-sm">
+            <ul class="navbar-item flex-row">
+                <li class="nav-item align-self-center page-heading">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h3>Scoping System</h3>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg></a>
+
+            <ul class="navbar-item flex-row search-ul">
+            </ul>
+
+            <ul class="navbar-item flex-row navbar-dropdown">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (this.User.IsInRole("Sales"))
+                    {
+                        <li class="nav-item dropdown notification-dropdown">
+                            <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                                @if (TotalRequest != 0)
+                                {
+                                    <span class="badge">@TotalRequest</span>
+
+                                }
+                            </a>
+                            <div class="dropdown-menu position-absolute animated fadeInUp" aria-labelledby="notificationDropdown">
+                                <div class="notification-scroll">
+                                    <h6>Proposal Requests</h6>
+                                    <hr />
+                                    @if (CustomerRequestList.Count == 0)
+                                    {
+                                        <div class="dropdown-item">
+                                            <div class="media server-log">
+                                                <div class="media-body">
+                                                    <div class="data-info">
+                                                        <h6 class="">No data available </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @foreach (var item in CustomerRequestList)
+                                        {
+                                            <div class="dropdown-item">
+                                                <div class="media server-log">
+
+                                                    <div class="media-body">
+                                                        @if (item.Image != null)
+                                                        {
+                                                            <img src="~/img/@item.Image" width="24" height="24" class="" alt="image">
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="~/lib/layout/assets/img/download.png" width="32" height="32" class="mr-2" alt="image">
+
+                                                        }
+                                                        <a asp-controller="questionnaire" asp-action="customerquestionnair" asp-route-id="@item.CustomerId" class="data-info w-50">
+                                                            <h6 class="">@item.ProjectName</h6>
+                                                            @if ((DateTime.Now - item.CreateDate).TotalMinutes < 60)
+                                                            {
+                                                                <p class="">@(Convert.ToInt32((DateTime.Now - item.CreateDate).TotalMinutes)) min ago</p>
+
+                                                            }
+                                                            else if ((DateTime.Now - item.CreateDate).TotalMinutes < 1440)
+                                                            {
+                                                                <p class="">@(Convert.ToInt32((DateTime.Now - item.CreateDate).TotalHours)) hour ago</p>
+
+                                                            }
+                                                            else
+
+                                                            {
+                                                                <p class="">@(Convert.ToInt32((DateTime.Now - item.CreateDate).TotalDays)) Days ago</p>
+
+                                                            }
+                                                        </a>
+
+                                                        <div class="icon-status">
+                                                            <a asp-controller="home" asp-action="acceptproposal" asp-route-customerid="@item.CustomerId" asp-route-projectid="@item.ProjectId" class="btn btn-primary btncustom" onclick="return confirm('are you sure you want to accept request?')">accept</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+                    //customer
+                    @if (this.User.IsInRole("Customer"))
+                    {
+                        <li class="nav-item dropdown notification-dropdown">
+                            <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                                @if (TotalAccept != 0)
+                                {
+                                    <span class="badge">@TotalAccept</span>
+
+                                }
+                            </a>
+                            <div class="dropdown-menu position-absolute animated fadeInUp" aria-labelledby="notificationDropdown">
+                                <div class="notification-scroll">
+                                    <h6>Proposal Requests</h6>
+                                    <hr />
+                                    @if (SalesAcceptList.Count == 0)
+                                    {
+                                        <div class="dropdown-item">
+                                            <div class="media server-log">
+                                                <div class="media-body user-name-profile">
+                                                    <div class="data-info">
+                                                        <h6 class="">No data available </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @foreach (var item in SalesAcceptList)
+                                        {
+                                            <div class="dropdown-item">
+                                                <div class="media server-log">
+
+                                                    <div class="media-body user-name-profile">
+                                                        @*@if (item.Image != null)
+                                                            {
+                                                                <img src="~/img/@item.Image" width="36" height="36" class="mr-2">
+
+                                                            }
+                                                            else
+                                                            {*@
+                                                        <img src="~/lib/layout/assets/img/download.png" width="32" height="32" class="mr-2">
+
+                                                        @*}*@
+                                                        <a asp-controller="Home" asp-action="CustomerUplodedDoc" asp-route-CustomerId="@item.CustomerId" asp-route-ProjectId="@item.UploadedDocumentsId" class="data-info">
+                                                            <h6 class="">@item.ProjectName</h6>
+                                                            @if ((DateTime.Now - item.CreatedDate).TotalMinutes < 60)
+                                                            {
+                                                                <p class="">@(Convert.ToInt32((DateTime.Now - item.CreatedDate).TotalMinutes)) min ago</p>
+
+                                                            }
+                                                            else if ((DateTime.Now - item.CreatedDate).TotalMinutes < 1440)
+                                                            {
+                                                                <p class="">@(Convert.ToInt32((DateTime.Now - item.CreatedDate).TotalHours)) hour ago</p>
+
+                                                            }
+                                                            else
+
+                                                            {
+                                                                <p class="">@(Convert.ToInt32((DateTime.Now - item.CreatedDate).TotalDays)) Days ago</p>
+
+                                                            }
+                                                        </a>
+
+                                                        @*<div class="icon-status">
+                                                                <a asp-controller="Home" asp-action="AcceptProposal" asp-route-CustomerId="@item.CustomerId" asp-route-ProjectId="@item.ProjectId" class="btn btn-primary btncustom" onclick="return confirm('Are you sure you want to accept request?')">Accept</a>
+                                                            </div>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    //customer
+
+
+
+                    <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
+                        <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @*<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>*@
+                            @if (image.FileName != null)
+                            {
+                                <img src="~/img/@image.FileName" width="32" height="32" class="">
+
+                            }
+                            else
+                            {
+                                <img src="~/lib/layout/assets/img/download.png" width="32" height="32" class="">
+
+                            }
+                        </a>
+                        <div class="dropdown-menu position-absolute animated fadeInUp" aria-labelledby="userProfileDropdown">
+                            <div class="user-profile-section">
+                                <div class="media mx-auto">
+                                    @if (image.FileName != null)
+                                    {
+                                        <img src="~/img/@image.FileName" class="img-fluid mr-2" alt="avatar">
+
+                                    }
+                                    else
+                                    {
+                                        <img src="~/lib/layout/assets/img/download.png" class="img-fluid mr-2" alt="avatar">
+
+                                    }
+
+
+
+                                    @*<img src="~/img/@(Model.FileUpload)" class="img-fluid mr-2" alt="avatar">*@
+                                    <div class="media-body">
+                                        <h5>@User.Identity.Name</h5>
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <p>Admin</p>
+                                        }
+                                        else if (User.IsInRole("Sales"))
+                                        {
+                                            <p>Sales</p>
+                                        }
+                                        else if (User.IsInRole("Customer"))
+                                        {
+                                            <p>Customer</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-item">
+                                <a asp-controller="Home" asp-action="MyProfile" asp-route-name="@User.Identity.Name">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span>My Profile</span>
+                                </a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a asp-area="Identity" asp-page="/Account/ForgotPassword">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> <span>Forgot password?</span>
+                                </a>
+                            </div>
+                            @*  <div class="dropdown-item">
+                                    <a href="auth_lockscreen.html">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> <span>Lock Screen</span>
+                                    </a>
+                                </div>*@
+                            <div class="dropdown-item">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button id="lgt" type="submit" style=" display: block; color: #3b3f5c; font-size: 13px; font-weight: 600; padding: 9px 14px; border: 0; background: transparent; box-shadow: none;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span>Log Out</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+
+                }
+                else
+                {
+                    <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1" style="    height: 45px;"></li>
+                }
+            </ul>
+
+
+        </header>
+    </div>
+    <!--  END NAVBAR  -->
+    <!--  BEGIN MAIN CONTAINER  -->
+
+    <div class="main-container" id="container">
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <!--  BEGIN SIDEBAR  -->
+            <div class="sidebar-wrapper sidebar-theme">
+
+                <nav id="compactSidebar">
+
+                    <div class="theme-logo">
+                        <a asp-controller="Home" asp-action="Index">
+                            <img src="~/lib/layout/assets/img/logo.svg" class="navbar-logo" alt="logo">
+                        </a>
+                    </div>
+
+                    <ul class="menu-categories">
+                        <li class="menu active">
+                            <a href="#dashboard" data-active="true" class="menu-toggle">
+                                <div class="base-menu">
+                                    <div class="base-icons">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="tooltip"><span>Dashboard</span></div>
+                        </li>
+
+
+                        @if (this.User.IsInRole("Admin") || (this.User.IsInRole("Sales")))
+                        {
+                            <li class="menu">
+                                <a href="#app" data-active="false" class="menu-toggle">
+                                    <div class="base-menu">
+                                        <div class="base-icons">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="tooltip"><span>Members</span></div>
+                            </li>
+
+                            @if (this.User.IsInRole("Admin"))
+                            {
+                                <li class="menu">
+                                    <a href="#Questionnaires" data-active="false" class="menu-toggle">
+                                        <div class="base-menu">
+                                            <div class="base-icons">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="tooltip"><span>Edit Scopes</span></div>
+                                </li>
+                                <li class="menu">
+                                    <a href="#Methodologies" data-active="false" class="menu-toggle">
+                                        <div class="base-menu">
+                                            <div class="base-icons">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="tooltip"><span>Methodologies</span></div>
+                                </li>
+                            }
+
+
+
+                            @if (this.User.IsInRole("Admin"))
+                            {
+                                <li class="menu">
+                                    <a href="#role" data-active="false" class="menu-toggle">
+                                        <div class="base-menu">
+                                            <div class="base-icons">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-cpu"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="tooltip"><span>Roles</span></div>
+                                </li>
+                                <li class="menu">
+                                    <a href="#ToggleId" data-active="false" class="menu-toggle">
+                                        <div class="base-menu">
+                                            <div class="base-icons">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="tooltip"><span>Toggle</span></div>
+                                </li>
+
+
+                            }
+
+
+
+                        }
+
+
+                        @if (this.User.IsInRole("Customer"))
+                        {
+                            <li class="menu">
+                                <a href="#Request" data-active="false" class="menu-toggle">
+                                    <div class="base-menu">
+                                        <div class="base-icons">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="tooltip"><span>Proposals</span></div>
+                            </li>
+                        }
+
+
+
+
+                    </ul>
+
+                    @*<div class="external-links">
+                            <a href="https://designreset.com/cork/documentation/index.html" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                <div class="tooltip"><span>Documentation</span></div>
+                            </a>
+                        </div>*@
+                </nav>
+
+                <div id="compact_submenuSidebar" class="submenu-sidebar">
+
+                    <div class="theme-brand-name">
+                        <a href="/">Scoping System</a>
+                    </div>
+
+                    <div class="submenu" id="dashboard">
+                        <div class="category-info">
+                            <h5>Dashboard</h5>
+                            <p></p>
+                        </div>
+
+                        <ul class="submenu-list" data-parent-element="#dashboard">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg> Home </a>
+                            </li>
+                            @if (this.User.IsInRole("Customer"))
+                            {
+                                @*<li>
+                                        <a asp-area="" asp-controller="Questionnaire" asp-action="ScopeRequests">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                            Scope Requests
+                                        </a>
+                                    </li>*@
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="submenu" id="app">
+                        <div class="category-info">
+                            <h5>Members</h5>
+                            <p></p>
+                        </div>
+                        <ul class="submenu-list" data-parent-element="#app">
+                            @if (this.User.IsInRole("Admin") || (this.User.IsInRole("Sales")))
+                            {
+                                @if (this.User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a asp-area="" asp-controller="Sales" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg> Sales </a>
+                                    </li>
+                                }
+                                <li class="active">
+                                    <a asp-area="" asp-controller="Customers" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>  Customers</a>
+                                </li>
+                            }
+
+                        </ul>
+
+                    </div>
+
+                    <div class="submenu" id="Questionnaires">
+                        <div class="category-info">
+                            <h5>Scope List</h5>
+                            <p></p>
+                        </div>
+
+                        <ul class="submenu-list" data-parent-element="#dashboard">
+                            <li>
+                                <a asp-area="" asp-controller="Questionnaire" asp-action="EditAllQuestionnaires"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>Edit Scopes</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="submenu" id="Methodologies">
+                        <div class="category-info">
+                            <h5>Methodologies</h5>
+                            <p></p>
+                        </div>
+
+                        <ul class="submenu-list" data-parent-element="#dashboard">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="MethodologiesSampleReport">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>                                    Methodologies List
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="submenu" id="role">
+                        <div class="category-info">
+                            <h5>Roles</h5>
+                            <p></p>
+                        </div>
+
+                        <ul class="submenu-list" data-parent-element="#dashboard">
+                            <li>
+                                <a asp-area="" asp-controller="Role" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg> Roles List </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="submenu" id="ToggleId">
+                        <div class="category-info">
+                            <h5>Toggle</h5>
+                            <p></p>
+                        </div>
+
+                        <ul class="submenu-list" data-parent-element="#dashboard">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Toggle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>Toggle</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="submenu" id="Request">
+                        <div class="category-info">
+                            <h5>Scope management</h5>
+                            <p></p>
+                        </div>
+
+                        <ul class="submenu-list" data-parent-element="#dashboard">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Create/Request Scope</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Customers" asp-action="ReceivedProposal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Scope Responses </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--  END SIDEBAR  -->
+        }
+        else
+        {
+            <div class="sidebar-wrapper sidebar-theme"></div>
+        }
+        <!--  BEGIN CONTENT AREA  -->
+        <div id="content" class="main-content">
+            <div class="layout-px-spacing">
+
+                <div class=" layout-top-spacing">
+
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+
+                </div>
+            </div>
+            <input type="hidden" id="popUp" value="@User.Identity.Name">
+            @*<button id="toast-btn" class="btn btn-primary">Open Toast</button>*@
+
+            <div id="tos" style="position:absolute; bottom: 0; right: 0;z-index: 10; margin-left: 20px; margin-right: 20px;">
+                <div class="toast toast-primary fade " role="alert" data-delay="10000" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="mr-auto">Welcome @User.Identity.Name.</strong>
+                        @*<small class="meta-time">just now</small>*@
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <span>Welcome to Procheckup Scoping</span>
+                        }
+                        else if (User.IsInRole("Sales"))
+                        {
+                            <span>Welcome to Procheckup Scoping</span>
+                        }
+                        else if (User.IsInRole("Customer") && TempData["MyList"] != null)
+                        {
+                            if (TempData["MyList"].ToString() == "false")
+                            {
+                                <span>Welcome to Procheckup Scoping ,Please Update your contact details</span>
+                            }
+                            else
+                            {
+                                <span>Welcome to Procheckup Scoping</span>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="footer-wrapper">
+                <div class="footer-section f-section-1">
+                    <p class="">Copyright © @DateTime.Today.Year <a target="_blank" href="https://procheckup.com/">ProCheckUp Ltd.</a>, All rights reserved.</p>
+                </div>
+                <div class="footer-section f-section-2">
+                    @*<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+                </div>
+            </div>
+        </div>
+        <!--  END CONTENT AREA  -->
+
+
+    </div>
+
+
+
+
+
+
+
+    @if (TempData["LastLoginDate"] != null)
+    {
+        <script>
+            function LoginDate() {
+                var toastButton = document.getElementById("toast-btn");
+                // Get the Toast element
+                var toastElement = document.getElementsByClassName("toast")[0];
+
+
+                $('.toast').toast('show');
+                $('#tos').css("z-index", "10")
+            }
+        </script>
+    }
+    else
+    {
+        <script>
+            function LoginDate() {
+                $('#tos').css("z-index", "-10")
+            }
+        </script>
+    }
+
+
+
+
+    <!-- END MAIN CONTAINER -->
+    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/js/jquery-migrate-3.3.2.min.js"></script>
+    <script src="~/lib/bootstrap/js/popper.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/layout/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/lib/layout/assets/js/app.js"></script>
+    <script src="~/lib/layout/assets/js/components/ui-accordions.js"></script>
+    <script>
+        $(document).ready(function () {
+            App.init();
+
+            $(".delayMsg").delay(15000).fadeOut(300);
+        });
+    </script>
+    <script src="~/lib/layout/assets/js/custom.js"></script>
+    @*<script src="~/lib/layout/plugins/flatpickr/flatpickr.js"></script>
+        <script src="~/lib/layout/plugins/flatpickr/custom-flatpickr.js"></script>*@
+    <!-- END GLOBAL MANDATORY SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    @*<script src="~/lib/layout/plugins/apex/apexcharts.min.js"></script>
+        <script src="~/lib/layout/assets/js/dashboard/dash_1.js"></script>*@
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+    <!-- BEGIN GLOBAL CUSTOM SCRIPTS -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    <script src="~/js/custom/script.js"></script>
+    <!-- END GLOBAL CUSTOM SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script src="~/lib/layout/assets/js/scrollspyNav.js"></script>
+    <script src="~/lib/layout/plugins/sweetalerts/sweetalert2.min.js"></script>
+    <script src="~/lib/layout/plugins/sweetalerts/custom-sweetalert.js"></script>
+    <script src="~/lib/layout/plugins/notification/snackbar/snackbar.min.js"></script>
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+
+        LoginDate();
+
+        var idleInterval = setInterval(timerIncrement, 3600000);
+
+
+    });
+    function timerIncrement() {
+        $("#lgt").click();
+        //window.location.href = '/Identity/Account/Logout';
+        alert("You session has expired due to no activity.");
+
+
+    };
+</script>

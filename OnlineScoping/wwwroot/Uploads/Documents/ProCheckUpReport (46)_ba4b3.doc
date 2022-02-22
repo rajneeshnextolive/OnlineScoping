@@ -1,0 +1,1754 @@
+﻿<!DOCTYPE html>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"  xmlns:w="urn:schemas-microsoft-com:office:word"  xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom><w:Orientation>Landscape</w:Orientation></w:WordDocument></xml><![endif]--><title>Export HTML To Doc</title><style>pre {word-break: break-all; white-space: normal;} footerImg{height: 20px; width: 90px} headerImg{height: 85px; width: 515px} p.MsoFooter, li.MsoFooter, div.MsoFooter{margin:0in; margin-bottom:.0001pt; mso-pagination:widow-orphan;  tab-stops:center 3.0in right 6.5in; font-size:12.0pt;}@page Section1{ size:8.5in 11.0in; margin:1.0in 1.0in 1.0in 1.0in;  mso-header-margin:.5in;  mso-footer-margin:.5in;  mso-title-page:yes;  mso-header: h1;   mso-footer: f1;   mso-first-header: fh1;   mso-first-footer: ff1;  mso-paper-source:0;} div.Section1{ page:Section1; } table#hrdftrtbl{ margin:0in 0in 0in 900in; width:1px; height:1px; overflow:hidden;}.group-vul-des p{margin: 0px !important;} .reposrt-text{background-color:#373b3e; color: #fff; padding-top:2px; padding-bottom:24px; font-family:'Calibri (Body)'; }</style></head><body>
+                        <header style="background-color: #fff;padding: 10px;margin-bottom: -9px;padding-left: 40px;width: 80%;margin: 0 auto;">
+                            <img src="https://scoping.procheckup.com/Report/img/logo.png" width="400" height="100" style="">
+                        </header>
+
+                        <div class="" id="cover" style="margin-top: 10px;">
+                            <div style="width: 100%;">
+                                <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-width: 0px;background-color: #383b3e; padding: 0; border: none; height: 100%; margin: 0px auto; width: 80%;">
+                                    <tbody>
+                                        <tr id="docCover" style="padding: 0px; width: 100%;">
+                                            <td style="width: 100%; height: 100%;">
+                                                <p style="font-size: 24px; color: #81b1df; margin: 0; margin-left: 30px; padding: 11px 0;font-family: Calibri;"><u>Technical Proposal and Quotation</u></p>
+                                                <p style="font-size: 24px; color: #fff; margin-left: 30px;font-family: Calibri;"><u>Test Customer2</u></p>
+                                                <p style="font-size: 24px; color: #b6cbe0; margin-left: 30px;font-family: Calibri;">test Project1</p>
+                                                <p style="font-size: 16px; color: #fff; margin-left: 30px; padding-bottom: 10px;font-family: Calibri;">3/12/2021</p>
+                                            </td>
+                                        </tr>
+                                        <tr style="padding: 0px; width: 100%;">
+                                            <td style="padding: 0px; border: none; width: 100%;"><img alt="" id="coverImg1" src="https://scoping.procheckup.com/Report/img/procheckup.png" style="margin: 0px;" width="100%"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="page-break-after: always;clear:both;"><span style="display: none;">&nbsp;</span></div>
+
+                        <div style="background: #fff; width:80%; margin:0 auto">
+                            <h1 style="color: #0460af;padding: 30px;text-align: center;font-weight: 700;font-family: Calibri;">
+                                Document Information
+                            </h1>
+                            <table cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a;border-image: none;width: 100%;border-collapse:collapse">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            <span style="text-align: left;font-family: Calibri;">Client Contacts</span>
+                                        </td>
+                                        <td style="border-image: none;width: 75%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;font-family: Calibri;color: #fff;font-weight: bold;">
+                                            <span style="text-align: left;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+
+                                        <td style="border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;border-top: 1px solid #2a2a2a;color: #2a2a2a;font-family: Calibri;">
+                                            <span style="font-weight:bold">Client</span>
+                                        </td>
+
+
+                                        <td style="border-bottom-color: #2a2a2a;border-bottom-width: 1px;border-bottom-style: solid;font-size: 11pt;border-top: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a;">Test Customer2</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;color: #2a2a2a;font-family: Calibri;">
+                                            <span style="font-size: 11pt;font-weight: bold">Full Name</span>
+                                        </td>
+
+                                        <td style="border-bottom-color: #2a2a2a;border-bottom-width: 1px;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a;">Test Customer2</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                            <span style="font-weight: bold; font-size: 11pt;color: #2a2a2a;">Direct Line</span>
+                                        </td>
+
+                                        <td style="border-bottom-color: #2a2a2a;border-bottom-width: 1px;border-bottom-style: solid;font-size: 11pt;color: #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;">01234567890</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-family: Calibri;font-size: 11pt;color: #2a2a2a;font-weight: bold">Email</span>
+                                        </td>
+
+                                        <td style="font-family: Calibri; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 11pt; color: #2a2a2a"><span style=" font-size: 12pt;">test.nextolive3@gmail.com</span></td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-family: Calibri; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;color: #2a2a2a;font-weight: bold;">Client Address</span>
+                                        </td>
+
+                                        <td style="font-family: Calibri; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">
+                                                Lucknow h
+                                            </span><br>
+                                            <span style="font-size: 11pt;color: #2a2a2a">
+                                                Lucknow  
+                                            </span><br>
+                                            <span style="font-size: 11pt;color: #2a2a2a">
+                                                India  Uttar Pradesh lucknow nnb
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="background: #fff; width:80%; margin:0 auto">
+                            <table cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%; border-collapse:collapse">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            <span style="text-align: left; font-family: Calibri; text-align:left">ProCheckUp</span>
+                                        </td>
+                                        <td style="border-image: none;width: 75%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: bold;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 12pt;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;font-family: Calibri;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;">
+                                            <span style=" font-size: 11pt;font-weight:bold; color:#2a2a2a;">Document Reference </span>
+                                        </td>
+                                        <td style="border-bottom-color: #2a2a2a;border-bottom-width: 1px;font-family: Calibri;border-bottom-style: solid;font-size: 12pt;">
+                                            <span style=" font-size: 11pt;color:#2a2a2a">test Project1</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="border-right-color: #2a2a2a;font-family: Calibri;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;">
+                                            <span style="font-size: 11pt;font-weight: bold;color: #2a2a2a;">Date Prepared </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">3/12/2021</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-family: Calibri; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;font-weight: bold;color: #2a2a2a;">Account Manager </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;color: #2a2a2a;">Test Sales</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-family: Calibri; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;font-weight: bold;color: #2a2a2a;">Direct Line &amp; Mobile </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style=" font-size: 11pt; color: #2a2a2a">01234567890</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-family: Calibri; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;font-weight: bold;color: #2a2a2a;">Email</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style=" font-size: 11pt; color: #2a2a2a">test.nextolive4@gmail.com</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-family: Calibri; border-right-color: #2a2a2a; border-bottom-color: #2a2a2a; border-right-width: 1px; border-bottom-width: 1px; border-right-style: solid; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;font-weight: bold;color: #2a2a2a;">Company Address</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">
+                                                ProCheckUp Ltd,<br> 4th Floor, Fairgate House,<br> 78 New Oxford Street,<br> London, WC1A 1HB.
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br style="page-break-before:always; clear:both; ">
+                        <div>&nbsp;</div>
+
+                        <div style="background: #fff;width:80%; margin:0 auto">
+                            <table cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: 400;font-family: Calibri;">
+                                            <span style=" text-align: left; font-family: Calibri;">Document Control</span>
+                                        </td>
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;color: #fff;font-weight: bold;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;"></span>
+                                        </td>
+                                        <td style="border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;color: rgb(255, 240, 245);font-weight: bold;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;"></span>
+                                        </td>
+                                        <td style="border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;color: rgb(255, 240, 245);font-weight: bold;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <th style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;border-bottom: 1px solid #2a2a2a;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Version</span>
+                                        </th>
+                                        <th style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-right: 1px solid #2a2a2a; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Date</span>
+                                        </th>
+                                        <th style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-right: 1px solid #2a2a2a; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style=" font-size: 11pt; color:#2a2a2a">Action</span>
+                                        </th>
+                                        <th style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Author</span>
+                                        </th>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right: 1px solid #2a2a2a;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;color:#2a2a2a">0.1 </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style=" font-size: 11pt;color:#2a2a2a">3/12/2021</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 11pt;">
+                                            <span style="color: #2a2a2a">Proposal Generated </span>
+                                        </td>
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; ">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Test Sales</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 11pt;font-family: Calibri;">
+                                            <span style=" font-size: 11pt;color:#2a2a2a">0.2 </span>
+                                        </td>
+                                        <td style="border-right: 1px solid #2a2a2a;width: 25.86%;text-align: center;border-bottom-color: #2a2a2a;border-bottom-width: 1px;border-bottom-style: solid;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">3/12/2021</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Technical Sign Off </span>
+                                        </td>
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Richard Brain</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">0.3 </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">3/12/2021</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Commercial Sign Off</span>
+                                        </td>
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Richard Southwell</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">1.0 </span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-right-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">3/12/2021</span>
+                                        </td>
+                                        <td style="font-family: Calibri; border-right: 1px solid #2a2a2a; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Proposal Issued to Cranfield University </span>
+                                        </td>
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid;">
+                                            <span style="font-size: 11pt;color: #2a2a2a">Test Sales</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+
+                        <div style="background: #fff; width:80%; margin:0 auto">
+                            <h1 style="font-family: Calibri; color: #0460af; padding: 30px; text-align: center; font-weight: 700;">Confidentiality Agreement</h1>
+
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            ProCheckUp Ltd is fully committed to maintaining the highest level of ethical standards in its business practice. This proposal has been produced specifically for Test Customer2. All
+                                            information submitted in this document about ProCheckUp's methodology,technology,procedures and systems,is deemed privileged information and not for public dissemination.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <p>
+                                <span style="font-size: 12pt;font-family: Calibri;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            ProCheckUp Ltd severally pledge their commitment that this information will remain strictly confidential. This information will not be disclosed or discussed to any third party withoutthe express
+                                            written consent of Test Customer2.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
+                            <br style="page-break-before:always; clear:both; ">
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h1 style=""><span style="color: #0460af; padding: 30px 0; text-align: center; font-weight: 700;">About ProCheckUp</span></h1>
+                            </div>
+                            <div style="width:100%;margin:0 auto">
+                                <table cellpadding="0" cellspacing="0" style="width:100%;margin:0 auto">
+                                    <tbody>
+
+                                        <tr>
+                                            <td>
+                                                <img src="https://scoping.procheckup.com/Report/img/ri_16.png" width="370" height="430">
+                                            </td>
+                                            <td style="color: #0460af;font-weight: bold;font-size: 16px;line-height: 21px;margin: 0 10px;">
+                                                <p style="color: #0460af;font-weight: bold;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">ProCheckUp is an Independent cyber security consultancy, providing expert Cyber Security Assurance, Compliance and Digital Forensic Services from its central London Headquarters.</p>
+                                                <p style="color: #000;font-weight: bold;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">Acting as a Trusted Security provider to some of the world’s leading organisations, ProCheckUp began offering Penetration Testing and Compliance services in 1999 and have since developed a wider portfolio of enterprise security and consulting services, to help customers comprehensively manage risk and handle the information security challenges of today’s quickly evolving environment.</p>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div style="background: #fff;font-family: Calibri;">
+                                <p style="font-size: 12pt;color: #2a2a2a;font-family: Calibri;margin-top: 50px;">ProCheckUp pride themselveson the breadth and depth of their experience,expertise and the qualifications held by their senior consultants. Acting as trusted advisors and Incident Responders to some of the world’s leading financial,banking, UK Central and Local Government authorities, international Law firms, Telecommunications and Technology providers and a great deal of the FTSE 100 list, ProCheckUp’s team are considered amongst the best in Europe.</p>
+                            </div>
+                            <div style="background: #fff;font-family: Calibri;">
+                                <p style="font-size: 12pt;color: #2a2a2a;font-family: Calibri;">ProCheckUp are accredited to the CESG government green light CHECK scheme and have been a certified CREST (Council of Registered Ethical Security Testers) member and verified PCI DSS (Payment Card Industry Data Security Standard) member since their respective inceptions in 2006 and 2004. ProCheckUp have attained many industry leading accreditations and awards including the Queen’s Award for Enterprise and Innovation.</p>
+                            </div>
+                            <div style="background: #fff;font-family: Calibri;">
+                                <p style="font-size: 12pt;color: #2a2a2a;font-family: Calibri;">ProCheckUp are hands on in their approach to client remediation and provide telephone and e-mail support on each report produced. Post-test meetings, conference calls and online presentations can usually be organised at no extra charge to all Test Customer2 staff and their partners.</p>
+                            </div>
+
+
+
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h1 style=""><span style="color: #0460af; padding: 30px 0; text-align: center; font-weight: 700;">Background &amp; Scope</span></h1>
+                            </div>
+
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h2 style="margin: 0;margin-left: 15px;font-weight: normal;">
+                                    <span style="color: rgb(0, 88, 151); ">Background &amp; Scope</span>
+                                </h2>
+                            </div>
+
+                            <div>
+                                <p style="text-align: justify;margin-left:15px;">
+                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                        <span style="font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                Test Customer2 have engaged with Procheckup to complete a  of their
+
+                                                    <span>test Project1 .</span>
+
+                                                ProCheckUp (PCU) have been approached by  Test Customer2 to conduct a  project to meet their
+
+                                                    <span>test Project1 .</span>
+
+                                                requirement. The scope of which has been provided in further detail below.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <div style="background: #fff;font-family: Calibri;">
+                                    <h2 style="margin: 0;margin-left: 15px;font-weight: normal;">
+                                        <span style="color: rgb(0, 88, 151); ">Scope of Requirements</span>
+                                    </h2>
+                                </div>
+                                <p style="text-align: justify;margin-left:15px;">
+                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                        <span style="font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                Further to a number of meetingsand scoping study between Test Customer2 of Test Customer2 and Test Customer2 of ProCheckUp, the following scope was agreed:
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;margin-left: 15px;font-family: Calibri;">
+                                    <span style="font-size: 12pt; text-align: justify;">
+                                        <span style="font-size: 12pt;">
+                                            <span>
+                                                following will be tested as part of this assessment.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <div>&nbsp;</div>
+                                <table cellpadding="3" cellspacing="0" style="border-image: none;  line-height: 16px;width: 100%; border-collapse: collapse;" class="requirements">
+                                    <tbody>
+                                        <tr style="height:35px">
+                                            <td style="text-align: center;background-color: #2281aa;font-family: Calibri;">
+                                            </td>
+                                            <td style="text-align: center;background-color: #2281aa;font-family: Calibri;">
+                                                <div>
+                                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span>
+                                                                <span style="color: rgb(255, 240, 245);font-family: Calibri;"><strong>Pen Test Time</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center;background-color: #2281aa;font-family: Calibri;">
+                                                <div>
+                                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span>
+                                                                <span style="color: rgb(255, 240, 245);font-family: Calibri;"><strong>Days Testing</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center;background-color: #2281aa;font-family: Calibri;">
+                                                <div>
+                                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span>
+                                                                <span style="color: rgb(255, 240, 245);font-family: Calibri;"><strong>Days Reporting</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center;background-color: #2281aa;font-family: Calibri;">
+                                                <div>
+                                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                        <span style="font-size: 11pt;">
+                                                            <span>
+                                                                <span style="color: rgb(255, 240, 245);font-family: Calibri;"><strong>Total</strong></span>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                                    <tr style="height:35px">
+                                                        <td style="text-align: center;background-color: #2281aa;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+                                                                            <span style="color: #fff;font-family: Calibri;"><strong>VOICE OVER IP ASSESSMENT </strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> test Project1</strong></span>
+
+
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> 0</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>0 </strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>0</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="height:35px">
+                                                        <td style="text-align: center;background-color: #2281aa;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+                                                                            <span style="color: #fff;font-family: Calibri;"><strong>Security Scoping tool</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> test Project1</strong></span>
+
+
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> 4</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>0 </strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>4</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="height:35px">
+                                                        <td style="text-align: center;background-color: #2281aa;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+                                                                            <span style="color: #fff;font-family: Calibri;"><strong>Wi-Fi Scoping Questionnaire</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> test Project1</strong></span>
+
+
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> 0</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>0 </strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>0</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="height:35px">
+                                                        <td style="text-align: center;background-color: #2281aa;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+                                                                            <span style="color: #fff;font-family: Calibri;"><strong>Cyber Essentials Plus Assessment</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> test Project1</strong></span>
+
+
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> 15</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>2.00 </strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>17.00</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="height:35px">
+                                                        <td style="text-align: center;background-color: #2281aa;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+                                                                            <span style="color: #fff;font-family: Calibri;"><strong>DDoS Testing Scoping Questions</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> test Project1</strong></span>
+
+
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;font-family: Calibri;border: 1px solid #d9f8fb">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong> 0</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>0 </strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align: center;background-color: #99c5d3;border: 1px solid #d9f8fb;font-family: Calibri;">
+                                                            <div>
+                                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                                    <span style="font-size: 9pt;">
+                                                                        <span>
+
+                                                                            <span style="color: #2a2a2a;font-family: Calibri;"><strong>0</strong></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div>&nbsp;</div>
+                        <div style="background-color: #fff;width: 80%;margin: 0 auto">
+
+                            <h1 style="margin: 0; font-weight: normal;">
+                                <span style="color: rgb(0, 88, 151);font-size: 20pt;font-family: Calibri;">Reports </span>
+                            </h1>
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt; text-align: justify;">
+                                    <span style="font-size: 12pt;">
+                                        <span style="">
+                                            For each engagement, report delivery should be no more than 5 working days than the completion of the project. However, ProCheckUp will be able to provide draft reports on the completion of the
+                                            engagement.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt; text-align: justify;">
+                                    <span style="font-size: 12pt;">
+                                        <span style="">
+                                            ProCheckUp will produce an individual report for each engagement ,13 in total:
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <ul>
+                                            <li style="text-align: justify;font-family: Calibri;">
+                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; color: #2a2a2a;">
+
+
+                                                        test Project1
+
+                                                        <span style=" font-size: 12pt;">( VOICE OVER IP ASSESSMENT )</span>
+
+
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li style="text-align: justify;font-family: Calibri;">
+                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; color: #2a2a2a;">
+
+
+                                                        test Project1
+
+                                                        <span style=" font-size: 12pt;">( Security Scoping tool)</span>
+
+
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li style="text-align: justify;font-family: Calibri;">
+                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; color: #2a2a2a;">
+
+
+                                                        test Project1
+
+                                                        <span style=" font-size: 12pt;">( Wi-Fi Scoping Questionnaire)</span>
+
+
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li style="text-align: justify;font-family: Calibri;">
+                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; color: #2a2a2a;">
+
+
+                                                        test Project1
+
+                                                        <span style=" font-size: 12pt;">( Cyber Essentials Plus Assessment)</span>
+
+
+                                                    </span>
+                                                </span>
+                                            </li>
+                                            <li style="text-align: justify;font-family: Calibri;">
+                                                <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; color: #2a2a2a;">
+
+
+                                                        test Project1
+
+                                                        <span style=" font-size: 12pt;">( DDoS Testing Scoping Questions)</span>
+
+
+                                                    </span>
+                                                </span>
+                                            </li>
+                            </ul>
+                            <div style="">
+                                <h1 style="margin: 0;font-weight: normal;font-family: Calibri;">
+                                    <span style="color: rgb(0, 88, 151); font-size: 20pt;">Project Requirement </span>
+                                </h1>
+                            </div>
+                            <ul>
+                                <li style="text-align: justify;font-family: Calibri;">
+                                    <span style="font-size: 12pt; text-align: justify;">
+                                        <span style="font-size: 12pt;"><span style="color: #2a2a2a;">Job Schedule Form(s) to be completed</span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;font-family: Calibri;">
+                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                        <span style="font-size: 12pt;"><span style="color: #2a2a2a;">A point of contact for reporting during the project should be provided </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;font-family: Calibri;">
+                                    <span style="font-size: 12pt; text-align: justify;">
+                                        <span style="font-size: 12pt;"><span style="color: #2a2a2a;">Purchase Order (PO) </span></span>
+                                    </span>
+                                </li>
+                                <li style="text-align: justify;font-family: Calibri;">
+                                    <span style="font-size: 12pt; text-align: justify;">
+                                        <span style="font-size: 12pt;"><span style="color: #2a2a2a;">Pre-requisites (TBC between Test Customer2 and PCU)</span></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>&nbsp;</div>
+
+                        <div style="background: #fff;font-family: Calibri;width:80%; margin:0 auto">
+                            <p style="margin: 0;margin-left: 15px;font-weight: bold;">
+                                <b>Note:</b><span style="color: #2a2a2a; font-style:italic;font-weight: bold;">Due to Covid changes and the new lockdown now in place, contingencies should be considered to convert to remote testing. We can provide physical devices that can be plugged in at different points in the network for ease and facilitate scanning, these can also cover wireless testing, or we can provide our own VM image. A jump box is another method including the potential for doing screen shares for any local console/config review elements. Sample mobile devices can be sent to us and returned. It is understood that there are logistical challenges which may require additional effort, but this requirement should not be ruled out.</span>
+                            </p>
+                        </div>
+                        <div style="background: #fff;font-family: Calibri;width:80%; margin:0 auto">
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h1 style=""><span style="color: #0460af; padding: 30px 0; text-align: center; font-weight: 700;">Methodology &amp; Deliverables</span></h1>
+                            </div>
+
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h2 style="margin: 0;margin-left: 15px;font-weight: normal;">
+                                    <span style="color: rgb(0, 88, 151); ">Methodology</span>
+                                </h2>
+                            </div>
+
+                            <div>
+                                <p style="text-align: justify;margin-left:15px;">
+                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                        <span style="font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                ProCheckUp have provided test methodologies to accompany this proposal. Additional methodologies can be provided upon request.
+                                            </span>
+
+                                        </span>
+                                    </span>
+                                </p>
+                                <ul>
+                                                    <li style="text-align: justify;font-family: Calibri;">
+
+
+                                                        <span style="font-size: 12pt; text-align: justify;">
+                                                            <span style="font-size: 12pt;"><span style="color: #2a2a2a;">tttttt</span></span>
+                                                        </span>
+
+
+                                                    </li>
+                                                    <li style="text-align: justify;font-family: Calibri;">
+
+
+                                                        <span style="font-size: 12pt; text-align: justify;">
+                                                            <span style="font-size: 12pt;"><span style="color: #2a2a2a;">f</span></span>
+                                                        </span>
+
+
+                                                    </li>
+
+                                </ul>
+
+                                <div>&nbsp;</div>
+
+                            </div>
+                            <div>
+                                <div style="background: #fff;font-family: Calibri;">
+                                    <h2 style="margin: 0;margin-left: 15px;font-weight: normal;">
+                                        <span style="color: rgb(0, 88, 151); ">Deliverables</span>
+                                    </h2>
+                                </div>
+                                <p style="text-align: justify;margin-left:15px;">
+                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                        <span style="font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                Upon completion, Test Customer2 will receive a comprehensive report detailing all findings identified during the engagement. This will includea Common Vulnerability Scoring System reference (CVSS), appropriate recommendations required to make fixes, the controls tested, and the techniques, tools &amp;procedures used by ProCheckUp during testing. Accompanying this proposal is the following sample report as an indication of expected output:
+                                            </span>
+
+                                        </span>
+                                    </span>
+                                </p>
+                                <ul>
+
+                                                    <li style="text-align: justify;font-family: Calibri;">
+
+
+                                                        <span style="font-size: 12pt; text-align: justify;">
+                                                            <span style="font-size: 12pt;"><span style="color: #2a2a2a;">ttttttttt</span></span>
+                                                        </span>
+
+
+                                                    </li>
+                                                    <li style="text-align: justify;font-family: Calibri;">
+
+
+                                                        <span style="font-size: 12pt; text-align: justify;">
+                                                            <span style="font-size: 12pt;"><span style="color: #2a2a2a;">fg</span></span>
+                                                        </span>
+
+
+                                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>
+                        <div style="background: #fff;width: 80%;margin: 0 auto">
+                            <h1 style="margin: 0;font-weight: normal;font-family: Calibri;">
+                                <span style="color: #0460af;">Pricing</span>
+                            </h1>
+                            <h2 style="margin: 0;font-weight: normal;font-family: Calibri;">
+                                <span style="color: #0460af;margin-left: 15px;">Payment Terms</span>
+                            </h2>
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt; text-align: justify;">
+                                    <span style="font-size: 12pt;color: #2a2a2a;">
+                                        <span>
+                                            The below service will be provided subject to receipt of a valid order. Pricing is valid for 30 days.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt;text-align: justify;color: #2a2a2a;">
+                                    <span style="font-size: 12pt;color: #2a2a2a;">
+                                        <span>
+                                            The invoice will be raised upon receipt of a purchase order (PO).Payment terms are 30 days from date of invoice.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <h2 style="margin: 0;font-weight: normal;font-family: Calibri;">
+                                <span style="color: rgb(0, 88, 151);margin-left: 15px;color: #0460af;">Project Pricing</span>
+                            </h2>
+                            <div>&nbsp;</div>
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt; text-align: justify;">
+                                    <span style="font-size: 12pt;color: #2a2a2a;">
+                                        <span>
+                                            ProCheckUp have provided Test Customer2 Pic with a breakedown of the associated cast for this contract:-
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <table cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%;border-collapse:collapse ">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td style="color: #2a2a2a;border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;">
+                                            <span style="font-size: 12pt; text-align: justify;"> Description</span>
+                                        </td>
+
+                                        <td style="color: #2a2a2a;border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;">
+                                            <span style="font-size: 12pt; text-align: justify;">Quantity(Days)</span>
+                                        </td>
+                                        <td style="color: #2a2a2a;border-right: 1px solid #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;">
+                                            <span style="font-size: 12pt; text-align: justify;">Day Rate</span>
+                                        </td>
+                                        <td style="color: #2a2a2a;border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;">
+                                            <span style="font-size: 12pt; text-align: justify;">Total Price</span>
+                                        </td>
+                                    </tr>
+                                            <tr style="height:35px">
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                                            <span style="color: #2a2a2a;font-family: Calibri;">(<strong>test Project1</strong>)</span><br>
+                                                        Cyber Essentials Plus Assessment
+
+                                                    </span>
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">15</span>
+
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">£900.00</span>
+                                                </td>
+
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">£13500</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                                            <span style="color: #2a2a2a;font-family: Calibri;">(<strong>test Project1</strong>)</span><br>
+                                                        DDoS Testing Scoping Questions
+
+                                                    </span>
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">0</span>
+
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">£900.00</span>
+                                                </td>
+
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">£0</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                                            <span style="color: #2a2a2a;font-family: Calibri;">(<strong>test Project1</strong>)</span><br>
+                                                        Security Scoping tool
+
+                                                    </span>
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">4</span>
+
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">£900.00</span>
+                                                </td>
+
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">£3600</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                                            <span style="color: #2a2a2a;font-family: Calibri;">(<strong>test Project1</strong>)</span><br>
+                                                        VOICE OVER IP ASSESSMENT 
+
+                                                    </span>
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">0</span>
+
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">£900.00</span>
+                                                </td>
+
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">£0</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr style="height:35px">
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                                            <span style="color: #2a2a2a;font-family: Calibri;">(<strong>test Project1</strong>)</span><br>
+                                                        Wi-Fi Scoping Questionnaire
+
+                                                    </span>
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">0</span>
+
+                                                </td>
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="color: #2a2a2a;font-size: 12pt;text-align: justify;color: #2a2a2a">£900.00</span>
+                                                </td>
+
+                                                <td style="color: #2a2a2a;width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">£0</span>
+
+                                                </td>
+                                            </tr>
+
+                                    <tr style="background-color: #9bd2e1;">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">Total(Excluding VAT)</span>
+                                        </td>
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">19</span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-right: 1px solid #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">-</span>
+                                        </td>
+
+                                        <td style="width: 25.86%;text-align: center;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">£17100</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt; text-align: justify;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            *ProCheckUp have provided an estimated cost for all expenses. Test Customer2 will be invoiced at cost price.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                        </div>
+                        <div>&nbsp;</div>
+                        <div style="page-break-after: always;font-family: Calibri;"><span style="display: none;">&nbsp;</span></div>
+                        <div style="background: #fff;width: 80%;margin: 0 auto">
+                            <h1 style="margin: 0;font-weight: normal;font-family: Calibri;">
+                                <span style="color: rgb(0, 88, 151); font-size: 20pt;">Acceptance</span>
+                            </h1>
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt; text-align: justify;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            ProCheckUp can confirm that the terms within our joint contractual agreement with Test Customer2 (Test Customer2 IT Consultancy Services Agreement framework ProCheckUp 1709261(04102017)) will override those terms
+                                            within ProCheckUp's Terms and Conditions.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p style="text-align: justify;font-family: Calibri;">
+                                <span style="font-size: 12pt; text-align: justify;">
+                                    <span style="font-size: 12pt;">
+                                        <span>
+                                            ProCheckUp Ltd will supply products and services based on the solution outlined in this document.Any discussions,documents or specifications relating to this project that are not mentioned or
+                                            specified in this proposal are not part of this contract and will not be supplied by ProCheckUp Ltd. Please sign below to confirm that the work specified is correct.
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+
+
+
+
+                            <table cellpadding="2" cellspacing="0" style="border: 1px solid #2a2a2a; border-image: none; width: 100%; border-collapse:collapse">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td style="border-image: none;width: 25%;height: 31px;text-align: left;background-color: #0460af;vertical-align: top;font-size: 12pt;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;border-right: 1px solid #2a2a2a;">
+                                            <span style="font-size: 12pt; text-align: justify;">Signed for and on behalf of :</span>
+                                        </td>
+                                        <td style="border-image: none;width: 25%;height: 31px;text-align: center;background-color: #0460af;vertical-align: top;font-size: 12pt;font-family: Calibri;color: rgb(255, 240, 245);font-weight: bold;">
+                                            <span style="font-size: 12pt; text-align: justify;">Test Customer2</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt; text-align: justify;color:#2a2a2a">Signature</span>
+                                        </td>
+
+                                        <td style="font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;color: #2a2a2a"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">Full Name</span>
+                                        </td>
+
+                                        <td style="width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;color: #2a2a2a"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style="font-size: 12pt; text-align: justify;">Position</span>
+                                        </td>
+
+                                        <td style="color: #2a2a2a;font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt; ">
+                                            <span style="font-size: 12pt;  text-align: justify;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style="font-size: 12pt; text-align: justify;">Date</span>
+                                        </td>
+
+                                        <td style="color: #2a2a2a;font-family: Calibri; width: 25.86%; text-align: center; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt; ">
+                                            <span style="font-size: 12pt; text-align: justify;"> </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                    <span style="font-size: 12pt;color: #2a2a2a">
+                                        <span>
+                                            Please supply an official purchase order if you would like us to proceed with this work .For Á on behalf of ProCheckUp Ltd,
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <table style="width: 100%; display: inline-block; word-break: break-all; border-collapse: collapse;">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td>
+                                            <div style="">
+                                                <span style="">
+                                                    <img src="https://scoping.procheckup.com/Report/img/signature.png" width="140" height="100">
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-size: 10pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style=" font-size: 11pt;">
+                                                Richard Brain<br>
+                                                Technical Director
+                                            </span>
+                                        </td>
+                                        <td style="font-size: 10pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style=" font-size: 12pt;">3/12/2021</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table style="width: 100%; display: inline-block; word-break: break-all; border-collapse: collapse;">
+                                <tbody>
+                                    <tr style="height:35px">
+                                        <td>
+                                            <div style="margin: 0px;font-weight: bold;font-size: 10pt;margin-bottom: 10px;font-family: Calibri;">
+                                                <span style="font-size: 11pt;color: #2a2a2a">
+                                                    <u>
+                                                        ProCheckUp Limited
+                                                    </u>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-size: 10pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style=" font-size: 11pt;">
+                                                Fairgate House, 78 New Oxford Street,<br>
+                                                4th Floor, London,
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-size: 10pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style=" font-size: 12pt;">Tel: +44 (0)207 612 7777</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="font-size: 10pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style=" font-size: 12pt;">www.Procheckup.com</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br style="page-break-before:always; clear:both; ">
+                        <div>&nbsp;</div>
+                        <div style="width:80%;margin:0 auto">
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h1 style=""><span style="color: #0460af; padding: 30px 0; text-align: center; font-weight: 700;">Accreditations &amp; Certifications</span></h1>
+                            </div>
+                            <table cellpadding="0" cellspacing="0" style="width:100%;margin:0 auto">
+                                <tbody>
+
+                                    <tr style="height: 200px;">
+                                        <td>
+
+                                            <img src="https://scoping.procheckup.com/Report/img/ri_54.png">
+
+                                        </td>
+                                        <td style="color: #0460af;font-weight: normal;font-size: 16px;line-height: 21px;margin: 0 10px;">
+
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                CREST International Member CREST Penetration Testing:
+                                            </p>
+                                            <ul>
+                                                <li style="text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">
+                                                        <span style="font-size: 12pt;">
+                                                            <span style="color: #2a2a2a;">
+                                                                CPSA
+
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </li>
+                                                <li style="text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                        <span style="font-size: 12pt;"><span style="color: #2a2a2a;">  CRT </span></span>
+                                                    </span>
+                                                </li>
+                                                <li style="text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">
+                                                        <span style="font-size: 12pt;"><span style="color: #2a2a2a;">CCT INF </span></span>
+                                                    </span>
+                                                </li>
+                                                <li style="text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">
+                                                        <span style="font-size: 12pt;">
+                                                            <span style="color: #2a2a2a;">
+
+                                                                CCT APP
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </li>
+
+                                            </ul>
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                CREST CSTAR Simulated Attack and Response
+                                            </p>
+                                            <ul>
+                                                <li style="text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">
+                                                        <span style="font-size: 12pt;">
+                                                            <span style="color: #2a2a2a;">
+                                                                CC SAS
+
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </li>
+
+
+                                            </ul>
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                CREST Cyber Security Industry Incident Response
+                                            </p>
+                                            <ul>
+                                                <li style="text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt; text-align: justify;">
+                                                        <span style="font-size: 12pt;">
+                                                            <span style="color: #2a2a2a;">
+                                                                C RIA
+
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </li>
+                                                <li style="text-align: justify;font-family: Calibri;">
+                                                    <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">
+                                                        <span style="font-size: 12pt;"><span style="color: #2a2a2a;">  CC NIA </span></span>
+                                                    </span>
+                                                </li>
+
+
+
+                                            </ul>
+                                    </td></tr>
+                                    <tr style="height: 200px;">
+                                        <td>
+
+                                            <img src="https://scoping.procheckup.com/Report/img/ri_55.png">
+                                        </td>
+                                        <td style="color: #0460af;font-weight: normal;font-size: 16px;line-height: 21px;margin: 0 10px;">
+
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                Security Information Risk Advisor (SIRA) Practitioner
+                                            </p>
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                CISSP - Certified Information Systems Security Professionals
+                                            </p>
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                CISA - Certified Information Systems Auditor
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 200px;">
+                                        <td>
+                                            <img src="https://scoping.procheckup.com/Report/img/ri_58.png">
+
+                                        </td>
+                                        <td style="color: #0460af;font-weight: normal;font-size: 16px;line-height: 21px;margin: 0 10px;">
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                Payment Card Industry Data Security Standard (PCI DSS) Accreditations
+                                            </p>
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                Global Approved Scanning Vendor (ASV)
+                                            </p>
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                European Qualified Security Assessor (QSA)
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 200px;">
+                                        <td>
+                                            <img src="https://scoping.procheckup.com/Report/img/ri_53.png">
+
+                                        </td>
+                                        <td style="color: #0460af;font-weight: normal;font-size: 16px;line-height: 21px;margin: 0 10px;">
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                CHECK Service Provider (IT Health Check Service)
+                                            </p><p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                CHECK Team Leaders and Members
+                                            </p>
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                NCSC Certified Professionals (CCP)
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 200px;">
+                                        <td>
+
+                                            <img src="https://scoping.procheckup.com/Report/img/ri_56.png">
+
+                                        </td>
+                                        <td style="color: #0460af;font-weight: normal;font-size: 16px;line-height: 21px;margin: 0 10px;">
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                Cyber Essentials Plus Registered Provider
+                                            </p><p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                Cyber Essentials Plus Accredited
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 200px;">
+                                        <td>
+                                            <img src="https://scoping.procheckup.com/Report/img/ri_57.png">
+
+                                        </td>
+                                        <td style="color: #0460af;font-weight: normal;font-size: 16px;line-height: 21px;margin: 0 10px;">
+                                            <p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                ISO 27001 Lead auditor
+                                            </p><p style="color: #000;font-weight: normal;line-height: 20px;padding: 0 20px;font-size: 12pt;font-family: Calibri;">
+                                                ISO27001 Fully Certified
+                                            </p>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+                        <br style="page-break-before:always; clear:both; ">
+                        <div>&nbsp;</div>
+                        <div style="width:80%;margin:0 auto">
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h1 style=""><span style="color: #0460af; padding: 30px 0; text-align: center; font-weight: 700;">Benefits Statement</span></h1>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Independence | </b>Since its inception PCU has consistently maintained its status as completely independent and purely vendor agnostic.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Pure Security | </b>ProCheckUp is a team of experienced and dedicated security experts.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Pedigree | </b>ProCheckUp has a long and proud history of almost 20 years, advising some of the world’s leading organisations on managing security, achieving business compliance and mitigating evolving security risks.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Innovation &amp; Artificial Intelligence | </b>ProCheckUp won the Queens award for Enterprise and Innovation for its innovative Artificial Intelligence based security assessment software, developed internally by their Technical Director.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Awards and Accreditations | </b>ProCheckUp has gained (and more importantly maintained) many of the leading industry accreditations and certifications (as listed above) around security testing, compliance and digital forensics, including CHECK, CREST, PCI DS &amp; ISO27001.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Influence | </b>Having worked alongside some of the leading organisations and accreditation bodies in the UK and Europe, ProCheckUp have played a part in directly influencing and maturing the cyber security industry.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Flexibility | </b>Teams of experienced consultants are available to deploy 24/7 in order to accommodate the most demanding projects and aggressive timeframes.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+
+
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Global Reach | </b>ProCheckUp’s large and multi-lingual team offer a full UK national, European and Global reach for the full cycle of proactive, compliance &amp; advisory and reactive cyber services.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Around The Clock Engagement | </b> PCU offer 24-hour support team including experienced Account Manager, Project Manager and Technical Consultant, 7 days a week if and when required. This includes out of core business hours engagements, weekend consultancy and support globally, to support even the most demanding security projects.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Report Customisation &amp; Interpretation | </b> ProCheckUp understands that detail and clarity in reporting are paramount. PCU provides information that will allow developers to replicate and resolve each issue. ProCheckUp produce the report in a standard format. However, upon request, this can be customised to suit the needs of individual customers.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Dedicated Client Portal| </b> ProCheckUp always put security first and encourage their clients to exchange sensitive information including scoping, reporting and remediation through its internally developed and stand-alone hosted secure client portal.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Manual not just Automation | </b>ProCheckUp take a manual approach to security and endeavour to best replicate the tools, techniques and procedures used by malicious assailants when targeting your environments.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Specialist Clearance | </b>PCU can offer both SC and DV cleared consultants to work with protectively marked information and projects.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                <b>Vulnerabilities and Research  | </b>ProCheckUp have proven experience carrying out advanced research, bug hunting and zero-day vulnerability research. In house specialities include reverse engineering of both hardware and software, and blue-sky attacks years ahead of their time.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                Active published and unpublished research can be viewed at ProCheckUp Labs; PCU’s priority is making their clients more secure, not publicity or bug bounties.
+                                                <a target="_blank" href="https://www.procheckup.com/procheckup-labs.aspx">Visit the ProCheckUp lab for further details; https://www.procheckup.com/procheckup-labs.aspx</a>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <br style="page-break-before:always; clear:both; ">
+                        <div>&nbsp;</div>
+                        <div style="width:80%;margin:0 auto">
+                            <div style="background: #fff;font-family: Calibri;">
+                                <h1 style=""><span style="color: #0460af; padding: 30px 0; text-align: center; font-weight: 700;">Client References</span></h1>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                The following is a sample of organisations ProCheckUp have worked with. They are all available for testimony. The information below is confidential and should not be separated from this proposal.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="text-align: justify;font-family: Calibri;color: #2a2a2a">
+                                    <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">
+                                        <span style="font-size: 12pt;color: #2a2a2a">
+                                            <span>
+                                                ProCheckUp will provide further industry specific client references upon reasonable request.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <table cellpadding="0" cellspacing="0" style="width:100%;margin:0 auto">
+                                    <tbody>
+
+                                        <tr style=" height: 150px; ">
+                                            <td style="margin: 0;text-align: left;height: auto;">
+                                                <img src="https://scoping.procheckup.com/Report/img/phs.png" width="250" height="110">
+                                            </td>
+                                            <td>
+                                                <img src="https://scoping.procheckup.com/Report/img/shop.png" width="250" height="110">
+                                            </td>
+                                        </tr>
+
+                                        <tr style=" height: 150px; ">
+                                            <td style="margin: 0;text-align: left;height: auto;">
+
+                                                <img src="https://scoping.procheckup.com/Report/img/london.png" width="250" height="110">
+                                            </td>
+                                            <td>
+                                                <img src="https://scoping.procheckup.com/Report/img/raytheon.png" width="250" height="110">
+                                            </td>
+                                        </tr>
+
+                                        <tr style=" height: 150px; ">
+                                            <td style="margin: 0;text-align: left;height: auto;">
+                                                <img src="https://scoping.procheckup.com/Report/img/skipton.png" width="250" height="110">
+                                            </td>
+                                            <td>
+                                                <img src="https://scoping.procheckup.com/Report/img/ses.png" width="250" height="110">
+                                            </td>
+                                        </tr>
+                                        <tr style=" height: 150px; ">
+                                            <td style="margin: 0;text-align: left;height: auto;">
+                                                <img src="https://scoping.procheckup.com/Report/img/co-bank.png" width="250" height="110">
+                                            </td>
+                                            <td>
+                                                <img src="https://scoping.procheckup.com/Report/img/west.png" width="250" height="110">
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+
+
+                        <div style="background: #fff;display:none; width:80%; margin:0 auto" id="AdminModeid">
+
+
+                            <h1 style="color: #0460af;padding: 30px;text-align: center;font-weight: 700;font-family: Calibri;">
+                                Calculation
+                            </h1>
+
+                            <table cellpadding="2" id="AdminModeTable" cellspacing="0" style="border: 1px solid rgb(42, 42, 42); width: 100%; border-collapse: collapse; display: none;">
+                                <tbody>
+
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;">
+                                            <span style="font-size: 12pt; text-align: justify;color:#2a2a2a">Days</span>
+                                        </td>
+
+                                        <td style="font-family: Calibri; width: 25.86%; border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;color: #2a2a2a">2.00</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;">Cost</span>
+                                        </td>
+
+                                        <td style="width: 25.86%;  border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt;">
+                                            <span style="font-size: 12pt;text-align: justify;font-family: Calibri;color: #2a2a2a">3290.00</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:35px">
+                                        <td style="width: 25.86%;text-align: left;border-right-color: #2a2a2a;border-bottom-color: #2a2a2a;border-right-width: 1px;border-bottom-width: 1px;border-right-style: solid;border-bottom-style: solid;font-size: 12pt;font-family: Calibri;color: #2a2a2a">
+                                            <span style="font-size: 12pt; text-align: justify;">Requirements</span>
+                                        </td>
+
+                                        <td style="color: #2a2a2a;font-family: Calibri; width: 25.86%;  border-bottom-color: #2a2a2a; border-bottom-width: 1px; border-bottom-style: solid; font-size: 12pt; ">
+                                            <span style="font-size: 12pt;  text-align: justify;"></span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <br>
+                    <div  class='Section1'><div id='Sectiondata'><table id='hrdftrtbl' border='0' cellspacing='0' cellpadding='0'><tbody><tr><td><div style='mso-element: header;' id='h1'><table style='width: 100%; font-family:Calibri;font-size:8pt; '><tbody><tr><td><div style='float: left '><img alt='' src='https://scoping.procheckup.com/Report/img/ri_4.png' style='position: absolute; top: 10px; left: 0.6in; width: 0.21in; height: 0.24in;' ><span style=''> http://www.procheckup.com/labs </span></div></td><td style='text-align: right'><div style='float: right'><img alt='' src='https://scoping.procheckup.com/Report/img/ri_9.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' > <span>+44 (0) 20 7612 7777</span></div></td><td style='text-align: right'><div style='float: right'><img alt='' src='https://scoping.procheckup.com/Report/img/ri_10.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >  Info@procheckup.com</div></td><td style='text-align: right'><div style='float: right'><img alt='' src='https://scoping.procheckup.com/Report/img/ri_4.png' style='position: absolute; top: 0.22in; left: 3.19in; width: 0.22in; height: 0.23in;' >    http://www.procheckup.com/</div></td></tr></tbody></table><hr></div><div style='mso-element: footer' id='f1'><hr><table style='width: 100%; font-family:Calibri;font-size:10pt;'><tbody><tr><td><div style='float: left'>Test Customer2 </div></td><td style='text-align: right'><div style='float: right'>    <span style='float: right; font-family:Calibri;font-size:10pt;'><span style='mso-tab-count: 2;'></span> <span style='mso-field-code: PAGE'><span style='mso-no-proof: yes'></span></span></span>      </div></td><td style='text-align: right'><div style='float: right'>test Project1</div></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>

@@ -1,0 +1,151 @@
+﻿@model OnlineScoping.ViewModels.PermissionsViewModel
+@{
+    ViewData["Title"] = "Toggle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/lib/layout/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
+<link href="~/lib/layout/assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" class="dashboard-sales" />
+<style>
+    #withoutSpacing .card-header {
+        background: #e5e5e5;
+    }
+
+    .model_btn {
+        position: absolute;
+        right: 4%;
+        top: 10px;
+        bottom: 0;
+        padding: 5px 0;
+    }
+</style>
+<div class="page-top">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="pt-3">
+                <span> Permissions </span>
+            </h3>
+        </div>
+        <div class="col-md-6">
+            <nav class="breadcrumb-two" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#"> Permissions</a></li>
+                </ol>
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="layout-px-spacing">
+
+    <div class="row layout-top-spacing">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget widget-table-two">
+                <div class="widget-heading row">
+
+                    <div class="col-md-6">
+                        <h6 class="pt-3">
+                            Permissions
+                        </h6>
+                    </div>
+
+                </div>
+
+
+                <div class="widget-content">
+                    <div id="withoutSpacing" class="">
+
+                        @if (Model.PermissionsList.Count != 0)
+                        {
+                            <div class="box box-shadow widget-content-area col-md-8">
+                                <dl class="row">
+                                    @foreach (var item in Model.PermissionsList)
+                                    {
+
+                                    <dt class="col-sm-3">
+                                        @item.Name
+                                    </dt>
+                                    <dd class="col-sm-9">                       
+                                        <label class="switch s-outline s-outline-info  mb-4 mr-2">
+                                            <input type="checkbox" id="@item.PermissionsId" value="@item.Value"   onchange="jsFunction('@(item.PermissionsId)');">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </dd>
+                       
+                                    }
+                                </dl>
+
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $(document).ready(function () {
+        jQuery("#withoutSpacing").find('input').each(function () {           
+            var value = $(this).val();
+            if (value == "True") {
+                $(this).attr("checked", "checked");
+            }
+            else {
+                $(this).removeAttr('checked');
+            }
+        });      
+    });
+
+    function jsFunction(PermissionsId) {
+        var value;
+        if (document.getElementById(PermissionsId).checked) {
+            value = "True";
+        } else {
+            value = "False";
+        }
+           var data = { "Toggle": value, "PermissionsId": PermissionsId};
+           $.ajax({
+               url: '@Url.Action("PermissionsUpdate", "Home")',
+               type: "post",
+               contentType: 'application/x-www-form-urlencoded',
+               data: data,
+               success: function (result) {
+                   if (result == "1") {        
+                       const toast = swal.mixin({
+                           toast: true,
+                           position: 'top-end',
+                           showConfirmButton: false,
+                           timer: 3000,
+                           padding: '2em'
+                       });
+
+                       toast({
+                           type: 'success',
+                           title: 'Permissions Update succesfully !',
+                           padding: '2em',
+                       })
+                   } else {
+                       alert("Error in Update Permissions !");
+                   }
+               }
+           });
+
+   }
+</script>
+
+
+
+
+}
+
