@@ -2,11 +2,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2022-02-19
+## 21-02-2022
+
+## Fixed 
+
+### fixed all these js Files variables declaration, and remove unusable code  
+- wwwroot/lib/layout/assets/js/components/custom-countdown 
+- wwwroot/lib/layout/assets/js/dashboard/dash_1.js
+- wwwroot/lib/layout/assets/js/dashboard/dash_2.js
+- wwwroot/lib/layout/assets/js/forms/bootstrap_validation/bs_validation_script.js
+- wwwroot/lib/layout/assets/js/users/account-settings.js
+- wwwroot/lib/layout/assets/js/widgets/modules-widgets.js
+- wwwroot/lib/layout/assets/js/app.js
+
+## 19-02-2022
+
 ## Fixed
 
-### Fixed aLL These file css tag related issus
-
+### Fixed aLL These file css related issues and  Unexpected duplicate styles related issues
 - wwwroot/css/site.css
 - wwwroot/lib/layout/assets/css/authentication/form-1.css
 - wwwroot/lib/layout/assets/css/components/cards/card.css
@@ -30,7 +43,6 @@ All notable changes to this project will be documented in this file.
 - wwwroot/lib/layout/assets/css/structure.css
 
 ### fixed all these js Files variables declaration, and remove unusable code  
-
 - wwwroot/lib/layout/assets/js/app.js
 - wwwroot/lib/layout/assets/js/apps/contact.js
 - wwwroot/lib/layout/assets/js/apps/custom-mailbox.js
