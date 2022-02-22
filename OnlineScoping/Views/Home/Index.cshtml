@@ -28,7 +28,6 @@
         overflow-y: auto;
     }
 
-
     .model_btn {
         position: absolute;
         right: 4%;
@@ -1084,12 +1083,10 @@
 
                                                         <div class="card-body">
 
-
                                                             <div class="table-responsive table-questionnair-1 custom">
                                                                 <table summary="Projects View List" class="table  table-hover table-striped table-checkable table-highlight-head">
                                                                     <thead>
                                                                         <tr>
-
                                                                             <th>
                                                                                 Projects Questionnairs
                                                                             </th>
@@ -1101,7 +1098,6 @@
                                                                     <tbody>
                                                                         @if (Model.ProjectsViewList[i].QDataList.Count == 0)
                                                                         {
-
                                                                             <tr>
                                                                                 <td colspan="4" class="text-left pl-2">No data available</td>
                                                                             </tr>
@@ -1118,7 +1114,6 @@
                                                                                         @Html.DisplayFor(modelItem => item.CreatedDate)
                                                                                     </td>
 
-
                                                                                     <td class="text-left">
                                                                                         @if (item.IsQuestionnaire == true)
                                                                                         {
@@ -1134,7 +1129,6 @@
                                                                                         <a asp-action="DeleteCustomerQuestionnairs" asp-controller="Questionnaire" asp-route-id="@item.CustomerId" asp-route-QuestionnaireId="@item.QuestionnaireId" asp-route-Projectid="@Model.ProjectsViewList[i].ProjectsId" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete this?')"><em class="far fa-trash-alt"></em></a>
 
                                                                                     </td>
-
 
                                                                                 </tr>
                                                                             }
@@ -1154,7 +1148,6 @@
                                                                                 Additional Files
                                                                             </th>
                                                                             <th class="text-center pr-4">Action</th>
-
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
